@@ -15,7 +15,7 @@
   --accent:#1B5EA8; --accent-hover:#154C8A; --accent-ink:#FFFFFF; --accent-soft:#DCE8F5;
   --crema:#B06E26; --crema-soft:#F3E4D0;
   --dial:#12202B; --dial-ink:#EAF0F3;
-  --photo:#FFFFFF; --a-steel:#AEB9BF; --a-dark:#26323B; --a-panel:#1B2731; --a-edge:rgba(18,32,43,.28); --a-cup:#FFFFFF;
+  --photo:#F8F8F8; --a-steel:#AEB9BF; --a-dark:#26323B; --a-panel:#1B2731; --a-edge:rgba(18,32,43,.28); --a-cup:#FFFFFF;
   --display:"Big Shoulders Display", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
   --body:"Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
   --mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -27,7 +27,7 @@
     --accent:#6EA6E6; --accent-hover:#8DBBF0; --accent-ink:#0C1318; --accent-soft:#1A3049;
     --crema:#E3A55E; --crema-soft:#3A2A18;
     --dial:#070C10; --dial-ink:#E5ECEF;
-    --photo:#E9EDEF; --a-steel:#6E7C85; --a-dark:#0A1015; --a-panel:#0A1015; --a-edge:rgba(229,236,239,.30); --a-cup:#DCE3E7;
+    --photo:#F8F8F8; --a-steel:#6E7C85; --a-dark:#0A1015; --a-panel:#0A1015; --a-edge:rgba(229,236,239,.30); --a-cup:#DCE3E7;
   }
 }
 :root[data-theme="dark"]{
@@ -35,7 +35,7 @@
   --accent:#6EA6E6; --accent-hover:#8DBBF0; --accent-ink:#0C1318; --accent-soft:#1A3049;
   --crema:#E3A55E; --crema-soft:#3A2A18;
   --dial:#070C10; --dial-ink:#E5ECEF;
-  --photo:#E9EDEF; --a-steel:#6E7C85; --a-dark:#0A1015; --a-panel:#0A1015; --a-edge:rgba(229,236,239,.30); --a-cup:#DCE3E7;
+  --photo:#F8F8F8; --a-steel:#6E7C85; --a-dark:#0A1015; --a-panel:#0A1015; --a-edge:rgba(229,236,239,.30); --a-cup:#DCE3E7;
 }
 
 *{box-sizing:border-box}
@@ -136,7 +136,8 @@ nav.main a:hover{color:var(--ink)}
 .card .art-box{background:var(--surface-2);aspect-ratio:4/3;max-width:100%;display:grid;place-items:center;position:relative;cursor:pointer;border:0;padding:0;width:100%}
 .card .art-box svg{width:82%;height:auto}
 .art-box:has(img.ph){background:var(--photo)}
-.card .art-box img.ph{width:88%;height:88%;object-fit:contain}
+.card .art-box:has(img.ph){overflow:hidden}
+.card .art-box img.ph{position:absolute;inset:6%;width:88%;height:88%;object-fit:contain}
 .dlg .art-box img.ph{width:100%;max-width:380px;height:auto;max-height:340px;object-fit:contain}
 .badge{position:absolute;top:12px;left:12px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;background:var(--surface);border:1px solid var(--line);padding:3px 8px;border-radius:999px;color:var(--muted)}
 .card .body{padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
