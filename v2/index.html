@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Formosa Espresso</title>
+<meta name="description" content="Formosa Espresso importe et installe en Tunisie les machines espresso et moulins professionnels Gemilai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: full-bleed scene carousel, alternating category blocks, product range on pale tiles, product sheet, comparison, services, contact, heavy footer */
+:root{
+  --ground:#FFFFFF; --panel:#F4F4F1; --ink:#161616; --muted:#666662; --line:#E3E3DE;
+  --accent:#7A2E1F; --accent-ink:#FFFFFF; --photo:#F7F9F8; --bar:#161616; --bar-ink:#F4F4F1;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#111110; --panel:#1B1B19; --ink:#EDEDE8; --muted:#A3A39C; --line:#2C2C29;
+    --accent:#D9826B; --accent-ink:#111110; --bar:#000000; --bar-ink:#EDEDE8; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#111110; --panel:#1B1B19; --ink:#EDEDE8; --muted:#A3A39C; --line:#2C2C29;
+  --accent:#D9826B; --accent-ink:#111110; --bar:#000000; --bar-ink:#EDEDE8; color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:clamp(16px,4vw,48px)}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.02em;line-height:1.02;margin:0;text-wrap:balance;text-transform:lowercase}
+h2{font-size:clamp(2.2rem,5vw,4rem)}
+h3{font-size:clamp(1.5rem,2.4vw,2rem)}
+p{margin:0}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:56ch;font-size:1.06rem}
+.link{display:inline-flex;align-items:center;gap:10px;font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer}
+.link::after{content:"→";transition:transform .2s}
+.link:hover::after{transform:translateX(4px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border:1px solid var(--ink);background:var(--ink);color:var(--ground);font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;transition:background .2s,color .2s;white-space:nowrap}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--ground)}
+.btn.wa{background:#1F7A45;border-color:#1F7A45;color:#fff}
+.btn.wa:hover{background:#18623A}
+.section{padding-block:clamp(64px,9vw,128px)}
+
+/* bars */
+.util{background:var(--bar);color:var(--bar-ink);font-size:.8rem}
+.util .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;padding-block:9px}
+.util span{opacity:.85}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;gap:28px;padding-block:16px}
+.mark{font-family:var(--display);font-size:1.55rem;font-weight:600;letter-spacing:-.03em;text-decoration:none;line-height:1}
+.mark span{font-weight:300}
+nav.main{display:flex;gap:28px;margin-left:auto}
+nav.main a{text-decoration:none;font-size:.95rem;color:var(--muted);text-transform:lowercase}
+nav.main a:hover{color:var(--ink)}
+.menu{display:none;margin-left:auto;background:none;border:1px solid var(--line);padding:8px 12px;cursor:pointer}
+@media (max-width:920px){
+  nav.main{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--ground);border-bottom:1px solid var(--line);padding:6px clamp(16px,4vw,48px) 14px}
+  nav.main.open{display:flex}
+  nav.main a{padding:12px 0;border-bottom:1px solid var(--line);font-size:1.1rem;color:var(--ink)}
+  .menu{display:block}
+  header.site .btn{display:none}
+}
+
+/* hero */
+.hero{position:relative;height:clamp(460px,72vh,760px);overflow:hidden;background:#1a1a18}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.slide.on{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,9,.62) 0%,rgba(10,10,9,.25) 45%,rgba(10,10,9,0) 70%),linear-gradient(0deg,rgba(10,10,9,.45),rgba(10,10,9,0) 40%)}
+.slide .copy{position:absolute;left:0;right:0;bottom:clamp(56px,9vh,96px);z-index:2;color:#F4F4F1}
+.slide .copy .wrap{display:grid;gap:18px;justify-items:start}
+.slide .copy .label{color:rgba(244,244,241,.8)}
+.slide h1{font-size:clamp(2.6rem,6.4vw,5.6rem);max-width:13ch;color:#F4F4F1}
+.slide .copy p{max-width:44ch;color:rgba(244,244,241,.88);font-size:1.05rem}
+.slide .btn{background:#F4F4F1;color:#161616;border-color:#F4F4F1}
+.slide .btn:hover{background:transparent;color:#F4F4F1}
+.hero-ctl{position:absolute;z-index:3;bottom:22px;left:0;right:0}
+.hero-ctl .wrap{display:flex;align-items:center;gap:14px}
+.dots{display:flex;gap:8px}
+.dots button{width:34px;height:3px;border:0;padding:0;background:rgba(244,244,241,.4);cursor:pointer}
+.dots button[aria-current="true"]{background:#F4F4F1}
+.arrows{margin-left:auto;display:flex;gap:6px}
+.arrows button{width:40px;height:40px;border:1px solid rgba(244,244,241,.5);background:transparent;color:#F4F4F1;cursor:pointer;font-size:1rem}
+.arrows button:hover{background:rgba(244,244,241,.15)}
+@media (max-width:640px){.slide::after{background:linear-gradient(0deg,rgba(10,10,9,.78) 0%,rgba(10,10,9,.3) 55%,rgba(10,10,9,.05) 100%)}.arrows{display:none}}
+
+/* intro statement */
+.intro .wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,6vw,96px);align-items:end}
+.intro p.big{font-family:var(--display);font-weight:300;font-size:clamp(1.6rem,3vw,2.5rem);line-height:1.18;letter-spacing:-.015em}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
+.facts div{padding:18px 16px 0 0;display:grid;gap:4px}
+.facts b{font-family:var(--display);font-weight:400;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1}
+.facts span{color:var(--muted);font-size:.88rem}
+@media (max-width:820px){.intro .wrap{grid-template-columns:1fr}}
+
+/* category split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.tile{position:relative;aspect-ratio:4/5;max-width:100%;overflow:hidden;display:block;text-decoration:none;color:#F4F4F1;background:#1a1a18}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+.tile:hover img{transform:scale(1.04)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,9,.7),rgba(10,10,9,0) 50%)}
+.tile .cap{position:absolute;left:clamp(20px,3vw,40px);right:clamp(20px,3vw,40px);bottom:clamp(24px,4vw,44px);z-index:2;display:grid;gap:12px}
+.tile .cap .label{color:rgba(244,244,241,.8)}
+.tile .cap h3{font-size:clamp(1.8rem,3.4vw,3rem);color:#F4F4F1}
+.tile .cap .link{color:#F4F4F1;justify-self:start}
+@media (max-width:760px){.split{grid-template-columns:1fr}.tile{aspect-ratio:4/4.4}}
+
+/* range */
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 48px;margin-bottom:clamp(28px,4vw,48px)}
+.head .stack{display:grid;gap:14px}
+.filters{display:flex;gap:4px;border-bottom:1px solid var(--line)}
+.filters button{background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:10px 14px;cursor:pointer;color:var(--muted);font-size:.95rem;text-transform:lowercase}
+.filters button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.filters .n{font-family:var(--mono);font-size:.72rem;margin-left:4px}
+.range{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px) clamp(16px,2vw,28px)}
+@media (max-width:1000px){.range{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.range{grid-template-columns:1fr}}
+.prod{display:flex;flex-direction:column;gap:16px;background:none;border:0;padding:0;text-align:left;cursor:pointer;min-width:0}
+.prod .ph{position:relative;background:var(--photo);aspect-ratio:1/1;max-width:100%;width:100%;overflow:hidden}
+.prod .ph img{position:absolute;inset:9%;width:82%;height:82%;object-fit:contain;transition:transform .6s ease}
+.prod:hover .ph img{transform:scale(1.04)}
+.prod .tag{position:absolute;top:14px;left:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#4A4A46;background:rgba(255,255,255,.85);padding:4px 8px}
+.prod .meta{display:grid;gap:6px}
+.prod .row1{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.prod h3{font-size:1.75rem;text-transform:none}
+.prod .type{font-size:.84rem;color:var(--muted)}
+.prod .tagline{color:var(--muted)}
+.prod .price{font-family:var(--mono);font-size:.9rem;white-space:nowrap}
+.prod .price small{display:block;font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;text-align:right}
+.prod.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:clamp(20px,4vw,56px);background:var(--panel)}
+.prod.wide .ph{flex:0 0 min(44%,520px);aspect-ratio:4/3}
+.prod.wide .meta{flex:1;padding-right:clamp(16px,3vw,48px);gap:10px}
+.prod.wide h3{font-size:clamp(2rem,3.4vw,3rem)}
+@media (max-width:600px){.prod.wide{flex-direction:column;align-items:stretch;background:none}.prod.wide .ph{flex:none;aspect-ratio:1/1}.prod.wide .meta{padding-right:0}}
+.note{margin-top:28px;font-size:.84rem;color:var(--muted);max-width:90ch}
+
+/* compare */
+.cmp-box{overflow-x:auto;border-top:1px solid var(--ink)}
+table.cmp{border-collapse:collapse;width:100%;min-width:900px;font-size:.92rem}
+.cmp th,.cmp td{padding:14px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.cmp thead th{font-family:var(--display);font-weight:400;font-size:1.25rem;letter-spacing:-.01em}
+.cmp thead th button{background:none;border:0;padding:0;cursor:pointer;font:inherit;text-align:left}
+.cmp thead th button:hover{color:var(--accent)}
+.cmp tbody th{font-family:var(--mono);font-weight:400;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;position:sticky;left:0;background:var(--ground)}
+.cmp td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* alternating */
+.alt{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;background:var(--panel)}
+.alt .img{aspect-ratio:1/1;max-width:100%;overflow:hidden}
+.alt .img img{width:100%;height:100%;object-fit:cover}
+.alt .txt{padding:clamp(32px,6vw,96px);display:grid;gap:20px;align-content:center}
+.alt dl{margin:8px 0 0;display:grid;border-top:1px solid var(--line)}
+.alt dl div{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.alt dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.alt dd{margin:0}
+@media (max-width:860px){.alt{grid-template-columns:1fr}.alt dl div{grid-template-columns:1fr;gap:2px}}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px)}
+.svc div{display:grid;gap:10px;align-content:start;border-top:1px solid var(--ink);padding-top:18px}
+.svc h3{font-size:1.5rem}
+.svc p{color:var(--muted);font-size:.95rem}
+@media (max-width:900px){.svc{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.svc{grid-template-columns:1fr}}
+
+/* faq */
+.faq{display:grid;max-width:900px;border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;display:flex;justify-content:space-between;gap:20px;font-size:1.08rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:1.2rem;line-height:1.3}
+.faq details[open] summary::after{content:"−"}
+.faq p{padding-bottom:22px;color:var(--muted);max-width:72ch}
+
+/* contact */
+.contact{background:var(--panel)}
+.contact .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,96px)}
+.coords{display:grid;gap:26px;align-content:start}
+.coords dl{margin:0;display:grid;gap:16px}
+.coords dd{margin:2px 0 0;font-size:1.05rem}
+.copyline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.copy-btn{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--line);padding:4px 8px;cursor:pointer;color:var(--muted)}
+form.req{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.f{display:grid;gap:6px;min-width:0}
+.f.full{grid-column:1/-1}
+.f label{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.f input,.f select,.f textarea{background:var(--ground);border:1px solid var(--line);border-radius:0;padding:13px 14px;width:100%}
+.f textarea{min-height:120px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink);outline:none}
+.send{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.send small{color:var(--muted);flex:1 1 220px}
+@media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+@media (max-width:520px){form.req{grid-template-columns:1fr}}
+
+footer{background:var(--bar);color:color-mix(in srgb,var(--bar-ink) 72%,transparent);font-size:.9rem}
+footer .wrap{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-block:64px 28px}
+footer .mark{color:var(--bar-ink)}
+footer h4{margin:0 0 14px;font-family:var(--mono);font-weight:400;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bar-ink)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--bar-ink)}
+footer .legal{grid-column:1/-1;border-top:1px solid color-mix(in srgb,var(--bar-ink) 16%,transparent);padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.78rem}
+@media (max-width:820px){footer .wrap{grid-template-columns:1fr 1fr}footer .wrap>div:first-child{grid-column:1/-1}}
+
+/* product sheet */
+.sheet{position:fixed;inset:0;z-index:80;background:var(--ground);overflow-y:auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.sheet-bar{position:sticky;top:0;z-index:2;background:var(--ground);border-bottom:1px solid var(--line)}
+.sheet-bar .wrap{display:flex;align-items:center;gap:16px;padding-block:14px}
+.sheet-bar .crumb{color:var(--muted);font-size:.9rem;text-transform:lowercase}
+.sheet-bar button{margin-left:auto}
+.pd{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);padding-block:clamp(28px,4vw,56px)}
+.gallery{display:grid;gap:12px;align-content:start;min-width:0}
+.gallery .main{background:var(--photo);aspect-ratio:4/3;max-width:100%;overflow:hidden;position:relative}
+.gallery .main img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.gallery .main img.scene{object-fit:cover}
+.gallery .main img.cut{inset:7%;width:86%;height:86%}
+.thumbs{display:flex;gap:10px}
+.thumbs button{width:92px;aspect-ratio:1/1;border:1px solid var(--line);padding:0;background:var(--photo);cursor:pointer;overflow:hidden}
+.thumbs button[aria-pressed="true"]{border-color:var(--ink);outline:1px solid var(--ink)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.thumbs img.cut{object-fit:contain;padding:8px}
+.pinfo{display:grid;gap:18px;align-content:start;min-width:0}
+.pinfo h2{text-transform:none;font-size:clamp(2.6rem,5vw,4.2rem)}
+.pinfo .tagline{font-family:var(--display);font-weight:300;font-size:1.5rem;line-height:1.2;text-transform:lowercase}
+.pinfo .desc{color:var(--muted)}
+.pinfo .pr{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px;border-block:1px solid var(--line);padding-block:16px}
+.pinfo .pr b{font-family:var(--mono);font-weight:500;font-size:1.25rem}
+.pinfo .pr small{color:var(--muted);font-size:.82rem}
+.pinfo .ctas{display:flex;flex-wrap:wrap;gap:10px}
+table.specs{width:100%;border-collapse:collapse;font-size:.92rem}
+.specs th,.specs td{text-align:left;vertical-align:top;padding:11px 0;border-bottom:1px solid var(--line)}
+.specs th{width:36%;padding-right:14px;font-family:var(--mono);font-weight:400;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:13px}
+@media (max-width:900px){.pd{grid-template-columns:1fr}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:11px 20px;z-index:90;font-size:.9rem;max-width:calc(100% - 32px)}
+</style>
+
+</head>
+<body>
+<div class="util"><div class="wrap"><span>Livraison, installation et formation dans toute la Tunisie</span><span>Importateur Gemilai · FR</span></div></div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="mark" href="#top">formosa <span>espresso</span></a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="nav">menu</button>
+    <nav class="main" id="nav">
+      <a href="#gamme" data-filter="machine">machines espresso</a>
+      <a href="#gamme" data-filter="grinder">moulins</a>
+      <a href="#comparer">comparer</a>
+      <a href="#services">services</a>
+      <a href="#gemilai">gemilai</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <a class="btn" href="#contact">Demander un devis</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-roledescription="carrousel" aria-label="Nos machines">
+    <div id="slides"></div>
+    <div class="hero-ctl"><div class="wrap">
+      <div class="dots" id="dots" role="tablist" aria-label="Choisir une image"></div>
+      <div class="arrows"><button id="prev" aria-label="Image précédente">←</button><button id="next" aria-label="Image suivante">→</button></div>
+    </div></div>
+  </section>
+
+  <section class="section intro">
+    <div class="wrap">
+      <div style="display:grid;gap:18px">
+        <p class="label">Formosa Espresso · Tunisie</p>
+        <h2>le comptoir professionnel, sans compromis.</h2>
+      </div>
+      <div style="display:grid;gap:36px">
+        <p class="big">Nous importons, installons et entretenons les machines espresso et moulins Gemilai pour les cafés, restaurants et hôtels tunisiens. Double chaudière, pompe rotative, groupe 58 mm : l’équipement d’un vrai bar, à un prix accessible.</p>
+        <div class="facts">
+          <div><b>58 mm</b><span>porte-filtre professionnel</span></div>
+          <div><b>220 V</b><span>monophasé, sans triphasé</span></div>
+          <div><b>2 ans</b><span>garantie constructeur</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="split" aria-label="Catégories">
+    <a class="tile" href="#gamme" data-filter="machine">
+      <img src="img/g3201-scene.jpg" alt="Machine espresso Gemilai G3201 sur un comptoir de café" loading="lazy">
+      <div class="cap"><span class="label">6 modèles · 1 et 2 groupes</span><h3>machines espresso commerciales</h3><span class="link">Découvrir</span></div>
+    </a>
+    <a class="tile" href="#gamme" data-filter="grinder">
+      <img src="img/g9026a-scene.jpg" alt="Barista utilisant le moulin Gemilai G9026A" loading="lazy">
+      <div class="cap"><span class="label">Meules plates 83 mm</span><h3>moulins à café</h3><span class="link">Découvrir</span></div>
+    </a>
+  </section>
+
+  <section class="section" id="gamme">
+    <div class="wrap">
+      <div class="head">
+        <div class="stack"><p class="label">La gamme</p><h2>choisir son équipement</h2></div>
+        <div class="filters" id="filters" role="group" aria-label="Filtrer la gamme"></div>
+      </div>
+      <div class="range" id="range"></div>
+      <p class="note">Prix indicatifs en dinars tunisiens, TVA incluse, hors livraison et installation. La fourchette dépend du coloris, du taux de change et des frais de douane au moment de la commande ; nous confirmons un prix ferme sous un jour ouvré.</p>
+    </div>
+  </section>
+
+  <section class="section" id="comparer" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div class="stack"><p class="label">Comparer</p><h2>trouver votre machine</h2></div>
+        <p class="lede">Repère : un groupe jusqu’à environ 150 tasses par jour, deux groupes au-delà. La taille de la chaudière vapeur compte si vous servez beaucoup de boissons lactées.</p></div>
+      <div class="cmp-box"><table class="cmp" id="cmp"></table></div>
+    </div>
+  </section>
+
+  <section class="alt" id="gemilai">
+    <div class="img"><img src="img/g3111a-scene.jpg" alt="Machine Gemilai G3111A et moulin dans un café" loading="lazy"></div>
+    <div class="txt">
+      <p class="label">La marque</p>
+      <h2>gemilai, la technologie pro depuis 2011.</h2>
+      <p class="lede">Fondé dans le Guangdong, Gemilai fabrique des machines à porte-filtre 58 mm depuis 2012 et des machines commerciales depuis 2015. La marque est présente dans 30 pays, avec plus de 2 millions de machines vendues.</p>
+      <dl>
+        <div><dt>Chaudières</dt><dd>Systèmes double et multi-chaudières brevetés, dont le groupe E61 saturé.</dd></div>
+        <div><dt>Température</dt><dd>Régulation PID sur toute la gamme, double PID sur les deux groupes.</dd></div>
+        <div><dt>Fabrication</dt><dd>Usine de 50 000 m², entreprise nationale de haute technologie.</dd></div>
+        <div><dt>Design</dt><dd>Lauréat de l’iF Design Award 2024.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="head"><div class="stack"><p class="label">Services</p><h2>de la livraison au premier espresso</h2></div>
+        <p class="lede">Un seul interlocuteur en Tunisie, avant et après l’achat.</p></div>
+      <div class="svc">
+        <div><span class="label">01 · Conseil</span><h3>visite technique</h3><p>Tasses par jour, place au comptoir, arrivée d’eau et ligne électrique : nous dimensionnons l’équipement avec vous.</p></div>
+        <div><span class="label">02 · Installation</span><h3>mise en service</h3><p>Raccordement eau et vidange, adoucisseur, réglage des groupes et calibrage du moulin sur votre café.</p></div>
+        <div><span class="label">03 · Formation</span><h3>formation barista</h3><p>Dosage, extraction, texture du lait et nettoyage quotidien, sur place avec votre équipe.</p></div>
+        <div><span class="label">04 · Après-vente</span><h3>entretien et pièces</h3><p>Maintenance préventive, détartrage et pièces d’usure en stock : joints, douchettes, meules.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div class="stack"><p class="label">Questions fréquentes</p><h2>avant de commander</h2></div></div>
+      <div class="faq">
+        <details><summary>Livrez-vous partout en Tunisie ?</summary><p>Oui : Grand Tunis, Cap Bon, Sahel, Sfax, Djerba et le reste du pays. Les frais et délais sont précisés sur le devis.</p></details>
+        <details><summary>Faut-il une installation électrique spéciale ?</summary><p>Toutes nos machines fonctionnent en 220 V monophasé. Les deux groupes consomment 4200 W et doivent être sur une ligne dédiée ; les un groupe vont de 2350 à 3200 W. Un raccordement à l’eau et une évacuation sont nécessaires, sauf pour la CRM3149 qui fonctionne aussi sur réservoir. Nous recommandons un adoucisseur et un régulateur de tension.</p></details>
+        <details><summary>Que couvre la garantie ?</summary><p>La garantie constructeur Gemilai de 2 ans couvre les défauts de fabrication. Les pièces d’usure et les pannes dues au calcaire sont exclues.</p></details>
+        <details><summary>Pourquoi un prix en fourchette ?</summary><p>Le prix ferme dépend du coloris, du taux de change et des frais de douane au moment de l’importation. Nous l’envoyons sous un jour ouvré après votre demande.</p></details>
+        <details><summary>Quels moyens de paiement acceptez-vous ?</summary><p>Virement, chèque ou espèces. Une facture avec TVA est émise pour chaque commande ; des facilités peuvent être étudiées pour une ouverture de café.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <div class="coords">
+        <div style="display:grid;gap:16px"><p class="label">Contact</p><h2>parlons de votre comptoir</h2>
+          <p class="lede">Indiquez le modèle qui vous intéresse et votre ville : nous répondons sous un jour ouvré avec un prix ferme.</p></div>
+        <dl>
+          <div><dt class="label">E-mail</dt><dd class="copyline"><span id="mailTxt"></span><button class="copy-btn" data-copy="mail">Copier</button></dd></div>
+          <div><dt class="label">Téléphone · WhatsApp</dt><dd class="copyline"><span id="telTxt"></span><button class="copy-btn" data-copy="tel">Copier</button></dd></div>
+          <div><dt class="label">Showroom</dt><dd>Tunis, démonstration sur rendez-vous</dd></div>
+          <div><dt class="label">Horaires</dt><dd>Lundi au samedi, 9 h – 18 h</dd></div>
+        </dl>
+      </div>
+      <form class="req" id="req">
+        <div class="f full"><label for="fModel">Modèle</label><select id="fModel"></select></div>
+        <div class="f"><label for="fName">Nom</label><input id="fName" required autocomplete="name"></div>
+        <div class="f"><label for="fPhone">Téléphone</label><input id="fPhone" type="tel" required autocomplete="tel" placeholder="+216"></div>
+        <div class="f"><label for="fType">Établissement</label><select id="fType"><option>Café / salon de thé</option><option>Restaurant</option><option>Hôtel</option><option>Coffee-shop / kiosque</option><option>Bureau</option><option>Revendeur</option></select></div>
+        <div class="f"><label for="fCity">Ville</label><input id="fCity" required></div>
+        <div class="f full"><label for="fMsg">Votre projet</label><textarea id="fMsg" placeholder="Ex. : ouverture d’un café à Sousse, environ 200 tasses par jour."></textarea></div>
+        <div class="send"><small>Votre demande s’ouvre pré-remplie dans WhatsApp ou votre messagerie.</small><button class="btn wa" type="submit" data-via="wa">Envoyer par WhatsApp</button><button class="btn ghost" type="submit" data-via="mail">Par e-mail</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:grid;gap:16px;align-content:start"><span class="mark">formosa <span>espresso</span></span><p style="max-width:38ch">Machines espresso et moulins professionnels Gemilai pour les cafés, restaurants et hôtels en Tunisie.</p></div>
+    <div><h4>Gamme</h4><ul id="footList"></ul></div>
+    <div><h4>Services</h4><ul><li><a href="#services">Installation</a></li><li><a href="#services">Formation barista</a></li><li><a href="#services">Entretien et pièces</a></li><li><a href="#faq">Questions fréquentes</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li id="footMail"></li><li id="footTel"></li><li>Tunis, Tunisie</li></ul></div>
+    <div class="legal"><span>© 2026 Formosa Espresso. Tous droits réservés.</span><span>Gemilai est une marque de Guangdong Gemilai Intelligent Technology Co., Ltd. Photos : catalogue Gemilai.</span></div>
+  </div>
+</footer>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="pdName"></div>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+/* ===== Coordonnées à remplacer ===== */
+const CONFIG = { email: "contact@formosaespresso.com", phone: "+216 00 000 000", whatsapp: "21600000000" };
+
+const PRODUCTS = [{"id": "g3211a", "cat": "machine", "name": "Gemilai G3211A", "kicker": "2 groupes · débitmètre", "usage": ["cafe", "volume"], "img": "G3211A", "badge": "Haut de gamme", "price": [8500, 10500], "chips": ["2 × 58 mm", "Débitmètre", "4200 W"], "desc": "La machine 2 groupes la plus complète de notre sélection : deux chaudières café indépendantes, une grande chaudière vapeur et un débitmètre pour programmer chaque dose. Pensée pour les cafés à fort débit qui veulent une tasse identique d’un barista à l’autre.", "specs": [["Groupes", "2 groupes complexes, porte-filtre 58 mm"], ["Chaudières", "2 × 550 ml café + 5,5 L vapeur"], ["Dosage", "Débitmètre, doses programmables"], ["Température", "Double PID, réglage par groupe"], ["Pompe", "Rotative"], ["Commandes", "2 écrans tactiles, mode électronique ou manuel"], ["Manomètres", "Café et vapeur"], ["Puissance", "4200 W · 220 V · 50 Hz"], ["Poids net", "55,2 kg"], ["Dimensions", "678 × 528 × 550 mm"], ["Coloris", "Blanc coton, gris crépuscule"]], "tagline": "deux groupes, doses programmées."}, {"id": "g3126c", "cat": "machine", "name": "Gemilai G3126C", "kicker": "1 groupe · E61 saturé", "usage": ["kiosque", "cafe"], "img": "G3126C", "badge": "Haut de gamme", "price": [6600, 8500], "chips": ["E61", "Pression variable", "2900 W"], "desc": "Un groupe E61 saturé et une palette de débit pour régler à la main la pré-infusion et la pression d’extraction. Le choix des coffee-shops de spécialité qui travaillent des cafés de torréfaction claire.", "specs": [["Groupe", "E61 saturé, porte-filtre 58 mm"], ["Chaudières", "300 ml café + 5,25 L vapeur à échangeur"], ["Pression", "Variable par palette de débit (pré-infusion et extraction)"], ["Température", "PID"], ["Pompe", "Rotative"], ["Vapeur", "Mode manuel ou automatique"], ["Manomètres", "Café, vapeur, pompe et eau du réseau"], ["Puissance", "2900 W · 220 V · 50 Hz"], ["Poids net", "45,1 kg"], ["Dimensions", "520 × 580 × 487 mm"], ["Coloris", "Blanc ivoire"]], "tagline": "la pression, entre vos mains."}, {"id": "g3201", "cat": "machine", "name": "Gemilai G3201", "kicker": "2 groupes · classique", "usage": ["cafe", "volume"], "img": "G3201", "price": [5900, 7200], "chips": ["2 × 58 mm", "Vapeur 10,5 L", "4200 W"], "desc": "La 2 groupes traditionnelle : une grande chaudière vapeur de 10,5 L à échangeur pour enchaîner les cappuccinos en plein service, et deux chaudières café à température contrôlée.", "specs": [["Groupes", "2 groupes complexes, porte-filtre 58 mm"], ["Chaudières", "2 × 550 ml café + 10,5 L vapeur à échangeur"], ["Température", "Double PID"], ["Pompe", "Rotative"], ["Commandes", "Boutons programmables, 2 écrans"], ["Vapeur", "Lance rotative, vapeur sèche"], ["Manomètres", "Café et vapeur"], ["Puissance", "4200 W · 220 V · 50 Hz"], ["Poids net", "50,3 kg"], ["Dimensions", "850 × 565 × 532 mm"], ["Coloris", "Noir encre"]], "tagline": "la vapeur en grand volume."}, {"id": "g3111a", "cat": "machine", "name": "Gemilai G3111A", "kicker": "1 groupe · double chaudière", "usage": ["kiosque", "cafe"], "img": "G3111A", "price": [5200, 6600], "chips": ["58 mm", "Débitmètre", "3200 W"], "desc": "Une machine 1 groupe de vrai comptoir : chaudière vapeur de 5,5 L pour les boissons lactées, pompe rotative et débitmètre pour des doses programmées. Idéale pour un café de quartier ou un salon de thé.", "specs": [["Groupe", "1 groupe complexe, porte-filtre 58 mm"], ["Chaudières", "550 ml café + 5,5 L vapeur"], ["Dosage", "Débitmètre, doses programmables"], ["Température", "PID"], ["Pompe", "Rotative"], ["Commandes", "Écran tactile, mode électronique ou manuel"], ["Manomètres", "Café et vapeur"], ["Puissance", "3200 W · 220 V · 50 Hz"], ["Poids net", "43,9 kg"], ["Dimensions", "473 × 528 × 550 mm"], ["Coloris", "Blanc coton"]], "tagline": "un groupe, deux chaudières."}, {"id": "g3120c", "cat": "machine", "name": "Gemilai G3120C", "kicker": "2 groupes · compact", "usage": ["cafe"], "img": "G3120C", "badge": "Meilleur prix 2 groupes", "price": [4300, 5600], "chips": ["2 × 58 mm", "Double PID", "4200 W"], "desc": "La 2 groupes la plus abordable de la gamme : deux chaudières café indépendantes, une chaudière vapeur de 5,25 L et un poids contenu de 42,5 kg pour les comptoirs étroits.", "specs": [["Groupes", "2 groupes complexes, porte-filtre 58 mm"], ["Chaudières", "2 × 550 ml café + 5,25 L vapeur"], ["Température", "Double PID"], ["Pompe", "Rotative"], ["Commandes", "Boutons multifonctions, 2 écrans"], ["Manomètres", "Café ×2 et vapeur"], ["Puissance", "4200 W · 220 V · 50 Hz"], ["Poids net", "42,5 kg"], ["Dimensions", "817 × 452 × 502 mm"], ["Coloris", "Noir encre"]], "tagline": "deux groupes, l’essentiel."}, {"id": "crm3149", "cat": "machine", "name": "Gemilai CRM3149 + moulin A80", "kicker": "Set 1 groupe · machine et moulin", "usage": ["kiosque"], "img": "G3149", "badge": "Set complet", "price": [3100, 4100], "chips": ["58 mm", "1,7 L ou réseau", "2350 W"], "desc": "Le set le plus accessible pour démarrer : une machine compacte double chaudière avec son moulin. Pour kiosques, coffee carts et bureaux jusqu’à environ 100 tasses par jour.", "specs": [["Groupe", "1 groupe complexe, porte-filtre 58 mm"], ["Chaudières", "550 ml café + 1 L vapeur"], ["Température", "PID"], ["Pompe", "Vibrante"], ["Eau", "Réservoir 1,7 L ou alimentation et vidange automatiques"], ["Vapeur", "Buse 3 trous"], ["Puissance", "2350 W · 220 V · 50 Hz"], ["Poids net", "22,6 kg (machine)"], ["Dimensions", "358 × 467 × 478 mm (machine)"], ["Moulin inclus", "A80, fiche technique sur demande"], ["Coloris", "Blanc coton, noir minuit"]], "tagline": "machine et moulin, prêts à servir."}, {"id": "g9026a", "cat": "grinder", "name": "Gemilai G9026A", "kicker": "Meules plates 83 mm · à la demande", "usage": ["kiosque", "cafe", "volume"], "img": "G9026A", "price": [1650, 2300], "chips": ["83 mm", "1400 g", "550 W"], "desc": "Un moulin à la demande à grandes meules plates de 83 mm : mouture rapide et régulière en plein service, écran tactile et technologie anti-statique pour un comptoir propre.", "specs": [["Meules", "Plates 83 mm, acier inoxydable"], ["Réglage", "11 niveaux (échelle de 55 crans)"], ["Trémie", "1400 g"], ["Commandes", "Écran tactile LCD, détection multi-paramètres"], ["Anti-statique", "Générateur plasma intégré"], ["Moteur", "AC cuivre, 550 W · 220 V · 50 Hz"], ["Poids net", "13,7 kg"], ["Dimensions", "247 × 276 × 616 mm"], ["Coloris", "Blanc coton, blanc ivoire, gris brume"]], "tagline": "83 mm, à la demande."}];
+const byId = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
+const num = n => n.toLocaleString("fr-FR").replace(/ | /g, " ");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const spec = (p, k) => (p.specs.find(([a]) => a === k) || [,"—"])[1];
+
+/* hero */
+const SLIDES = [
+  { id:"g3211a", label:"Nouveau · deux groupes", title:"deux groupes. une seule constance.", text:"Débitmètre, doses programmées et double PID : la G3211A sert la même tasse d’un barista à l’autre." },
+  { id:"g3126c", label:"Groupe E61 saturé", title:"la pression, entre vos mains.", text:"Palette de débit, pré-infusion manuelle et chaudière vapeur de 5,25 L pour les cafés de spécialité." },
+  { id:"g9026a", label:"Moulin à la demande", title:"83 mm. à la demande.", text:"De grandes meules plates pour une mouture rapide et régulière, même en plein service." }
+];
+const slidesEl = document.getElementById("slides"), dotsEl = document.getElementById("dots");
+slidesEl.innerHTML = SLIDES.map((s, i) => `<div class="slide${i ? "" : " on"}" role="group" aria-roledescription="image" aria-label="${i+1} sur ${SLIDES.length}"${i ? ' aria-hidden="true"' : ""}>
+  <img src="img/${byId[s.id].img.toLowerCase()}-scene.jpg" alt="${esc(byId[s.id].name)} en situation" ${i ? 'loading="lazy"' : ""}>
+  <div class="copy"><div class="wrap"><span class="label">${s.label}</span><h1>${s.title}</h1><p>${s.text}</p><button class="btn" data-open="${s.id}">Découvrir la ${esc(byId[s.id].name.replace("Gemilai ",""))}</button></div></div></div>`).join("");
+dotsEl.innerHTML = SLIDES.map((s, i) => `<button role="tab" aria-label="Image ${i+1}" aria-current="${!i}"></button>`).join("");
+let cur = 0, timer = null;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function go(i){
+  cur = (i + SLIDES.length) % SLIDES.length;
+  slidesEl.querySelectorAll(".slide").forEach((el, j) => { el.classList.toggle("on", j === cur); el.setAttribute("aria-hidden", j !== cur); });
+  dotsEl.querySelectorAll("button").forEach((b, j) => b.setAttribute("aria-current", j === cur));
+}
+function play(){ if (reduce) return; clearInterval(timer); timer = setInterval(() => go(cur + 1), 6500); }
+dotsEl.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; go([...dotsEl.children].indexOf(b)); play(); });
+document.getElementById("prev").onclick = () => { go(cur - 1); play(); };
+document.getElementById("next").onclick = () => { go(cur + 1); play(); };
+const heroEl = document.querySelector(".hero");
+heroEl.addEventListener("mouseenter", () => clearInterval(timer));
+heroEl.addEventListener("mouseleave", play);
+play();
+
+/* range */
+const TYPE = { machine:"Machine espresso", grinder:"Moulin à café" };
+const FILTERS = [["all","tout"],["machine","machines espresso"],["grinder","moulins"]];
+let filter = "all";
+function renderFilters(){
+  document.getElementById("filters").innerHTML = FILTERS.map(([k,l]) => {
+    const n = k === "all" ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === k).length;
+    return `<button aria-pressed="${filter===k}" data-f="${k}">${l}<span class="n">${n}</span></button>`;
+  }).join("");
+}
+function renderRange(){
+  document.getElementById("range").innerHTML = PRODUCTS.filter(p => filter === "all" || p.cat === filter).map(p => `
+    <button class="prod${filter === "all" && p.cat === "grinder" ? " wide" : ""}" data-open="${p.id}" aria-label="Voir ${esc(p.name)}">
+      <div class="ph"><img src="img/${p.img.toLowerCase()}.jpg" alt="${esc(p.name)}" loading="lazy">${p.badge ? `<span class="tag">${esc(p.badge)}</span>` : ""}</div>
+      <div class="meta">
+        <span class="type">${TYPE[p.cat]} · ${esc(p.kicker)}</span>
+        <div class="row1"><h3>${esc(p.name.replace("Gemilai ",""))}</h3><span class="price"><small>à partir de</small>${num(p.price[0])} DT</span></div>
+        <span class="tagline">${esc(p.tagline)}</span>
+      </div>
+    </button>`).join("");
+}
+document.getElementById("filters").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (!b) return; filter = b.dataset.f; renderFilters(); renderRange(); });
+document.querySelectorAll("[data-filter]").forEach(a => a.addEventListener("click", () => { filter = a.dataset.filter; renderFilters(); renderRange(); closeMenu(); }));
+
+/* compare */
+const ROWS = [["Type", p => p.kicker], ["Chaudières", p => spec(p,"Chaudières")], ["Pompe", p => spec(p,"Pompe")], ["Puissance", p => spec(p,"Puissance").split(" · ")[0]], ["Poids net", p => spec(p,"Poids net")], ["Prix TTC", p => `${num(p.price[0])} – ${num(p.price[1])} DT`]];
+const machines = PRODUCTS.filter(p => p.cat === "machine");
+document.getElementById("cmp").innerHTML = `<thead><tr><th scope="col"></th>${machines.map(p => `<th scope="col"><button data-open="${p.id}">${esc(p.name.replace("Gemilai ",""))}</button></th>`).join("")}</tr></thead>
+<tbody>${ROWS.map(([l,f]) => `<tr><th scope="row">${l}</th>${machines.map(p => `<td class="${l==="Prix TTC"||l==="Puissance"||l==="Poids net" ? "num" : ""}">${esc(f(p))}</td>`).join("")}</tr>`).join("")}</tbody>`;
+
+/* product sheet */
+const sheet = document.getElementById("sheet");
+let lastFocus = null;
+function openProduct(id){
+  const p = byId[id]; if (!p) return;
+  lastFocus = document.activeElement;
+  const base = p.img.toLowerCase();
+  sheet.innerHTML = `
+    <div class="sheet-bar"><div class="wrap"><span class="crumb">${TYPE[p.cat].toLowerCase()} / ${esc(p.name.replace("Gemilai ","").toLowerCase())}</span><button class="btn ghost" data-close>Fermer</button></div></div>
+    <div class="wrap pd">
+      <div class="gallery">
+        <div class="main" id="gMain"><img class="cut" src="img/${base}.jpg" alt="${esc(p.name)}"></div>
+        <div class="thumbs">
+          <button aria-pressed="true" data-g="cut" aria-label="Photo produit"><img class="cut" src="img/${base}.jpg" alt=""></button>
+          <button aria-pressed="false" data-g="scene" aria-label="Photo en situation"><img src="img/${base}-scene.jpg" alt=""></button>
+        </div>
+      </div>
+      <div class="pinfo">
+        <span class="label">${TYPE[p.cat]} · ${esc(p.kicker)}</span>
+        <h2 id="pdName">${esc(p.name)}</h2>
+        <p class="tagline">${esc(p.tagline)}</p>
+        <p class="desc">${esc(p.desc)}</p>
+        <div class="pr"><small>Prix indicatif TTC</small><b>${num(p.price[0])} – ${num(p.price[1])} DT</b></div>
+        <div class="ctas"><button class="btn" data-quote="${p.id}">Demander un devis</button><button class="btn wa" data-wa="${p.id}">WhatsApp</button></div>
+        <div style="overflow-x:auto"><table class="specs"><tbody>${p.specs.map(([k,v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}</tbody></table></div>
+      </div>
+    </div>`;
+  sheet.hidden = false; document.body.style.overflow = "hidden"; sheet.scrollTop = 0;
+  sheet.querySelector("[data-close]").focus();
+  sheet.querySelectorAll("[data-g]").forEach(b => b.addEventListener("click", () => {
+    sheet.querySelectorAll("[data-g]").forEach(x => x.setAttribute("aria-pressed", x === b));
+    const scene = b.dataset.g === "scene";
+    document.getElementById("gMain").innerHTML = `<img class="${scene ? "scene" : "cut"}" src="img/${base}${scene ? "-scene" : ""}.jpg" alt="${esc(p.name)}${scene ? " en situation" : ""}">`;
+  }));
+}
+function closeSheet(){ sheet.hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !sheet.hidden) closeSheet(); });
+
+/* contact */
+const sel = document.getElementById("fModel");
+sel.innerHTML = `<option value="">Je ne sais pas encore, conseillez-moi</option>` + PRODUCTS.map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join("");
+document.getElementById("mailTxt").textContent = CONFIG.email;
+document.getElementById("telTxt").textContent = CONFIG.phone;
+document.getElementById("footMail").textContent = CONFIG.email;
+document.getElementById("footTel").textContent = CONFIG.phone;
+document.getElementById("footList").innerHTML = PRODUCTS.map(p => `<li><a href="#gamme" data-open="${p.id}">${esc(p.name.replace("Gemilai ",""))}</a></li>`).join("");
+function quote(id){
+  if (!sheet.hidden) closeSheet();
+  sel.value = id || "";
+  document.getElementById("contact").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+  setTimeout(() => document.getElementById("fName").focus({ preventScroll:true }), reduce ? 0 : 600);
+}
+function waText(id){ const p = byId[id]; return `Bonjour Formosa Espresso, je souhaite un devis pour la ${p.name} (${num(p.price[0])} – ${num(p.price[1])} DT TTC).`; }
+let via = "wa";
+document.querySelectorAll("form.req [data-via]").forEach(b => b.addEventListener("click", () => { via = b.dataset.via; }));
+document.getElementById("req").addEventListener("submit", e => {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const model = sel.value ? byId[sel.value].name : "à conseiller";
+  const body = `Bonjour Formosa Espresso,\nJe souhaite un devis.\n\nModèle : ${model}\nNom : ${v("fName")}\nTéléphone : ${v("fPhone")}\nÉtablissement : ${v("fType")}\nVille : ${v("fCity")}\n\n${v("fMsg")}`;
+  const url = via === "wa"
+    ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(body)}`
+    : `mailto:${CONFIG.email}?subject=${encodeURIComponent("Demande de devis — " + model)}&body=${encodeURIComponent(body)}`;
+  const a = document.createElement("a"); a.href = url; a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove();
+  toast(via === "wa" ? "Votre demande s’ouvre dans WhatsApp." : "Votre demande s’ouvre dans votre messagerie.");
+});
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
+  const t = b.dataset.copy === "mail" ? CONFIG.email : CONFIG.phone;
+  const done = () => toast("Copié : " + t);
+  try { navigator.clipboard.writeText(t).then(done, () => { selectText(b.previousElementSibling); }); } catch(err){ selectText(b.previousElementSibling); }
+}));
+function selectText(el){ const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Texte sélectionné, copiez-le."); }
+
+/* global clicks */
+document.addEventListener("click", e => {
+  const o = e.target.closest("[data-open]"); if (o){ e.preventDefault(); openProduct(o.dataset.open); return; }
+  if (e.target.closest("[data-close]")) { closeSheet(); return; }
+  const q = e.target.closest("[data-quote]"); if (q){ quote(q.dataset.quote); return; }
+  const w = e.target.closest("[data-wa]"); if (w){ const a = document.createElement("a"); a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(waText(w.dataset.wa))}`; a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); }
+});
+
+/* menu */
+const nav = document.getElementById("nav"), mb = document.getElementById("menuBtn");
+function closeMenu(){ nav.classList.remove("open"); mb.setAttribute("aria-expanded","false"); }
+mb.addEventListener("click", () => { const o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
+nav.addEventListener("click", e => { if (e.target.closest("a")) closeMenu(); });
+
+let tt; function toast(m){ const t = document.getElementById("toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, 2600); }
+
+renderFilters(); renderRange();
+</script>
+
+</body>
+</html>
