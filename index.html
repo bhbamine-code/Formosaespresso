@@ -11,8 +11,8 @@
 <style>
 /* Layout: full-bleed scene carousel, alternating category blocks, product range on pale tiles, product sheet, comparison, services, contact, heavy footer */
 :root{
-  --ground:#FFFFFF; --panel:#F4F4F1; --ink:#161616; --muted:#666662; --line:#E3E3DE;
-  --accent:#7A2E1F; --accent-ink:#FFFFFF; --photo:#F7F9F8; --bar:#161616; --bar-ink:#F4F4F1;
+  --ground:#F7F0E3; --panel:#EEE4D2; --ink:#1C1712; --muted:#6B6155; --line:#E2D6C2;
+  --accent:#7A2E1F; --accent-ink:#FFFFFF; --photo:#F1E8D8; --bar:#1C1712; --bar-ink:#F7F0E3;
   --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
   --body:"Instrument Sans","Segoe UI",system-ui,-apple-system,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -244,12 +244,38 @@ table.specs{width:100%;border-collapse:collapse;font-size:.92rem}
 .specs th,.specs td{text-align:left;vertical-align:top;padding:11px 0;border-bottom:1px solid var(--line)}
 .specs th{width:36%;padding-right:14px;font-family:var(--mono);font-weight:400;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:13px}
 @media (max-width:900px){.pd{grid-template-columns:1fr}}
+/* product cut-outs blend into the cream tiles */
+.prod .ph img,.gallery .main img.cut,.thumbs img.cut{mix-blend-mode:multiply;filter:brightness(1.035)}
+
+/* card payment */
+.cards{display:flex;flex-wrap:wrap;gap:6px}
+.cards span{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);background:var(--ground);padding:4px 8px;color:var(--ink)}
+.pay .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.pay-steps{display:grid;gap:0;border-top:1px solid var(--ink);counter-reset:s}
+.pay-steps li{list-style:none;display:grid;grid-template-columns:48px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
+.pay-steps li::before{counter-increment:s;content:"0" counter(s);font-family:var(--mono);font-size:.8rem;color:var(--muted);padding-top:3px}
+.pay-steps b{display:block;font-weight:600}
+.pay-steps span{color:var(--muted);font-size:.94rem}
+.pay-card{background:var(--panel);padding:clamp(22px,3vw,36px);display:grid;gap:18px}
+.pay-card .f select{background:var(--ground)}
+.sum{display:grid;border-top:1px solid var(--line)}
+.sum div{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:.94rem}
+.sum div span:first-child{color:var(--muted)}
+.sum div b,.sum div span:last-child{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.sum div.total b{font-size:1.15rem}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--muted)}
+.agree input{margin-top:4px;accent-color:var(--ink);width:16px;height:16px;flex:none}
+.secure{font-size:.8rem;color:var(--muted)}
+.btn.card{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.card:hover{background:transparent;color:var(--accent)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+@media (max-width:860px){.pay .wrap{grid-template-columns:1fr}}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:11px 20px;z-index:90;font-size:.9rem;max-width:calc(100% - 32px)}
 </style>
 
 </head>
 <body>
-<div class="util"><div class="wrap"><span>Livraison, installation et formation dans toute la Tunisie</span><span>Importateur Gemilai · FR</span></div></div>
+<div class="util"><div class="wrap"><span>Livraison, installation et formation dans toute la Tunisie</span><span>Paiement sécurisé par carte · Importateur Gemilai</span></div></div>
 
 <header class="site">
   <div class="wrap">
@@ -260,6 +286,7 @@ table.specs{width:100%;border-collapse:collapse;font-size:.92rem}
       <a href="#gamme" data-filter="grinder">moulins</a>
       <a href="#comparer">comparer</a>
       <a href="#services">services</a>
+      <a href="#paiement">paiement</a>
       <a href="#gemilai">gemilai</a>
       <a href="#contact">contact</a>
     </nav>
@@ -351,6 +378,29 @@ table.specs{width:100%;border-collapse:collapse;font-size:.92rem}
     </div>
   </section>
 
+  <section class="section pay" id="paiement" style="padding-top:0">
+    <div class="wrap">
+      <div style="display:grid;gap:22px">
+        <div style="display:grid;gap:14px"><p class="label">Paiement en ligne</p><h2>réservez votre machine par carte</h2>
+          <p class="lede">Payez l’acompte directement sur le site avec votre carte bancaire. La machine est réservée à votre nom et l’acompte est déduit du prix final.</p></div>
+        <ol class="pay-steps" style="margin:0;padding:0">
+          <li><div><b>Choisissez votre modèle</b><span>L’acompte est fixe : il ne dépend ni du coloris ni du taux de change.</span></div></li>
+          <li><div><b>Payez sur la page sécurisée</b><span>Vous êtes redirigé vers notre prestataire de paiement. Vos données de carte ne transitent jamais par notre site.</span></div></li>
+          <li><div><b>Recevez le prix ferme</b><span>Nous vous confirmons le prix final sous un jour ouvré, puis la date de livraison et d’installation.</span></div></li>
+          <li><div><b>Réglez le solde</b><span>Par carte avec le lien envoyé sur votre devis, par virement ou par chèque.</span></div></li>
+        </ol>
+      </div>
+      <form class="pay-card" id="payForm" novalidate>
+        <div class="f"><label for="pModel">Modèle à réserver</label><select id="pModel"></select></div>
+        <div class="sum" id="paySum" aria-live="polite"></div>
+        <label class="agree"><input type="checkbox" id="pAgree"> <span>J’accepte que l’acompte réserve la machine et soit déduit du montant final indiqué sur le devis.</span></label>
+        <button class="btn card" type="submit" id="payBtn" disabled>Payer l’acompte par carte</button>
+        <div class="cards" aria-label="Cartes acceptées"><span>Visa</span><span>Mastercard</span><span>Carte bancaire tunisienne</span></div>
+        <p class="secure">Paiement chiffré, traité par un prestataire agréé en Tunisie. Montant débité en dinars tunisiens.</p>
+      </form>
+    </div>
+  </section>
+
   <section class="section" id="faq" style="padding-top:0">
     <div class="wrap">
       <div class="head"><div class="stack"><p class="label">Questions fréquentes</p><h2>avant de commander</h2></div></div>
@@ -359,7 +409,8 @@ table.specs{width:100%;border-collapse:collapse;font-size:.92rem}
         <details><summary>Faut-il une installation électrique spéciale ?</summary><p>Toutes nos machines fonctionnent en 220 V monophasé. Les deux groupes consomment 4200 W et doivent être sur une ligne dédiée ; les un groupe vont de 2350 à 3200 W. Un raccordement à l’eau et une évacuation sont nécessaires, sauf pour la CRM3149 qui fonctionne aussi sur réservoir. Nous recommandons un adoucisseur et un régulateur de tension.</p></details>
         <details><summary>Que couvre la garantie ?</summary><p>La garantie constructeur Gemilai de 2 ans couvre les défauts de fabrication. Les pièces d’usure et les pannes dues au calcaire sont exclues.</p></details>
         <details><summary>Pourquoi un prix en fourchette ?</summary><p>Le prix ferme dépend du coloris, du taux de change et des frais de douane au moment de l’importation. Nous l’envoyons sous un jour ouvré après votre demande.</p></details>
-        <details><summary>Quels moyens de paiement acceptez-vous ?</summary><p>Virement, chèque ou espèces. Une facture avec TVA est émise pour chaque commande ; des facilités peuvent être étudiées pour une ouverture de café.</p></details>
+        <details><summary>Quels moyens de paiement acceptez-vous ?</summary><p>Carte bancaire directement sur le site (Visa, Mastercard, cartes tunisiennes), virement, chèque ou espèces. Une facture avec TVA est émise pour chaque commande ; des facilités peuvent être étudiées pour une ouverture de café.</p></details>
+        <details><summary>Le paiement par carte est-il sécurisé ?</summary><p>Oui. Le paiement se fait sur la page sécurisée de notre prestataire agréé : nous ne voyons ni ne stockons jamais votre numéro de carte. Vous recevez un reçu par e-mail après chaque paiement.</p></details>
       </div>
     </div>
   </section>
@@ -393,7 +444,7 @@ table.specs{width:100%;border-collapse:collapse;font-size:.92rem}
   <div class="wrap">
     <div style="display:grid;gap:16px;align-content:start"><span class="mark">formosa <span>espresso</span></span><p style="max-width:38ch">Machines espresso et moulins professionnels Gemilai pour les cafés, restaurants et hôtels en Tunisie.</p></div>
     <div><h4>Gamme</h4><ul id="footList"></ul></div>
-    <div><h4>Services</h4><ul><li><a href="#services">Installation</a></li><li><a href="#services">Formation barista</a></li><li><a href="#services">Entretien et pièces</a></li><li><a href="#faq">Questions fréquentes</a></li></ul></div>
+    <div><h4>Services</h4><ul><li><a href="#services">Installation</a></li><li><a href="#services">Formation barista</a></li><li><a href="#services">Entretien et pièces</a></li><li><a href="#paiement">Paiement par carte</a></li><li><a href="#faq">Questions fréquentes</a></li></ul></div>
     <div><h4>Contact</h4><ul><li id="footMail"></li><li id="footTel"></li><li>Tunis, Tunisie</li></ul></div>
     <div class="legal"><span>© 2026 Formosa Espresso. Tous droits réservés.</span><span>Gemilai est une marque de Guangdong Gemilai Intelligent Technology Co., Ltd. Photos : catalogue Gemilai.</span></div>
   </div>
@@ -406,10 +457,22 @@ table.specs{width:100%;border-collapse:collapse;font-size:.92rem}
 /* ===== Coordonnées à remplacer ===== */
 const CONFIG = { email: "contact@formosaespresso.com", phone: "+216 00 000 000", whatsapp: "21600000000" };
 
+/* ===== Paiement par carte =====
+   Acompte fixe par catégorie (en DT). Pour chaque modèle, collez le lien de paiement
+   créé dans votre espace marchand (Konnect, Flouci, ClicToPay…) pour le montant de l’acompte.
+   URL de retour à configurer chez le prestataire :
+     succès → https://<votre-site>/?paiement=ok      échec → https://<votre-site>/?paiement=echec
+   Tant qu’un lien est vide, le bouton envoie une demande de lien de paiement par WhatsApp. */
+const PAYMENT = {
+  deposit: { machine: 1000, grinder: 300 },
+  links: { g3211a: "", g3126c: "", g3201: "", g3111a: "", g3120c: "", crm3149: "", g9026a: "" }
+};
+
 const PRODUCTS = [{"id": "g3211a", "cat": "machine", "name": "Gemilai G3211A", "kicker": "2 groupes · débitmètre", "usage": ["cafe", "volume"], "img": "G3211A", "badge": "Haut de gamme", "price": [8500, 10500], "chips": ["2 × 58 mm", "Débitmètre", "4200 W"], "desc": "La machine 2 groupes la plus complète de notre sélection : deux chaudières café indépendantes, une grande chaudière vapeur et un débitmètre pour programmer chaque dose. Pensée pour les cafés à fort débit qui veulent une tasse identique d’un barista à l’autre.", "specs": [["Groupes", "2 groupes complexes, porte-filtre 58 mm"], ["Chaudières", "2 × 550 ml café + 5,5 L vapeur"], ["Dosage", "Débitmètre, doses programmables"], ["Température", "Double PID, réglage par groupe"], ["Pompe", "Rotative"], ["Commandes", "2 écrans tactiles, mode électronique ou manuel"], ["Manomètres", "Café et vapeur"], ["Puissance", "4200 W · 220 V · 50 Hz"], ["Poids net", "55,2 kg"], ["Dimensions", "678 × 528 × 550 mm"], ["Coloris", "Blanc coton, gris crépuscule"]], "tagline": "deux groupes, doses programmées."}, {"id": "g3126c", "cat": "machine", "name": "Gemilai G3126C", "kicker": "1 groupe · E61 saturé", "usage": ["kiosque", "cafe"], "img": "G3126C", "badge": "Haut de gamme", "price": [6600, 8500], "chips": ["E61", "Pression variable", "2900 W"], "desc": "Un groupe E61 saturé et une palette de débit pour régler à la main la pré-infusion et la pression d’extraction. Le choix des coffee-shops de spécialité qui travaillent des cafés de torréfaction claire.", "specs": [["Groupe", "E61 saturé, porte-filtre 58 mm"], ["Chaudières", "300 ml café + 5,25 L vapeur à échangeur"], ["Pression", "Variable par palette de débit (pré-infusion et extraction)"], ["Température", "PID"], ["Pompe", "Rotative"], ["Vapeur", "Mode manuel ou automatique"], ["Manomètres", "Café, vapeur, pompe et eau du réseau"], ["Puissance", "2900 W · 220 V · 50 Hz"], ["Poids net", "45,1 kg"], ["Dimensions", "520 × 580 × 487 mm"], ["Coloris", "Blanc ivoire"]], "tagline": "la pression, entre vos mains."}, {"id": "g3201", "cat": "machine", "name": "Gemilai G3201", "kicker": "2 groupes · classique", "usage": ["cafe", "volume"], "img": "G3201", "price": [5900, 7200], "chips": ["2 × 58 mm", "Vapeur 10,5 L", "4200 W"], "desc": "La 2 groupes traditionnelle : une grande chaudière vapeur de 10,5 L à échangeur pour enchaîner les cappuccinos en plein service, et deux chaudières café à température contrôlée.", "specs": [["Groupes", "2 groupes complexes, porte-filtre 58 mm"], ["Chaudières", "2 × 550 ml café + 10,5 L vapeur à échangeur"], ["Température", "Double PID"], ["Pompe", "Rotative"], ["Commandes", "Boutons programmables, 2 écrans"], ["Vapeur", "Lance rotative, vapeur sèche"], ["Manomètres", "Café et vapeur"], ["Puissance", "4200 W · 220 V · 50 Hz"], ["Poids net", "50,3 kg"], ["Dimensions", "850 × 565 × 532 mm"], ["Coloris", "Noir encre"]], "tagline": "la vapeur en grand volume."}, {"id": "g3111a", "cat": "machine", "name": "Gemilai G3111A", "kicker": "1 groupe · double chaudière", "usage": ["kiosque", "cafe"], "img": "G3111A", "price": [5200, 6600], "chips": ["58 mm", "Débitmètre", "3200 W"], "desc": "Une machine 1 groupe de vrai comptoir : chaudière vapeur de 5,5 L pour les boissons lactées, pompe rotative et débitmètre pour des doses programmées. Idéale pour un café de quartier ou un salon de thé.", "specs": [["Groupe", "1 groupe complexe, porte-filtre 58 mm"], ["Chaudières", "550 ml café + 5,5 L vapeur"], ["Dosage", "Débitmètre, doses programmables"], ["Température", "PID"], ["Pompe", "Rotative"], ["Commandes", "Écran tactile, mode électronique ou manuel"], ["Manomètres", "Café et vapeur"], ["Puissance", "3200 W · 220 V · 50 Hz"], ["Poids net", "43,9 kg"], ["Dimensions", "473 × 528 × 550 mm"], ["Coloris", "Blanc coton"]], "tagline": "un groupe, deux chaudières."}, {"id": "g3120c", "cat": "machine", "name": "Gemilai G3120C", "kicker": "2 groupes · compact", "usage": ["cafe"], "img": "G3120C", "badge": "Meilleur prix 2 groupes", "price": [4300, 5600], "chips": ["2 × 58 mm", "Double PID", "4200 W"], "desc": "La 2 groupes la plus abordable de la gamme : deux chaudières café indépendantes, une chaudière vapeur de 5,25 L et un poids contenu de 42,5 kg pour les comptoirs étroits.", "specs": [["Groupes", "2 groupes complexes, porte-filtre 58 mm"], ["Chaudières", "2 × 550 ml café + 5,25 L vapeur"], ["Température", "Double PID"], ["Pompe", "Rotative"], ["Commandes", "Boutons multifonctions, 2 écrans"], ["Manomètres", "Café ×2 et vapeur"], ["Puissance", "4200 W · 220 V · 50 Hz"], ["Poids net", "42,5 kg"], ["Dimensions", "817 × 452 × 502 mm"], ["Coloris", "Noir encre"]], "tagline": "deux groupes, l’essentiel."}, {"id": "crm3149", "cat": "machine", "name": "Gemilai CRM3149 + moulin A80", "kicker": "Set 1 groupe · machine et moulin", "usage": ["kiosque"], "img": "G3149", "badge": "Set complet", "price": [3100, 4100], "chips": ["58 mm", "1,7 L ou réseau", "2350 W"], "desc": "Le set le plus accessible pour démarrer : une machine compacte double chaudière avec son moulin. Pour kiosques, coffee carts et bureaux jusqu’à environ 100 tasses par jour.", "specs": [["Groupe", "1 groupe complexe, porte-filtre 58 mm"], ["Chaudières", "550 ml café + 1 L vapeur"], ["Température", "PID"], ["Pompe", "Vibrante"], ["Eau", "Réservoir 1,7 L ou alimentation et vidange automatiques"], ["Vapeur", "Buse 3 trous"], ["Puissance", "2350 W · 220 V · 50 Hz"], ["Poids net", "22,6 kg (machine)"], ["Dimensions", "358 × 467 × 478 mm (machine)"], ["Moulin inclus", "A80, fiche technique sur demande"], ["Coloris", "Blanc coton, noir minuit"]], "tagline": "machine et moulin, prêts à servir."}, {"id": "g9026a", "cat": "grinder", "name": "Gemilai G9026A", "kicker": "Meules plates 83 mm · à la demande", "usage": ["kiosque", "cafe", "volume"], "img": "G9026A", "price": [1650, 2300], "chips": ["83 mm", "1400 g", "550 W"], "desc": "Un moulin à la demande à grandes meules plates de 83 mm : mouture rapide et régulière en plein service, écran tactile et technologie anti-statique pour un comptoir propre.", "specs": [["Meules", "Plates 83 mm, acier inoxydable"], ["Réglage", "11 niveaux (échelle de 55 crans)"], ["Trémie", "1400 g"], ["Commandes", "Écran tactile LCD, détection multi-paramètres"], ["Anti-statique", "Générateur plasma intégré"], ["Moteur", "AC cuivre, 550 W · 220 V · 50 Hz"], ["Poids net", "13,7 kg"], ["Dimensions", "247 × 276 × 616 mm"], ["Coloris", "Blanc coton, blanc ivoire, gris brume"]], "tagline": "83 mm, à la demande."}];
 const byId = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
 const num = n => n.toLocaleString("fr-FR").replace(/ | /g, " ");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const depositOf = p => (PAYMENT.deposit[p.cat] || 0);
 const spec = (p, k) => (p.specs.find(([a]) => a === k) || [,"—"])[1];
 
 /* hero */
@@ -492,7 +555,7 @@ function openProduct(id){
         <p class="tagline">${esc(p.tagline)}</p>
         <p class="desc">${esc(p.desc)}</p>
         <div class="pr"><small>Prix indicatif TTC</small><b>${num(p.price[0])} – ${num(p.price[1])} DT</b></div>
-        <div class="ctas"><button class="btn" data-quote="${p.id}">Demander un devis</button><button class="btn wa" data-wa="${p.id}">WhatsApp</button></div>
+        <div class="ctas"><button class="btn card" data-pay="${p.id}">Réserver · ${num(depositOf(p))} DT par carte</button><button class="btn" data-quote="${p.id}">Demander un devis</button><button class="btn wa" data-wa="${p.id}">WhatsApp</button></div>
         <div style="overflow-x:auto"><table class="specs"><tbody>${p.specs.map(([k,v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}</tbody></table></div>
       </div>
     </div>`;
@@ -542,11 +605,47 @@ document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click"
 }));
 function selectText(el){ const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Texte sélectionné, copiez-le."); }
 
+/* card payment */
+const pSel = document.getElementById("pModel"), pAgree = document.getElementById("pAgree"), payBtn = document.getElementById("payBtn");
+pSel.innerHTML = PRODUCTS.map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join("");
+function renderPay(){
+  const p = byId[pSel.value], d = depositOf(p);
+  document.getElementById("paySum").innerHTML = `
+    <div><span>Prix indicatif TTC</span><span>${num(p.price[0])} – ${num(p.price[1])} DT</span></div>
+    <div><span>Solde après acompte</span><span>${num(p.price[0] - d)} – ${num(p.price[1] - d)} DT</span></div>
+    <div class="total"><span>À payer aujourd’hui</span><b>${num(d)} DT</b></div>`;
+  payBtn.textContent = `Payer ${num(d)} DT par carte`;
+}
+pSel.addEventListener("change", renderPay);
+pAgree.addEventListener("change", () => { payBtn.disabled = !pAgree.checked; });
+function startPayment(id){
+  const p = byId[id], link = (PAYMENT.links[id] || "").trim();
+  if (link) { location.href = link; return; }
+  const msg = `Bonjour Formosa Espresso, je souhaite réserver la ${p.name} et payer l’acompte de ${num(depositOf(p))} DT par carte. Pouvez-vous m’envoyer le lien de paiement ?`;
+  const a = document.createElement("a"); a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`; a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove();
+  toast("Nous vous envoyons votre lien de paiement sécurisé par WhatsApp.");
+}
+document.getElementById("payForm").addEventListener("submit", e => { e.preventDefault(); if (!pAgree.checked) return; startPayment(pSel.value); });
+function payFor(id){
+  if (!sheet.hidden) closeSheet();
+  pSel.value = id; renderPay();
+  document.getElementById("paiement").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+  setTimeout(() => pAgree.focus({ preventScroll:true }), reduce ? 0 : 600);
+}
+renderPay();
+function checkReturn(){
+  const st = new URLSearchParams(location.search).get("paiement");
+  if (st === "ok") toast("Paiement reçu, merci ! Nous vous confirmons votre réservation sous un jour ouvré.");
+  else if (st === "echec") toast("Le paiement n’a pas abouti. Vous pouvez réessayer ou nous contacter.");
+  if (st) history.replaceState(null, "", location.pathname + location.hash);
+}
+
 /* global clicks */
 document.addEventListener("click", e => {
   const o = e.target.closest("[data-open]"); if (o){ e.preventDefault(); openProduct(o.dataset.open); return; }
   if (e.target.closest("[data-close]")) { closeSheet(); return; }
   const q = e.target.closest("[data-quote]"); if (q){ quote(q.dataset.quote); return; }
+  const pp = e.target.closest("[data-pay]"); if (pp){ payFor(pp.dataset.pay); return; }
   const w = e.target.closest("[data-wa]"); if (w){ const a = document.createElement("a"); a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(waText(w.dataset.wa))}`; a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); }
 });
 
@@ -556,9 +655,9 @@ function closeMenu(){ nav.classList.remove("open"); mb.setAttribute("aria-expand
 mb.addEventListener("click", () => { const o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
 nav.addEventListener("click", e => { if (e.target.closest("a")) closeMenu(); });
 
-let tt; function toast(m){ const t = document.getElementById("toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, 2600); }
+let tt; function toast(m){ const t = document.getElementById("toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, Math.max(2600, m.length * 55)); }
 
-renderFilters(); renderRange();
+renderFilters(); renderRange(); checkReturn();
 </script>
 
 </body>
