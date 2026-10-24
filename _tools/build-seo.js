@@ -138,6 +138,7 @@ bdi{unicode-bidi:isolate}
 <a class="all" href="${home(l)}#gamme">${u.all} →</a></div></section>
 <footer><div class="wrap"><span>${esc(D.s.legal1)}</span><span><bdi dir="ltr">${esc(D.cfg.email)}</bdi> · <bdi dir="ltr">${esc(D.cfg.phone)}</bdi></span><span>${esc(D.s.legal2)}</span></div></footer>
 <script>document.querySelectorAll(".thumbs button").forEach(b=>b.addEventListener("click",()=>{document.getElementById("main").src=b.dataset.src;document.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-pressed",x===b));}));</script>
+<script data-goatcounter="https://formosaespresso.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
 `;
