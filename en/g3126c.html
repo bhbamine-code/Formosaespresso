@@ -33,7 +33,7 @@
 a{color:inherit}img{max-width:100%;display:block}
 .wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
 header{border-bottom:1px solid var(--line)}header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
-.logo{font-size:1.3rem;text-decoration:none;letter-spacing:-.02em}.logo b{font-weight:600}
+.logo{font-size:1.3rem;text-decoration:none;letter-spacing:-.02em;display:inline-flex;align-items:center;gap:10px}.logo img{height:38px;width:auto;display:block}.logo span{white-space:nowrap}.logo picture{flex:none}.logo b{font-weight:600}
 .langs{display:flex;gap:4px}.langs a{padding:8px 10px;font-size:.85rem;text-decoration:none;border:1px solid var(--line);min-width:44px;text-align:center}.langs a[aria-current]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
 .crumbs{font-size:.85rem;color:var(--muted);margin:20px 0}.crumbs a{text-decoration:none}.crumbs a:hover{text-decoration:underline}
 .pd{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start;padding-bottom:56px}
@@ -57,7 +57,7 @@ bdi{unicode-bidi:isolate}
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="logo" href="../?lang=en" dir="ltr"><b>formosa</b> espresso</a>
+<header><div class="wrap"><a class="logo" href="../?lang=en" dir="ltr" aria-label="Formosa Espresso"><picture><source srcset="../img/logo/mark-bold-light.svg" media="(prefers-color-scheme: dark)"><img src="../img/logo/mark-bold.svg" alt="" width="22" height="40"></picture><span><b>formosa</b> espresso</span></a>
 <nav class="langs" aria-label="Language"><a href="../produits/g3126c.html" hreflang="fr" lang="fr">FR</a><a href="../en/g3126c.html" hreflang="en" lang="en" aria-current="page">EN</a><a href="../ar/g3126c.html" hreflang="ar" lang="ar">عربي</a></nav></div></header>
 <main class="wrap">
 <nav class="crumbs" aria-label="breadcrumb"><a href="../?lang=en">Home</a> / <a href="../?lang=en#gamme">The range</a> / <span aria-current="page">Gemilai G3126C</span></nav>

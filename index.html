@@ -29,7 +29,7 @@
 <meta name="theme-color" content="#161616">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
- {"@type":"Organization","@id":"https://formosaespresso.com/#org","name":"Formosa Espresso","url":"https://formosaespresso.com/","logo":"https://formosaespresso.com/apple-touch-icon.png","email":"contact@formosaespresso.com","telephone":"+886973872881","areaServed":{"@type":"Country","name":"Tunisia"},"description":"Importateur de machines espresso et moulins professionnels Gemilai en Tunisie."},
+ {"@type":"Organization","@id":"https://formosaespresso.com/#org","name":"Formosa Espresso","url":"https://formosaespresso.com/","logo":"https://formosaespresso.com/img/logo/logo-512.png","email":"contact@formosaespresso.com","telephone":"+886973872881","areaServed":{"@type":"Country","name":"Tunisia"},"description":"Importateur de machines espresso et moulins professionnels Gemilai en Tunisie."},
  {"@type":"WebSite","@id":"https://formosaespresso.com/#site","url":"https://formosaespresso.com/","name":"Formosa Espresso","inLanguage":["fr","en","ar"],"publisher":{"@id":"https://formosaespresso.com/#org"}}
 ]}
 </script>
@@ -92,6 +92,10 @@ header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backgrou
 header.site .wrap.top{display:flex;align-items:center;gap:20px;padding-block:14px}
 .mark{white-space:nowrap;font-family:var(--display);font-size:1.55rem;font-weight:600;letter-spacing:-.03em;text-decoration:none;line-height:1}
 .mark span{font-weight:300}
+.mark{display:inline-flex;align-items:center;gap:10px}
+.logo-mark{display:block;flex:none}.logo-mark img{display:block;height:40px;width:auto}
+.logo-mark.ft img{height:72px}
+@media (max-width:420px){.logo-mark img{height:32px}}
 html{scroll-padding-top:150px}
 .langs{margin-inline-start:auto}
 nav.cats{background:var(--panel);border-top:1px solid var(--line)}
@@ -443,7 +447,7 @@ html[lang="ar"] .label{font-size:.8rem}
 
 <header class="site">
   <div class="wrap top">
-    <a class="mark" href="#top" dir="ltr">formosa <span>espresso</span></a>
+    <a class="mark" href="#top" dir="ltr" aria-label="Formosa Espresso"><picture class="logo-mark"><source srcset="img/logo/mark-bold-light.svg" media="(prefers-color-scheme: dark)"><img src="img/logo/mark-bold.svg" alt="" width="22" height="40"></picture>formosa <span>espresso</span></a>
     <div class="langs" id="langs" role="group" data-i18n-aria="langAria" aria-label="Langue">
       <button type="button" data-lang="fr" lang="fr" aria-pressed="true" title="Français">FR</button>
       <button type="button" data-lang="en" lang="en" aria-pressed="false" title="English">EN</button>
@@ -624,7 +628,7 @@ html[lang="ar"] .label{font-size:.8rem}
 
 <footer>
   <div class="wrap">
-    <div style="display:grid;gap:16px;align-content:start"><span class="mark" dir="ltr">formosa <span>espresso</span></span><p style="max-width:38ch" data-i18n="ft.tag"></p></div>
+    <div style="display:grid;gap:16px;align-content:start"><span class="mark" dir="ltr"><picture class="logo-mark ft"><img src="img/logo/mark-light.svg" alt="" width="40" height="72"></picture>formosa <span>espresso</span></span><p style="max-width:38ch" data-i18n="ft.tag"></p></div>
     <div><h4 data-i18n="ft.range">Gamme</h4><ul id="footList"><li><a href="produits/g3211a.html" data-open="g3211a">G3211A</a></li><li><a href="produits/g3126c.html" data-open="g3126c">G3126C</a></li><li><a href="produits/g3201.html" data-open="g3201">G3201</a></li><li><a href="produits/g3111a.html" data-open="g3111a">G3111A</a></li><li><a href="produits/g3120c.html" data-open="g3120c">G3120C</a></li><li><a href="produits/crm3149.html" data-open="crm3149">CRM3149 + moulin A80</a></li><li><a href="produits/g9026a.html" data-open="g9026a">G9026A</a></li></ul></div>
     <div><h4 data-i18n="ft.services">Services</h4><ul><li><a href="#services" data-i18n="ft.l1">Installation</a></li><li><a href="#services" data-i18n="ft.l2">Formation barista</a></li><li><a href="#services" data-i18n="ft.l3">Entretien et pièces</a></li><li><a href="#faq" data-i18n="ft.l5">Questions fréquentes</a></li></ul></div>
     <div><h4 data-i18n="ft.contact">Contact</h4><ul><li id="footMail"></li><li id="footTel"></li><li data-i18n="ft.city">Tunis, Tunisie</li></ul></div>
