@@ -403,6 +403,10 @@ html[lang="ar"] body *{letter-spacing:0!important}
 html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3{line-height:1.3;font-weight:500}
 html[lang="ar"] .intro p.big,html[lang="ar"] .pinfo .tagline{line-height:1.5}
 html[lang="ar"] .label{font-size:.8rem}
+.lfig{margin:0 0 1.2rem;border:1px solid var(--line,#e5e1da);background:#f4f2ee}
+.lfig img{display:block;width:100%;height:auto}
+.lfig figcaption{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1rem;padding:.7rem .9rem .9rem;font-size:.86rem;line-height:1.4;color:#3b3631}
+.lfig figcaption b{display:block;font-size:.95rem;color:#1b1714;margin-bottom:.15rem}
 </style>
 
 </head>
@@ -1111,6 +1115,7 @@ function lessonHTML(l, i){
         <h4>${esc(T(l.title))}</h4>
         <p>${esc(T(l.text))}</p>
         <details class="more" data-lkey="${l.key}"${openLessons.has(l.key) ? " open" : ""}><summary>${esc(t("ac.readFull"))}</summary>
+        ${l.fig ? `<figure class="lfig"><img src="${l.fig.img}" alt="${esc(l.fig.cap.map(c => T(c.name)).join(" / "))}" loading="lazy"><figcaption dir="ltr">${l.fig.cap.map(c => `<div dir="${lang === "ar" ? "rtl" : "ltr"}"><b>${esc(T(c.name))}</b><span>${esc(T(c.text))}</span></div>`).join("")}</figcaption></figure>` : ""}
         ${l.body ? `<div class="lbody">${l.body.map(p => `<p>${esc(T(p))}</p>`).join("")}</div>` : ""}
         <div class="essentiel"><span class="label">${esc(t("ac.essentiel"))}</span><ul>${l.pts.map(p => `<li>${esc(T(p))}</li>`).join("")}</ul></div>
         <div class="exo"><span class="label">${esc(t("ac.exercise"))}</span><p>${esc(T(l.ex))}</p></div>
