@@ -114,7 +114,7 @@ bdi{unicode-bidi:isolate}
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="logo" href="${home(l)}" dir="ltr" aria-label="Formosa Espresso"><picture><source srcset="../img/logo/mark-bold-light.svg" media="(prefers-color-scheme: dark)"><img src="../img/logo/mark-bold.svg" alt="" width="22" height="40"></picture><span><b>formosa</b> espresso</span></a>
+<header><div class="wrap"><a class="logo" href="${home(l)}" dir="ltr" aria-label="Formosa Espresso"><picture><source srcset="../img/logo/mark-bold-light.svg" media="(prefers-color-scheme: dark)"><img src="../img/logo/mark-bold.svg" alt="" width="23" height="40"></picture><span><b>formosa</b> espresso</span></a>
 <nav class="langs" aria-label="${u.lang}">${LANGS.map(x => `<a href="../${DIR[x]}/${pr.id}.html" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="page"' : ""}>${{ fr: "FR", en: "EN", ar: "عربي" }[x]}</a>`).join("")}</nav></div></header>
 <main class="wrap">
 <nav class="crumbs" aria-label="breadcrumb"><a href="${home(l)}">${u.home}</a> / <a href="${home(l)}#gamme">${u.range}</a> / <span aria-current="page">${esc(pr.name)}</span></nav>
