@@ -131,7 +131,10 @@ nav.cats{background:var(--panel);border-top:1px solid var(--line)}
 /* range */
 .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 48px;margin-bottom:clamp(28px,4vw,48px)}
 .head .stack{display:grid;gap:14px}
-.filters{display:flex;gap:4px;border-bottom:1px solid var(--line)}
+.filters{display:flex;gap:4px;border-bottom:1px solid var(--line);max-width:100%;overflow-x:auto;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filters button{flex:none;white-space:nowrap}
+.head>*{min-width:0}
 .filters button{background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:10px 14px;cursor:pointer;color:var(--muted);font-size:.95rem;text-transform:lowercase}
 .filters button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink)}
 .filters .n{font-family:var(--mono);font-size:.72rem;margin-left:4px}
@@ -183,6 +186,24 @@ table.cmp{border-collapse:collapse;width:100%;min-width:900px;font-size:.92rem}
 @media (max-width:860px){.alt{grid-template-columns:1fr}.alt dl div{grid-template-columns:1fr;gap:2px}}
 
 /* services */
+/* rayons (tuiles) */
+.tiles-sec{padding-block:clamp(40px,6vw,80px) clamp(8px,2vw,24px)}
+.tiles-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:clamp(20px,3vw,36px)}
+.tiles-head h2{font-size:clamp(1.7rem,3.4vw,2.8rem);max-width:24ch;text-transform:none}
+.tiles-arrows{display:flex;gap:6px}
+.tiles-arrows button{width:40px;height:40px;border:1px solid var(--line);background:var(--ground);cursor:pointer;border-radius:50%;font-size:1rem}
+.tiles-arrows button:hover{border-color:var(--ink)}
+[dir="rtl"] .tiles-arrows{flex-direction:row-reverse}
+@media (max-width:640px){.tiles-arrows{display:none}}
+.tiles{display:flex;gap:clamp(12px,1.8vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px}
+.tiles::-webkit-scrollbar{display:none}
+.tile2{flex:0 0 clamp(132px,15vw,190px);scroll-snap-align:start;display:grid;gap:12px;justify-items:center;text-align:center;text-decoration:none;color:var(--ink);background:none;border:0;padding:0;cursor:pointer}
+.tile2 .pic{width:100%;aspect-ratio:1/1;max-width:100%;background:var(--panel);border-radius:22px;display:grid;place-items:center;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.tile2:hover .pic{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.tile2 .pic img{width:78%;height:78%;object-fit:contain;mix-blend-mode:multiply}
+.tile2 .pic svg{width:44%;height:44%;color:var(--accent)}
+.tile2 b{font-weight:600;font-size:1rem;line-height:1.25}
+.tile2 small{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:2px}
 /* académie */
 .acad-band{background:var(--bar);color:var(--bar-ink)}
 .acad-band .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,80px);align-items:center;padding-block:clamp(56px,8vw,104px)}
@@ -406,6 +427,14 @@ html[lang="ar"] .label{font-size:.8rem}
     </div></div>
   </section>
 
+  <section class="tiles-sec" id="rayons" aria-labelledby="tilesH">
+    <div class="wrap">
+      <div class="tiles-head"><h2 id="tilesH" data-i18n="tl.h">Votre spécialiste de l’équipement café professionnel en Tunisie</h2>
+        <div class="tiles-arrows"><button type="button" data-tscroll="-1" data-i18n-aria="hero.prev" aria-label="Précédent">←</button><button type="button" data-tscroll="1" data-i18n-aria="hero.next" aria-label="Suivant">→</button></div></div>
+      <div class="tiles" id="tiles"></div>
+    </div>
+  </section>
+
   <section class="section intro">
     <div class="wrap">
       <div style="display:grid;gap:18px">
@@ -591,7 +620,7 @@ fr: {
   discover: "Découvrir",
   "range.label": "La gamme", "range.h2": "choisir son équipement", "range.filterAria": "Filtrer la gamme",
   "range.note": "Prix indicatifs en dinars tunisiens, TVA incluse, hors livraison et installation. La fourchette dépend du coloris, du taux de change et des frais de douane au moment de la commande ; nous confirmons un prix ferme sous un jour ouvré.",
-  "f.all": "tout", "f.machine": "machines espresso", "f.grinder": "moulins",
+  "f.g1": "1 groupe", "f.g2": "2 groupes", "tl.h": "Votre spécialiste de l’équipement café professionnel en Tunisie", "tl.g1": "Machines 1 groupe", "tl.g2": "Machines 2 groupes", "tl.grinder": "Moulins", "tl.set": "Sets machine + moulin", "tl.water": "Filtration d’eau", "tl.tools": "Outils barista", "tl.install": "Installation", "tl.train": "Formation barista", "tl.care": "Entretien et pièces", "tl.acad": "Académie", "tl.models": "{n} modèle(s)", "tl.quote": "Sur devis", "tl.free": "Gratuit", "tl.waterMsg": "Je souhaite une solution de filtration / adoucissement de l’eau pour ma machine.", "tl.toolsMsg": "Je cherche des outils barista (tasseur, pichet à lait, balance, brosses…).", "tl.careMsg": "Je souhaite un entretien ou des pièces détachées pour ma machine.", "tl.installMsg": "Je souhaite une visite technique pour l’installation d’une machine.", "f.all": "tout", "f.machine": "machines espresso", "f.grinder": "moulins",
   "type.machine": "Machine espresso", "type.grinder": "Moulin à café",
   from: "à partir de", view: "Voir {n}",
   "cmp.label": "Comparer", "cmp.h2": "trouver votre machine",
@@ -656,7 +685,7 @@ en: {
   discover: "Discover",
   "range.label": "The range", "range.h2": "choose your equipment", "range.filterAria": "Filter the range",
   "range.note": "Indicative prices in Tunisian dinars, VAT included, excluding delivery and installation. The range depends on colour, exchange rate and customs duties at the time of order; we confirm a firm price within one business day.",
-  "f.all": "all", "f.machine": "espresso machines", "f.grinder": "grinders",
+  "f.g1": "1 group", "f.g2": "2 groups", "tl.h": "Your specialist in professional coffee equipment in Tunisia", "tl.g1": "1-group machines", "tl.g2": "2-group machines", "tl.grinder": "Grinders", "tl.set": "Machine + grinder sets", "tl.water": "Water filtration", "tl.tools": "Barista tools", "tl.install": "Installation", "tl.train": "Barista training", "tl.care": "Service and parts", "tl.acad": "Academy", "tl.models": "{n} model(s)", "tl.quote": "On quote", "tl.free": "Free", "tl.waterMsg": "I would like a water filtration / softening solution for my machine.", "tl.toolsMsg": "I am looking for barista tools (tamper, milk pitcher, scale, brushes…).", "tl.careMsg": "I would like maintenance or spare parts for my machine.", "tl.installMsg": "I would like a site visit to install a machine.", "f.all": "all", "f.machine": "espresso machines", "f.grinder": "grinders",
   "type.machine": "Espresso machine", "type.grinder": "Coffee grinder",
   from: "from", view: "View {n}",
   "cmp.label": "Compare", "cmp.h2": "find your machine",
@@ -721,7 +750,7 @@ ar: {
   discover: "اكتشف",
   "range.label": "التشكيلة", "range.h2": "اختر تجهيزاتك", "range.filterAria": "تصفية التشكيلة",
   "range.note": "أسعار تقديرية بالدينار التونسي، شاملة للأداء على القيمة المضافة، دون احتساب التوصيل والتركيب. يتغيّر السعر حسب اللون وسعر الصرف والمعاليم الديوانية عند الطلب، ونؤكد لك سعرًا نهائيًا في أجل يوم عمل واحد.",
-  "f.all": "الكل", "f.machine": "آلات الإسبريسو", "f.grinder": "المطاحن",
+  "f.g1": "مجموعة واحدة", "f.g2": "مجموعتان", "tl.h": "متخصّصك في معدّات القهوة الاحترافية في تونس", "tl.g1": "آلات بمجموعة واحدة", "tl.g2": "آلات بمجموعتين", "tl.grinder": "المطاحن", "tl.set": "طقم آلة ومطحنة", "tl.water": "تصفية الماء", "tl.tools": "أدوات الباريستا", "tl.install": "التركيب", "tl.train": "تكوين الباريستا", "tl.care": "الصيانة وقطع الغيار", "tl.acad": "الأكاديمية", "tl.models": "عدد الموديلات: {n}", "tl.quote": "حسب الطلب", "tl.free": "مجانًا", "tl.waterMsg": "أرغب في حلّ لتصفية الماء أو تليينه لآلتي.", "tl.toolsMsg": "أبحث عن أدوات باريستا (كابس، إبريق حليب، ميزان، فُرش…).", "tl.careMsg": "أرغب في صيانة أو قطع غيار لآلتي.", "tl.installMsg": "أرغب في زيارة فنية لتركيب آلة.", "f.all": "الكل", "f.machine": "آلات الإسبريسو", "f.grinder": "المطاحن",
   "type.machine": "آلة إسبريسو", "type.grinder": "مطحنة قهوة",
   from: "ابتداءً من", view: "عرض {n}",
   "cmp.label": "قارن", "cmp.h2": "اعثر على آلتك",
@@ -934,16 +963,18 @@ heroEl.addEventListener("mouseenter", () => clearInterval(timer));
 heroEl.addEventListener("mouseleave", play);
 
 /* ===== range ===== */
-const FILTERS = ["all", "machine", "grinder"];
+const FILTERS = ["all", "machine", "g1", "g2", "grinder"];
+const groupsOf = p => p.cat !== "machine" ? 0 : (p.specs.some(([k]) => k === "groups") ? 2 : 1);
+const inFilter = (p, k) => k === "all" || p.cat === k || (k === "g1" && groupsOf(p) === 1) || (k === "g2" && groupsOf(p) === 2);
 let filter = "all";
 function renderFilters(){
   document.getElementById("filters").innerHTML = FILTERS.map(k => {
-    const n = k === "all" ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === k).length;
+    const n = PRODUCTS.filter(p => inFilter(p, k)).length;
     return `<button aria-pressed="${filter===k}" data-f="${k}">${esc(t("f." + k))}<span class="n">${n}</span></button>`;
   }).join("");
 }
 function renderRange(){
-  document.getElementById("range").innerHTML = PRODUCTS.filter(p => filter === "all" || p.cat === filter).map(p => `
+  document.getElementById("range").innerHTML = PRODUCTS.filter(p => inFilter(p, filter)).map(p => `
     <button class="prod${filter === "all" && p.cat === "grinder" ? " wide" : ""}" data-open="${p.id}" aria-label="${esc(t("view", {n:pname(p)}))}">
       <div class="ph">${p.gallery ? `<img class="full" src="img/${p.gallery[0]}.jpg" alt="${esc(pname(p))}" loading="lazy">` : `<img src="img/${p.img.toLowerCase()}.jpg" alt="${esc(pname(p))}" loading="lazy">`}${p.badge ? `<span class="tag">${esc(T(p.badge))}</span>` : ""}</div>
       <div class="meta">
@@ -958,6 +989,32 @@ document.querySelectorAll("[data-filter]").forEach(a => a.addEventListener("clic
 
 const sheet = document.getElementById("sheet");
 let lastFocus = null, openId = null;
+const TILE_ICONS = {water: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/><path d="M9 14.5a3 3 0 0 0 3 3"/></svg>', tools: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h4v4a2 2 0 0 1-4 0z"/><path d="M9 9v12"/><path d="M14 9h6l-1 11h-4z"/><path d="M14 9l1-3h3l1 3"/></svg>', install: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4a4 4 0 0 0-3.5 5.9L4 17.4V20h2.6l7.5-7.5A4 4 0 0 0 20 9l-2.5 2.5L15 9l2.5-2.5A4 4 0 0 0 15 4z"/></svg>', train: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5h5M16 9h5M18 13h3"/></svg>', care: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>', acad: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/></svg>'};
+const TILES = [
+  { k:"tl.g1", img:"g3111a", sub:() => t("tl.models", {n: PRODUCTS.filter(p => groupsOf(p) === 1).length}), act:{filter:"g1"} },
+  { k:"tl.g2", img:"g3201", sub:() => t("tl.models", {n: PRODUCTS.filter(p => groupsOf(p) === 2).length}), act:{filter:"g2"} },
+  { k:"tl.grinder", img:"g9026a", sub:() => t("tl.models", {n: PRODUCTS.filter(p => p.cat === "grinder").length}), act:{filter:"grinder"} },
+  { k:"tl.set", img:"g3149", act:{open:"crm3149"} },
+  { k:"tl.water", icon:"water", sub:() => t("tl.quote"), act:{msg:"tl.waterMsg"} },
+  { k:"tl.tools", icon:"tools", sub:() => t("tl.quote"), act:{msg:"tl.toolsMsg"} },
+  { k:"tl.install", icon:"install", act:{msg:"tl.installMsg"} },
+  { k:"tl.train", icon:"train", act:{msg:"ac.trainMsg"} },
+  { k:"tl.care", icon:"care", act:{msg:"tl.careMsg"} },
+  { k:"tl.acad", icon:"acad", sub:() => t("tl.free"), act:{acad:true} }
+];
+function renderTiles(){
+  document.getElementById("tiles").innerHTML = TILES.map((x, i) => `<button class="tile2" type="button" data-tile="${i}">
+    <span class="pic">${x.img ? `<img src="img/${x.img}.jpg" alt="" loading="lazy">` : TILE_ICONS[x.icon]}</span>
+    <span><b>${esc(t(x.k))}</b>${x.sub ? `<small>${esc(x.sub())}</small>` : ""}</span></button>`).join("");
+}
+function tileGo(i){
+  const a = TILES[i].act;
+  if (a.filter) { filter = a.filter; renderFilters(); renderRange(); document.getElementById("gamme").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }
+  else if (a.open) openProduct(a.open);
+  else if (a.acad) openAcademy();
+  else if (a.msg) quote("", t(a.msg));
+}
+
 /* ===== compare (vue séparée) ===== */
 const machines = PRODUCTS.filter(p => p.cat === "machine");
 const CMP_KEYS = ["boilers","dosing","pressure","temp","pump","controls","steam","water","gauges","power","weight","dims","lighting","grinderIncl","colors"];
@@ -1219,6 +1276,8 @@ function selectText(el){ const r = document.createRange(); r.selectNodeContents(
 document.addEventListener("click", e => {
   const o = e.target.closest("[data-open]"); if (o){ e.preventDefault(); openProduct(o.dataset.open); return; }
   if (e.target.closest("[data-close]")) { closeSheet(); return; }
+  const tl = e.target.closest("[data-tile]"); if (tl) { tileGo(+tl.dataset.tile); return; }
+  const ts = e.target.closest("[data-tscroll]"); if (ts) { const r = document.getElementById("tiles"); const dir = (document.documentElement.dir === "rtl" ? -1 : 1) * +ts.dataset.tscroll; r.scrollBy({ left: dir * r.clientWidth * 0.8, behavior: reduce ? "auto" : "smooth" }); return; }
   if (e.target.closest("[data-compare]")) { e.preventDefault(); closeMenu(); openCompare(); return; }
   if (e.target.closest("[data-academy]")) { e.preventDefault(); closeMenu(); const nx = nextUnseen(); openAcademy(false); if (seen.size && nx >= 0) { const el = document.getElementById("les-" + LESSONS[nx].key); if (el) el.scrollIntoView({ block: "start" }); } return; }
   const lp = e.target.closest("[data-lplay]"); if (lp) { playLesson(lp.dataset.lplay); return; }
@@ -1255,7 +1314,7 @@ function setLang(l, save){
     const q = params.toString();
     try { history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash); } catch(err){}
   }
-  applyStatic(); renderSlides(); renderFilters(); renderRange(); renderVideos(); renderAcadMini(); renderContact(); renderSent();
+  applyStatic(); renderSlides(); renderFilters(); renderRange(); renderTiles(); renderVideos(); renderAcadMini(); renderContact(); renderSent();
   if (openId === "__cmp") openCompare(true); else if (openId === "__acad") openAcademy(true); else if (openId) openProduct(openId, true);
 }
 document.getElementById("langs").addEventListener("click", e => { const b = e.target.closest("[data-lang]"); if (b && b.dataset.lang !== lang) setLang(b.dataset.lang, true); });
