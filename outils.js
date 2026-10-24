@@ -7,6 +7,8 @@
   const S = k => T(STR[k]);
   const imgOf = p => "img/" + (p.gallery ? p.gallery[0] : p.img.toLowerCase()) + ".jpg";
   const sum = ids => ids.reduce((a, id) => a + byId[id].price[0], 0);
+  /* 12 mois : prix +15 %, acompte 40 %, reste en 12 mensualités */
+  const plan = base => { const total = Math.round(base * 1.15), dep = Math.round(total * 0.4); return { total, dep, m: Math.ceil((total - dep) / 12) }; };
 
   const STR = {
     /* nav + footer */
@@ -90,22 +92,24 @@
     pCashD: L("paiement à la commande", "paid in full on order", "الدفع كاملًا عند الطلب"),
     p12: L("ou en 12 mois", "or over 12 months", "أو على 12 شهرًا"),
     p12D: L("{m} / mois × 12", "{m} / month × 12", "{m} / شهريًا × 12"),
+    p12Dep: L("{d} à la commande (40 %), puis", "{d} on order (40%), then", "{d} عند الطلب (40%)، ثم"),
+    p12Tot: L("total {t}", "total {t}", "المجموع {t}"),
     pBtnCash: L("Choisir −10 %", "Choose −10%", "اختر −10%"),
     pBtn12: L("Choisir 12 mois", "Choose 12 months", "اختر 12 شهرًا"),
     pOptCash: L("paiement comptant avec remise de 10 %", "full payment with 10% discount", "الدفع نقدًا مع تخفيض 10%"),
-    pOpt12: L("paiement en 12 mensualités", "payment in 12 monthly instalments", "الدفع على 12 قسطًا شهريًا"),
+    pOpt12: L("paiement en 12 mois (acompte de 40 %, puis 12 mensualités)", "payment over 12 months (40% deposit, then 12 monthly instalments)", "الدفع على 12 شهرًا (تسبقة 40%، ثم 12 قسطًا شهريًا)"),
     pTag: L("−10 % comptant", "−10% paid now", "−10% نقدًا"),
     pBtn: L("Demander ce pack", "Request this pack", "اطلب هذه الباقة"),
-    pNote: L("Remise de 10 % pour un paiement comptant à la commande, ou paiement en 12 mensualités sans frais, sous réserve d’acceptation du dossier. Prix indicatifs de la machine et du moulin ; le kit, l’installation et la formation sont détaillés dans votre devis.",
-             "10% off when you pay in full on order, or 12 interest-free monthly instalments, subject to approval. Indicative prices for the machine and grinder; the kit, installation and training are itemised in your quote.",
-             "تخفيض 10% عند الدفع الكامل مع الطلب، أو الدفع على 12 قسطًا شهريًا دون فوائد، مع مراعاة قبول الملف. السعر تقديري للآلة والمطحنة؛ يتم تفصيل الطقم والتركيب والتكوين في عرض السعر."),
+    pNote: L("Comptant : 10 % de remise pour un paiement complet à la commande. En 12 mois : prix total majoré de 15 %, acompte de 40 % à la commande puis 12 mensualités, sous réserve d’acceptation du dossier. Prix indicatifs de la machine et du moulin ; le kit, l’installation et la formation sont détaillés dans votre devis.",
+            "Pay now: 10% off for full payment on order. Over 12 months: total price plus 15%, a 40% deposit on order then 12 monthly instalments, subject to approval. Indicative prices for the machine and grinder; the kit, installation and training are itemised in your quote.",
+            "نقدًا: تخفيض 10% عند الدفع الكامل مع الطلب. على 12 شهرًا: يُزاد السعر الجملي بنسبة 15%، مع تسبقة 40% عند الطلب ثم 12 قسطًا شهريًا، مع مراعاة قبول الملف. السعر تقديري للآلة والمطحنة؛ يتم تفصيل الطقم والتركيب والتكوين في عرض السعر."),
     pMsg: L("Bonjour, je suis intéressé(e) par le {pack} ({items}), avec {opt}. Pouvez-vous m’envoyer un devis ?",
             "Hello, I’m interested in the {pack} ({items}), with {opt}. Could you send me a quote?",
             "مرحبًا، أنا مهتم بـ {pack} ({items})، مع {opt}. هل يمكنكم إرسال عرض سعر؟"),
     payH: L("Paiement adapté à votre ouverture", "Payment that fits your opening", "دفع يناسب افتتاح مشروعك"),
-    payP: L("Pour chaque pack, deux formules : 10 % de remise en payant à la commande, ou un paiement étalé sur 12 mois sans frais (sous réserve d’acceptation du dossier). Virement, chèque ou espèces, avec facture et TVA.",
-            "Two options for every pack: 10% off when you pay on order, or payment spread over 12 months with no fees (subject to approval). Bank transfer, cheque or cash, with a VAT invoice.",
-            "لكل باقة صيغتان: تخفيض 10% عند الدفع مع الطلب، أو دفع مقسّط على 12 شهرًا دون مصاريف إضافية (مع مراعاة قبول الملف). تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات."),
+    payP: L("Pour chaque pack, deux formules : 10 % de remise en payant tout à la commande, ou un paiement étalé sur 12 mois (prix majoré de 15 %, acompte de 40 % puis 12 mensualités, sous réserve d’acceptation du dossier). Virement, chèque ou espèces, avec facture et TVA.",
+            "Two options for every pack: 10% off when you pay everything on order, or payment spread over 12 months (price plus 15%, 40% deposit then 12 monthly instalments, subject to approval). Bank transfer, cheque or cash, with a VAT invoice.",
+            "لكل باقة صيغتان: تخفيض 10% عند دفع كامل المبلغ مع الطلب، أو دفع مقسّط على 12 شهرًا (يُزاد السعر بنسبة 15%، تسبقة 40% ثم 12 قسطًا شهريًا، مع مراعاة قبول الملف). تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات."),
     payBtn: L("En parler sur WhatsApp", "Discuss on WhatsApp", "تحدّث معنا على واتساب"),
     payMsg: L("Bonjour, je voudrais connaître les facilités de paiement pour une ouverture de café.", "Hello, I’d like to know the payment options for a café opening.", "مرحبًا، أريد معرفة تسهيلات الدفع لافتتاح مقهى."),
 
@@ -249,7 +253,7 @@
         <div class="pk-price"><small>${e(S("pFrom"))}</small><s>${e(money(sum(ids)))}</s></div>
         <div class="pk-opts">
           <div class="pk-opt"><small>${e(S("pCash"))}</small><b>${e(money(Math.round(sum(ids) * 0.9)))}</b><span>${e(S("pCashD"))}</span><button class="btn${i === 1 ? "" : " ghost"}" type="button" data-pack="${i}:cash">${e(S("pBtnCash"))}</button></div>
-          <div class="pk-opt"><small>${e(S("p12"))}</small><b>${e(T(STR.p12D).replace("{m}", money(Math.ceil(sum(ids) / 12))))}</b><span>${e(money(sum(ids)))}</span><button class="btn ghost" type="button" data-pack="${i}:12">${e(S("pBtn12"))}</button></div>
+          <div class="pk-opt"><small>${e(S("p12"))}</small><span>${e(T(STR.p12Dep).replace("{d}", money(plan(sum(ids)).dep)))}</span><b>${e(T(STR.p12D).replace("{m}", money(plan(sum(ids)).m)))}</b><span>${e(T(STR.p12Tot).replace("{t}", money(plan(sum(ids)).total)))}</span><button class="btn ghost" type="button" data-pack="${i}:12">${e(S("pBtn12"))}</button></div>
         </div></article>`).join("")}</div>
       <p class="pk-note">${e(S("pNote"))}</p>
       <div class="pay"><div><h3>${e(S("payH"))}</h3><p>${e(S("payP"))}</p></div><button class="btn wa" type="button" data-paywa>${e(S("payBtn"))}</button></div>
