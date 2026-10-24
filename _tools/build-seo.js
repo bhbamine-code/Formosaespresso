@@ -62,7 +62,7 @@ const purl = (l, id) => `${SITE}/${DIR[l]}/${id}.html`;
 <html lang="${l}" dir="${l === "ar" ? "rtl" : "ltr"}">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com https://formosaespresso.goatcounter.com; connect-src https://formsubmit.co https://formosaespresso.goatcounter.com; frame-src https://www.youtube-nocookie.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com https://amineformosa.goatcounter.com; connect-src https://formsubmit.co https://amineformosa.goatcounter.com; frame-src https://www.youtube-nocookie.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
@@ -140,7 +140,7 @@ bdi{unicode-bidi:isolate}
 <a class="all" href="${home(l)}#gamme">${u.all} →</a></div></section>
 <footer><div class="wrap"><span>${esc(D.s.legal1)}</span><span><bdi dir="ltr">${esc(D.cfg.email)}</bdi> · <bdi dir="ltr">${esc(D.cfg.phone)}</bdi></span><span>${esc(D.s.legal2)}</span></div></footer>
 <script>document.querySelectorAll(".thumbs button").forEach(b=>b.addEventListener("click",()=>{document.getElementById("main").src=b.dataset.src;document.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-pressed",x===b));}));</script>
-<script data-goatcounter="https://formosaespresso.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://amineformosa.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
 `;
