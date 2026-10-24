@@ -272,6 +272,10 @@ table.specs{width:100%;border-collapse:collapse;font-size:.92rem}
 .specs th,.specs td{text-align:start;vertical-align:top;padding:11px 0;border-bottom:1px solid var(--line)}
 .specs th{width:36%;padding-inline-end:14px;font-family:var(--mono);font-weight:400;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:13px}
 @media (max-width:900px){.pd{grid-template-columns:1fr}}
+.wa-float{position:fixed;z-index:70;inset-inline-end:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:8px;background:#1F7A45;color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;padding:12px 18px 12px 14px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:transform .2s}
+.wa-float:hover{transform:translateY(-2px)}
+[dir="rtl"] .wa-float{padding:12px 14px 12px 18px}
+@media (max-width:600px){.wa-float span{display:none}.wa-float{padding:14px}}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:11px 20px;z-index:90;font-size:.9rem;max-width:calc(100% - 32px)}
 /* arabic / rtl */
 [dir="rtl"]{--hero-dir:270deg}
@@ -425,9 +429,9 @@ html[lang="ar"] .label{font-size:.8rem}
         <div class="f"><label for="fPhone" data-i18n="f.phone">Téléphone</label><input id="fPhone" type="tel" required autocomplete="tel" placeholder="+216"></div>
         <div class="f"><label for="fEmail" data-i18n="f.email">E-mail (facultatif)</label><input id="fEmail" type="email" autocomplete="email" dir="ltr"></div>
         <div class="f"><label for="fCity" data-i18n="f.city">Ville</label><input id="fCity" required></div>
-        <input type="text" name="_honey" id="fHoney" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <input type="text" name="_honey" id="fHoney" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;top:0;left:0;width:1px;height:1px;padding:0;border:0;opacity:0;overflow:hidden;clip-path:inset(50%);pointer-events:none">
         <div class="f full"><label for="fMsg" data-i18n="f.project">Votre projet</label><textarea id="fMsg" data-i18n-ph="f.msgPh"></textarea></div>
-        <div class="send"><small data-i18n="f.small"></small><button class="btn wa" type="submit" data-via="wa" data-i18n="f.wa">Envoyer par WhatsApp</button><button class="btn ghost" type="submit" data-via="mail" data-i18n="f.mail">Par e-mail</button></div>
+        <div class="send"><small data-i18n="f.small"></small><button class="btn" type="submit" data-via="form" data-i18n="f.send">Envoyer la demande</button><button class="btn wa" type="submit" data-via="wa" data-i18n="f.wa">Envoyer par WhatsApp</button></div>
       </form>
       <div class="sent" id="sent" hidden aria-live="polite"></div>
     </div>
@@ -445,6 +449,7 @@ html[lang="ar"] .label{font-size:.8rem}
 </footer>
 
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="pdName"></div>
+<a class="wa-float" id="waFloat" href="#contact" data-i18n-aria="wa.float" aria-label="Écrire sur WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 3C6.9 3 2.8 6.8 2.8 11.5c0 2.4 1.1 4.6 2.9 6.1L5 21l3.7-1.9c1 .3 2.1.5 3.3.5 5.1 0 9.2-3.8 9.2-8.5S17.1 3 12 3zm-4 9.6a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm4 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm4 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6z"/></svg><span data-i18n="wa.floatShort">WhatsApp</span></a>
 <div class="toast" id="toast" hidden role="status"></div>
 
 <script>
@@ -507,7 +512,7 @@ fr: {
   "f.model": "Modèle", "f.name": "Nom", "f.phone": "Téléphone", "f.type": "Établissement", "f.city": "Ville", "f.email": "E-mail (facultatif)", "f.project": "Votre projet",
   "t.cafe": "Café / salon de thé", "t.resto": "Restaurant", "t.hotel": "Hôtel", "t.kiosk": "Coffee-shop / kiosque", "t.office": "Bureau", "t.reseller": "Revendeur",
   "f.msgPh": "Ex. : ouverture d’un café à Sousse, environ 200 tasses par jour.",
-  "f.small": "Votre demande nous est transmise automatiquement et s’ouvre aussi pré-remplie dans WhatsApp ou votre messagerie.",
+  "f.small": "Votre demande nous parvient directement. Avec WhatsApp, une conversation pré-remplie s’ouvre aussi.", "f.send": "Envoyer la demande", "wa.floatShort": "WhatsApp", "done.form": "Pour une réponse encore plus rapide, écrivez-nous sur WhatsApp au {w}.", "done.failForm": "Désolé {n}, votre demande n’a pas pu être envoyée. Vérifiez votre connexion et réessayez, ou écrivez-nous sur WhatsApp au {w}.", "done.titleFailForm": "Envoi non abouti", "done.retry": "Réessayer", "wa.float": "Écrire sur WhatsApp", "wa.floatMsg": "Bonjour Formosa Espresso, j’ai une question sur vos machines.",
   "f.wa": "Envoyer par WhatsApp", "f.mail": "Par e-mail", "f.advise": "Je ne sais pas encore, conseillez-moi", "f.toAdvise": "à conseiller",
   "msg.hello": "Bonjour Formosa Espresso,", "msg.quote": "Je souhaite un devis.", "msg.subject": "Demande de devis — {m}",
   "msg.waQuote": "Bonjour Formosa Espresso, je souhaite un devis pour la {n} ({p} TTC).",
@@ -572,7 +577,7 @@ en: {
   "f.model": "Model", "f.name": "Name", "f.phone": "Phone", "f.type": "Business type", "f.city": "City", "f.email": "E-mail (optional)", "f.project": "Your project",
   "t.cafe": "Café / tea room", "t.resto": "Restaurant", "t.hotel": "Hotel", "t.kiosk": "Coffee shop / kiosk", "t.office": "Office", "t.reseller": "Reseller",
   "f.msgPh": "E.g. opening a café in Sousse, around 200 cups a day.",
-  "f.small": "Your request is sent to us automatically and also opens pre-filled in WhatsApp or your e-mail app.",
+  "f.small": "Your request reaches us directly. With WhatsApp, a pre-filled chat also opens.", "f.send": "Send request", "wa.floatShort": "WhatsApp", "done.form": "For an even faster answer, write to us on WhatsApp at {w}.", "done.failForm": "Sorry {n}, your request could not be sent. Check your connection and try again, or write to us on WhatsApp at {w}.", "done.titleFailForm": "Not sent", "done.retry": "Try again", "wa.float": "Chat on WhatsApp", "wa.floatMsg": "Hello Formosa Espresso, I have a question about your machines.",
   "f.wa": "Send via WhatsApp", "f.mail": "By e-mail", "f.advise": "Not sure yet, advise me", "f.toAdvise": "to be advised",
   "msg.hello": "Hello Formosa Espresso,", "msg.quote": "I would like a quote.", "msg.subject": "Quote request — {m}",
   "msg.waQuote": "Hello Formosa Espresso, I would like a quote for the {n} ({p} incl. VAT).",
@@ -637,7 +642,7 @@ ar: {
   "f.model": "الموديل", "f.name": "الاسم", "f.phone": "الهاتف", "f.type": "نوع المؤسسة", "f.city": "المدينة", "f.email": "البريد الإلكتروني (اختياري)", "f.project": "مشروعك",
   "t.cafe": "مقهى / صالون شاي", "t.resto": "مطعم", "t.hotel": "نزل", "t.kiosk": "كوفي شوب / كشك", "t.office": "مكتب", "t.reseller": "موزّع",
   "f.msgPh": "مثال: افتتاح مقهى في سوسة، نحو 200 فنجان يوميًا.",
-  "f.small": "يصلنا طلبك تلقائيًا، ويُفتح أيضًا جاهزًا في واتساب أو في تطبيق البريد الإلكتروني.",
+  "f.small": "يصلنا طلبك مباشرة، ومع واتساب تُفتح أيضًا محادثة جاهزة.", "f.send": "أرسل الطلب", "wa.floatShort": "واتساب", "done.form": "للحصول على ردّ أسرع، راسلنا عبر واتساب على {w}.", "done.failForm": "عذرًا {n}، تعذّر إرسال طلبك. تحقّق من اتصالك وأعد المحاولة، أو راسلنا عبر واتساب على {w}.", "done.titleFailForm": "لم يتم الإرسال", "done.retry": "إعادة المحاولة", "wa.float": "راسلنا على واتساب", "wa.floatMsg": "مرحبًا Formosa Espresso، لديّ سؤال حول آلاتكم.",
   "f.wa": "أرسل عبر واتساب", "f.mail": "عبر البريد الإلكتروني", "f.advise": "لم أقرّر بعد، انصحوني", "f.toAdvise": "أرجو النصيحة",
   "msg.hello": "مرحبًا Formosa Espresso،", "msg.quote": "أرغب في عرض سعر.", "msg.subject": "طلب عرض سعر — {m}",
   "msg.waQuote": "مرحبًا Formosa Espresso، أرغب في عرض سعر لـ {n} ({p} بكل الأداءات).",
@@ -922,7 +927,7 @@ function quote(id){
   setTimeout(() => document.getElementById("fName").focus({ preventScroll:true }), reduce ? 0 : 600);
 }
 const waText = id => { const p = byId[id]; return t("msg.waQuote", {n:pname(p), p:range(p)}); };
-let via = "wa";
+let via = "form";
 document.querySelectorAll("form.req [data-via]").forEach(b => b.addEventListener("click", () => { via = b.dataset.via; }));
 document.getElementById("req").addEventListener("submit", e => {
   e.preventDefault();
@@ -934,7 +939,6 @@ document.getElementById("req").addEventListener("submit", e => {
   const body = `${t("msg.hello")}\n${t("msg.quote")}\n\n${t("f.model")}${sep}${model}\n${t("f.name")}${sep}${v("fName")}\n${t("f.phone")}${sep}${v("fPhone")}${v("fEmail") ? `\n${t("f.email")}${sep}${v("fEmail")}` : ""}\n${t("f.type")}${sep}${typeTxt}\n${t("f.city")}${sep}${v("fCity")}\n\n${v("fMsg")}`;
   /* 1. ouvre WhatsApp ou la messagerie du client */
   if (via === "wa") openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(body)}`);
-  else openLink(`mailto:${CONFIG.email}?subject=${encodeURIComponent(t("msg.subject", {m:model}))}&body=${encodeURIComponent(body)}`);
   /* 2. affiche la confirmation à la place du formulaire */
   sent = { state: "wait", via, name: v("fName"), phone: v("fPhone"), city: v("fCity"), modelId: sel.value };
   showSent();
@@ -944,7 +948,7 @@ document.getElementById("req").addEventListener("submit", e => {
     _subject: `Nouvelle demande de devis — ${model} — ${v("fName")} (${v("fCity")})`,
     _template: "table", _captcha: "false",
     "Modèle": model, "Nom": v("fName"), "Téléphone": v("fPhone"), "E-mail": v("fEmail") || "—",
-    "Établissement": typeTxt, "Ville": v("fCity"), "Projet": v("fMsg") || "—", "Envoyé via": via === "wa" ? "WhatsApp" : "E-mail", "Langue du site": lang.toUpperCase()
+    "Établissement": typeTxt, "Ville": v("fCity"), "Projet": v("fMsg") || "—", "Envoyé via": via === "wa" ? "WhatsApp" : "Formulaire du site", "Langue du site": lang.toUpperCase()
   };
   if (v("fEmail")) data._replyto = v("fEmail");
   fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
@@ -964,14 +968,16 @@ function renderSent(){
   const model = sent.modelId ? pname(byId[sent.modelId]) : t("f.advise");
   const ico = sent.state === "ok" ? `<span class="ico" aria-hidden="true">✓</span>` : sent.state === "wait" ? `<span class="ico wait" aria-hidden="true">…</span>` : `<span class="ico warn" aria-hidden="true">!</span>`;
   const iso = x => "\u2068" + x + "\u2069", ltr = x => "\u2066" + x + "\u2069";
-  const main = sent.state === "ok" ? t("done.ok", {n: iso(sent.name), p: ltr(sent.phone)}) : sent.state === "wait" ? t("done.wait") : t("done.fail", {n: iso(sent.name), w: ltr(CONFIG.phone)});
+  const wa = sent.via === "wa";
+  const main = sent.state === "ok" ? t("done.ok", {n: iso(sent.name), p: ltr(sent.phone)}) : sent.state === "wait" ? t("done.wait") : t(wa ? "done.fail" : "done.failForm", {n: iso(sent.name), w: ltr(CONFIG.phone)});
   sentEl.innerHTML = `${ico}
-    <h3 tabindex="-1">${esc(sent.state === "wait" ? t("done.wait") : sent.state === "ok" ? t("done.title") : t("done.titleFail"))}</h3>
+    <h3 tabindex="-1">${esc(sent.state === "wait" ? t("done.wait") : sent.state === "ok" ? t("done.title") : t(wa ? "done.titleFail" : "done.titleFailForm"))}</h3>
     ${sent.state === "wait" ? "" : `<p class="main">${esc(main)}</p>`}
-    <p>${esc(t(sent.via === "wa" ? "done.wa" : "done.mail"))}</p>
+    ${sent.state === "fail" && !wa ? "" : `<p>${esc(wa ? t("done.wa") : t("done.form", {w: ltr(CONFIG.phone)}))}</p>`}
     <dl><dt>${esc(t("f.model"))}</dt><dd>${esc(model)}</dd><dt>${esc(t("f.name"))}</dt><dd>${esc(sent.name)}</dd><dt>${esc(t("f.phone"))}</dt><dd><bdi dir="ltr">${esc(sent.phone)}</bdi></dd><dt>${esc(t("f.city"))}</dt><dd>${esc(sent.city)}</dd></dl>
-    <button class="btn ghost" type="button" data-again>${esc(t("done.again"))}</button>`;
+    ${sent.state === "fail" && !wa ? `<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="button" data-retry>${esc(t("done.retry"))}</button><a class="btn wa" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener">WhatsApp</a></div>` : `<button class="btn ghost" type="button" data-again>${esc(t("done.again"))}</button>`}`;
 }
+function retryForm(){ sentEl.hidden = true; sentEl.innerHTML = ""; sent = null; reqForm.hidden = false; reqForm.querySelector("[data-via=form]").focus(); }
 function resetForm(){
   sent = null; reqForm.reset(); sentEl.hidden = true; sentEl.innerHTML = ""; reqForm.hidden = false;
   document.getElementById("fName").focus({ preventScroll: false });
@@ -989,6 +995,8 @@ document.addEventListener("click", e => {
   if (e.target.closest("[data-close]")) { closeSheet(); return; }
   if (e.target.closest("[data-compare]")) { e.preventDefault(); closeMenu(); openCompare(); return; }
   if (e.target.closest("[data-again]")) { resetForm(); return; }
+  if (e.target.closest("[data-retry]")) { retryForm(); return; }
+  if (e.target.closest("#waFloat")) { e.preventDefault(); openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t("wa.floatMsg"))}`); return; }
   const q = e.target.closest("[data-quote]"); if (q){ quote(q.dataset.quote); return; }
   const w = e.target.closest("[data-wa]"); if (w){ openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(waText(w.dataset.wa))}`); }
 });
