@@ -185,7 +185,7 @@
       title: L("La carte du café", "The café menu", "قائمة مشروبات المقهى"),
       text: L("Les boissons classiques et leurs proportions.", "The classic drinks and their proportions.", "المشروبات الكلاسيكية ونِسَبها."),
       pts: [
-        L("Macchiato : un espresso « taché » d’une cuillère de mousse. En Tunisie, le « capucin » en est proche.", "Macchiato: an espresso “marked” with a spoon of foam. In Tunisia, the “capucin” is close to it.", "ماكياتو: إسبريسو «مُعلَّم» بملعقة رغوة، وهو قريب من «الكابوسان» في تونس."),
+        L("Macchiato, le « capucin » en Tunisie : un espresso « taché » d’une cuillère de mousse.", "Macchiato, the Tunisian “capucin”: an espresso “marked” with a spoon of foam.", "ماكياتو، وهو «الكابوسان» في تونس: إسبريسو «مُعلَّم» بملعقة رغوة."),
         L("Cortado : espresso et lait chaud à parts égales, très peu de mousse.", "Cortado: espresso and warm milk in equal parts, very little foam.", "كورتادو: إسبريسو وحليب ساخن بنسب متساوية مع رغوة قليلة جدًا."),
         L("Cappuccino : environ 150–180 ml avec une mousse épaisse. Latte : plus grand, mousse fine.", "Cappuccino: about 150–180 ml with thick foam. Latte: larger, with thin foam.", "كابتشينو: نحو 150 إلى 180 مل برغوة كثيفة. لاتيه: أكبر برغوة رقيقة."),
         L("Flat white : double ristretto et environ 120 ml de lait finement texturé. Spanish latte : latte sucré au lait concentré.", "Flat white: double ristretto and about 120 ml of finely textured milk. Spanish latte: latte sweetened with condensed milk.", "فلات وايت: دبل ريستريتو ونحو 120 مل من حليب ناعم القوام. سبانش لاتيه: لاتيه محلّى بالحليب المكثّف.")
