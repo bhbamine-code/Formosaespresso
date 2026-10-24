@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <defs>
+    <linearGradient id="glass" x1="0" x2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".9"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#e6ecef" stop-opacity=".9"/></linearGradient>
+    <linearGradient id="cof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a2e12"/><stop offset="1" stop-color="#2d1406"/></linearGradient>
+    <radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <!-- three shot glasses: ristretto, espresso, lungo -->
+  <g>
+    <ellipse cx="66" cy="164" rx="40" ry="6" fill="url(#sh)"/>
+    <path d="M38 70 h56 l-5 90 h-46 z" fill="url(#glass)" stroke="#c7cfd4" stroke-width="2"/>
+    <path d="M42 130 h48 l-1.7 28 h-44.6 z" fill="url(#cof)"/>
+    <rect x="42" y="124" width="48" height="8" fill="#c08a52"/>
+  </g>
+  <g>
+    <ellipse cx="160" cy="164" rx="40" ry="6" fill="url(#sh)"/>
+    <path d="M132 70 h56 l-5 90 h-46 z" fill="url(#glass)" stroke="#c7cfd4" stroke-width="2"/>
+    <path d="M135 110 h50 l-2.6 48 h-44.8 z" fill="url(#cof)"/>
+    <rect x="135" y="102" width="50" height="9" fill="#c08a52"/>
+  </g>
+  <g>
+    <ellipse cx="254" cy="164" rx="40" ry="6" fill="url(#sh)"/>
+    <path d="M226 70 h56 l-5 90 h-46 z" fill="url(#glass)" stroke="#c7cfd4" stroke-width="2"/>
+    <path d="M228 84 h52 l-3.6 74 h-44.8 z" fill="#4a2410"/>
+    <rect x="228" y="78" width="52" height="7" fill="#b7814b"/>
+  </g>
+  <!-- level markers -->
+  <path d="M100 124 h22 M194 102 h22 M288 78 h20" stroke="#7a2e1f" stroke-width="2" stroke-dasharray="3 3"/>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <defs>
+    <linearGradient id="kraft" x1="0" x2="1"><stop offset="0" stop-color="#a77b4b"/><stop offset=".3" stop-color="#cfa577"/><stop offset=".7" stop-color="#c49866"/><stop offset="1" stop-color="#94693c"/></linearGradient>
+    <radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".25"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="140" cy="168" rx="70" ry="8" fill="url(#sh)"/>
+  <!-- bag -->
+  <path d="M84 30 h112 l6 132 a6 6 0 0 1 -6 6 h-112 a6 6 0 0 1 -6 -6 z" fill="url(#kraft)"/>
+  <path d="M84 30 h112 v14 h-112 z" fill="#8a6136"/>
+  <path d="M84 37 h112" stroke="#6e4a26" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="140" cy="62" r="7" fill="#3a3a3a"/><circle cx="140" cy="62" r="3" fill="#777"/>
+  <!-- label -->
+  <rect x="100" y="80" width="80" height="74" rx="4" fill="#fbf8f2"/>
+  <rect x="108" y="88" width="46" height="6" rx="3" fill="#7a2e1f"/>
+  <!-- calendar icon (roast date) -->
+  <rect x="108" y="102" width="14" height="12" rx="2" fill="none" stroke="#3b3b3b" stroke-width="1.6"/><path d="M108 106 h14" stroke="#3b3b3b" stroke-width="1.6"/>
+  <rect x="128" y="105" width="44" height="4" rx="2" fill="#bdb6aa"/>
+  <!-- mountain icon (altitude) -->
+  <path d="M108 132 l6 -10 l4 6 l3 -4 l5 8 z" fill="#3b3b3b"/>
+  <rect x="128" y="126" width="36" height="4" rx="2" fill="#bdb6aa"/>
+  <!-- cherry icon (process) -->
+  <circle cx="114" cy="144" r="4.5" fill="#c2271c"/>
+  <rect x="128" y="142" width="40" height="4" rx="2" fill="#bdb6aa"/>
+  <!-- magnifier -->
+  <circle cx="228" cy="110" r="26" fill="#fff" fill-opacity=".35" stroke="#2b2b2b" stroke-width="6"/>
+  <path d="M246 130 l 26 28" stroke="#2b2b2b" stroke-width="9" stroke-linecap="round"/>
+  <path d="M214 98 a16 16 0 0 1 14 -6" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+</svg>

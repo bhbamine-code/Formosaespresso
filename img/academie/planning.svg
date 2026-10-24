@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <defs>
+    <linearGradient id="board" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a5a32"/><stop offset="1" stop-color="#5e3a1d"/></linearGradient>
+    <linearGradient id="clip" x1="0" x2="1"><stop offset="0" stop-color="#7c838a"/><stop offset=".4" stop-color="#eef0f2"/><stop offset="1" stop-color="#6b7279"/></linearGradient>
+    <radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".25"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="150" cy="170" rx="80" ry="7" fill="url(#sh)"/>
+  <rect x="88" y="16" width="124" height="152" rx="8" fill="url(#board)"/>
+  <rect x="98" y="30" width="104" height="130" rx="3" fill="#fbf8f2"/>
+  <rect x="124" y="8" width="52" height="20" rx="5" fill="url(#clip)"/>
+  <g font-family="Menlo,Consolas,monospace" font-size="0"></g>
+  <!-- rows -->
+  <g stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="108" y="44" width="14" height="14" rx="2" fill="none" stroke="#3b3b3b"/><path d="M111 51 l3 3 l6 -7" fill="none" stroke="#1F7A45"/>
+    <path d="M130 51 h60" stroke="#bdb6aa"/>
+    <rect x="108" y="72" width="14" height="14" rx="2" fill="none" stroke="#3b3b3b"/><path d="M111 79 l3 3 l6 -7" fill="none" stroke="#1F7A45"/>
+    <path d="M130 79 h50" stroke="#bdb6aa"/>
+    <rect x="108" y="100" width="14" height="14" rx="2" fill="none" stroke="#3b3b3b"/><path d="M111 107 l3 3 l6 -7" fill="none" stroke="#1F7A45"/>
+    <path d="M130 107 h56" stroke="#bdb6aa"/>
+    <rect x="108" y="128" width="14" height="14" rx="2" fill="none" stroke="#3b3b3b"/>
+    <path d="M130 135 h44" stroke="#bdb6aa"/>
+  </g>
+  <!-- pencil -->
+  <g transform="rotate(35 240 120)">
+    <rect x="226" y="60" width="14" height="80" fill="#e8b23a"/>
+    <rect x="226" y="60" width="14" height="10" fill="#d9817a"/>
+    <path d="M226 140 l7 16 l7 -16 z" fill="#f2d9b0"/><path d="M231 150 l2 6 l2 -6 z" fill="#333"/>
+  </g>
+  <!-- small cup icon -->
+  <path d="M30 120 h34 l-3 26 a6 6 0 0 1 -6 5 h-16 a6 6 0 0 1 -6 -5 z" fill="#fff" stroke="#c9c3b9" stroke-width="2"/>
+  <path d="M64 126 c 10 0, 10 14, -1 14" fill="none" stroke="#c9c3b9" stroke-width="3"/>
+  <path d="M40 112 c -4 -5, 4 -8, 0 -14 M52 112 c -4 -5, 4 -8, 0 -14" fill="none" stroke="#b9b2a6" stroke-width="2" stroke-linecap="round"/>
+</svg>

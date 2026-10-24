@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <defs>
+    <linearGradient id="steel" x1="0" x2="1"><stop offset="0" stop-color="#8a9097"/><stop offset=".2" stop-color="#f4f6f8"/><stop offset=".45" stop-color="#b9bfc5"/><stop offset=".7" stop-color="#e3e6e9"/><stop offset="1" stop-color="#7a8188"/></linearGradient>
+    <linearGradient id="cup" x1="0" x2="1"><stop offset="0" stop-color="#d9d5ce"/><stop offset=".3" stop-color="#ffffff"/><stop offset="1" stop-color="#c8c3ba"/></linearGradient>
+    <radialGradient id="cof" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#b7773f"/><stop offset="1" stop-color="#7a4420"/></radialGradient>
+    <radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".25"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="150" cy="166" rx="80" ry="8" fill="url(#sh)"/>
+  <!-- tilted cup -->
+  <g transform="rotate(-14 150 120)">
+    <path d="M96 92 h108 l-10 58 a14 14 0 0 1 -14 12 h-60 a14 14 0 0 1 -14 -12 z" fill="url(#cup)"/>
+    <path d="M204 100 c 22 0, 22 34, -4 34" fill="none" stroke="#e5e1da" stroke-width="8"/>
+    <ellipse cx="150" cy="93" rx="54" ry="10" fill="url(#cof)"/>
+    <path d="M150 101 C 132 96, 128 88, 136 84 C 142 81, 148 84, 150 88 C 152 84, 158 81, 164 84 C 172 88, 168 96, 150 101 Z" fill="#f6ead9"/>
+  </g>
+  <!-- pitcher pouring -->
+  <g transform="rotate(38 220 40)">
+    <path d="M196 10 l-14 -6 l24 4 h44 l4 64 a6 6 0 0 1 -6 6 h-40 a6 6 0 0 1 -6 -6 z" fill="url(#steel)"/>
+    <path d="M250 22 c 18 2, 18 34, -2 40" fill="none" stroke="#9aa1a8" stroke-width="7"/>
+  </g>
+  <path d="M176 44 C 170 58, 166 70, 160 86" fill="none" stroke="#f6ead9" stroke-width="5" stroke-linecap="round"/>
+</svg>
