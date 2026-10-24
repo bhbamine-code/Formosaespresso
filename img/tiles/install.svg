@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="box" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c0392b"/><stop offset=".5" stop-color="#a5281c"/><stop offset="1" stop-color="#7d1d14"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9493a"/><stop offset="1" stop-color="#b13023"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" x2="1">
+      <stop offset="0" stop-color="#7c838a"/><stop offset=".3" stop-color="#eef0f2"/><stop offset=".6" stop-color="#aab1b8"/><stop offset="1" stop-color="#6b7279"/>
+    </linearGradient>
+    <linearGradient id="grip" x1="0" x2="1">
+      <stop offset="0" stop-color="#1c1d1f"/><stop offset=".5" stop-color="#4a4d52"/><stop offset="1" stop-color="#151617"/>
+    </linearGradient>
+    <radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".3"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="100" cy="176" rx="76" ry="8" fill="url(#sh)"/>
+  <!-- wrench sticking out -->
+  <g transform="rotate(-28 128 70)">
+    <rect x="122" y="40" width="12" height="70" rx="5" fill="url(#metal)"/>
+    <path d="M114 28 a16 16 0 1 1 28 0 l -6 10 h -16 z" fill="url(#metal)"/>
+    <path d="M122 20 h12 v14 h-12 z" fill="#f3e9e4"/>
+  </g>
+  <!-- screwdriver -->
+  <g transform="rotate(18 70 70)">
+    <rect x="66" y="36" width="6" height="44" fill="url(#metal)"/>
+    <path d="M60 78 h18 v34 a9 9 0 0 1 -18 0 z" fill="url(#grip)"/>
+    <path d="M66 36 l3 -8 l3 8 z" fill="#c9ced3"/>
+  </g>
+  <!-- handle -->
+  <path d="M74 86 v-14 a6 6 0 0 1 6 -6 h40 a6 6 0 0 1 6 6 v14" fill="none" stroke="#2b2c2f" stroke-width="8" stroke-linecap="round"/>
+  <!-- box -->
+  <rect x="26" y="96" width="148" height="76" rx="8" fill="url(#box)"/>
+  <rect x="22" y="86" width="156" height="22" rx="6" fill="url(#lid)"/>
+  <rect x="26" y="90" width="148" height="3" rx="1.5" fill="#fff" opacity=".25"/>
+  <!-- latches -->
+  <rect x="48" y="102" width="16" height="16" rx="2" fill="url(#metal)"/>
+  <rect x="136" y="102" width="16" height="16" rx="2" fill="url(#metal)"/>
+  <rect x="26" y="150" width="148" height="4" fill="#000" opacity=".12"/>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="body" x1="0" x2="1">
+      <stop offset="0" stop-color="#cfd9e0"/><stop offset=".22" stop-color="#ffffff"/><stop offset=".55" stop-color="#e9eff3"/><stop offset=".85" stop-color="#b9c6cf"/><stop offset="1" stop-color="#9fadb7"/>
+    </linearGradient>
+    <linearGradient id="head" x1="0" x2="1">
+      <stop offset="0" stop-color="#2a2d31"/><stop offset=".35" stop-color="#5a5f66"/><stop offset=".7" stop-color="#35393e"/><stop offset="1" stop-color="#1c1e21"/>
+    </linearGradient>
+    <linearGradient id="fit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e7eaed"/><stop offset=".5" stop-color="#a9b0b7"/><stop offset="1" stop-color="#7d858d"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" x2="1">
+      <stop offset="0" stop-color="#1d5e8c"/><stop offset=".3" stop-color="#3a8cc7"/><stop offset=".75" stop-color="#2273ad"/><stop offset="1" stop-color="#164a70"/>
+    </linearGradient>
+    <radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".28"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="100" cy="181" rx="46" ry="7" fill="url(#sh)"/>
+  <!-- hoses -->
+  <path d="M40 50 C 22 50, 18 70, 18 92" fill="none" stroke="#e4ecf2" stroke-width="7" stroke-linecap="round"/>
+  <path d="M40 50 C 22 50, 18 70, 18 92" fill="none" stroke="#b8c7d2" stroke-width="7" stroke-linecap="round" stroke-dasharray="1 9" opacity=".6"/>
+  <path d="M160 50 C 178 50, 182 70, 182 92" fill="none" stroke="#e4ecf2" stroke-width="7" stroke-linecap="round"/>
+  <!-- fittings -->
+  <rect x="34" y="43" width="22" height="14" rx="3" fill="url(#fit)"/>
+  <rect x="144" y="43" width="22" height="14" rx="3" fill="url(#fit)"/>
+  <!-- head -->
+  <rect x="52" y="32" width="96" height="34" rx="8" fill="url(#head)"/>
+  <rect x="58" y="36" width="84" height="4" rx="2" fill="#fff" opacity=".18"/>
+  <!-- canister -->
+  <path d="M64 66 h72 v100 a12 12 0 0 1 -12 12 h-48 a12 12 0 0 1 -12 -12 z" fill="url(#body)"/>
+  <rect x="64" y="66" width="72" height="8" fill="#000" opacity=".08"/>
+  <!-- label band -->
+  <rect x="64" y="96" width="72" height="46" fill="url(#band)"/>
+  <path d="M100 104 c 7 9, 12 15, 12 21 a12 12 0 0 1 -24 0 c 0 -6, 5 -12, 12 -21 z" fill="#fff" opacity=".95"/>
+  <path d="M94 126 a6 6 0 0 0 6 6" fill="none" stroke="#2273ad" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- highlight -->
+  <rect x="74" y="70" width="6" height="100" rx="3" fill="#fff" opacity=".7"/>
+</svg>

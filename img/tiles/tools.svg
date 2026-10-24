@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="steel" x1="0" x2="1">
+      <stop offset="0" stop-color="#8a9097"/><stop offset=".18" stop-color="#f4f6f8"/><stop offset=".38" stop-color="#b9bfc5"/><stop offset=".6" stop-color="#e6e9ec"/><stop offset=".85" stop-color="#8f969d"/><stop offset="1" stop-color="#6c737a"/>
+    </linearGradient>
+    <linearGradient id="steelTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5f666d"/><stop offset="1" stop-color="#2f3337"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" x2="1">
+      <stop offset="0" stop-color="#5a2f17"/><stop offset=".3" stop-color="#a5612f"/><stop offset=".55" stop-color="#c47a3d"/><stop offset=".8" stop-color="#874a22"/><stop offset="1" stop-color="#4f2813"/>
+    </linearGradient>
+    <linearGradient id="base" x1="0" x2="1">
+      <stop offset="0" stop-color="#7f868d"/><stop offset=".25" stop-color="#eef1f3"/><stop offset=".55" stop-color="#aeb5bb"/><stop offset=".8" stop-color="#dfe3e6"/><stop offset="1" stop-color="#737a81"/>
+    </linearGradient>
+    <radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".28"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="78" cy="178" rx="52" ry="7" fill="url(#sh)"/>
+  <ellipse cx="152" cy="178" rx="30" ry="5" fill="url(#sh)"/>
+  <!-- pitcher handle -->
+  <path d="M117 70 c 26 2, 26 54, -2 64" fill="none" stroke="#9aa1a8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M117 70 c 26 2, 26 54, -2 64" fill="none" stroke="#e9ecef" stroke-width="3" stroke-linecap="round" transform="translate(-2 -1)"/>
+  <!-- pitcher body -->
+  <path d="M38 58 L 26 50 L 50 54 L 118 54 L 124 168 a8 8 0 0 1 -8 8 H 40 a8 8 0 0 1 -8 -8 Z" fill="url(#steel)"/>
+  <path d="M26 50 L 50 54 L 118 54 L 118 60 L 46 60 Z" fill="url(#steelTop)" opacity=".85"/>
+  <path d="M26 50 L 50 54 L 118 54" fill="none" stroke="#fdfdfd" stroke-width="2" opacity=".9"/>
+  <rect x="52" y="64" width="7" height="104" rx="3.5" fill="#fff" opacity=".55"/>
+  <path d="M36 128 h86" stroke="#000" stroke-opacity=".08" stroke-width="2"/>
+  <!-- tamper -->
+  <path d="M146 72 c -10 0, -14 10, -12 24 l 4 34 h 28 l 4 -34 c 2 -14, -2 -24, -12 -24 z" fill="url(#wood)"/>
+  <ellipse cx="152" cy="72" rx="10" ry="4" fill="#b06a35"/>
+  <rect x="146" y="130" width="12" height="10" fill="url(#base)"/>
+  <path d="M128 140 h48 v20 a4 4 0 0 1 -4 4 h-40 a4 4 0 0 1 -4 -4 z" fill="url(#base)"/>
+  <ellipse cx="152" cy="140" rx="24" ry="4" fill="#f5f7f8"/>
+  <rect x="140" y="78" width="4" height="46" rx="2" fill="#fff" opacity=".25"/>
+</svg>

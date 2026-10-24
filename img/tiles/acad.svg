@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="pageL" x1="0" x2="1"><stop offset="0" stop-color="#f2efe9"/><stop offset=".85" stop-color="#ffffff"/><stop offset="1" stop-color="#ddd8cf"/></linearGradient>
+    <linearGradient id="pageR" x1="0" x2="1"><stop offset="0" stop-color="#ddd8cf"/><stop offset=".15" stop-color="#ffffff"/><stop offset="1" stop-color="#f2efe9"/></linearGradient>
+    <linearGradient id="cover" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f3523"/><stop offset="1" stop-color="#5f1f13"/></linearGradient>
+    <linearGradient id="bean" x1="0" x2="1"><stop offset="0" stop-color="#4a2410"/><stop offset=".5" stop-color="#7b4220"/><stop offset="1" stop-color="#3a1b0b"/></linearGradient>
+    <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2e3135"/><stop offset="1" stop-color="#131416"/></linearGradient>
+    <radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".28"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="100" cy="176" rx="84" ry="8" fill="url(#sh)"/>
+  <!-- cover -->
+  <path d="M14 82 L 100 96 L 186 82 L 186 164 L 100 176 L 14 164 Z" fill="url(#cover)"/>
+  <!-- pages -->
+  <path d="M20 76 Q 60 66, 100 88 L 100 168 Q 60 148, 20 158 Z" fill="url(#pageL)"/>
+  <path d="M180 76 Q 140 66, 100 88 L 100 168 Q 140 148, 180 158 Z" fill="url(#pageR)"/>
+  <path d="M100 88 L 100 168" stroke="#bdb6aa" stroke-width="1.5"/>
+  <!-- text lines -->
+  <g stroke="#cfc8bc" stroke-width="2.4" stroke-linecap="round">
+    <path d="M32 96 Q 60 90, 88 104"/><path d="M32 108 Q 60 102, 88 116"/><path d="M32 120 Q 60 114, 88 128"/><path d="M32 132 Q 56 127, 76 136"/>
+  </g>
+  <!-- coffee bean on right page -->
+  <g transform="rotate(-20 140 118)">
+    <ellipse cx="140" cy="118" rx="20" ry="27" fill="url(#bean)"/>
+    <path d="M140 92 C 132 104, 148 128, 140 145" fill="none" stroke="#2a1206" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="133" cy="106" rx="4" ry="9" fill="#fff" opacity=".15"/>
+  </g>
+  <!-- graduation cap -->
+  <g transform="translate(0 -4)">
+    <path d="M100 22 L 156 44 L 100 66 L 44 44 Z" fill="url(#cap)"/>
+    <path d="M70 54 v14 c 16 10, 44 10, 60 0 v-14 L 100 66 Z" fill="#202225"/>
+    <path d="M156 44 v22" stroke="#c9a227" stroke-width="2.5"/>
+    <circle cx="156" cy="70" r="4" fill="#c9a227"/>
+  </g>
+</svg>
