@@ -8,14 +8,14 @@ const LANGS = ["fr", "en", "ar"];
 const PDIR = { fr: "produits", en: "en", ar: "ar" };
 const TODAY = new Date().toISOString().slice(0, 10);
 const UI = {
-  fr: { home: "Accueil", tips: "Conseils", about: "À propos", read: "À lire aussi", cta: "Un projet de café ?", ctaP: "Dites-nous votre volume et votre budget : nous vous proposons la machine adaptée, avec un prix ferme.", guide: "Trouver ma machine", quote: "Demander un devis", model: "Modèle", type: "Type", price: "Prix indicatif TTC", lang: "Langue", updated: "Mis à jour le" },
-  en: { home: "Home", tips: "Guides", about: "About us", read: "Read next", cta: "Planning a café?", ctaP: "Tell us your volume and budget: we suggest the right machine, with a firm price.", guide: "Find my machine", quote: "Request a quote", model: "Model", type: "Type", price: "Indicative price incl. VAT", lang: "Language", updated: "Updated on" },
-  ar: { home: "الرئيسية", tips: "نصائح", about: "من نحن", read: "اقرأ أيضًا", cta: "لديك مشروع مقهى؟", ctaP: "أخبرنا بعدد الفناجين وميزانيتك: نقترح عليك الآلة المناسبة بسعر نهائي.", guide: "اعثر على آلتي", quote: "اطلب عرض سعر", model: "الطراز", type: "النوع", price: "السعر التقديري بكل الأداءات", lang: "اللغة", updated: "آخر تحديث" }
+  fr: { home: "Accueil", tips: "Conseils", about: "À propos", read: "À lire aussi", cta: "Un projet de café ?", ctaP: "Dites-nous votre volume et votre budget : nous vous proposons la machine adaptée, avec un prix ferme.", guide: "Voir la gamme", quote: "Demander un devis", model: "Modèle", type: "Type", price: "Prix indicatif TTC", lang: "Langue", updated: "Mis à jour le" },
+  en: { home: "Home", tips: "Guides", about: "About us", read: "Read next", cta: "Planning a café?", ctaP: "Tell us your volume and budget: we suggest the right machine, with a firm price.", guide: "See the range", quote: "Request a quote", model: "Model", type: "Type", price: "Indicative price incl. VAT", lang: "Language", updated: "Updated on" },
+  ar: { home: "الرئيسية", tips: "نصائح", about: "من نحن", read: "اقرأ أيضًا", cta: "لديك مشروع مقهى؟", ctaP: "أخبرنا بعدد الفناجين وميزانيتك: نقترح عليك الآلة المناسبة بسعر نهائي.", guide: "تصفّح التشكيلة", quote: "اطلب عرض سعر", model: "الطراز", type: "النوع", price: "السعر التقديري بكل الأداءات", lang: "اللغة", updated: "آخر تحديث" }
 };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const rel = (from, to) => { const r = path.posix.relative(path.posix.dirname(from), to); return r || path.posix.basename(to); };
 const homeHref = (from, l, hash) => { const up = rel(from, "index.html").replace(/index\.html$/, ""); return (up || "./") + (l === "fr" ? "" : "?lang=" + l) + (hash || ""); };
-const HASH = { home: "#comparer", guide: "#guide", packs: "#packs", calc: "#rentabilite", sav: "#sav", contact: "#contact", academy: "#apprendre" };
+const HASH = { home: "#comparer", guide: "#gamme", range: "#gamme", packs: "#packs", calc: "#rentabilite", sav: "#sav", contact: "#contact", academy: "#apprendre" };
 const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://amineformosa.goatcounter.com; connect-src https://amineformosa.goatcounter.com; base-uri 'self'; object-src 'none'; upgrade-insecure-requests";
 
 (async () => {
@@ -120,7 +120,7 @@ bdi{unicode-bidi:isolate}
 <p class="lead">${esc(pg.desc[l])}</p>
 ${pg.type === "article" ? `<p class="upd">${u.updated} <time datetime="${TODAY}">${TODAY}</time></p>` : ""}
 ${html}
-<section class="cta"><h2>${u.cta}</h2><p>${u.ctaP}</p><div class="btns"><a class="btn" href="${esc(homeHref(cur, l, "#guide"))}">${u.guide}</a><a class="btn" href="${esc(homeHref(cur, l, "#contact"))}">${u.quote}</a><a class="btn wa" href="https://wa.me/${D.cfg.whatsapp}" target="_blank" rel="noopener">WhatsApp</a></div></section>
+<section class="cta"><h2>${u.cta}</h2><p>${u.ctaP}</p><div class="btns"><a class="btn" href="${esc(homeHref(cur, l, "#gamme"))}">${u.guide}</a><a class="btn" href="${esc(homeHref(cur, l, "#contact"))}">${u.quote}</a><a class="btn wa" href="https://wa.me/${D.cfg.whatsapp}" target="_blank" rel="noopener">WhatsApp</a></div></section>
 </article>
 <section class="more"><h2>${u.read}</h2><ul>${others.map(o => `<li><a href="${esc(rel(cur, o.path[l]))}">${esc(o.title[l])} ${l === "ar" ? "←" : "→"}</a></li>`).join("")}</ul></section>
 </main>

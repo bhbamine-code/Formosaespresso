@@ -439,28 +439,8 @@ html[lang="ar"] .label{font-size:.8rem}
 .lfig img{display:block;width:100%;height:auto;background:#fff}
 .lfig figcaption{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1rem;padding:.7rem .9rem .9rem;font-size:.86rem;line-height:1.4;color:#3b3631}
 .lfig figcaption b{display:block;font-size:.95rem;color:#1b1714;margin-bottom:.15rem}
-/* ===== outils : guide, packs, paiement, accessoires, rentabilité, SAV ===== */
+/* ===== outils : packs, paiement, accessoires, rentabilité, SAV ===== */
 .hp{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.guide-sec{background:var(--panel)}
-.gd{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:start}
-.gd-qs{display:grid;gap:26px}
-.gd-q h3{font-family:var(--body);text-transform:none;font-size:1.05rem;font-weight:600;letter-spacing:0;margin:0 0 10px}
-.gd-chips{display:flex;flex-wrap:wrap;gap:8px}
-.gd-chips button{border:1px solid var(--line);background:var(--ground);padding:10px 16px;min-height:44px;cursor:pointer;border-radius:999px;font-size:.95rem}
-.gd-chips button:hover{border-color:var(--ink)}
-.gd-chips button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-.gd-res{background:var(--ground);border:1px solid var(--line);min-height:100%}
-.gd-wait{margin:0;padding:32px;color:var(--muted)}
-.gd-card{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
-.gd-img{background:var(--photo);display:grid;place-items:center;padding:16px}.gd-img img{width:100%;height:auto;max-height:280px;object-fit:contain}
-.gd-txt{padding:24px;display:grid;gap:12px;align-content:start}
-.gd-txt h3{font-family:var(--body);text-transform:none;font-size:1.35rem;font-weight:600;letter-spacing:-.01em;line-height:1.2}
-.gd-txt ul{margin:0;padding-inline-start:18px;display:grid;gap:6px;color:var(--muted);font-size:.95rem}
-.gd-total small{display:block;color:var(--muted);font-size:.8rem}.gd-total b{font-size:1.4rem;font-weight:500}
-.gd-btns{display:flex;flex-wrap:wrap;gap:10px}.gd-btns .btn{text-decoration:none}
-.gd-note{margin:0;font-size:.82rem;color:var(--muted)}
-@media (max-width:900px){.gd{grid-template-columns:1fr}}
-@media (max-width:560px){.gd-card{grid-template-columns:1fr}.gd-img img{max-height:200px}}
 .pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .pk{border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px}
 .pk.hi{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
@@ -525,7 +505,6 @@ html[lang="ar"] .label{font-size:.8rem}
     <div class="wrap"><div class="cats-row">
       <a class="cat" href="#gamme" data-filter="machine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v8H4z"/><path d="M9 12v2h6v-2"/><path d="M10 17h4v3h-4z"/><path d="M7.5 8h.01M16.5 8h.01"/></svg><span data-i18n="nav.machines">machines espresso</span></a>
       <a class="cat" href="#gamme" data-filter="grinder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8l-2 5h-4z"/><path d="M9 8h6v9H9z"/><path d="M7 21h10M12 17v4"/></svg><span data-i18n="nav.grinders">moulins</span></a>
-      <a class="cat" href="#guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg><span data-ft="navGuide">guide de choix</span></a>
       <a class="cat" href="#packs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg><span data-ft="navPacks">packs</span></a>
       <a class="cat" href="#accessoires"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8v5H8z"/><path d="M12 8v5"/><path d="M5 13h14v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/></svg><span data-ft="navAcc">accessoires</span></a>
       <a class="cat" href="#comparer" data-compare><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h6v14H4zM14 5h6v14h-6z"/><path d="M6 9h2M6 13h2M16 9h2M16 13h2"/></svg><span data-i18n="nav.compare">comparer</span></a>
@@ -556,7 +535,6 @@ html[lang="ar"] .label{font-size:.8rem}
     </div>
   </section>
 
-  <section class="section guide-sec" id="guide" aria-label="Guide"></section>
 
   <section class="section intro">
     <div class="wrap">

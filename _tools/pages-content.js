@@ -1,6 +1,6 @@
 /* Contenu des pages statiques (à propos + conseils), fr / en / ar.
    Syntaxe : "## titre", "- élément de liste", "[[prices]]" (tableau des prix généré), sinon paragraphe.
-   Liens : [texte](cible) — cibles : home, guide, packs, calc, sav, contact, academy, about, art1, art2, art3 */
+   Liens : [texte](cible) — cibles : home, range, packs, calc, sav, contact, academy, about, art1, art2, art3 */
 module.exports = [
 {
   key: "about",
@@ -29,7 +29,7 @@ module.exports = [
       "- Des prix indicatifs publiés sur le site, puis un devis ferme et détaillé.",
       "- Un seul interlocuteur, de la première question au premier espresso, et après.",
       "- Du matériel adapté à l’eau calcaire tunisienne, avec la filtration qu’il faut.",
-      "Vous avez un projet ? [Trouvez votre machine en trois questions](guide) ou [écrivez-nous](contact)."
+      "Vous avez un projet ? [Découvrez notre gamme](range) ou [écrivez-nous](contact)."
     ],
     en: [
       "Formosa Espresso equips Tunisian cafés, restaurants and hotels with Gemilai professional espresso machines and grinders. Our idea is simple: reliable professional equipment at a fair price shown in dinars, with a contact who is still there after delivery.",
@@ -47,7 +47,7 @@ module.exports = [
       "- Indicative prices published on the site, then a firm, itemised quote.",
       "- One contact, from the first question to the first espresso, and after.",
       "- Equipment suited to Tunisia’s hard water, with the right filtration.",
-      "Have a project? [Find your machine in three questions](guide) or [write to us](contact)."
+      "Have a project? [See our range](range) or [write to us](contact)."
     ],
     ar: [
       "تجهّز Formosa Espresso المقاهي والمطاعم والنزل في تونس بآلات الإسبريسو والمطاحن الاحترافية Gemilai. فكرتنا بسيطة: معدّات احترافية موثوقة بسعر عادل معلن بالدينار، مع مخاطب يبقى إلى جانبك بعد التسليم.",
@@ -65,7 +65,7 @@ module.exports = [
       "- أسعار تقديرية منشورة على الموقع، ثم عرض سعر نهائي ومفصّل.",
       "- مخاطب واحد من أول سؤال إلى أول فنجان إسبريسو، وبعده.",
       "- معدّات ملائمة للماء الكلسي في تونس، مع التصفية المناسبة.",
-      "لديك مشروع؟ [اعثر على آلتك في ثلاثة أسئلة](guide) أو [راسلنا](contact)."
+      "لديك مشروع؟ [اكتشف تشكيلتنا](range) أو [راسلنا](contact)."
     ]
   }
 },
@@ -104,7 +104,7 @@ module.exports = [
       "C’est exactement ce que réunissent nos [packs ouverture](packs). Pour savoir combien de temps il faut pour rentabiliser l’équipement, essayez notre [calculateur de rentabilité](calc).",
       "## Comment payer ?",
       "Virement, chèque ou espèces, avec facture et TVA. Pour nos packs ouverture : 10 % de remise en payant tout à la commande, ou un acompte de 30 % puis 12 ou 24 mensualités, sous réserve d’acceptation du dossier.",
-      "Pas sûr du modèle ? [Répondez à trois questions](guide) et nous vous proposons la machine, le moulin et le budget adaptés."
+      "Pas sûr du modèle ? [Écrivez-nous](contact) : nous vous proposons la machine, le moulin et le budget adaptés."
     ],
     en: [
       "There is no single price for a professional espresso machine: depending on the number of groups, the heating technology and the options, prices can vary threefold. Here is how to find your way, with concrete figures in dinars.",
@@ -126,7 +126,7 @@ module.exports = [
       "That is exactly what our [opening packs](packs) bring together. To see how long the equipment takes to pay for itself, try our [profitability calculator](calc).",
       "## How to pay",
       "Bank transfer, cheque or cash, with a VAT invoice. For our opening packs: 10% off when you pay everything on order, or a 30% deposit then 12 or 24 monthly payments, subject to approval.",
-      "Not sure which model? [Answer three questions](guide) and we suggest the right machine, grinder and budget."
+      "Not sure which model? [Write to us](contact) and we suggest the right machine, grinder and budget."
     ],
     ar: [
       "لا يوجد سعر واحد لآلة الإسبريسو الاحترافية: حسب عدد المجموعات وتقنية التسخين والخيارات، قد يتضاعف السعر ثلاث مرات. إليك كيف تختار، مع أرقام ملموسة بالدينار.",
@@ -148,7 +148,7 @@ module.exports = [
       "هذا بالضبط ما تجمعه [باقات الافتتاح](packs). ولمعرفة مدة استرجاع ثمن المعدّات، جرّب [حاسبة المردودية](calc).",
       "## طرق الدفع",
       "تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات. بالنسبة لباقات الافتتاح: تخفيض 10% عند دفع كامل المبلغ مع الطلب، أو تسبقة 30% ثم 12 أو 24 قسطًا شهريًا، مع مراعاة قبول الملف.",
-      "لست متأكدًا من الطراز؟ [أجب عن ثلاثة أسئلة](guide) ونقترح عليك الآلة والمطحنة والميزانية المناسبة."
+      "لست متأكدًا من الطراز؟ [راسلنا](contact) ونقترح عليك الآلة والمطحنة والميزانية المناسبة."
     ]
   }
 },
@@ -183,7 +183,7 @@ module.exports = [
       "Dans notre gamme, une machine deux groupes mesure de 68 à 85 cm de large, contre 36 à 52 cm pour un groupe. Prévoyez aussi l’arrivée d’eau, l’évacuation et une ligne électrique adaptée à la puissance de la machine : nous vérifions tout cela lors de la visite technique.",
       "## Et le budget ?",
       "Un deux-groupes compact ne coûte pas forcément plus cher qu’un un-groupe haut de gamme. Comparez les modèles dans notre [comparateur](home) ou consultez notre [guide des prix](art1).",
-      "Le plus simple : [répondez à trois questions](guide) et nous vous proposons la configuration adaptée."
+      "Le plus simple : [décrivez-nous votre projet](contact) et nous vous proposons la configuration adaptée."
     ],
     en: [
       "The “group” is the head where you lock in the portafilter. Each group pulls one extraction at a time, so the number of groups sets how many coffees you can make at once.",
@@ -201,7 +201,7 @@ module.exports = [
       "In our range, a two-group machine is 68 to 85 cm wide, against 36 to 52 cm for one group. Also plan for the water inlet, the drain and a power line suited to the machine’s rating: we check all of this during the site visit.",
       "## What about budget?",
       "A compact two-group machine is not necessarily more expensive than a premium one-group. Compare models in our [comparison](home) or read our [price guide](art1).",
-      "The simplest way: [answer three questions](guide) and we suggest the right set-up."
+      "The simplest way: [tell us about your project](contact) and we suggest the right set-up."
     ],
     ar: [
       "«المجموعة» هي الرأس الذي يُثبَّت فيه حامل الفلتر. كل مجموعة تحضّر استخلاصًا واحدًا في كل مرة، لذلك يحدّد عدد المجموعات كم فنجانًا يمكنك تحضيره في نفس الوقت.",
@@ -219,7 +219,7 @@ module.exports = [
       "في تشكيلتنا، يتراوح عرض الآلة ذات المجموعتين بين 68 و85 سم، مقابل 36 إلى 52 سم للمجموعة الواحدة. احسب أيضًا مدخل الماء والتصريف وخطًا كهربائيًا يناسب قوة الآلة: نتحقّق من كل ذلك أثناء الزيارة التقنية.",
       "## والميزانية؟",
       "آلة بمجموعتين مدمجة ليست بالضرورة أغلى من آلة بمجموعة واحدة من الفئة العليا. قارن الطرازات في [المقارنة](home) أو اطّلع على [دليل الأسعار](art1).",
-      "الأسهل: [أجب عن ثلاثة أسئلة](guide) ونقترح عليك التجهيز المناسب."
+      "الأسهل: [أخبرنا عن مشروعك](contact) ونقترح عليك التجهيز المناسب."
     ]
   }
 },
