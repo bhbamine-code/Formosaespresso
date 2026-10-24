@@ -86,17 +86,26 @@
     pInc2: L("Installation, raccordement et réglage", "Installation, plumbing and set-up", "التركيب والتوصيل والضبط"),
     pInc3: L("Formation de votre équipe", "Training for your team", "تكوين فريقك"),
     pFrom: L("matériel à partir de", "equipment from", "المعدّات ابتداءً من"),
+    pCash: L("Comptant −10 %", "Pay now −10%", "دفع نقدي −10%"),
+    pCashD: L("paiement à la commande", "paid in full on order", "الدفع كاملًا عند الطلب"),
+    p12: L("ou en 12 mois", "or over 12 months", "أو على 12 شهرًا"),
+    p12D: L("{m} / mois × 12", "{m} / month × 12", "{m} / شهريًا × 12"),
+    pBtnCash: L("Choisir −10 %", "Choose −10%", "اختر −10%"),
+    pBtn12: L("Choisir 12 mois", "Choose 12 months", "اختر 12 شهرًا"),
+    pOptCash: L("paiement comptant avec remise de 10 %", "full payment with 10% discount", "الدفع نقدًا مع تخفيض 10%"),
+    pOpt12: L("paiement en 12 mensualités", "payment in 12 monthly instalments", "الدفع على 12 قسطًا شهريًا"),
+    pTag: L("−10 % comptant", "−10% paid now", "−10% نقدًا"),
     pBtn: L("Demander ce pack", "Request this pack", "اطلب هذه الباقة"),
-    pNote: L("Prix indicatif de la machine et du moulin ; le kit, l’installation et la formation sont détaillés dans votre devis.",
-             "Indicative price of the machine and grinder; the kit, installation and training are itemised in your quote.",
-             "السعر تقديري للآلة والمطحنة؛ يتم تفصيل الطقم والتركيب والتكوين في عرض السعر."),
-    pMsg: L("Bonjour, je suis intéressé(e) par le {pack} ({items}). Pouvez-vous m’envoyer un devis ?",
-            "Hello, I’m interested in the {pack} ({items}). Could you send me a quote?",
-            "مرحبًا، أنا مهتم بـ {pack} ({items}). هل يمكنكم إرسال عرض سعر؟"),
+    pNote: L("Remise de 10 % pour un paiement comptant à la commande, ou paiement en 12 mensualités sans frais, sous réserve d’acceptation du dossier. Prix indicatifs de la machine et du moulin ; le kit, l’installation et la formation sont détaillés dans votre devis.",
+             "10% off when you pay in full on order, or 12 interest-free monthly instalments, subject to approval. Indicative prices for the machine and grinder; the kit, installation and training are itemised in your quote.",
+             "تخفيض 10% عند الدفع الكامل مع الطلب، أو الدفع على 12 قسطًا شهريًا دون فوائد، مع مراعاة قبول الملف. السعر تقديري للآلة والمطحنة؛ يتم تفصيل الطقم والتركيب والتكوين في عرض السعر."),
+    pMsg: L("Bonjour, je suis intéressé(e) par le {pack} ({items}), avec {opt}. Pouvez-vous m’envoyer un devis ?",
+            "Hello, I’m interested in the {pack} ({items}), with {opt}. Could you send me a quote?",
+            "مرحبًا، أنا مهتم بـ {pack} ({items})، مع {opt}. هل يمكنكم إرسال عرض سعر؟"),
     payH: L("Paiement adapté à votre ouverture", "Payment that fits your opening", "دفع يناسب افتتاح مشروعك"),
-    payP: L("Virement, chèque ou espèces, avec facture et TVA. Pour une ouverture de café, des facilités peuvent être étudiées avec vous : acompte à la commande puis solde, ou paiement en plusieurs fois.",
-            "Bank transfer, cheque or cash, with a VAT invoice. For a café opening, we can look at flexible terms with you: a deposit on order then the balance, or payment in instalments.",
-            "تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات. عند افتتاح مقهى، يمكن دراسة تسهيلات معك: تسبقة عند الطلب ثم الباقي، أو الدفع على أقساط."),
+    payP: L("Pour chaque pack, deux formules : 10 % de remise en payant à la commande, ou un paiement étalé sur 12 mois sans frais (sous réserve d’acceptation du dossier). Virement, chèque ou espèces, avec facture et TVA.",
+            "Two options for every pack: 10% off when you pay on order, or payment spread over 12 months with no fees (subject to approval). Bank transfer, cheque or cash, with a VAT invoice.",
+            "لكل باقة صيغتان: تخفيض 10% عند الدفع مع الطلب، أو دفع مقسّط على 12 شهرًا دون مصاريف إضافية (مع مراعاة قبول الملف). تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات."),
     payBtn: L("En parler sur WhatsApp", "Discuss on WhatsApp", "تحدّث معنا على واتساب"),
     payMsg: L("Bonjour, je voudrais connaître les facilités de paiement pour une ouverture de café.", "Hello, I’d like to know the payment options for a café opening.", "مرحبًا، أريد معرفة تسهيلات الدفع لافتتاح مقهى."),
 
@@ -234,11 +243,14 @@
     el.innerHTML = `<div class="wrap">
       <div class="head"><div class="stack"><p class="label">${e(S("pLabel"))}</p><h2>${e(S("pH"))}</h2></div><p class="lede">${e(S("pLede"))}</p></div>
       <div class="pk-grid">${PACKS.map(([n, d, ids], i) => `<article class="pk${i === 1 ? " hi" : ""}">
-        <div class="pk-img"><img src="${imgOf(byId[ids[0]])}" alt="" loading="lazy"></div>
+        <div class="pk-img"><img src="${imgOf(byId[ids[0]])}" alt="" loading="lazy"><span class="pk-tag">${e(S("pTag"))}</span></div>
         <h3>${e(S(n))}</h3><p class="pk-d">${e(S(d))}</p>
         <ul><li><b>${ids.map(id => e(pname(byId[id]))).join(" + ")}</b></li><li>${e(S("pInc1"))}</li><li>${e(S("pInc2"))}</li><li>${e(S("pInc3"))}</li></ul>
-        <div class="pk-price"><small>${e(S("pFrom"))}</small><b>${e(money(sum(ids)))}</b></div>
-        <button class="btn${i === 1 ? "" : " ghost"}" type="button" data-pack="${i}">${e(S("pBtn"))}</button></article>`).join("")}</div>
+        <div class="pk-price"><small>${e(S("pFrom"))}</small><s>${e(money(sum(ids)))}</s></div>
+        <div class="pk-opts">
+          <div class="pk-opt"><small>${e(S("pCash"))}</small><b>${e(money(Math.round(sum(ids) * 0.9)))}</b><span>${e(S("pCashD"))}</span><button class="btn${i === 1 ? "" : " ghost"}" type="button" data-pack="${i}:cash">${e(S("pBtnCash"))}</button></div>
+          <div class="pk-opt"><small>${e(S("p12"))}</small><b>${e(T(STR.p12D).replace("{m}", money(Math.ceil(sum(ids) / 12))))}</b><span>${e(money(sum(ids)))}</span><button class="btn ghost" type="button" data-pack="${i}:12">${e(S("pBtn12"))}</button></div>
+        </div></article>`).join("")}</div>
       <p class="pk-note">${e(S("pNote"))}</p>
       <div class="pay"><div><h3>${e(S("payH"))}</h3><p>${e(S("payP"))}</p></div><button class="btn wa" type="button" data-paywa>${e(S("payBtn"))}</button></div>
     </div>`;
@@ -340,7 +352,7 @@
       track("guide-devis", "Guide de choix → devis"); return;
     }
     const pk = ev.target.closest("[data-pack]");
-    if (pk) { const [n, , ids] = PACKS[+pk.dataset.pack]; quote(ids[0], fill(S("pMsg"), { pack: S(n), items: ids.map(id => pname(byId[id])).join(" + ") })); track("pack-" + (+pk.dataset.pack + 1), "Pack " + S(n)); return; }
+    if (pk) { const [k, opt] = pk.dataset.pack.split(":"); const [n, , ids] = PACKS[+k]; quote(ids[0], fill(S("pMsg"), { pack: S(n), items: ids.map(id => pname(byId[id])).join(" + "), opt: S(opt === "12" ? "pOpt12" : "pOptCash") })); track("pack-" + (+k + 1) + "-" + opt, "Pack " + S(n) + " (" + opt + ")"); return; }
     if (ev.target.closest("[data-paywa]")) { openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(S("payMsg"))}`); track("paiement-whatsapp", "Facilités de paiement"); return; }
     if (ev.target.closest("[data-accgo]")) {
       if (!accSel.size) { toast(S("aNone")); return; }

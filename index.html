@@ -468,7 +468,12 @@ html[lang="ar"] .label{font-size:.8rem}
 .pk h3{font-family:var(--body);text-transform:none;font-size:1.3rem;font-weight:600;letter-spacing:-.01em}
 .pk-d{margin:0;color:var(--muted)}
 .pk ul{margin:0;padding-inline-start:18px;display:grid;gap:6px;font-size:.95rem;flex:1}
-.pk-price small{display:block;color:var(--muted);font-size:.8rem}.pk-price b{font-size:1.5rem;font-weight:500}
+.pk-price small{display:block;color:var(--muted);font-size:.8rem}.pk-price s{color:var(--muted);font-size:1.05rem}
+.pk-img{position:relative}.pk-tag{position:absolute;inset-inline-start:10px;top:10px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:.82rem;padding:5px 10px}
+.pk-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pk-opt{border:1px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.pk-opt small{font-weight:600;font-size:.85rem}.pk-opt b{font-size:1.2rem;font-weight:600;line-height:1.2}.pk-opt span{color:var(--muted);font-size:.8rem;margin-bottom:6px}
+.pk-opt .btn{margin-top:auto;padding:11px 12px;font-size:.88rem;width:100%}
 .pk .btn{justify-self:start;align-self:flex-start}
 .pk-note{color:var(--muted);font-size:.85rem;margin:14px 0 0}
 .pay{margin-top:28px;background:var(--panel);padding:24px 28px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
@@ -769,7 +774,7 @@ fr: {
   "faq.q2": "Faut-il une installation électrique spéciale ?", "faq.a2": "Toutes nos machines fonctionnent en 220 V monophasé. Les deux groupes consomment 4200 W et doivent être sur une ligne dédiée ; les un groupe vont de 2350 à 3200 W. Un raccordement à l’eau et une évacuation sont nécessaires, sauf pour la CRM3149 qui fonctionne aussi sur réservoir. Nous recommandons un adoucisseur et un régulateur de tension.",
   "faq.q3": "Que couvre la garantie ?", "faq.a3": "La garantie constructeur Gemilai de 2 ans couvre les défauts de fabrication. Les pièces d’usure et les pannes dues au calcaire sont exclues.",
   "faq.q4": "Pourquoi un prix en fourchette ?", "faq.a4": "Le prix ferme dépend du coloris, du taux de change et des frais de douane au moment de l’importation. Nous l’envoyons sous un jour ouvré après votre demande.",
-  "faq.q5": "Quels moyens de paiement acceptez-vous ?", "faq.a5": "Virement bancaire, chèque ou espèces. Une facture avec TVA est émise pour chaque commande ; des facilités peuvent être étudiées pour une ouverture de café.",
+  "faq.q5": "Quels moyens de paiement acceptez-vous ?", "faq.a5": "Virement bancaire, chèque ou espèces, avec une facture et TVA pour chaque commande. Pour les packs ouverture : 10 % de remise en payant à la commande, ou paiement étalé sur 12 mois sans frais, sous réserve d’acceptation du dossier.",
     "ct.label": "Contact", "ct.h2": "parlons de votre comptoir",
   "ct.lede": "Indiquez le modèle qui vous intéresse et votre ville : nous répondons sous un jour ouvré avec un prix ferme.",
   "ct.email": "E-mail", "ct.phone": "Téléphone · WhatsApp", "ct.showroom": "Showroom", "ct.showroomV": "Tunis, démonstration sur rendez-vous", "ct.hours": "Horaires", "ct.hoursV": "Lundi au samedi, 9 h – 18 h", "ct.copy": "Copier",
@@ -835,7 +840,7 @@ en: {
   "faq.q2": "Do I need a special electrical installation?", "faq.a2": "All our machines run on 220 V single-phase. Two-group machines draw 4200 W and need a dedicated line; one-group machines range from 2350 to 3200 W. A water connection and a drain are required, except for the CRM3149, which can also run from its tank. We recommend a water softener and a voltage regulator.",
   "faq.q3": "What does the warranty cover?", "faq.a3": "The 2-year Gemilai manufacturer warranty covers manufacturing defects. Wear parts and limescale-related failures are excluded.",
   "faq.q4": "Why a price range?", "faq.a4": "The firm price depends on colour, exchange rate and customs duties at the time of import. We send it within one business day of your request.",
-  "faq.q5": "Which payment methods do you accept?", "faq.a5": "Bank transfer, cheque or cash. A VAT invoice is issued for every order; payment facilities can be considered when you are opening a café.",
+  "faq.q5": "Which payment methods do you accept?", "faq.a5": "Bank transfer, cheque or cash, with a VAT invoice for every order. For opening packs: 10% off when you pay on order, or payment spread over 12 months with no fees, subject to approval.",
     "ct.label": "Contact", "ct.h2": "let’s talk about your counter",
   "ct.lede": "Tell us which model interests you and your city: we reply within one business day with a firm price.",
   "ct.email": "E-mail", "ct.phone": "Phone · WhatsApp", "ct.showroom": "Showroom", "ct.showroomV": "Tunis, demonstrations by appointment", "ct.hours": "Opening hours", "ct.hoursV": "Monday to Saturday, 9 am – 6 pm", "ct.copy": "Copy",
@@ -901,7 +906,7 @@ ar: {
   "faq.q2": "هل أحتاج إلى تركيز كهربائي خاص؟", "faq.a2": "تعمل جميع آلاتنا بتيار 220 V أحادي الطور. تستهلك آلات المجموعتين 4200 W ويجب ربطها بخط مخصّص، أما آلات المجموعة الواحدة فبين 2350 و3200 W. يلزم ربط بالماء وتصريف، باستثناء CRM3149 التي تعمل أيضًا بخزانها. ننصح بمُليّن للماء ومنظّم للتيار الكهربائي.",
   "faq.q3": "ماذا يشمل الضمان؟", "faq.a3": "يغطي ضمان المصنّع Gemilai لمدة سنتين عيوب التصنيع. ولا يشمل قطع الاستهلاك والأعطال الناتجة عن الترسبات الكلسية.",
   "faq.q4": "لماذا يُعرض السعر في شكل نطاق؟", "faq.a4": "يرتبط السعر النهائي باللون وسعر الصرف والمعاليم الديوانية عند التوريد. نرسله إليك في أجل يوم عمل من طلبك.",
-  "faq.q5": "ما هي طرق الدفع المقبولة؟", "faq.a5": "التحويل البنكي، أو الصكّ، أو نقدًا. تُصدر فاتورة بالأداء على القيمة المضافة لكل طلب، ويمكن دراسة تسهيلات في الدفع عند افتتاح مقهى.",
+  "faq.q5": "ما هي طرق الدفع المقبولة؟", "faq.a5": "تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات لكل طلب. بالنسبة لباقات الافتتاح: تخفيض 10% عند الدفع مع الطلب، أو دفع مقسّط على 12 شهرًا دون مصاريف إضافية، مع مراعاة قبول الملف.",
     "ct.label": "اتصل بنا", "ct.h2": "لنتحدث عن مشروعك",
   "ct.lede": "أخبرنا بالموديل الذي يهمّك ومدينتك: نردّ عليك في أجل يوم عمل بسعر نهائي.",
   "ct.email": "البريد الإلكتروني", "ct.phone": "الهاتف · واتساب", "ct.showroom": "صالة العرض", "ct.showroomV": "تونس العاصمة، عرض تجريبي بموعد مسبق", "ct.hours": "أوقات العمل", "ct.hoursV": "من الاثنين إلى السبت، 9:00 – 18:00", "ct.copy": "نسخ",
