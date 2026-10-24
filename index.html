@@ -257,29 +257,6 @@ table.specs{width:100%;border-collapse:collapse;font-size:.92rem}
 .specs th,.specs td{text-align:start;vertical-align:top;padding:11px 0;border-bottom:1px solid var(--line)}
 .specs th{width:36%;padding-inline-end:14px;font-family:var(--mono);font-weight:400;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:13px}
 @media (max-width:900px){.pd{grid-template-columns:1fr}}
-/* card payment */
-.cards{display:flex;flex-wrap:wrap;gap:6px}
-.cards span{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);background:var(--ground);padding:4px 8px;color:var(--ink)}
-.pay .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
-.pay-steps{display:grid;gap:0;border-top:1px solid var(--ink);counter-reset:s}
-.pay-steps li{list-style:none;display:grid;grid-template-columns:48px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
-.pay-steps li::before{counter-increment:s;content:"0" counter(s);font-family:var(--mono);font-size:.8rem;color:var(--muted);padding-top:3px}
-.pay-steps b{display:block;font-weight:600}
-.pay-steps span{color:var(--muted);font-size:.94rem}
-.pay-card{background:var(--panel);padding:clamp(22px,3vw,36px);display:grid;gap:18px}
-.pay-card .f select{background:var(--ground)}
-.sum{display:grid;border-top:1px solid var(--line)}
-.sum div{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:.94rem}
-.sum div span:first-child{color:var(--muted)}
-.sum div b,.sum div span:last-child{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:end}
-.sum div.total b{font-size:1.15rem}
-.agree{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--muted)}
-.agree input{margin-top:4px;accent-color:var(--ink);width:16px;height:16px;flex:none}
-.secure{font-size:.8rem;color:var(--muted)}
-.btn.card{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.btn.card:hover{background:transparent;color:var(--accent)}
-.btn[disabled]{opacity:.45;cursor:not-allowed}
-@media (max-width:860px){.pay .wrap{grid-template-columns:1fr}}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:11px 20px;z-index:90;font-size:.9rem;max-width:calc(100% - 32px)}
 /* arabic / rtl */
 [dir="rtl"]{--hero-dir:270deg}
@@ -293,7 +270,7 @@ html[lang="ar"] .label{font-size:.8rem}
 
 </head>
 <body>
-<div class="util"><div class="wrap"><span data-i18n="util1">Livraison, installation et formation dans toute la Tunisie</span><span data-i18n="util2">Paiement sécurisé par carte · Importateur Gemilai</span></div></div>
+<div class="util"><div class="wrap"><span data-i18n="util1">Livraison, installation et formation dans toute la Tunisie</span><span data-i18n="util2">Devis ferme sous un jour ouvré · Importateur Gemilai</span></div></div>
 
 <header class="site">
   <div class="wrap">
@@ -303,7 +280,6 @@ html[lang="ar"] .label{font-size:.8rem}
       <a href="#gamme" data-filter="grinder" data-i18n="nav.grinders">moulins</a>
       <a href="#comparer" data-i18n="nav.compare">comparer</a>
       <a href="#services" data-i18n="nav.services">services</a>
-      <a href="#paiement" data-i18n="nav.pay">paiement</a>
       <a href="#gemilai" data-i18n="nav.brand">gemilai</a>
       <a href="#contact" data-i18n="nav.contact">contact</a>
     </nav>
@@ -401,29 +377,6 @@ html[lang="ar"] .label{font-size:.8rem}
     </div>
   </section>
 
-  <section class="section pay" id="paiement" style="padding-top:0">
-    <div class="wrap">
-      <div style="display:grid;gap:22px">
-        <div style="display:grid;gap:14px"><p class="label" data-i18n="pay.label">Paiement en ligne</p><h2 data-i18n="pay.h2">réservez votre machine par carte</h2>
-          <p class="lede" data-i18n="pay.lede"></p></div>
-        <ol class="pay-steps" style="margin:0;padding:0">
-          <li><div><b data-i18n="pay.s1b">Choisissez votre modèle</b><span data-i18n="pay.s1"></span></div></li>
-          <li><div><b data-i18n="pay.s2b">Payez sur la page sécurisée</b><span data-i18n="pay.s2"></span></div></li>
-          <li><div><b data-i18n="pay.s3b">Recevez le prix ferme</b><span data-i18n="pay.s3"></span></div></li>
-          <li><div><b data-i18n="pay.s4b">Réglez le solde</b><span data-i18n="pay.s4"></span></div></li>
-        </ol>
-      </div>
-      <form class="pay-card" id="payForm" novalidate>
-        <div class="f"><label for="pModel" data-i18n="pay.model">Modèle à réserver</label><select id="pModel"></select></div>
-        <div class="sum" id="paySum" aria-live="polite"></div>
-        <label class="agree"><input type="checkbox" id="pAgree"> <span data-i18n="pay.agree"></span></label>
-        <button class="btn card" type="submit" id="payBtn" disabled></button>
-        <div class="cards" data-i18n-aria="pay.cardsAria" aria-label="Cartes acceptées"><span>Visa</span><span>Mastercard</span><span data-i18n="pay.card3">Carte bancaire tunisienne</span></div>
-        <p class="secure" data-i18n="pay.secure"></p>
-      </form>
-    </div>
-  </section>
-
   <section class="section" id="faq" style="padding-top:0">
     <div class="wrap">
       <div class="head"><div class="stack"><p class="label" data-i18n="faq.label">Questions fréquentes</p><h2 data-i18n="faq.h2">avant de commander</h2></div></div>
@@ -433,7 +386,6 @@ html[lang="ar"] .label{font-size:.8rem}
         <details><summary data-i18n="faq.q3"></summary><p data-i18n="faq.a3"></p></details>
         <details><summary data-i18n="faq.q4"></summary><p data-i18n="faq.a4"></p></details>
         <details><summary data-i18n="faq.q5"></summary><p data-i18n="faq.a5"></p></details>
-        <details><summary data-i18n="faq.q6"></summary><p data-i18n="faq.a6"></p></details>
       </div>
     </div>
   </section>
@@ -474,7 +426,7 @@ html[lang="ar"] .label{font-size:.8rem}
   <div class="wrap">
     <div style="display:grid;gap:16px;align-content:start"><span class="mark" dir="ltr">formosa <span>espresso</span></span><p style="max-width:38ch" data-i18n="ft.tag"></p></div>
     <div><h4 data-i18n="ft.range">Gamme</h4><ul id="footList"></ul></div>
-    <div><h4 data-i18n="ft.services">Services</h4><ul><li><a href="#services" data-i18n="ft.l1">Installation</a></li><li><a href="#services" data-i18n="ft.l2">Formation barista</a></li><li><a href="#services" data-i18n="ft.l3">Entretien et pièces</a></li><li><a href="#paiement" data-i18n="ft.l4">Paiement par carte</a></li><li><a href="#faq" data-i18n="ft.l5">Questions fréquentes</a></li></ul></div>
+    <div><h4 data-i18n="ft.services">Services</h4><ul><li><a href="#services" data-i18n="ft.l1">Installation</a></li><li><a href="#services" data-i18n="ft.l2">Formation barista</a></li><li><a href="#services" data-i18n="ft.l3">Entretien et pièces</a></li><li><a href="#faq" data-i18n="ft.l5">Questions fréquentes</a></li></ul></div>
     <div><h4 data-i18n="ft.contact">Contact</h4><ul><li id="footMail"></li><li id="footTel"></li><li data-i18n="ft.city">Tunis, Tunisie</li></ul></div>
     <div class="legal"><span data-i18n="ft.legal1"></span><span data-i18n="ft.legal2"></span></div>
   </div>
@@ -487,17 +439,6 @@ html[lang="ar"] .label{font-size:.8rem}
 /* ===== Coordonnées à remplacer ===== */
 const CONFIG = { email: "contact@formosaespresso.com", phone: "+216 00 000 000", whatsapp: "21600000000" };
 
-/* ===== Paiement par carte =====
-   Acompte fixe par catégorie (en DT). Pour chaque modèle, collez le lien de paiement
-   créé dans votre espace marchand (Konnect, Flouci, ClicToPay…) pour le montant de l’acompte.
-   URL de retour à configurer chez le prestataire :
-     succès → https://<votre-site>/?paiement=ok      échec → https://<votre-site>/?paiement=echec
-   Tant qu’un lien est vide, le bouton envoie une demande de lien de paiement par WhatsApp. */
-const PAYMENT = {
-  deposit: { machine: 1000, grinder: 300 },
-  links: { g3211a: "", g3126c: "", g3201: "", g3111a: "", g3120c: "", crm3149: "", g9026a: "" }
-};
-
 /* ===== Langues : fr (par défaut), en, ar ===== */
 const LANGS = ["fr", "en", "ar"];
 const I18N = {
@@ -505,9 +446,9 @@ fr: {
   metaDesc: "Formosa Espresso importe et installe en Tunisie les machines espresso et moulins professionnels Gemilai.",
   langAria: "Langue",
   util1: "Livraison, installation et formation dans toute la Tunisie",
-  util2: "Paiement sécurisé par carte · Importateur Gemilai",
+  util2: "Devis ferme sous un jour ouvré · Importateur Gemilai",
   menu: "menu",
-  "nav.machines": "machines espresso", "nav.grinders": "moulins", "nav.compare": "comparer", "nav.services": "services", "nav.pay": "paiement", "nav.brand": "gemilai", "nav.contact": "contact",
+  "nav.machines": "machines espresso", "nav.grinders": "moulins", "nav.compare": "comparer", "nav.services": "services", "nav.brand": "gemilai", "nav.contact": "contact",
   "cta.quote": "Demander un devis",
   "hero.aria": "Nos machines", "hero.dots": "Choisir une image", "hero.prev": "Image précédente", "hero.next": "Image suivante", "hero.prevGlyph": "←", "hero.nextGlyph": "→",
   "hero.of": "{i} sur {n}", "hero.img": "Image {i}", "hero.cta": "Découvrir la {n}",
@@ -538,29 +479,13 @@ fr: {
   "svc.2l": "02 · Installation", "svc.2h": "mise en service", "svc.2p": "Raccordement eau et vidange, adoucisseur, réglage des groupes et calibrage du moulin sur votre café.",
   "svc.3l": "03 · Formation", "svc.3h": "formation barista", "svc.3p": "Dosage, extraction, texture du lait et nettoyage quotidien, sur place avec votre équipe.",
   "svc.4l": "04 · Après-vente", "svc.4h": "entretien et pièces", "svc.4p": "Maintenance préventive, détartrage et pièces d’usure en stock : joints, douchettes, meules.",
-  "pay.label": "Paiement en ligne", "pay.h2": "réservez votre machine par carte",
-  "pay.lede": "Payez l’acompte directement sur le site avec votre carte bancaire. La machine est réservée à votre nom et l’acompte est déduit du prix final.",
-  "pay.s1b": "Choisissez votre modèle", "pay.s1": "L’acompte est fixe : il ne dépend ni du coloris ni du taux de change.",
-  "pay.s2b": "Payez sur la page sécurisée", "pay.s2": "Vous êtes redirigé vers notre prestataire de paiement. Vos données de carte ne transitent jamais par notre site.",
-  "pay.s3b": "Recevez le prix ferme", "pay.s3": "Nous vous confirmons le prix final sous un jour ouvré, puis la date de livraison et d’installation.",
-  "pay.s4b": "Réglez le solde", "pay.s4": "Par carte avec le lien envoyé sur votre devis, par virement ou par chèque.",
-  "pay.model": "Modèle à réserver",
-  "pay.agree": "J’accepte que l’acompte réserve la machine et soit déduit du montant final indiqué sur le devis.",
-  "pay.cardsAria": "Cartes acceptées", "pay.card3": "Carte bancaire tunisienne",
-  "pay.secure": "Paiement chiffré, traité par un prestataire agréé en Tunisie. Montant débité en dinars tunisiens.",
-  "pay.price": "Prix indicatif TTC", "pay.balance": "Solde après acompte", "pay.today": "À payer aujourd’hui", "pay.btn": "Payer {d} par carte",
-  "pay.wa": "Bonjour Formosa Espresso, je souhaite réserver la {n} et payer l’acompte de {d} par carte. Pouvez-vous m’envoyer le lien de paiement ?",
-  "pay.waToast": "Nous vous envoyons votre lien de paiement sécurisé par WhatsApp.",
-  "pay.ok": "Paiement reçu, merci ! Nous vous confirmons votre réservation sous un jour ouvré.",
-  "pay.fail": "Le paiement n’a pas abouti. Vous pouvez réessayer ou nous contacter.",
   "faq.label": "Questions fréquentes", "faq.h2": "avant de commander",
   "faq.q1": "Livrez-vous partout en Tunisie ?", "faq.a1": "Oui : Grand Tunis, Cap Bon, Sahel, Sfax, Djerba et le reste du pays. Les frais et délais sont précisés sur le devis.",
   "faq.q2": "Faut-il une installation électrique spéciale ?", "faq.a2": "Toutes nos machines fonctionnent en 220 V monophasé. Les deux groupes consomment 4200 W et doivent être sur une ligne dédiée ; les un groupe vont de 2350 à 3200 W. Un raccordement à l’eau et une évacuation sont nécessaires, sauf pour la CRM3149 qui fonctionne aussi sur réservoir. Nous recommandons un adoucisseur et un régulateur de tension.",
   "faq.q3": "Que couvre la garantie ?", "faq.a3": "La garantie constructeur Gemilai de 2 ans couvre les défauts de fabrication. Les pièces d’usure et les pannes dues au calcaire sont exclues.",
   "faq.q4": "Pourquoi un prix en fourchette ?", "faq.a4": "Le prix ferme dépend du coloris, du taux de change et des frais de douane au moment de l’importation. Nous l’envoyons sous un jour ouvré après votre demande.",
-  "faq.q5": "Quels moyens de paiement acceptez-vous ?", "faq.a5": "Carte bancaire directement sur le site (Visa, Mastercard, cartes tunisiennes), virement, chèque ou espèces. Une facture avec TVA est émise pour chaque commande ; des facilités peuvent être étudiées pour une ouverture de café.",
-  "faq.q6": "Le paiement par carte est-il sécurisé ?", "faq.a6": "Oui. Le paiement se fait sur la page sécurisée de notre prestataire agréé : nous ne voyons ni ne stockons jamais votre numéro de carte. Vous recevez un reçu par e-mail après chaque paiement.",
-  "ct.label": "Contact", "ct.h2": "parlons de votre comptoir",
+  "faq.q5": "Quels moyens de paiement acceptez-vous ?", "faq.a5": "Virement bancaire, chèque ou espèces. Une facture avec TVA est émise pour chaque commande ; des facilités peuvent être étudiées pour une ouverture de café.",
+    "ct.label": "Contact", "ct.h2": "parlons de votre comptoir",
   "ct.lede": "Indiquez le modèle qui vous intéresse et votre ville : nous répondons sous un jour ouvré avec un prix ferme.",
   "ct.email": "E-mail", "ct.phone": "Téléphone · WhatsApp", "ct.showroom": "Showroom", "ct.showroomV": "Tunis, démonstration sur rendez-vous", "ct.hours": "Horaires", "ct.hoursV": "Lundi au samedi, 9 h – 18 h", "ct.copy": "Copier",
   "f.model": "Modèle", "f.name": "Nom", "f.phone": "Téléphone", "f.type": "Établissement", "f.city": "Ville", "f.project": "Votre projet",
@@ -571,11 +496,11 @@ fr: {
   "msg.hello": "Bonjour Formosa Espresso,", "msg.quote": "Je souhaite un devis.", "msg.subject": "Demande de devis — {m}",
   "msg.waQuote": "Bonjour Formosa Espresso, je souhaite un devis pour la {n} ({p} TTC).",
   "toast.wa": "Votre demande s’ouvre dans WhatsApp.", "toast.mail": "Votre demande s’ouvre dans votre messagerie.", "toast.copied": "Copié : {t}", "toast.select": "Texte sélectionné, copiez-le.",
-  "sh.close": "Fermer", "sh.price": "Prix indicatif TTC", "sh.reserve": "Réserver · {d} par carte", "sh.quote": "Demander un devis", "sh.wa": "WhatsApp",
+  "sh.close": "Fermer", "sh.price": "Prix indicatif TTC", "sh.quote": "Demander un devis", "sh.wa": "WhatsApp",
   "sh.photo": "Photo {i}", "sh.photoProd": "Photo produit", "sh.photoScene": "Photo en situation", "sh.inUse": "{n} en situation",
   "ft.tag": "Machines espresso et moulins professionnels Gemilai pour les cafés, restaurants et hôtels en Tunisie.",
   "ft.range": "Gamme", "ft.services": "Services", "ft.contact": "Contact",
-  "ft.l1": "Installation", "ft.l2": "Formation barista", "ft.l3": "Entretien et pièces", "ft.l4": "Paiement par carte", "ft.l5": "Questions fréquentes",
+  "ft.l1": "Installation", "ft.l2": "Formation barista", "ft.l3": "Entretien et pièces", "ft.l5": "Questions fréquentes",
   "ft.city": "Tunis, Tunisie",
   "ft.legal1": "© 2026 Formosa Espresso. Tous droits réservés.",
   "ft.legal2": "Gemilai est une marque de Guangdong Gemilai Intelligent Technology Co., Ltd. Photos : catalogue Gemilai.",
@@ -585,9 +510,9 @@ en: {
   metaDesc: "Formosa Espresso imports and installs Gemilai professional espresso machines and grinders in Tunisia.",
   langAria: "Language",
   util1: "Delivery, installation and training across Tunisia",
-  util2: "Secure card payment · Gemilai importer",
+  util2: "Firm quote within one business day · Gemilai importer",
   menu: "menu",
-  "nav.machines": "espresso machines", "nav.grinders": "grinders", "nav.compare": "compare", "nav.services": "services", "nav.pay": "payment", "nav.brand": "gemilai", "nav.contact": "contact",
+  "nav.machines": "espresso machines", "nav.grinders": "grinders", "nav.compare": "compare", "nav.services": "services", "nav.brand": "gemilai", "nav.contact": "contact",
   "cta.quote": "Request a quote",
   "hero.aria": "Our machines", "hero.dots": "Choose an image", "hero.prev": "Previous image", "hero.next": "Next image", "hero.prevGlyph": "←", "hero.nextGlyph": "→",
   "hero.of": "{i} of {n}", "hero.img": "Image {i}", "hero.cta": "Discover the {n}",
@@ -618,29 +543,13 @@ en: {
   "svc.2l": "02 · Installation", "svc.2h": "commissioning", "svc.2p": "Water and drain connection, water softener, group setup and grinder calibration on your coffee.",
   "svc.3l": "03 · Training", "svc.3h": "barista training", "svc.3p": "Dosing, extraction, milk texturing and daily cleaning, on site with your team.",
   "svc.4l": "04 · After-sales", "svc.4h": "service and parts", "svc.4p": "Preventive maintenance, descaling and wear parts in stock: gaskets, shower screens, burrs.",
-  "pay.label": "Online payment", "pay.h2": "reserve your machine by card",
-  "pay.lede": "Pay the deposit directly on the website with your bank card. The machine is reserved in your name and the deposit is deducted from the final price.",
-  "pay.s1b": "Choose your model", "pay.s1": "The deposit is fixed: it depends neither on colour nor on the exchange rate.",
-  "pay.s2b": "Pay on the secure page", "pay.s2": "You are redirected to our payment provider. Your card details never pass through our website.",
-  "pay.s3b": "Receive the firm price", "pay.s3": "We confirm the final price within one business day, then the delivery and installation date.",
-  "pay.s4b": "Pay the balance", "pay.s4": "By card with the link sent with your quote, by bank transfer or by cheque.",
-  "pay.model": "Model to reserve",
-  "pay.agree": "I accept that the deposit reserves the machine and is deducted from the final amount shown on the quote.",
-  "pay.cardsAria": "Accepted cards", "pay.card3": "Tunisian bank card",
-  "pay.secure": "Encrypted payment, processed by a licensed provider in Tunisia. Amount charged in Tunisian dinars.",
-  "pay.price": "Indicative price incl. VAT", "pay.balance": "Balance after deposit", "pay.today": "To pay today", "pay.btn": "Pay {d} by card",
-  "pay.wa": "Hello Formosa Espresso, I would like to reserve the {n} and pay the {d} deposit by card. Could you send me the payment link?",
-  "pay.waToast": "We will send your secure payment link via WhatsApp.",
-  "pay.ok": "Payment received, thank you! We will confirm your reservation within one business day.",
-  "pay.fail": "The payment did not go through. You can try again or contact us.",
   "faq.label": "Frequently asked questions", "faq.h2": "before you order",
   "faq.q1": "Do you deliver everywhere in Tunisia?", "faq.a1": "Yes: Greater Tunis, Cap Bon, the Sahel, Sfax, Djerba and the rest of the country. Costs and lead times are stated on the quote.",
   "faq.q2": "Do I need a special electrical installation?", "faq.a2": "All our machines run on 220 V single-phase. Two-group machines draw 4200 W and need a dedicated line; one-group machines range from 2350 to 3200 W. A water connection and a drain are required, except for the CRM3149, which can also run from its tank. We recommend a water softener and a voltage regulator.",
   "faq.q3": "What does the warranty cover?", "faq.a3": "The 2-year Gemilai manufacturer warranty covers manufacturing defects. Wear parts and limescale-related failures are excluded.",
   "faq.q4": "Why a price range?", "faq.a4": "The firm price depends on colour, exchange rate and customs duties at the time of import. We send it within one business day of your request.",
-  "faq.q5": "Which payment methods do you accept?", "faq.a5": "Bank card directly on the website (Visa, Mastercard, Tunisian cards), bank transfer, cheque or cash. A VAT invoice is issued for every order; payment facilities can be considered when you are opening a café.",
-  "faq.q6": "Is card payment secure?", "faq.a6": "Yes. Payment takes place on our licensed provider’s secure page: we never see or store your card number. You receive an e-mail receipt after each payment.",
-  "ct.label": "Contact", "ct.h2": "let’s talk about your counter",
+  "faq.q5": "Which payment methods do you accept?", "faq.a5": "Bank transfer, cheque or cash. A VAT invoice is issued for every order; payment facilities can be considered when you are opening a café.",
+    "ct.label": "Contact", "ct.h2": "let’s talk about your counter",
   "ct.lede": "Tell us which model interests you and your city: we reply within one business day with a firm price.",
   "ct.email": "E-mail", "ct.phone": "Phone · WhatsApp", "ct.showroom": "Showroom", "ct.showroomV": "Tunis, demonstrations by appointment", "ct.hours": "Opening hours", "ct.hoursV": "Monday to Saturday, 9 am – 6 pm", "ct.copy": "Copy",
   "f.model": "Model", "f.name": "Name", "f.phone": "Phone", "f.type": "Business type", "f.city": "City", "f.project": "Your project",
@@ -651,11 +560,11 @@ en: {
   "msg.hello": "Hello Formosa Espresso,", "msg.quote": "I would like a quote.", "msg.subject": "Quote request — {m}",
   "msg.waQuote": "Hello Formosa Espresso, I would like a quote for the {n} ({p} incl. VAT).",
   "toast.wa": "Your request is opening in WhatsApp.", "toast.mail": "Your request is opening in your e-mail app.", "toast.copied": "Copied: {t}", "toast.select": "Text selected, copy it.",
-  "sh.close": "Close", "sh.price": "Indicative price incl. VAT", "sh.reserve": "Reserve · {d} by card", "sh.quote": "Request a quote", "sh.wa": "WhatsApp",
+  "sh.close": "Close", "sh.price": "Indicative price incl. VAT", "sh.quote": "Request a quote", "sh.wa": "WhatsApp",
   "sh.photo": "Photo {i}", "sh.photoProd": "Product photo", "sh.photoScene": "Photo in use", "sh.inUse": "{n} in use",
   "ft.tag": "Gemilai professional espresso machines and grinders for cafés, restaurants and hotels in Tunisia.",
   "ft.range": "Range", "ft.services": "Services", "ft.contact": "Contact",
-  "ft.l1": "Installation", "ft.l2": "Barista training", "ft.l3": "Service and parts", "ft.l4": "Card payment", "ft.l5": "FAQ",
+  "ft.l1": "Installation", "ft.l2": "Barista training", "ft.l3": "Service and parts", "ft.l5": "FAQ",
   "ft.city": "Tunis, Tunisia",
   "ft.legal1": "© 2026 Formosa Espresso. All rights reserved.",
   "ft.legal2": "Gemilai is a trademark of Guangdong Gemilai Intelligent Technology Co., Ltd. Photos: Gemilai catalogue.",
@@ -665,9 +574,9 @@ ar: {
   metaDesc: "Formosa Espresso تستورد وتركّب آلات الإسبريسو والمطاحن الاحترافية Gemilai في تونس.",
   langAria: "اللغة",
   util1: "توصيل وتركيب وتكوين في كامل أنحاء تونس",
-  util2: "دفع آمن بالبطاقة · مورّد Gemilai",
+  util2: "عرض سعر نهائي في أجل يوم عمل · مورّد Gemilai",
   menu: "القائمة",
-  "nav.machines": "آلات الإسبريسو", "nav.grinders": "المطاحن", "nav.compare": "مقارنة", "nav.services": "الخدمات", "nav.pay": "الدفع", "nav.brand": "Gemilai", "nav.contact": "اتصل بنا",
+  "nav.machines": "آلات الإسبريسو", "nav.grinders": "المطاحن", "nav.compare": "مقارنة", "nav.services": "الخدمات", "nav.brand": "Gemilai", "nav.contact": "اتصل بنا",
   "cta.quote": "اطلب عرض سعر",
   "hero.aria": "آلاتنا", "hero.dots": "اختر صورة", "hero.prev": "الصورة السابقة", "hero.next": "الصورة التالية", "hero.prevGlyph": "→", "hero.nextGlyph": "←",
   "hero.of": "{i} من {n}", "hero.img": "صورة {i}", "hero.cta": "اكتشف {n}",
@@ -698,29 +607,13 @@ ar: {
   "svc.2l": "02 · التركيب", "svc.2h": "التشغيل", "svc.2p": "ربط الماء والتصريف، ومُليّن الماء، وضبط المجموعات ومعايرة المطحنة على قهوتك.",
   "svc.3l": "03 · التكوين", "svc.3h": "تكوين الباريستا", "svc.3p": "الجرعات والاستخلاص وتحضير رغوة الحليب والتنظيف اليومي، في عين المكان مع فريقك.",
   "svc.4l": "04 · ما بعد البيع", "svc.4h": "الصيانة وقطع الغيار", "svc.4p": "صيانة وقائية، وإزالة الترسبات الكلسية، وقطع غيار متوفرة: الحشوات، وموزّعات الماء، والشفرات.",
-  "pay.label": "الدفع الإلكتروني", "pay.h2": "احجز آلتك بالبطاقة",
-  "pay.lede": "ادفع التسبقة مباشرة على الموقع ببطاقتك البنكية. تُحجز الآلة باسمك وتُخصم التسبقة من السعر النهائي.",
-  "pay.s1b": "اختر الموديل", "pay.s1": "التسبقة ثابتة: لا ترتبط باللون ولا بسعر الصرف.",
-  "pay.s2b": "ادفع عبر الصفحة الآمنة", "pay.s2": "يتم توجيهك إلى مزوّد الدفع الخاص بنا. لا تمرّ بيانات بطاقتك أبدًا عبر موقعنا.",
-  "pay.s3b": "استلم السعر النهائي", "pay.s3": "نؤكد لك السعر النهائي في أجل يوم عمل، ثم موعد التوصيل والتركيب.",
-  "pay.s4b": "سدّد الباقي", "pay.s4": "بالبطاقة عبر الرابط المرسل مع عرض السعر، أو بتحويل بنكي، أو بصكّ.",
-  "pay.model": "الموديل المراد حجزه",
-  "pay.agree": "أوافق على أن التسبقة تحجز الآلة وتُخصم من المبلغ النهائي المبيّن في عرض السعر.",
-  "pay.cardsAria": "البطاقات المقبولة", "pay.card3": "بطاقة بنكية تونسية",
-  "pay.secure": "دفع مشفّر عبر مزوّد معتمد في تونس. يُخصم المبلغ بالدينار التونسي.",
-  "pay.price": "السعر التقديري بكل الأداءات", "pay.balance": "الباقي بعد التسبقة", "pay.today": "المبلغ المطلوب اليوم", "pay.btn": "ادفع {d} بالبطاقة",
-  "pay.wa": "مرحبًا Formosa Espresso، أرغب في حجز {n} ودفع تسبقة قدرها {d} بالبطاقة. هل يمكنكم إرسال رابط الدفع؟",
-  "pay.waToast": "سنرسل إليك رابط الدفع الآمن عبر واتساب.",
-  "pay.ok": "تم استلام الدفع، شكرًا! سنؤكد حجزك في أجل يوم عمل.",
-  "pay.fail": "لم تتم عملية الدفع. يمكنك إعادة المحاولة أو الاتصال بنا.",
   "faq.label": "الأسئلة الشائعة", "faq.h2": "قبل الطلب",
   "faq.q1": "هل توصلون إلى كامل أنحاء تونس؟", "faq.a1": "نعم: تونس الكبرى، والوطن القبلي، والساحل، وصفاقس، وجربة وبقية الولايات. تُحدَّد المعاليم والآجال في عرض السعر.",
   "faq.q2": "هل أحتاج إلى تركيز كهربائي خاص؟", "faq.a2": "تعمل جميع آلاتنا بتيار 220 V أحادي الطور. تستهلك آلات المجموعتين 4200 W ويجب ربطها بخط مخصّص، أما آلات المجموعة الواحدة فبين 2350 و3200 W. يلزم ربط بالماء وتصريف، باستثناء CRM3149 التي تعمل أيضًا بخزانها. ننصح بمُليّن للماء ومنظّم للتيار الكهربائي.",
   "faq.q3": "ماذا يشمل الضمان؟", "faq.a3": "يغطي ضمان المصنّع Gemilai لمدة سنتين عيوب التصنيع. ولا يشمل قطع الاستهلاك والأعطال الناتجة عن الترسبات الكلسية.",
   "faq.q4": "لماذا يُعرض السعر في شكل نطاق؟", "faq.a4": "يرتبط السعر النهائي باللون وسعر الصرف والمعاليم الديوانية عند التوريد. نرسله إليك في أجل يوم عمل من طلبك.",
-  "faq.q5": "ما هي طرق الدفع المقبولة؟", "faq.a5": "البطاقة البنكية مباشرة على الموقع (Visa وMastercard والبطاقات التونسية)، أو التحويل البنكي، أو الصكّ، أو نقدًا. تُصدر فاتورة بالأداء على القيمة المضافة لكل طلب، ويمكن دراسة تسهيلات في الدفع عند افتتاح مقهى.",
-  "faq.q6": "هل الدفع بالبطاقة آمن؟", "faq.a6": "نعم. يتم الدفع عبر الصفحة الآمنة لمزوّدنا المعتمد: لا نطّلع على رقم بطاقتك ولا نحتفظ به أبدًا. وتتلقى وصلًا عبر البريد الإلكتروني بعد كل عملية دفع.",
-  "ct.label": "اتصل بنا", "ct.h2": "لنتحدث عن مشروعك",
+  "faq.q5": "ما هي طرق الدفع المقبولة؟", "faq.a5": "التحويل البنكي، أو الصكّ، أو نقدًا. تُصدر فاتورة بالأداء على القيمة المضافة لكل طلب، ويمكن دراسة تسهيلات في الدفع عند افتتاح مقهى.",
+    "ct.label": "اتصل بنا", "ct.h2": "لنتحدث عن مشروعك",
   "ct.lede": "أخبرنا بالموديل الذي يهمّك ومدينتك: نردّ عليك في أجل يوم عمل بسعر نهائي.",
   "ct.email": "البريد الإلكتروني", "ct.phone": "الهاتف · واتساب", "ct.showroom": "صالة العرض", "ct.showroomV": "تونس العاصمة، عرض تجريبي بموعد مسبق", "ct.hours": "أوقات العمل", "ct.hoursV": "من الاثنين إلى السبت، 9:00 – 18:00", "ct.copy": "نسخ",
   "f.model": "الموديل", "f.name": "الاسم", "f.phone": "الهاتف", "f.type": "نوع المؤسسة", "f.city": "المدينة", "f.project": "مشروعك",
@@ -731,11 +624,11 @@ ar: {
   "msg.hello": "مرحبًا Formosa Espresso،", "msg.quote": "أرغب في عرض سعر.", "msg.subject": "طلب عرض سعر — {m}",
   "msg.waQuote": "مرحبًا Formosa Espresso، أرغب في عرض سعر لـ {n} ({p} بكل الأداءات).",
   "toast.wa": "يُفتح طلبك في واتساب.", "toast.mail": "يُفتح طلبك في تطبيق البريد الإلكتروني.", "toast.copied": "تم النسخ: {t}", "toast.select": "تم تحديد النص، انسخه.",
-  "sh.close": "إغلاق", "sh.price": "السعر التقديري بكل الأداءات", "sh.reserve": "احجز · {d} بالبطاقة", "sh.quote": "اطلب عرض سعر", "sh.wa": "واتساب",
+  "sh.close": "إغلاق", "sh.price": "السعر التقديري بكل الأداءات", "sh.quote": "اطلب عرض سعر", "sh.wa": "واتساب",
   "sh.photo": "صورة {i}", "sh.photoProd": "صورة المنتج", "sh.photoScene": "صورة أثناء الاستعمال", "sh.inUse": "{n} أثناء الاستعمال",
   "ft.tag": "آلات إسبريسو ومطاحن Gemilai الاحترافية للمقاهي والمطاعم والنزل في تونس.",
   "ft.range": "التشكيلة", "ft.services": "الخدمات", "ft.contact": "اتصل بنا",
-  "ft.l1": "التركيب", "ft.l2": "تكوين الباريستا", "ft.l3": "الصيانة وقطع الغيار", "ft.l4": "الدفع بالبطاقة", "ft.l5": "الأسئلة الشائعة",
+  "ft.l1": "التركيب", "ft.l2": "تكوين الباريستا", "ft.l3": "الصيانة وقطع الغيار", "ft.l5": "الأسئلة الشائعة",
   "ft.city": "تونس العاصمة، تونس",
   "ft.legal1": "© 2026 Formosa Espresso. جميع الحقوق محفوظة.",
   "ft.legal2": "Gemilai علامة تجارية لشركة Guangdong Gemilai Intelligent Technology Co., Ltd. الصور: كتالوج Gemilai.",
@@ -872,7 +765,6 @@ const range = p => `${num(p.price[0])} – ${num(p.price[1])} ${t("cur")}`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const pname = p => T(p.name);
 const short = p => pname(p).replace("Gemilai ", "");
-const depositOf = p => (PAYMENT.deposit[p.cat] || 0);
 const spec = (p, k) => { const s = p.specs.find(([a]) => a === k); return s ? T(s[1]) : "—"; };
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 function openLink(url){ const a = document.createElement("a"); a.href = url; a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); }
@@ -965,7 +857,7 @@ function openProduct(id, keepFocus){
         <p class="tagline">${esc(T(p.tagline))}</p>
         <p class="desc">${esc(T(p.desc))}</p>
         <div class="pr"><small>${esc(t("sh.price"))}</small><b>${esc(range(p))}</b></div>
-        <div class="ctas"><button class="btn card" data-pay="${p.id}">${esc(t("sh.reserve", {d:money(depositOf(p))}))}</button><button class="btn" data-quote="${p.id}">${esc(t("sh.quote"))}</button><button class="btn wa" data-wa="${p.id}">${esc(t("sh.wa"))}</button></div>
+        <div class="ctas"><button class="btn" data-quote="${p.id}">${esc(t("sh.quote"))}</button><button class="btn wa" data-wa="${p.id}">${esc(t("sh.wa"))}</button></div>
         <div style="overflow-x:auto"><table class="specs"><tbody>${p.specs.map(([k, v]) => `<tr><th scope="row">${esc(L[k] || k)}</th><td>${esc(T(v))}</td></tr>`).join("")}</tbody></table></div>
       </div>
     </div>`;
@@ -1021,49 +913,11 @@ document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click"
 }));
 function selectText(el){ const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast(t("toast.select")); }
 
-/* ===== card payment ===== */
-const pSel = document.getElementById("pModel"), pAgree = document.getElementById("pAgree"), payBtn = document.getElementById("payBtn");
-function renderPaySelect(){
-  const v = pSel.value || PRODUCTS[0].id;
-  pSel.innerHTML = PRODUCTS.map(p => `<option value="${p.id}">${esc(pname(p))}</option>`).join("");
-  pSel.value = v;
-}
-function renderPay(){
-  const p = byId[pSel.value], d = depositOf(p);
-  document.getElementById("paySum").innerHTML = `
-    <div><span>${esc(t("pay.price"))}</span><span>${esc(range(p))}</span></div>
-    <div><span>${esc(t("pay.balance"))}</span><span>${esc(`${num(p.price[0] - d)} – ${num(p.price[1] - d)} ${t("cur")}`)}</span></div>
-    <div class="total"><span>${esc(t("pay.today"))}</span><b>${esc(money(d))}</b></div>`;
-  payBtn.textContent = t("pay.btn", {d:money(d)});
-}
-pSel.addEventListener("change", renderPay);
-pAgree.addEventListener("change", () => { payBtn.disabled = !pAgree.checked; });
-function startPayment(id){
-  const p = byId[id], link = (PAYMENT.links[id] || "").trim();
-  if (link) { location.href = link; return; }
-  openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t("pay.wa", {n:pname(p), d:money(depositOf(p))}))}`);
-  toast(t("pay.waToast"));
-}
-document.getElementById("payForm").addEventListener("submit", e => { e.preventDefault(); if (!pAgree.checked) return; startPayment(pSel.value); });
-function payFor(id){
-  if (!sheet.hidden) closeSheet();
-  pSel.value = id; renderPay();
-  document.getElementById("paiement").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
-  setTimeout(() => pAgree.focus({ preventScroll:true }), reduce ? 0 : 600);
-}
-function checkReturn(){
-  const params = new URLSearchParams(location.search), st = params.get("paiement");
-  if (st === "ok") toast(t("pay.ok"));
-  else if (st === "echec") toast(t("pay.fail"));
-  if (st) { params.delete("paiement"); const q = params.toString(); history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash); }
-}
-
 /* ===== global clicks ===== */
 document.addEventListener("click", e => {
   const o = e.target.closest("[data-open]"); if (o){ e.preventDefault(); openProduct(o.dataset.open); return; }
   if (e.target.closest("[data-close]")) { closeSheet(); return; }
   const q = e.target.closest("[data-quote]"); if (q){ quote(q.dataset.quote); return; }
-  const pp = e.target.closest("[data-pay]"); if (pp){ payFor(pp.dataset.pay); return; }
   const w = e.target.closest("[data-wa]"); if (w){ openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(waText(w.dataset.wa))}`); }
 });
 
@@ -1087,7 +941,7 @@ function setLang(l, save){
     const q = params.toString();
     try { history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash); } catch(err){}
   }
-  applyStatic(); renderSlides(); renderFilters(); renderRange(); renderCmp(); renderContact(); renderPaySelect(); renderPay();
+  applyStatic(); renderSlides(); renderFilters(); renderRange(); renderCmp(); renderContact();
   if (openId) openProduct(openId, true);
 }
 document.getElementById("langs").addEventListener("click", e => { const b = e.target.closest("[data-lang]"); if (b && b.dataset.lang !== lang) setLang(b.dataset.lang, true); });
@@ -1096,7 +950,7 @@ document.getElementById("langs").addEventListener("click", e => { const b = e.ta
 let initial = new URLSearchParams(location.search).get("lang");
 if (!LANGS.includes(initial)) { try { initial = localStorage.getItem("fe-lang"); } catch(err){ initial = null; } }
 setLang(LANGS.includes(initial) ? initial : "fr", false);
-play(); checkReturn();
+play();
 </script>
 
 </body>
