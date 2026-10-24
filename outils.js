@@ -8,7 +8,6 @@
   const fill = (s, o) => Object.entries(o).reduce((a, [k, v]) => a.replace("{" + k + "}", v), s);
   const imgOf = p => "img/" + (p.gallery ? p.gallery[0] : p.img.toLowerCase()) + ".jpg";
   const sum = ids => ids.reduce((a, id) => a + byId[id].price[0], 0);
-  /* 12 mois : prix +15 %, acompte 40 %, reste en 12 mensualités */
   /* facilités : acompte 30 %, puis 12 mois (+7 %) ou 24 mois (+13 %) */
   const PLANS = { "12": { mk: 0.07, n: 12 }, "24": { mk: 0.13, n: 24 } };
   const plan = (base, k) => { const { mk, n } = PLANS[k], total = Math.round(base * (1 + mk)), dep = Math.round(total * 0.3); return { total, dep, n, m: Math.ceil((total - dep) / n) }; };
