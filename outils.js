@@ -5,10 +5,14 @@
   const $ = id => document.getElementById(id);
   const e = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const S = k => T(STR[k]);
+  const fill = (s, o) => Object.entries(o).reduce((a, [k, v]) => a.replace("{" + k + "}", v), s);
   const imgOf = p => "img/" + (p.gallery ? p.gallery[0] : p.img.toLowerCase()) + ".jpg";
   const sum = ids => ids.reduce((a, id) => a + byId[id].price[0], 0);
   /* 12 mois : prix +15 %, acompte 40 %, reste en 12 mensualités */
-  const plan = base => { const total = Math.round(base * 1.15), dep = Math.round(total * 0.4); return { total, dep, m: Math.ceil((total - dep) / 12) }; };
+  /* facilités : acompte 30 %, puis 12 mois (+7 %) ou 24 mois (+13 %) */
+  const PLANS = { "12": { mk: 0.07, n: 12 }, "24": { mk: 0.13, n: 24 } };
+  const plan = (base, k) => { const { mk, n } = PLANS[k], total = Math.round(base * (1 + mk)), dep = Math.round(total * 0.3); return { total, dep, n, m: Math.ceil((total - dep) / n) }; };
+  const packOpt = {};
 
   const STR = {
     /* nav + footer */
@@ -88,28 +92,26 @@
     pInc2: L("Installation, raccordement et réglage", "Installation, plumbing and set-up", "التركيب والتوصيل والضبط"),
     pInc3: L("Formation de votre équipe", "Training for your team", "تكوين فريقك"),
     pFrom: L("matériel à partir de", "equipment from", "المعدّات ابتداءً من"),
-    pCash: L("Comptant −10 %", "Pay now −10%", "دفع نقدي −10%"),
-    pCashD: L("paiement à la commande", "paid in full on order", "الدفع كاملًا عند الطلب"),
-    p12: L("ou en 12 mois", "or over 12 months", "أو على 12 شهرًا"),
-    p12D: L("{m} / mois × 12", "{m} / month × 12", "{m} / شهريًا × 12"),
-    p12Dep: L("{d} à la commande (40 %), puis", "{d} on order (40%), then", "{d} عند الطلب (40%)، ثم"),
-    p12Tot: L("total {t}", "total {t}", "المجموع {t}"),
-    pBtnCash: L("Choisir −10 %", "Choose −10%", "اختر −10%"),
-    pBtn12: L("Choisir 12 mois", "Choose 12 months", "اختر 12 شهرًا"),
+    oCash: L("Comptant", "Pay now", "نقدًا"), o12: L("12 mois", "12 months", "12 شهرًا"), o24: L("24 mois", "24 months", "24 شهرًا"),
+    oPick: L("Mode de paiement", "Payment option", "طريقة الدفع"),
+    dCash: L("10 % de remise, paiement complet à la commande", "10% off, full payment on order", "تخفيض 10%، دفع كامل المبلغ عند الطلب"),
+    dPlanBig: L("{m} / mois × {n}", "{m} / month × {n}", "{m} / شهريًا × {n}"),
+    dPlan: L("{d} à la commande (30 %), puis {n} mensualités · total {t}", "{d} on order (30%), then {n} monthly instalments · total {t}", "{d} عند الطلب (30%)، ثم {n} قسطًا شهريًا · المجموع {t}"),
     pOptCash: L("paiement comptant avec remise de 10 %", "full payment with 10% discount", "الدفع نقدًا مع تخفيض 10%"),
-    pOpt12: L("paiement en 12 mois (acompte de 40 %, puis 12 mensualités)", "payment over 12 months (40% deposit, then 12 monthly instalments)", "الدفع على 12 شهرًا (تسبقة 40%، ثم 12 قسطًا شهريًا)"),
-    pTag: L("−10 % comptant", "−10% paid now", "−10% نقدًا"),
+    pOpt12: L("paiement en 12 mois (acompte de 30 %)", "payment over 12 months (30% deposit)", "الدفع على 12 شهرًا (تسبقة 30%)"),
+    pOpt24: L("paiement en 24 mois (acompte de 30 %)", "payment over 24 months (30% deposit)", "الدفع على 24 شهرًا (تسبقة 30%)"),
+    pTag: L("−10 % comptant · ou 24 mois", "−10% paid now · or 24 months", "−10% نقدًا · أو 24 شهرًا"),
     pBtn: L("Demander ce pack", "Request this pack", "اطلب هذه الباقة"),
-    pNote: L("Comptant : 10 % de remise pour un paiement complet à la commande. En 12 mois : prix total majoré de 15 %, acompte de 40 % à la commande puis 12 mensualités, sous réserve d’acceptation du dossier. Prix indicatifs de la machine et du moulin ; le kit, l’installation et la formation sont détaillés dans votre devis.",
-            "Pay now: 10% off for full payment on order. Over 12 months: total price plus 15%, a 40% deposit on order then 12 monthly instalments, subject to approval. Indicative prices for the machine and grinder; the kit, installation and training are itemised in your quote.",
-            "نقدًا: تخفيض 10% عند الدفع الكامل مع الطلب. على 12 شهرًا: يُزاد السعر الجملي بنسبة 15%، مع تسبقة 40% عند الطلب ثم 12 قسطًا شهريًا، مع مراعاة قبول الملف. السعر تقديري للآلة والمطحنة؛ يتم تفصيل الطقم والتركيب والتكوين في عرض السعر."),
+    pNote: L("Comptant : 10 % de remise pour un paiement complet à la commande. Facilités : acompte de 30 % à la commande, puis 12 mensualités (prix majoré de 7 %) ou 24 mensualités (prix majoré de 13 %), par traites ou virement, sous réserve d’acceptation du dossier. Prix indicatifs de la machine et du moulin ; le kit, l’installation et la formation sont détaillés dans votre devis.",
+            "Pay now: 10% off for full payment on order. Instalments: 30% deposit on order, then 12 monthly payments (price plus 7%) or 24 monthly payments (price plus 13%), by bills of exchange or bank transfer, subject to approval. Indicative prices for the machine and grinder; the kit, installation and training are itemised in your quote.",
+            "نقدًا: تخفيض 10% عند الدفع الكامل مع الطلب. التسهيلات: تسبقة 30% عند الطلب، ثم 12 قسطًا شهريًا (يُزاد السعر بنسبة 7%) أو 24 قسطًا شهريًا (يُزاد السعر بنسبة 13%)، بالكمبيالات أو بالتحويل البنكي، مع مراعاة قبول الملف. السعر تقديري للآلة والمطحنة؛ يتم تفصيل الطقم والتركيب والتكوين في عرض السعر."),
     pMsg: L("Bonjour, je suis intéressé(e) par le {pack} ({items}), avec {opt}. Pouvez-vous m’envoyer un devis ?",
             "Hello, I’m interested in the {pack} ({items}), with {opt}. Could you send me a quote?",
             "مرحبًا، أنا مهتم بـ {pack} ({items})، مع {opt}. هل يمكنكم إرسال عرض سعر؟"),
     payH: L("Paiement adapté à votre ouverture", "Payment that fits your opening", "دفع يناسب افتتاح مشروعك"),
-    payP: L("Pour chaque pack, deux formules : 10 % de remise en payant tout à la commande, ou un paiement étalé sur 12 mois (prix majoré de 15 %, acompte de 40 % puis 12 mensualités, sous réserve d’acceptation du dossier). Virement, chèque ou espèces, avec facture et TVA.",
-            "Two options for every pack: 10% off when you pay everything on order, or payment spread over 12 months (price plus 15%, 40% deposit then 12 monthly instalments, subject to approval). Bank transfer, cheque or cash, with a VAT invoice.",
-            "لكل باقة صيغتان: تخفيض 10% عند دفع كامل المبلغ مع الطلب، أو دفع مقسّط على 12 شهرًا (يُزاد السعر بنسبة 15%، تسبقة 40% ثم 12 قسطًا شهريًا، مع مراعاة قبول الملف). تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات."),
+    payP: L("Pour chaque pack : 10 % de remise en payant tout à la commande, ou des facilités avec un acompte de 30 % puis 12 mois (+7 %) ou 24 mois (+13 %), sous réserve d’acceptation du dossier. Virement, chèque ou espèces, avec facture et TVA ; mensualités par traites ou virement.",
+            "For every pack: 10% off when you pay everything on order, or instalments with a 30% deposit then 12 months (+7%) or 24 months (+13%), subject to approval. Bank transfer, cheque or cash, with a VAT invoice; monthly payments by bills of exchange or transfer.",
+            "لكل باقة: تخفيض 10% عند دفع كامل المبلغ مع الطلب، أو تسهيلات بتسبقة 30% ثم 12 شهرًا (+7%) أو 24 شهرًا (+13%)، مع مراعاة قبول الملف. تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات؛ الأقساط بالكمبيالات أو بالتحويل."),
     payBtn: L("En parler sur WhatsApp", "Discuss on WhatsApp", "تحدّث معنا على واتساب"),
     payMsg: L("Bonjour, je voudrais connaître les facilités de paiement pour une ouverture de café.", "Hello, I’d like to know the payment options for a café opening.", "مرحبًا، أريد معرفة تسهيلات الدفع لافتتاح مقهى."),
 
@@ -242,6 +244,12 @@
   }
 
   const PACKS = [["pk1", "pk1d", ["crm3149"]], ["pk2", "pk2d", ["g3201", "g9026a"]], ["pk3", "pk3d", ["g3211a", "g9026a"]]];
+  function packPrice(i){
+    const base = sum(PACKS[i][2]), o = packOpt[i] || "cash";
+    if (o === "cash") return `<small>${e(S("pFrom"))} <s>${e(money(base))}</s></small><b>${e(money(Math.round(base * 0.9)))}</b><span>${e(S("dCash"))}</span>`;
+    const pl = plan(base, o);
+    return `<small>${e(S("pFrom"))} ${e(money(base))}</small><b>${e(T(STR.dPlanBig).replace("{m}", money(pl.m)).replace("{n}", pl.n))}</b><span>${e(fill(S("dPlan"), { d: money(pl.dep), n: pl.n, t: money(pl.total) }))}</span>`;
+  }
   function renderPacks(){
     const el = $("packs"); if (!el) return;
     el.innerHTML = `<div class="wrap">
@@ -250,11 +258,9 @@
         <div class="pk-img"><img src="${imgOf(byId[ids[0]])}" alt="" loading="lazy"><span class="pk-tag">${e(S("pTag"))}</span></div>
         <h3>${e(S(n))}</h3><p class="pk-d">${e(S(d))}</p>
         <ul><li><b>${ids.map(id => e(pname(byId[id]))).join(" + ")}</b></li><li>${e(S("pInc1"))}</li><li>${e(S("pInc2"))}</li><li>${e(S("pInc3"))}</li></ul>
-        <div class="pk-price"><small>${e(S("pFrom"))}</small><s>${e(money(sum(ids)))}</s></div>
-        <div class="pk-opts">
-          <div class="pk-opt"><small>${e(S("pCash"))}</small><b>${e(money(Math.round(sum(ids) * 0.9)))}</b><span>${e(S("pCashD"))}</span><button class="btn${i === 1 ? "" : " ghost"}" type="button" data-pack="${i}:cash">${e(S("pBtnCash"))}</button></div>
-          <div class="pk-opt"><small>${e(S("p12"))}</small><span>${e(T(STR.p12Dep).replace("{d}", money(plan(sum(ids)).dep)))}</span><b>${e(T(STR.p12D).replace("{m}", money(plan(sum(ids)).m)))}</b><span>${e(T(STR.p12Tot).replace("{t}", money(plan(sum(ids)).total)))}</span><button class="btn ghost" type="button" data-pack="${i}:12">${e(S("pBtn12"))}</button></div>
-        </div></article>`).join("")}</div>
+        <div class="pk-opts" role="group" aria-label="${e(S("oPick"))}">${["cash", "12", "24"].map(o => `<button type="button" data-packopt="${i}:${o}" aria-pressed="${(packOpt[i] || "cash") === o}">${e(S(o === "cash" ? "oCash" : "o" + o))}</button>`).join("")}</div>
+        <div class="pk-price" id="pkp${i}">${packPrice(i)}</div>
+        <button class="btn${i === 1 ? "" : " ghost"}" type="button" data-pack="${i}">${e(S("pBtn"))}</button></article>`).join("")}</div>
       <p class="pk-note">${e(S("pNote"))}</p>
       <div class="pay"><div><h3>${e(S("payH"))}</h3><p>${e(S("payP"))}</p></div><button class="btn wa" type="button" data-paywa>${e(S("payBtn"))}</button></div>
     </div>`;
@@ -345,7 +351,6 @@
   function render(){ renderStatic(); renderGuide(); renderPacks(); renderAcc(); renderCalc(); renderSav(); }
 
   /* ---------- événements ---------- */
-  const fill = (s, o) => Object.entries(o).reduce((a, [k, v]) => a.replace("{" + k + "}", v), s);
   document.addEventListener("click", ev => {
     const g = ev.target.closest("[data-gd]");
     if (g) { const [k, v] = g.dataset.gd.split(":"); G[k] = G[k] === v ? null : v; renderGuide(); if (k === "vol" && G.vol) track("guide-" + G.vol, "Guide de choix"); return; }
@@ -356,7 +361,9 @@
       track("guide-devis", "Guide de choix → devis"); return;
     }
     const pk = ev.target.closest("[data-pack]");
-    if (pk) { const [k, opt] = pk.dataset.pack.split(":"); const [n, , ids] = PACKS[+k]; quote(ids[0], fill(S("pMsg"), { pack: S(n), items: ids.map(id => pname(byId[id])).join(" + "), opt: S(opt === "12" ? "pOpt12" : "pOptCash") })); track("pack-" + (+k + 1) + "-" + opt, "Pack " + S(n) + " (" + opt + ")"); return; }
+    if (pk) { const k = +pk.dataset.pack, opt = packOpt[k] || "cash"; const [n, , ids] = PACKS[k]; quote(ids[0], fill(S("pMsg"), { pack: S(n), items: ids.map(id => pname(byId[id])).join(" + "), opt: S(opt === "cash" ? "pOptCash" : "pOpt" + opt) })); track("pack-" + (k + 1) + "-" + opt, "Pack " + S(n) + " (" + opt + ")"); return; }
+    const po = ev.target.closest("[data-packopt]");
+    if (po) { const [k, o] = po.dataset.packopt.split(":"); packOpt[k] = o; po.parentElement.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b === po)); $("pkp" + k).innerHTML = packPrice(+k); return; }
     if (ev.target.closest("[data-paywa]")) { openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(S("payMsg"))}`); track("paiement-whatsapp", "Facilités de paiement"); return; }
     if (ev.target.closest("[data-accgo]")) {
       if (!accSel.size) { toast(S("aNone")); return; }

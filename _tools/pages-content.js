@@ -103,7 +103,7 @@ module.exports = [
       "- L’installation et la formation de l’équipe.",
       "C’est exactement ce que réunissent nos [packs ouverture](packs). Pour savoir combien de temps il faut pour rentabiliser l’équipement, essayez notre [calculateur de rentabilité](calc).",
       "## Comment payer ?",
-      "Virement, chèque ou espèces, avec facture et TVA. Pour une ouverture de café, des facilités peuvent être étudiées : acompte à la commande puis solde, ou paiement en plusieurs fois.",
+      "Virement, chèque ou espèces, avec facture et TVA. Pour nos packs ouverture : 10 % de remise en payant tout à la commande, ou un acompte de 30 % puis 12 mensualités (prix majoré de 7 %) ou 24 mensualités (prix majoré de 13 %), sous réserve d’acceptation du dossier.",
       "Pas sûr du modèle ? [Répondez à trois questions](guide) et nous vous proposons la machine, le moulin et le budget adaptés."
     ],
     en: [
@@ -125,7 +125,7 @@ module.exports = [
       "- Installation and team training.",
       "That is exactly what our [opening packs](packs) bring together. To see how long the equipment takes to pay for itself, try our [profitability calculator](calc).",
       "## How to pay",
-      "Bank transfer, cheque or cash, with a VAT invoice. For a café opening, flexible terms can be discussed: a deposit on order then the balance, or payment in instalments.",
+      "Bank transfer, cheque or cash, with a VAT invoice. For our opening packs: 10% off when you pay everything on order, or a 30% deposit then 12 monthly payments (price plus 7%) or 24 monthly payments (price plus 13%), subject to approval.",
       "Not sure which model? [Answer three questions](guide) and we suggest the right machine, grinder and budget."
     ],
     ar: [
@@ -147,7 +147,7 @@ module.exports = [
       "- التركيب وتكوين الفريق.",
       "هذا بالضبط ما تجمعه [باقات الافتتاح](packs). ولمعرفة مدة استرجاع ثمن المعدّات، جرّب [حاسبة المردودية](calc).",
       "## طرق الدفع",
-      "تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات. عند افتتاح مقهى، يمكن دراسة تسهيلات: تسبقة عند الطلب ثم الباقي، أو الدفع على أقساط.",
+      "تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات. بالنسبة لباقات الافتتاح: تخفيض 10% عند دفع كامل المبلغ مع الطلب، أو تسبقة 30% ثم 12 قسطًا شهريًا (يُزاد السعر بنسبة 7%) أو 24 قسطًا شهريًا (يُزاد السعر بنسبة 13%)، مع مراعاة قبول الملف.",
       "لست متأكدًا من الطراز؟ [أجب عن ثلاثة أسئلة](guide) ونقترح عليك الآلة والمطحنة والميزانية المناسبة."
     ]
   }
