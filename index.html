@@ -162,6 +162,9 @@ nav.main a:hover{color:var(--ink)}
 
 /* compare */
 .cmp-box{overflow-x:auto;border-top:1px solid var(--ink)}
+.cmp-link{margin-top:28px}
+.cmpview{padding-block:clamp(28px,4vw,56px) clamp(48px,6vw,96px)}
+.cmp tbody tr:last-child td{font-weight:600}
 table.cmp{border-collapse:collapse;width:100%;min-width:900px;font-size:.92rem}
 .cmp th,.cmp td{padding:14px 14px;border-bottom:1px solid var(--line);text-align:start;vertical-align:top}
 .cmp thead th{font-family:var(--display);font-weight:400;font-size:1.25rem;letter-spacing:-.01em}
@@ -217,6 +220,18 @@ form.req{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:18px 2
 .send small{color:var(--muted);flex:1 1 220px}
 @media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
 @media (max-width:520px){form.req{grid-template-columns:1fr}}
+.sent{display:grid;gap:18px;align-content:start;background:var(--ground);border:1px solid var(--line);padding:clamp(22px,3vw,40px);min-width:0}
+.sent .ico{width:56px;height:56px;border-radius:50%;background:#1F7A45;color:#fff;display:grid;place-items:center;font-size:1.7rem;line-height:1}
+.sent .ico.wait{background:var(--panel);color:var(--muted);animation:pulse 1.2s ease-in-out infinite}
+.sent .ico.warn{background:var(--accent);color:var(--accent-ink)}
+@keyframes pulse{50%{opacity:.45}}
+.sent h3{font-size:clamp(2rem,3.4vw,2.8rem);text-transform:none}
+.sent p{color:var(--muted);max-width:56ch}
+.sent p.main{color:var(--ink);font-size:1.08rem}
+.sent dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;border-top:1px solid var(--line);padding-top:16px}
+.sent dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.sent dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.sent .btn{justify-self:start}
 
 footer{background:var(--bar);color:color-mix(in srgb,var(--bar-ink) 72%,transparent);font-size:.9rem}
 footer .wrap{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-block:64px 28px}
@@ -278,7 +293,7 @@ html[lang="ar"] .label{font-size:.8rem}
     <nav class="main" id="nav">
       <a href="#gamme" data-filter="machine" data-i18n="nav.machines">machines espresso</a>
       <a href="#gamme" data-filter="grinder" data-i18n="nav.grinders">moulins</a>
-      <a href="#comparer" data-i18n="nav.compare">comparer</a>
+      <a href="#comparer" data-compare data-i18n="nav.compare">comparer</a>
       <a href="#services" data-i18n="nav.services">services</a>
       <a href="#gemilai" data-i18n="nav.brand">gemilai</a>
       <a href="#contact" data-i18n="nav.contact">contact</a>
@@ -337,17 +352,11 @@ html[lang="ar"] .label{font-size:.8rem}
         <div class="filters" id="filters" role="group" data-i18n-aria="range.filterAria" aria-label="Filtrer la gamme"></div>
       </div>
       <div class="range" id="range"></div>
+      <button class="link cmp-link" type="button" data-compare data-i18n="cmp.open">Comparer toutes les caractéristiques</button>
       <p class="note" data-i18n="range.note">Prix indicatifs en dinars tunisiens, TVA incluse, hors livraison et installation.</p>
     </div>
   </section>
 
-  <section class="section" id="comparer" style="padding-top:0">
-    <div class="wrap">
-      <div class="head"><div class="stack"><p class="label" data-i18n="cmp.label">Comparer</p><h2 data-i18n="cmp.h2">trouver votre machine</h2></div>
-        <p class="lede" data-i18n="cmp.lede">Repère : un groupe jusqu’à environ 150 tasses par jour, deux groupes au-delà.</p></div>
-      <div class="cmp-box"><table class="cmp" id="cmp"></table></div>
-    </div>
-  </section>
 
   <section class="alt" id="gemilai">
     <div class="img"><img src="img/g3111a-scene.jpg" data-i18n-alt="brand.alt" alt="Machine Gemilai G3111A et moulin dans un café" loading="lazy"></div>
@@ -420,6 +429,7 @@ html[lang="ar"] .label{font-size:.8rem}
         <div class="f full"><label for="fMsg" data-i18n="f.project">Votre projet</label><textarea id="fMsg" data-i18n-ph="f.msgPh"></textarea></div>
         <div class="send"><small data-i18n="f.small"></small><button class="btn wa" type="submit" data-via="wa" data-i18n="f.wa">Envoyer par WhatsApp</button><button class="btn ghost" type="submit" data-via="mail" data-i18n="f.mail">Par e-mail</button></div>
       </form>
+      <div class="sent" id="sent" hidden aria-live="polite"></div>
     </div>
   </section>
 </main>
@@ -473,6 +483,7 @@ fr: {
   "cmp.label": "Comparer", "cmp.h2": "trouver votre machine",
   "cmp.lede": "Repère : un groupe jusqu’à environ 150 tasses par jour, deux groupes au-delà. La taille de la chaudière vapeur compte si vous servez beaucoup de boissons lactées.",
   "cmp.type": "Type", "cmp.price": "Prix TTC",
+  "cmp.open": "Comparer toutes les caractéristiques", "done.title": "Demande envoyée", "done.titleFail": "Dernière étape", "done.wait": "Envoi de votre demande…", "done.ok": "Merci {n} ! Votre demande est bien arrivée chez nous. Nous vous répondons sous un jour ouvré au {p}.", "done.fail": "Merci {n}. L’envoi automatique n’a pas abouti : envoyez le message qui s’est ouvert, ou écrivez-nous sur WhatsApp au {w}.", "done.wa": "Une conversation WhatsApp pré-remplie s’est aussi ouverte : appuyez sur Envoyer pour échanger directement avec nous.", "done.mail": "Un e-mail pré-rempli s’est aussi ouvert dans votre messagerie : envoyez-le si vous voulez en garder une copie.", "done.recap": "Votre demande", "done.again": "Envoyer une autre demande",
   "brand.alt": "Machine Gemilai G3111A et moulin dans un café", "brand.label": "La marque", "brand.h2": "gemilai, la technologie pro depuis 2011.",
   "brand.lede": "Fondé dans le Guangdong, Gemilai fabrique des machines à porte-filtre 58 mm depuis 2012 et des machines commerciales depuis 2015. La marque est présente dans 30 pays, avec plus de 2 millions de machines vendues.",
   "brand.dt1": "Chaudières", "brand.dd1": "Systèmes double et multi-chaudières brevetés, dont le groupe E61 saturé.",
@@ -537,6 +548,7 @@ en: {
   "cmp.label": "Compare", "cmp.h2": "find your machine",
   "cmp.lede": "Rule of thumb: one group up to about 150 cups a day, two groups beyond that. Steam boiler size matters if you serve a lot of milk drinks.",
   "cmp.type": "Type", "cmp.price": "Price incl. VAT",
+  "cmp.open": "Compare all specifications", "done.title": "Request sent", "done.titleFail": "One last step", "done.wait": "Sending your request…", "done.ok": "Thank you {n}! Your request has reached us. We will reply within one business day on {p}.", "done.fail": "Thank you {n}. The automatic sending did not go through: please send the message that opened, or write to us on WhatsApp at {w}.", "done.wa": "A pre-filled WhatsApp chat also opened: press Send to talk to us directly.", "done.mail": "A pre-filled e-mail also opened in your mail app: send it if you want to keep a copy.", "done.recap": "Your request", "done.again": "Send another request",
   "brand.alt": "Gemilai G3111A machine and grinder in a café", "brand.label": "The brand", "brand.h2": "gemilai, pro technology since 2011.",
   "brand.lede": "Founded in Guangdong, Gemilai has made 58 mm portafilter machines since 2012 and commercial machines since 2015. The brand is present in 30 countries, with more than 2 million machines sold.",
   "brand.dt1": "Boilers", "brand.dd1": "Patented dual and multi-boiler systems, including the saturated E61 group.",
@@ -601,6 +613,7 @@ ar: {
   "cmp.label": "قارن", "cmp.h2": "اعثر على آلتك",
   "cmp.lede": "قاعدة عامة: مجموعة واحدة حتى نحو 150 فنجانًا يوميًا، ومجموعتان لما يزيد عن ذلك. ويهمّ حجم غلاية البخار إن كنت تقدّم الكثير من المشروبات بالحليب.",
   "cmp.type": "النوع", "cmp.price": "السعر بكل الأداءات",
+  "cmp.open": "قارن كل المواصفات", "done.title": "تم إرسال طلبك", "done.titleFail": "خطوة أخيرة", "done.wait": "جارٍ إرسال طلبك…", "done.ok": "شكرًا {n}! وصلنا طلبك، وسنردّ عليك في أجل يوم عمل على الرقم {p}.", "done.fail": "شكرًا {n}. لم يتم الإرسال التلقائي: يُرجى إرسال الرسالة التي فُتحت، أو مراسلتنا عبر واتساب على {w}.", "done.wa": "فُتحت أيضًا محادثة واتساب جاهزة: اضغط على «إرسال» للتحدث معنا مباشرة.", "done.mail": "فُتحت أيضًا رسالة بريد إلكتروني جاهزة في تطبيقك: أرسلها إن أردت الاحتفاظ بنسخة.", "done.recap": "طلبك", "done.again": "إرسال طلب آخر",
   "brand.alt": "آلة Gemilai G3111A ومطحنة في مقهى", "brand.label": "العلامة", "brand.h2": "Gemilai، تكنولوجيا احترافية منذ 2011.",
   "brand.lede": "تأسست Gemilai في مقاطعة قوانغدونغ، وتصنع آلات بحامل فلتر 58 mm منذ 2012 وآلات احترافية منذ 2015. العلامة حاضرة في 30 بلدًا وباعت أكثر من مليوني آلة.",
   "brand.dt1": "الغلايات", "brand.dd1": "أنظمة غلايتين وغلايات متعددة محميّة ببراءات اختراع، منها مجموعة E61 المشبّعة.",
@@ -829,18 +842,30 @@ function renderRange(){
 document.getElementById("filters").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (!b) return; filter = b.dataset.f; renderFilters(); renderRange(); });
 document.querySelectorAll("[data-filter]").forEach(a => a.addEventListener("click", () => { filter = a.dataset.filter; renderFilters(); renderRange(); closeMenu(); }));
 
-/* ===== compare ===== */
+const sheet = document.getElementById("sheet");
+let lastFocus = null, openId = null;
+/* ===== compare (vue séparée) ===== */
 const machines = PRODUCTS.filter(p => p.cat === "machine");
-function renderCmp(){
+const CMP_KEYS = ["boilers","dosing","pressure","temp","pump","controls","steam","water","gauges","power","weight","dims","lighting","grinderIncl","colors"];
+function openCompare(keepFocus){
+  if (!keepFocus) lastFocus = document.activeElement;
+  openId = "__cmp";
   const L = SPEC_LABELS[lang];
-  const ROWS = [[t("cmp.type"), p => T(p.kicker)], [L.boilers, p => spec(p,"boilers")], [L.pump, p => spec(p,"pump")], [L.power, p => spec(p,"power").split(" · ")[0], 1], [L.weight, p => spec(p,"weight"), 1], [t("cmp.price"), p => range(p), 1]];
-  document.getElementById("cmp").innerHTML = `<thead><tr><th scope="col"></th>${machines.map(p => `<th scope="col"><button data-open="${p.id}">${esc(short(p))}</button></th>`).join("")}</tr></thead>
-<tbody>${ROWS.map(([l, f, n]) => `<tr><th scope="row">${esc(l)}</th>${machines.map(p => `<td class="${n ? "num" : ""}">${esc(f(p))}</td>`).join("")}</tr>`).join("")}</tbody>`;
+  const rows = [[t("cmp.type"), p => T(p.kicker)], [L.groups, p => { const g = spec(p, "groups"); return g !== "—" ? g : spec(p, "group"); }]]
+    .concat(CMP_KEYS.filter(k => machines.some(p => p.specs.some(([a]) => a === k))).map(k => [L[k], p => spec(p, k)]))
+    .concat([[t("cmp.price"), p => range(p)]]);
+  sheet.innerHTML = `
+    <div class="sheet-bar"><div class="wrap"><span class="crumb">${esc(t("cmp.label").toLowerCase())}</span><button class="btn ghost" data-close>${esc(t("sh.close"))}</button></div></div>
+    <div class="wrap cmpview">
+      <div class="head"><div class="stack"><p class="label">${esc(t("cmp.label"))}</p><h2 id="pdName">${esc(t("cmp.h2"))}</h2></div><p class="lede">${esc(t("cmp.lede"))}</p></div>
+      <div class="cmp-box"><table class="cmp"><thead><tr><th scope="col"></th>${machines.map(p => `<th scope="col"><button data-open="${p.id}">${esc(short(p))}</button></th>`).join("")}</tr></thead>
+      <tbody>${rows.map(([l, f]) => `<tr><th scope="row">${esc(l)}</th>${machines.map(p => `<td>${esc(f(p))}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+    </div>`;
+  sheet.hidden = false; document.body.style.overflow = "hidden";
+  if (!keepFocus) { sheet.scrollTop = 0; sheet.querySelector("[data-close]").focus(); }
 }
 
 /* ===== product sheet ===== */
-const sheet = document.getElementById("sheet");
-let lastFocus = null, openId = null;
 function openProduct(id, keepFocus){
   const p = byId[id]; if (!p) return;
   if (!keepFocus) lastFocus = document.activeElement;
@@ -910,9 +935,11 @@ document.getElementById("req").addEventListener("submit", e => {
   /* 1. ouvre WhatsApp ou la messagerie du client */
   if (via === "wa") openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(body)}`);
   else openLink(`mailto:${CONFIG.email}?subject=${encodeURIComponent(t("msg.subject", {m:model}))}&body=${encodeURIComponent(body)}`);
-  toast(t(via === "wa" ? "toast.wa" : "toast.mail"));
-  /* 2. vous envoie automatiquement la demande par e-mail (WhatsApp ou e-mail) */
-  if (v("fHoney")) return;
+  /* 2. affiche la confirmation à la place du formulaire */
+  sent = { state: "wait", via, name: v("fName"), phone: v("fPhone"), city: v("fCity"), modelId: sel.value };
+  showSent();
+  /* 3. vous envoie automatiquement la demande par e-mail (WhatsApp ou e-mail) */
+  if (v("fHoney")) { sent.state = "ok"; renderSent(); return; }
   const data = {
     _subject: `Nouvelle demande de devis — ${model} — ${v("fName")} (${v("fCity")})`,
     _template: "table", _captcha: "false",
@@ -922,9 +949,33 @@ document.getElementById("req").addEventListener("submit", e => {
   if (v("fEmail")) data._replyto = v("fEmail");
   fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
-    .then(res => { if (String(res.success) === "true") toast(t("toast.sent")); })
-    .catch(() => {});
+    .then(res => { sent.state = String(res.success) === "true" ? "ok" : "fail"; renderSent(); })
+    .catch(() => { sent.state = "fail"; renderSent(); });
 });
+let sent = null;
+const reqForm = document.getElementById("req"), sentEl = document.getElementById("sent");
+function showSent(){
+  reqForm.hidden = true; sentEl.hidden = false; renderSent();
+  sentEl.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  setTimeout(() => { const h = sentEl.querySelector("h3"); if (h) h.focus({ preventScroll: true }); }, reduce ? 0 : 400);
+}
+function renderSent(){
+  if (!sent || sentEl.hidden) return;
+  const model = sent.modelId ? pname(byId[sent.modelId]) : t("f.advise");
+  const ico = sent.state === "ok" ? `<span class="ico" aria-hidden="true">✓</span>` : sent.state === "wait" ? `<span class="ico wait" aria-hidden="true">…</span>` : `<span class="ico warn" aria-hidden="true">!</span>`;
+  const iso = x => "\u2068" + x + "\u2069", ltr = x => "\u2066" + x + "\u2069";
+  const main = sent.state === "ok" ? t("done.ok", {n: iso(sent.name), p: ltr(sent.phone)}) : sent.state === "wait" ? t("done.wait") : t("done.fail", {n: iso(sent.name), w: ltr(CONFIG.phone)});
+  sentEl.innerHTML = `${ico}
+    <h3 tabindex="-1">${esc(sent.state === "wait" ? t("done.wait") : sent.state === "ok" ? t("done.title") : t("done.titleFail"))}</h3>
+    ${sent.state === "wait" ? "" : `<p class="main">${esc(main)}</p>`}
+    <p>${esc(t(sent.via === "wa" ? "done.wa" : "done.mail"))}</p>
+    <dl><dt>${esc(t("f.model"))}</dt><dd>${esc(model)}</dd><dt>${esc(t("f.name"))}</dt><dd>${esc(sent.name)}</dd><dt>${esc(t("f.phone"))}</dt><dd><bdi dir="ltr">${esc(sent.phone)}</bdi></dd><dt>${esc(t("f.city"))}</dt><dd>${esc(sent.city)}</dd></dl>
+    <button class="btn ghost" type="button" data-again>${esc(t("done.again"))}</button>`;
+}
+function resetForm(){
+  sent = null; reqForm.reset(); sentEl.hidden = true; sentEl.innerHTML = ""; reqForm.hidden = false;
+  document.getElementById("fName").focus({ preventScroll: false });
+}
 document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
   const txt = b.dataset.copy === "mail" ? CONFIG.email : CONFIG.phone;
   const done = () => toast(t("toast.copied", {t:txt}));
@@ -936,6 +987,8 @@ function selectText(el){ const r = document.createRange(); r.selectNodeContents(
 document.addEventListener("click", e => {
   const o = e.target.closest("[data-open]"); if (o){ e.preventDefault(); openProduct(o.dataset.open); return; }
   if (e.target.closest("[data-close]")) { closeSheet(); return; }
+  if (e.target.closest("[data-compare]")) { e.preventDefault(); closeMenu(); openCompare(); return; }
+  if (e.target.closest("[data-again]")) { resetForm(); return; }
   const q = e.target.closest("[data-quote]"); if (q){ quote(q.dataset.quote); return; }
   const w = e.target.closest("[data-wa]"); if (w){ openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(waText(w.dataset.wa))}`); }
 });
@@ -960,8 +1013,8 @@ function setLang(l, save){
     const q = params.toString();
     try { history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash); } catch(err){}
   }
-  applyStatic(); renderSlides(); renderFilters(); renderRange(); renderCmp(); renderContact();
-  if (openId) openProduct(openId, true);
+  applyStatic(); renderSlides(); renderFilters(); renderRange(); renderContact(); renderSent();
+  if (openId === "__cmp") openCompare(true); else if (openId) openProduct(openId, true);
 }
 document.getElementById("langs").addEventListener("click", e => { const b = e.target.closest("[data-lang]"); if (b && b.dataset.lang !== lang) setLang(b.dataset.lang, true); });
 
@@ -970,6 +1023,7 @@ let initial = new URLSearchParams(location.search).get("lang");
 if (!LANGS.includes(initial)) { try { initial = localStorage.getItem("fe-lang"); } catch(err){ initial = null; } }
 setLang(LANGS.includes(initial) ? initial : "fr", false);
 play();
+if (location.hash === "#comparer") openCompare();
 </script>
 
 </body>
