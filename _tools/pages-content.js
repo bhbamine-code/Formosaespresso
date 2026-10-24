@@ -16,7 +16,7 @@ module.exports = [
     fr: [
       "Formosa Espresso équipe les cafés, restaurants et hôtels tunisiens en machines espresso et moulins professionnels Gemilai. Notre idée est simple : un matériel professionnel fiable, à un prix juste et affiché en dinars, avec un interlocuteur qui reste là après la livraison.",
       "## Pourquoi « Formosa » ?",
-      "Formosa, « la belle île », est l’ancien nom de Taïwan. C’est là que vit notre fondateur, un Tunisien installé en Asie, au plus près des fabricants. C’est aussi ce que raconte notre logo : la silhouette de l’île, avec un porte-filtre en son cœur.",
+      "Formosa, « la belle île », est l’ancien nom de Taïwan. C’est là que vit notre fondateur, un Tunisien installé en Asie, au plus près des fabricants. C’est aussi ce que raconte notre logo : la silhouette de l’île, avec une branche de caféier en son cœur.",
       "## Pourquoi Gemilai ?",
       "Gemilai est un fabricant de machines espresso du Guangdong, présent dans une trentaine de pays. Ses machines commerciales offrent ce qu’on attend d’un vrai comptoir (porte-filtre 58 mm, chaudières indépendantes, régulation PID, doses programmées sur les modèles haut de gamme) à un prix plus accessible que beaucoup d’alternatives.",
       "## Ce que nous faisons",
@@ -34,7 +34,7 @@ module.exports = [
     en: [
       "Formosa Espresso equips Tunisian cafés, restaurants and hotels with Gemilai professional espresso machines and grinders. Our idea is simple: reliable professional equipment at a fair price shown in dinars, with a contact who is still there after delivery.",
       "## Why “Formosa”?",
-      "Formosa, “the beautiful island”, is the old name of Taiwan. That is where our founder lives: a Tunisian based in Asia, close to the manufacturers. It is also what our logo tells: the outline of the island with a portafilter at its heart.",
+      "Formosa, “the beautiful island”, is the old name of Taiwan. That is where our founder lives: a Tunisian based in Asia, close to the manufacturers. It is also what our logo tells: the outline of the island with a coffee branch at its heart.",
       "## Why Gemilai?",
       "Gemilai is an espresso machine manufacturer from Guangdong, present in around thirty countries. Its commercial machines offer what you expect from a real counter (58 mm portafilter, independent boilers, PID temperature control, programmed doses on the top models) at a more accessible price than many alternatives.",
       "## What we do",
@@ -52,7 +52,7 @@ module.exports = [
     ar: [
       "تجهّز Formosa Espresso المقاهي والمطاعم والنزل في تونس بآلات الإسبريسو والمطاحن الاحترافية Gemilai. فكرتنا بسيطة: معدّات احترافية موثوقة بسعر عادل معلن بالدينار، مع مخاطب يبقى إلى جانبك بعد التسليم.",
       "## لماذا «Formosa»؟",
-      "Formosa أي «الجزيرة الجميلة» هو الاسم القديم لتايوان. هناك يعيش مؤسّسنا، تونسي مقيم في آسيا قريبًا من المصنّعين. وهذا ما يرويه شعارنا أيضًا: شكل الجزيرة وفي قلبها حامل فلتر.",
+      "Formosa أي «الجزيرة الجميلة» هو الاسم القديم لتايوان. هناك يعيش مؤسّسنا، تونسي مقيم في آسيا قريبًا من المصنّعين. وهذا ما يرويه شعارنا أيضًا: شكل الجزيرة وفي قلبها غصن شجرة بنّ.",
       "## لماذا Gemilai؟",
       "Gemilai مصنّع لآلات الإسبريسو من مقاطعة غوانغدونغ، حاضر في نحو ثلاثين بلدًا. توفّر آلاته التجارية ما يُنتظر من مشرب حقيقي (حامل فلتر 58 مم، غلايات مستقلة، تحكّم PID في الحرارة، جرعات مبرمجة في الطرازات العليا) بسعر في المتناول أكثر من بدائل كثيرة.",
       "## ماذا نقدّم",
