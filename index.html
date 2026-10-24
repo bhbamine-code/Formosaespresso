@@ -229,6 +229,24 @@ table.cmp{border-collapse:collapse;width:100%;min-width:900px;font-size:.92rem}
 .seen input{accent-color:var(--accent);width:16px;height:16px}
 .lesson.done h4::after{content:" ✓";color:var(--accent)}
 @media (max-width:700px){.lesson{grid-template-columns:1fr}}
+.lvl{display:grid;gap:clamp(28px,4vw,48px)}
+.lvl-h{display:grid;gap:10px;padding:clamp(22px,3vw,36px);background:var(--panel)}
+.lvl-h h2{text-transform:none}
+.lv-toc{list-style:none;margin:4px 0 0;padding:0;display:grid;border-top:1px solid var(--line)}
+.lv-toc li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.lv-toc button{background:none;border:0;padding:0;cursor:pointer;text-align:start;font-size:.95rem}
+.lv-toc button:hover{color:var(--accent)}
+.lv-toc span{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.lesson .frame.written{display:flex;flex-direction:column;justify-content:space-between;padding:18px;background:var(--panel);border:1px solid var(--line)}
+.lesson .frame.written span{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lesson .frame.written b{font-family:var(--display);font-weight:300;font-size:clamp(3rem,6vw,4.5rem);line-height:1;color:var(--accent);align-self:flex-end}
+@media (max-width:700px){.lesson .frame.written{aspect-ratio:auto;flex-direction:row;align-items:center;padding:12px 16px}.lesson .frame.written b{font-size:2rem}}
+.essentiel ul,.reads ul{margin:6px 0 0;padding-inline-start:1.2em;display:grid;gap:6px}
+.essentiel li{color:var(--ink)}
+.exo{border-inline-start:3px solid var(--accent);padding:10px 14px;background:var(--panel);display:grid;gap:4px}
+.exo p{color:var(--ink)}
+.reads a{color:var(--ink)}
+.reads small{display:block;margin-top:6px;color:var(--muted);font-size:.8rem}
 .acad-kit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);background:var(--panel);padding:clamp(22px,4vw,48px)}
 .acad-kit ul{margin:0;padding:0;list-style:none;display:grid;border-top:1px solid var(--line)}
 .acad-kit li{padding:10px 0;border-bottom:1px solid var(--line)}
@@ -458,7 +476,7 @@ html[lang="ar"] .label{font-size:.8rem}
       <div class="stack">
         <p class="label" data-i18n="ac.label">Académie Formosa</p>
         <h2 data-i18n="ac.bandH">apprendre l’espresso, leçon par leçon</h2>
-        <p class="lede" data-i18n="ac.bandP">Des bases à l’entretien : de courtes leçons vidéo, dans l’ordre où un barista les apprend.</p>
+        <p class="lede" data-i18n="ac.bandP">Des bases du café à l’entretien de la machine : de courtes leçons, en vidéo ou écrites.</p>
       </div>
       <div class="acad-cta">
         <ol class="acad-mini" id="acadMini"></ol>
@@ -542,6 +560,7 @@ html[lang="ar"] .label{font-size:.8rem}
 <a class="wa-float" id="waFloat" href="#contact" data-i18n-aria="wa.float" aria-label="Écrire sur WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 3C6.9 3 2.8 6.8 2.8 11.5c0 2.4 1.1 4.6 2.9 6.1L5 21l3.7-1.9c1 .3 2.1.5 3.3.5 5.1 0 9.2-3.8 9.2-8.5S17.1 3 12 3zm-4 9.6a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm4 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm4 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6z"/></svg><span data-i18n="wa.floatShort">WhatsApp</span></a>
 <div class="toast" id="toast" hidden role="status"></div>
 
+<script src="academie.js"></script>
 <script>
 /* ===== Coordonnées à remplacer ===== */
 /* Envoi automatique de chaque demande du formulaire (WhatsApp ou e-mail) vers votre boîte (service gratuit FormSubmit).
@@ -578,7 +597,7 @@ fr: {
   "cmp.label": "Comparer", "cmp.h2": "trouver votre machine",
   "cmp.lede": "Repère : un groupe jusqu’à environ 150 tasses par jour, deux groupes au-delà. La taille de la chaudière vapeur compte si vous servez beaucoup de boissons lactées.",
   "cmp.type": "Type", "cmp.price": "Prix TTC",
-  "nav.learn": "apprendre", "ac.label": "Académie Formosa", "ac.bandH": "apprendre l’espresso, leçon par leçon", "ac.bandP": "Des bases à l’entretien : de courtes leçons vidéo, dans l’ordre où un barista les apprend.", "ac.start": "Commencer les leçons", "ac.resume": "Reprendre : leçon {i}", "ac.h2": "Apprendre l’espresso, leçon par leçon", "ac.lede": "{n} leçons vidéo en {c} chapitres, des bases à l’entretien quotidien. Gratuit, à votre rythme : votre progression est gardée sur cet appareil.", "ac.lang": "Vidéos en arabe, choisies auprès de baristas reconnus. Titres et résumés traduits par Formosa Espresso.", "ac.progress": "{d} / {n} leçons vues", "ac.chap": "Chapitre {i}", "ac.count": "{n} leçon(s)", "ac.lesson": "Leçon {i}", "ac.seen": "Vue", "ac.next": "Leçon suivante", "ac.by": "Vidéo : {c}", "ac.play": "Lire la leçon {i} : {t}", "ac.reset": "Remettre à zéro", "ac.kitH": "Ce qu’il vous faut", "ac.kitP": "Pour suivre les leçons dans de bonnes conditions :", "ac.kit": "Une machine espresso avec porte-filtre 58 mm|Un moulin à meules plates, réglable finement|Un tasseur 58 mm et une balance avec minuteur|Un pichet à lait inox|Un adoucisseur d’eau (l’eau en Tunisie est calcaire)", "ac.seeMachines": "Voir les machines", "ac.trainH": "Apprendre sur votre propre machine", "ac.trainP": "À l’installation, nous formons votre équipe sur place : réglage du moulin sur votre café, extraction, lait et nettoyage quotidien.", "ac.trainBtn": "Demander une formation", "ac.trainMsg": "Je souhaite une formation barista sur place.", "vid.label": "Vidéos", "vid.h2": "voir les machines en action", "vid.lede": "Présentation, utilisation et entretien, filmés par un distributeur Gemilai.", "vid.credit": "Vidéos de Koryaiko Philippine, distributeur Gemilai, diffusées depuis YouTube.", "vid.play": "Lire la vidéo : {t}", "vid.yt": "Voir sur YouTube", "vid.model": "Voir la {n}", "sh.video": "Voir la vidéo", "cmp.open": "Comparer toutes les caractéristiques", "done.title": "Demande envoyée", "done.titleFail": "Dernière étape", "done.wait": "Envoi de votre demande…", "done.ok": "Merci {n} ! Votre demande est bien arrivée chez nous. Nous vous répondons sous un jour ouvré au {p}.", "done.fail": "Merci {n}. L’envoi automatique n’a pas abouti : envoyez le message qui s’est ouvert, ou écrivez-nous sur WhatsApp au {w}.", "done.wa": "Une conversation WhatsApp pré-remplie s’est aussi ouverte : appuyez sur Envoyer pour échanger directement avec nous.", "done.mail": "Un e-mail pré-rempli s’est aussi ouvert dans votre messagerie : envoyez-le si vous voulez en garder une copie.", "done.recap": "Votre demande", "done.again": "Envoyer une autre demande",
+  "nav.learn": "apprendre", "ac.label": "Académie Formosa", "ac.bandH": "apprendre l’espresso, leçon par leçon", "ac.bandP": "Des bases du café à l’entretien de la machine : de courtes leçons, en vidéo ou écrites, dans l’ordre où un barista les apprend, avec un exercice à chaque étape.", "ac.start": "Commencer les leçons", "ac.resume": "Reprendre : leçon {i}", "ac.h2": "Apprendre l’espresso, leçon par leçon", "ac.lede": "{n} leçons en {l} niveaux, des bases du café à l’entretien de la machine : {v} en vidéo, les autres écrites, chacune avec l’essentiel et un exercice. Gratuit, à votre rythme : votre progression est gardée sur cet appareil.", "ac.lang": "Les vidéos sont en arabe, choisies auprès de baristas reconnus. Résumés, points clés et exercices rédigés par Formosa Espresso.", "ac.progress": "{d} / {n} leçons terminées", "ac.chap": "Chapitre {i}", "ac.count": "{n} leçon(s)", "ac.lesson": "Leçon {i}", "ac.seen": "Terminée", "ac.level": "Niveau {i}", "ac.essentiel": "L’essentiel", "ac.exercise": "Exercice au comptoir", "ac.written": "Leçon écrite", "ac.more": "Pour aller plus loin", "ac.moreNote": "Articles de Qavashop Academy, en anglais.", "ac.next": "Leçon suivante", "ac.by": "Vidéo : {c}", "ac.play": "Lire la leçon {i} : {t}", "ac.reset": "Remettre à zéro", "ac.kitH": "Ce qu’il vous faut", "ac.kitP": "Pour suivre les leçons dans de bonnes conditions :", "ac.kit": "Une machine espresso avec porte-filtre 58 mm|Un moulin à meules plates, réglable finement|Un tasseur 58 mm et une balance avec minuteur|Un pichet à lait inox|Un adoucisseur d’eau (l’eau en Tunisie est calcaire)", "ac.seeMachines": "Voir les machines", "ac.trainH": "Apprendre sur votre propre machine", "ac.trainP": "À l’installation, nous formons votre équipe sur place : réglage du moulin sur votre café, extraction, lait et nettoyage quotidien.", "ac.trainBtn": "Demander une formation", "ac.trainMsg": "Je souhaite une formation barista sur place.", "vid.label": "Vidéos", "vid.h2": "voir les machines en action", "vid.lede": "Présentation, utilisation et entretien, filmés par un distributeur Gemilai.", "vid.credit": "Vidéos de Koryaiko Philippine, distributeur Gemilai, diffusées depuis YouTube.", "vid.play": "Lire la vidéo : {t}", "vid.yt": "Voir sur YouTube", "vid.model": "Voir la {n}", "sh.video": "Voir la vidéo", "cmp.open": "Comparer toutes les caractéristiques", "done.title": "Demande envoyée", "done.titleFail": "Dernière étape", "done.wait": "Envoi de votre demande…", "done.ok": "Merci {n} ! Votre demande est bien arrivée chez nous. Nous vous répondons sous un jour ouvré au {p}.", "done.fail": "Merci {n}. L’envoi automatique n’a pas abouti : envoyez le message qui s’est ouvert, ou écrivez-nous sur WhatsApp au {w}.", "done.wa": "Une conversation WhatsApp pré-remplie s’est aussi ouverte : appuyez sur Envoyer pour échanger directement avec nous.", "done.mail": "Un e-mail pré-rempli s’est aussi ouvert dans votre messagerie : envoyez-le si vous voulez en garder une copie.", "done.recap": "Votre demande", "done.again": "Envoyer une autre demande",
   "brand.alt": "Machine Gemilai G3111A et moulin dans un café", "brand.label": "La marque", "brand.h2": "gemilai, la technologie pro depuis 2011.",
   "brand.lede": "Fondé dans le Guangdong, Gemilai fabrique des machines à porte-filtre 58 mm depuis 2012 et des machines commerciales depuis 2015. La marque est présente dans 30 pays, avec plus de 2 millions de machines vendues.",
   "brand.dt1": "Chaudières", "brand.dd1": "Systèmes double et multi-chaudières brevetés, dont le groupe E61 saturé.",
@@ -643,7 +662,7 @@ en: {
   "cmp.label": "Compare", "cmp.h2": "find your machine",
   "cmp.lede": "Rule of thumb: one group up to about 150 cups a day, two groups beyond that. Steam boiler size matters if you serve a lot of milk drinks.",
   "cmp.type": "Type", "cmp.price": "Price incl. VAT",
-  "nav.learn": "learn", "ac.label": "Formosa Academy", "ac.bandH": "learn espresso, lesson by lesson", "ac.bandP": "From the basics to cleaning: short video lessons, in the order a barista learns them.", "ac.start": "Start the lessons", "ac.resume": "Resume: lesson {i}", "ac.h2": "Learn espresso, lesson by lesson", "ac.lede": "{n} video lessons in {c} chapters, from the basics to daily cleaning. Free, at your own pace: your progress is saved on this device.", "ac.lang": "Videos in Arabic, chosen from recognised baristas. Titles and summaries translated by Formosa Espresso.", "ac.progress": "{d} / {n} lessons watched", "ac.chap": "Chapter {i}", "ac.count": "{n} lesson(s)", "ac.lesson": "Lesson {i}", "ac.seen": "Watched", "ac.next": "Next lesson", "ac.by": "Video: {c}", "ac.play": "Play lesson {i}: {t}", "ac.reset": "Reset", "ac.kitH": "What you need", "ac.kitP": "To follow the lessons properly:", "ac.kit": "An espresso machine with a 58 mm portafilter|A flat-burr grinder with fine adjustment|A 58 mm tamper and a scale with timer|A stainless milk pitcher|A water softener (water in Tunisia is hard)", "ac.seeMachines": "See the machines", "ac.trainH": "Learn on your own machine", "ac.trainP": "At installation, we train your team on site: grinder setup for your coffee, extraction, milk and daily cleaning.", "ac.trainBtn": "Request training", "ac.trainMsg": "I would like on-site barista training.", "vid.label": "Videos", "vid.h2": "see the machines in action", "vid.lede": "Overview, everyday use and maintenance, filmed by a Gemilai distributor.", "vid.credit": "Videos by Koryaiko Philippine, Gemilai distributor, played from YouTube.", "vid.play": "Play video: {t}", "vid.yt": "Watch on YouTube", "vid.model": "View the {n}", "sh.video": "Watch the video", "cmp.open": "Compare all specifications", "done.title": "Request sent", "done.titleFail": "One last step", "done.wait": "Sending your request…", "done.ok": "Thank you {n}! Your request has reached us. We will reply within one business day on {p}.", "done.fail": "Thank you {n}. The automatic sending did not go through: please send the message that opened, or write to us on WhatsApp at {w}.", "done.wa": "A pre-filled WhatsApp chat also opened: press Send to talk to us directly.", "done.mail": "A pre-filled e-mail also opened in your mail app: send it if you want to keep a copy.", "done.recap": "Your request", "done.again": "Send another request",
+  "nav.learn": "learn", "ac.label": "Formosa Academy", "ac.bandH": "learn espresso, lesson by lesson", "ac.bandP": "From coffee basics to machine care: short lessons, on video or written, in the order a barista learns them, with an exercise at every step.", "ac.start": "Start the lessons", "ac.resume": "Resume: lesson {i}", "ac.h2": "Learn espresso, lesson by lesson", "ac.lede": "{n} lessons in {l} levels, from coffee basics to machine care: {v} on video, the rest written, each with key points and an exercise. Free, at your own pace: your progress is saved on this device.", "ac.lang": "Videos are in Arabic, chosen from recognised baristas. Summaries, key points and exercises written by Formosa Espresso.", "ac.progress": "{d} / {n} lessons done", "ac.chap": "Chapter {i}", "ac.count": "{n} lesson(s)", "ac.lesson": "Lesson {i}", "ac.seen": "Done", "ac.level": "Level {i}", "ac.essentiel": "Key points", "ac.exercise": "Counter exercise", "ac.written": "Written lesson", "ac.more": "Further reading", "ac.moreNote": "Articles from Qavashop Academy, in English.", "ac.next": "Next lesson", "ac.by": "Video: {c}", "ac.play": "Play lesson {i}: {t}", "ac.reset": "Reset", "ac.kitH": "What you need", "ac.kitP": "To follow the lessons properly:", "ac.kit": "An espresso machine with a 58 mm portafilter|A flat-burr grinder with fine adjustment|A 58 mm tamper and a scale with timer|A stainless milk pitcher|A water softener (water in Tunisia is hard)", "ac.seeMachines": "See the machines", "ac.trainH": "Learn on your own machine", "ac.trainP": "At installation, we train your team on site: grinder setup for your coffee, extraction, milk and daily cleaning.", "ac.trainBtn": "Request training", "ac.trainMsg": "I would like on-site barista training.", "vid.label": "Videos", "vid.h2": "see the machines in action", "vid.lede": "Overview, everyday use and maintenance, filmed by a Gemilai distributor.", "vid.credit": "Videos by Koryaiko Philippine, Gemilai distributor, played from YouTube.", "vid.play": "Play video: {t}", "vid.yt": "Watch on YouTube", "vid.model": "View the {n}", "sh.video": "Watch the video", "cmp.open": "Compare all specifications", "done.title": "Request sent", "done.titleFail": "One last step", "done.wait": "Sending your request…", "done.ok": "Thank you {n}! Your request has reached us. We will reply within one business day on {p}.", "done.fail": "Thank you {n}. The automatic sending did not go through: please send the message that opened, or write to us on WhatsApp at {w}.", "done.wa": "A pre-filled WhatsApp chat also opened: press Send to talk to us directly.", "done.mail": "A pre-filled e-mail also opened in your mail app: send it if you want to keep a copy.", "done.recap": "Your request", "done.again": "Send another request",
   "brand.alt": "Gemilai G3111A machine and grinder in a café", "brand.label": "The brand", "brand.h2": "gemilai, pro technology since 2011.",
   "brand.lede": "Founded in Guangdong, Gemilai has made 58 mm portafilter machines since 2012 and commercial machines since 2015. The brand is present in 30 countries, with more than 2 million machines sold.",
   "brand.dt1": "Boilers", "brand.dd1": "Patented dual and multi-boiler systems, including the saturated E61 group.",
@@ -708,7 +727,7 @@ ar: {
   "cmp.label": "قارن", "cmp.h2": "اعثر على آلتك",
   "cmp.lede": "قاعدة عامة: مجموعة واحدة حتى نحو 150 فنجانًا يوميًا، ومجموعتان لما يزيد عن ذلك. ويهمّ حجم غلاية البخار إن كنت تقدّم الكثير من المشروبات بالحليب.",
   "cmp.type": "النوع", "cmp.price": "السعر بكل الأداءات",
-  "nav.learn": "تعلّم", "ac.label": "أكاديمية Formosa", "ac.bandH": "تعلّم الإسبريسو درسًا بدرس", "ac.bandP": "من الأساسيات إلى التنظيف: دروس فيديو قصيرة، بالترتيب الذي يتعلّم به الباريستا.", "ac.start": "ابدأ الدروس", "ac.resume": "تابع: الدرس {i}", "ac.h2": "تعلّم الإسبريسو درسًا بدرس", "ac.lede": "{n} دروس فيديو في {c} فصول، من الأساسيات إلى التنظيف اليومي. مجانًا وبالوتيرة التي تناسبك: يُحفظ تقدّمك على هذا الجهاز.", "ac.lang": "فيديوهات باللغة العربية من باريستا معروفين، اختارتها Formosa Espresso.", "ac.progress": "{d} / {n} دروس تمت مشاهدتها", "ac.chap": "الفصل {i}", "ac.count": "عدد الدروس: {n}", "ac.lesson": "الدرس {i}", "ac.seen": "شوهد", "ac.next": "الدرس التالي", "ac.by": "الفيديو: {c}", "ac.play": "تشغيل الدرس {i}: {t}", "ac.reset": "إعادة الضبط", "ac.kitH": "ما تحتاجه", "ac.kitP": "لمتابعة الدروس في ظروف جيدة:", "ac.kit": "آلة إسبريسو بحامل فلتر 58 mm|مطحنة بشفرات مسطحة وضبط دقيق|كابس 58 mm وميزان بمؤقّت|إبريق حليب من الستانلس|مُليّن للماء (الماء في تونس كلسي)", "ac.seeMachines": "عرض الآلات", "ac.trainH": "تعلّم على آلتك الخاصة", "ac.trainP": "عند التركيب، ندرّب فريقك في عين المكان: ضبط المطحنة على قهوتك، الاستخلاص، الحليب والتنظيف اليومي.", "ac.trainBtn": "اطلب تكوينًا", "ac.trainMsg": "أرغب في تكوين باريستا في عين المكان.", "vid.label": "فيديوهات", "vid.h2": "شاهد الآلات أثناء العمل", "vid.lede": "تقديم واستعمال وصيانة، من تصوير موزّع لـ Gemilai.", "vid.credit": "فيديوهات من Koryaiko Philippine، موزّع Gemilai، تُعرض من يوتيوب.", "vid.play": "تشغيل الفيديو: {t}", "vid.yt": "شاهد على يوتيوب", "vid.model": "عرض {n}", "sh.video": "شاهد الفيديو", "cmp.open": "قارن كل المواصفات", "done.title": "تم إرسال طلبك", "done.titleFail": "خطوة أخيرة", "done.wait": "جارٍ إرسال طلبك…", "done.ok": "شكرًا {n}! وصلنا طلبك، وسنردّ عليك في أجل يوم عمل على الرقم {p}.", "done.fail": "شكرًا {n}. لم يتم الإرسال التلقائي: يُرجى إرسال الرسالة التي فُتحت، أو مراسلتنا عبر واتساب على {w}.", "done.wa": "فُتحت أيضًا محادثة واتساب جاهزة: اضغط على «إرسال» للتحدث معنا مباشرة.", "done.mail": "فُتحت أيضًا رسالة بريد إلكتروني جاهزة في تطبيقك: أرسلها إن أردت الاحتفاظ بنسخة.", "done.recap": "طلبك", "done.again": "إرسال طلب آخر",
+  "nav.learn": "تعلّم", "ac.label": "أكاديمية Formosa", "ac.bandH": "تعلّم الإسبريسو درسًا بدرس", "ac.bandP": "من أساسيات البن إلى صيانة الآلة: دروس قصيرة بالفيديو أو مكتوبة، بالترتيب الذي يتعلّم به الباريستا، مع تمرين في كل خطوة.", "ac.start": "ابدأ الدروس", "ac.resume": "تابع: الدرس {i}", "ac.h2": "تعلّم الإسبريسو درسًا بدرس", "ac.lede": "{n} درسًا في {l} مستويات، من أساسيات البن إلى صيانة الآلة: {v} بالفيديو والباقي مكتوبة، ولكلٍّ منها خلاصة وتمرين. مجانًا وبالوتيرة التي تناسبك: يُحفظ تقدّمك على هذا الجهاز.", "ac.lang": "الفيديوهات باللغة العربية من باريستا معروفين. الملخّصات والخلاصات والتمارين من إعداد Formosa Espresso.", "ac.progress": "الدروس المنجزة: {d} / {n}", "ac.chap": "الفصل {i}", "ac.count": "عدد الدروس: {n}", "ac.lesson": "الدرس {i}", "ac.seen": "أنهيته", "ac.level": "المستوى {i}", "ac.essentiel": "الخلاصة", "ac.exercise": "تمرين على المشرب", "ac.written": "درس مكتوب", "ac.more": "للمزيد من القراءة", "ac.moreNote": "مقالات من أكاديمية Qavashop، باللغة الإنجليزية.", "ac.next": "الدرس التالي", "ac.by": "الفيديو: {c}", "ac.play": "تشغيل الدرس {i}: {t}", "ac.reset": "إعادة الضبط", "ac.kitH": "ما تحتاجه", "ac.kitP": "لمتابعة الدروس في ظروف جيدة:", "ac.kit": "آلة إسبريسو بحامل فلتر 58 mm|مطحنة بشفرات مسطحة وضبط دقيق|كابس 58 mm وميزان بمؤقّت|إبريق حليب من الستانلس|مُليّن للماء (الماء في تونس كلسي)", "ac.seeMachines": "عرض الآلات", "ac.trainH": "تعلّم على آلتك الخاصة", "ac.trainP": "عند التركيب، ندرّب فريقك في عين المكان: ضبط المطحنة على قهوتك، الاستخلاص، الحليب والتنظيف اليومي.", "ac.trainBtn": "اطلب تكوينًا", "ac.trainMsg": "أرغب في تكوين باريستا في عين المكان.", "vid.label": "فيديوهات", "vid.h2": "شاهد الآلات أثناء العمل", "vid.lede": "تقديم واستعمال وصيانة، من تصوير موزّع لـ Gemilai.", "vid.credit": "فيديوهات من Koryaiko Philippine، موزّع Gemilai، تُعرض من يوتيوب.", "vid.play": "تشغيل الفيديو: {t}", "vid.yt": "شاهد على يوتيوب", "vid.model": "عرض {n}", "sh.video": "شاهد الفيديو", "cmp.open": "قارن كل المواصفات", "done.title": "تم إرسال طلبك", "done.titleFail": "خطوة أخيرة", "done.wait": "جارٍ إرسال طلبك…", "done.ok": "شكرًا {n}! وصلنا طلبك، وسنردّ عليك في أجل يوم عمل على الرقم {p}.", "done.fail": "شكرًا {n}. لم يتم الإرسال التلقائي: يُرجى إرسال الرسالة التي فُتحت، أو مراسلتنا عبر واتساب على {w}.", "done.wa": "فُتحت أيضًا محادثة واتساب جاهزة: اضغط على «إرسال» للتحدث معنا مباشرة.", "done.mail": "فُتحت أيضًا رسالة بريد إلكتروني جاهزة في تطبيقك: أرسلها إن أردت الاحتفاظ بنسخة.", "done.recap": "طلبك", "done.again": "إرسال طلب آخر",
   "brand.alt": "آلة Gemilai G3111A ومطحنة في مقهى", "brand.label": "العلامة", "brand.h2": "Gemilai، تكنولوجيا احترافية منذ 2011.",
   "brand.lede": "تأسست Gemilai في مقاطعة قوانغدونغ، وتصنع آلات بحامل فلتر 58 mm منذ 2012 وآلات احترافية منذ 2015. العلامة حاضرة في 30 بلدًا وباعت أكثر من مليوني آلة.",
   "brand.dt1": "الغلايات", "brand.dd1": "أنظمة غلايتين وغلايات متعددة محميّة ببراءات اختراع، منها مجموعة E61 المشبّعة.",
@@ -988,84 +1007,74 @@ function playVideo(id){
   const f = document.querySelector(`#vid-${id} .frame`); if (f) f.innerHTML = ytEmbed(id);
 }
 
-/* ===== académie (leçons vidéo) ===== */
-const CHAPTERS = [
-  L3("Les bases", "The basics", "الأساسيات"),
-  L3("Le café", "The coffee", "البن"),
-  L3("Régler et corriger", "Dial in and fix", "الضبط والتصحيح"),
-  L3("Le lait", "Milk", "الحليب"),
-  L3("L’entretien", "Cleaning", "التنظيف")
-];
-const LESSONS = [
-  { id:"34gfHUU3KSc", ch:0, by:"Qavashop", title:L3("Réussir son premier espresso", "Your first good espresso", "أول إسبريسو ناجح"),
-    text:L3("Simple ou double, ratio, mouture, tassage et 25 à 30 secondes d’extraction.", "Single or double, ratio, grind, tamping and a 25 to 30 second shot.", "مفرد أو مزدوج، النسبة، الطحنة، الكبس، واستخلاص من 25 إلى 30 ثانية.") },
-  { id:"1--98uRngJo", ch:0, by:"Qavashop", title:L3("Lire la crème", "Reading the crema", "فهم الكريما"),
-    text:L3("Ce que la crème dit de votre extraction, et ses limites.", "What crema tells you about your shot, and its limits.", "ماذا تخبرك الكريما عن الاستخلاص، وما حدودها.") },
-  { id:"UthE8Uj_MAs", ch:1, by:"Qavashop", title:L3("Choisir un café pour l’espresso", "Choosing coffee for espresso", "اختيار البن للإسبريسو"),
-    text:L3("Torréfaction, origine, procédé : pourquoi tout café ne convient pas.", "Roast, origin and processing: why not every coffee works.", "التحميص والمصدر والمعالجة: لماذا لا يصلح كل بن.") },
-  { id:"TG1tuwq5Rrw", ch:1, by:"Qavashop", dur:"5:53", title:L3("Torréfaction claire ou foncée ?", "Light or dark roast?", "تحميص فاتح أم داكن؟"),
-    text:L3("Pourquoi une torréfaction moyenne-foncée se règle plus facilement en café.", "Why a medium-dark roast is easier to dial in for a café.", "لماذا يسهل ضبط التحميص المتوسط الداكن في المقهى.") },
-  { id:"CfeBkgGpbGY", ch:2, by:"Coffee With Ahmed", title:L3("Régler son espresso pas à pas", "Dialling in, step by step", "معايرة الإسبريسو خطوة بخطوة"),
-    text:L3("La méthode pour ajuster mouture et dose jusqu’à la bonne tasse.", "The method to adjust grind and dose until the cup is right.", "طريقة ضبط الطحنة والجرعة حتى الوصول إلى الكوب المطلوب.") },
-  { id:"VG7jmgxn67w", ch:2, by:"Qavashop", dur:"5:36", title:L3("5 erreurs qui gâchent l’espresso", "5 mistakes that ruin espresso", "5 أخطاء تفسد الإسبريسو"),
-    text:L3("Café éventé, température instable, trop de réglages à la fois, nettoyage oublié.", "Stale beans, unstable temperature, changing too much at once, skipped cleaning.", "بن قديم، حرارة غير مستقرة، تغيير أكثر من متغيّر، وإهمال التنظيف.") },
-  { id:"jbwI3EwTH9M", ch:2, by:"Qavashop", title:L3("Le porte-filtre sans fond", "The bottomless portafilter", "البورتافلتر المكشوف"),
-    text:L3("Voir l’extraction pour repérer un tassage inégal et les canaux.", "Watch the extraction to spot uneven tamping and channelling.", "مراقبة الاستخلاص لاكتشاف الكبس غير المتساوي والقنوات.") },
-  { id:"SkZio_PKaU0", ch:3, by:"Qavashop", title:L3("Texturer le lait", "Steaming milk", "تبخير الحليب"),
-    text:L3("Une mousse fine et brillante pour cappuccino, latte et latte art.", "Fine, glossy microfoam for cappuccino, latte and latte art.", "رغوة ناعمة ولامعة للكابتشينو واللاتيه وفن اللاتيه.") },
-  { id:"Co7G2TuxGeY", ch:4, by:"Abdulmohsin Alobid", dur:"8:46", title:L3("Nettoyer le groupe (backflush)", "Cleaning the group (backflush)", "تنظيف المجموعة (باكفلش)"),
-    text:L3("Le geste quotidien qui protège la machine et le goût du café.", "The daily routine that protects the machine and the taste.", "الإجراء اليومي الذي يحمي الآلة وطعم القهوة.") }
-];
+/* ===== académie (contenu dans academie.js) ===== */
+const ACAD = window.ACADEMY || { LEVELS: [], CHAPTERS: [], LESSONS: [] };
+const LEVELS = ACAD.LEVELS, CHAPTERS = ACAD.CHAPTERS, LESSONS = ACAD.LESSONS;
 let seen = new Set();
 try { seen = new Set(JSON.parse(localStorage.getItem("fe-academy") || "[]")); } catch(err){}
 function saveSeen(){ try { localStorage.setItem("fe-academy", JSON.stringify([...seen])); } catch(err){} }
 const lessonsPlaying = new Set();
-const nextUnseen = () => LESSONS.findIndex(l => !seen.has(l.id));
+const nextUnseen = () => LESSONS.findIndex(l => !seen.has(l.key));
+const levelLessons = li => LESSONS.filter(l => CHAPTERS[l.ch] && CHAPTERS[l.ch].level === li);
 function renderAcadMini(){
   const el = document.getElementById("acadMini"); if (!el) return;
-  el.innerHTML = CHAPTERS.map((c, i) => `<li>${esc(T(c))}<span>${esc(t("ac.chap", {i:i+1}))} · ${esc(t("ac.count", {n: LESSONS.filter(l => l.ch === i).length}))}</span></li>`).join("");
+  el.innerHTML = LEVELS.map((lv, i) => `<li>${esc(t("ac.level", {i: i+1}))} · ${esc(T(lv.title))}<span>${esc(t("ac.count", {n: levelLessons(i).length}))}</span></li>`).join("");
   const n = nextUnseen(), btn = document.querySelector(".acad-band [data-academy]");
-  if (btn) btn.textContent = seen.size && n >= 0 ? t("ac.resume", {i:n+1}) : t("ac.start");
+  if (btn) btn.textContent = seen.size && n >= 0 ? t("ac.resume", {i: n+1}) : t("ac.start");
 }
 function lessonFrame(l, i){
-  return lessonsPlaying.has(l.id)
-    ? `<iframe src="https://www.youtube-nocookie.com/embed/${l.id}?autoplay=1&rel=0" title="${esc(T(l.title))}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`
-    : `<img src="https://i.ytimg.com/vi/${l.id}/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><button class="play" type="button" data-lplay="${l.id}" aria-label="${esc(t("ac.play", {i:i+1, t:T(l.title)}))}"><span></span></button>`;
+  if (!l.video) return `<div class="frame written" aria-hidden="true"><span>${esc(t("ac.written"))}</span><b>${String(i+1).padStart(2, "0")}</b></div>`;
+  return `<div class="frame">${lessonsPlaying.has(l.key)
+    ? `<iframe src="https://www.youtube-nocookie.com/embed/${l.video}?autoplay=1&rel=0" title="${esc(T(l.title))}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`
+    : `<img src="https://i.ytimg.com/vi/${l.video}/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><button class="play" type="button" data-lplay="${l.key}" aria-label="${esc(t("ac.play", {i: i+1, t: T(l.title)}))}"><span></span></button>`}</div>`;
+}
+function lessonHTML(l, i){
+  const arrow = lang === "ar" ? "←" : "→";
+  return `
+    <article class="lesson${seen.has(l.key) ? " done" : ""}" id="les-${l.key}">
+      ${lessonFrame(l, i)}
+      <div class="txt">
+        <div class="meta"><span>${esc(t("ac.lesson", {i: i+1}))}</span>${l.dur ? `<span>${l.dur}</span>` : ""}${l.video ? `<span>${esc(t("ac.by", {c: l.by}))}</span>` : `<span>${esc(t("ac.written"))}</span>`}</div>
+        <h4>${esc(T(l.title))}</h4>
+        <p>${esc(T(l.text))}</p>
+        <div class="essentiel"><span class="label">${esc(t("ac.essentiel"))}</span><ul>${l.pts.map(p => `<li>${esc(T(p))}</li>`).join("")}</ul></div>
+        <div class="exo"><span class="label">${esc(t("ac.exercise"))}</span><p>${esc(T(l.ex))}</p></div>
+        ${l.read && l.read.length ? `<div class="reads"><span class="label">${esc(t("ac.more"))}</span><ul>${l.read.map(r => `<li><a href="${esc(r.u)}" target="_blank" rel="noopener" lang="en" dir="ltr">${esc(r.t)}</a></li>`).join("")}</ul><small>${esc(t("ac.moreNote"))}</small></div>` : ""}
+        <div class="acts">
+          <label class="seen"><input type="checkbox" data-lseen="${l.key}"${seen.has(l.key) ? " checked" : ""}> ${esc(t("ac.seen"))}</label>
+          ${i < LESSONS.length - 1 ? `<button class="lnk" type="button" data-lgo="${LESSONS[i+1].key}">${esc(t("ac.next"))} ${arrow}</button>` : ""}
+          ${l.video ? `<a href="https://www.youtube.com/watch?v=${l.video}" target="_blank" rel="noopener">${esc(t("vid.yt"))}</a>` : ""}
+        </div>
+      </div>
+    </article>`;
 }
 function openAcademy(keepFocus, scrollTo){
   if (!keepFocus) lastFocus = document.activeElement;
   const keepScroll = keepFocus ? sheet.scrollTop : 0;
   openId = "__acad";
-  const d = LESSONS.filter(l => seen.has(l.id)).length, n = LESSONS.length, nx = nextUnseen();
+  const d = LESSONS.filter(l => seen.has(l.key)).length, n = LESSONS.length, nx = nextUnseen();
+  const nv = LESSONS.filter(l => l.video).length;
   sheet.innerHTML = `
     <div class="sheet-bar"><div class="wrap"><span class="crumb">${esc(t("ac.label").toLowerCase())}</span><button class="btn ghost" data-close>${esc(t("sh.close"))}</button></div></div>
     <div class="wrap acad">
       <div class="acad-head">
         <div class="stack"><p class="label">${esc(t("ac.label"))}</p><h2 id="pdName">${esc(t("ac.h2"))}</h2>
-          <p class="lede">${esc(t("ac.lede", {n, c: CHAPTERS.length}))}</p><p class="note" style="margin:0">${esc(t("ac.lang"))}</p></div>
+          <p class="lede">${esc(t("ac.lede", {n, l: LEVELS.length, v: nv}))}</p><p class="note" style="margin:0">${esc(t("ac.lang"))}</p></div>
         <div class="acad-prog" aria-live="polite">
           <div class="row"><b>${esc(t("ac.progress", {d, n}))}</b>${d ? `<button class="link" type="button" data-lreset style="font-size:.85rem">${esc(t("ac.reset"))}</button>` : ""}</div>
           <div class="bar"><i style="width:${Math.round(d / n * 100)}%"></i></div>
-          ${nx >= 0 ? `<button class="btn" type="button" data-lgo="${LESSONS[nx].id}">${esc(d ? t("ac.resume", {i: nx+1}) : t("ac.start"))}</button>` : ""}
+          ${nx >= 0 ? `<button class="btn" type="button" data-lgo="${LESSONS[nx].key}">${esc(d ? t("ac.resume", {i: nx+1}) : t("ac.start"))}</button>` : ""}
+          <ol class="lv-toc">${LEVELS.map((lv, li) => `<li><button type="button" data-lvl="${li}"><b>${esc(t("ac.level", {i: li+1}))}</b> ${esc(T(lv.title))}</button><span>${levelLessons(li).filter(l => seen.has(l.key)).length}/${levelLessons(li).length}</span></li>`).join("")}</ol>
         </div>
       </div>
-      ${CHAPTERS.map((c, ci) => `
-      <section class="chap" aria-labelledby="ch${ci}">
-        <div class="chap-h"><span class="n">${esc(t("ac.chap", {i: ci+1}))}</span><h3 id="ch${ci}">${esc(T(c))}</h3></div>
-        ${LESSONS.map((l, i) => l.ch !== ci ? "" : `
-        <article class="lesson${seen.has(l.id) ? " done" : ""}" id="les-${l.id}">
-          <div class="frame">${lessonFrame(l, i)}</div>
-          <div class="txt">
-            <div class="meta"><span>${esc(t("ac.lesson", {i: i+1}))}</span>${l.dur ? `<span>${l.dur}</span>` : ""}<span>${esc(t("ac.by", {c: l.by}))}</span></div>
-            <h4>${esc(T(l.title))}</h4>
-            <p>${esc(T(l.text))}</p>
-            <div class="acts">
-              <label class="seen"><input type="checkbox" data-lseen="${l.id}"${seen.has(l.id) ? " checked" : ""}> ${esc(t("ac.seen"))}</label>
-              ${i < LESSONS.length - 1 ? `<button class="lnk" type="button" data-lgo="${LESSONS[i+1].id}">${esc(t("ac.next"))} ${lang === "ar" ? "←" : "→"}</button>` : ""}
-              <a href="https://www.youtube.com/watch?v=${l.id}" target="_blank" rel="noopener">${esc(t("vid.yt"))}</a>
-            </div>
-          </div>
-        </article>`).join("")}
+      ${LEVELS.map((lv, li) => `
+      <section class="lvl" id="lvl-${li}" aria-labelledby="lvh${li}">
+        <div class="lvl-h"><span class="label">${esc(t("ac.level", {i: li+1}))}</span><h2 id="lvh${li}">${esc(T(lv.title))}</h2><p class="lede">${esc(T(lv.text))}</p></div>
+        ${CHAPTERS.map((c, ci) => c.level !== li ? "" : `
+        <section class="chap" aria-labelledby="ch${ci}">
+          <div class="chap-h"><span class="n">${esc(t("ac.chap", {i: ci+1}))}</span><h3 id="ch${ci}">${esc(T(c.title))}</h3></div>
+          ${LESSONS.map((l, i) => l.ch !== ci ? "" : lessonHTML(l, i)).join("")}
+        </section>`).join("")}
       </section>`).join("")}
       <div class="acad-kit">
         <div class="stack"><h3>${esc(t("ac.kitH"))}</h3><p class="lede">${esc(t("ac.kitP"))}</p>
@@ -1078,11 +1087,11 @@ function openAcademy(keepFocus, scrollTo){
   sheet.hidden = false; document.body.style.overflow = "hidden";
   if (keepFocus) sheet.scrollTop = keepScroll;
   else { sheet.scrollTop = 0; sheet.querySelector("[data-close]").focus(); }
-  if (scrollTo) { const el = document.getElementById("les-" + scrollTo); if (el) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }
+  if (scrollTo) { const el = document.getElementById(scrollTo.startsWith("lvl-") ? scrollTo : "les-" + scrollTo); if (el) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }
 }
 function markSeen(id, on){ if (on) seen.add(id); else seen.delete(id); saveSeen(); renderAcadMini(); }
-function playLesson(id){
-  lessonsPlaying.clear(); lessonsPlaying.add(id); markSeen(id, true);
+function playLesson(key){
+  lessonsPlaying.clear(); lessonsPlaying.add(key); markSeen(key, true);
   openAcademy(true);
 }
 
@@ -1211,8 +1220,9 @@ document.addEventListener("click", e => {
   const o = e.target.closest("[data-open]"); if (o){ e.preventDefault(); openProduct(o.dataset.open); return; }
   if (e.target.closest("[data-close]")) { closeSheet(); return; }
   if (e.target.closest("[data-compare]")) { e.preventDefault(); closeMenu(); openCompare(); return; }
-  if (e.target.closest("[data-academy]")) { e.preventDefault(); closeMenu(); const nx = nextUnseen(); openAcademy(false); if (seen.size && nx >= 0) { const el = document.getElementById("les-" + LESSONS[nx].id); if (el) el.scrollIntoView({ block: "start" }); } return; }
+  if (e.target.closest("[data-academy]")) { e.preventDefault(); closeMenu(); const nx = nextUnseen(); openAcademy(false); if (seen.size && nx >= 0) { const el = document.getElementById("les-" + LESSONS[nx].key); if (el) el.scrollIntoView({ block: "start" }); } return; }
   const lp = e.target.closest("[data-lplay]"); if (lp) { playLesson(lp.dataset.lplay); return; }
+  const lv = e.target.closest("[data-lvl]"); if (lv) { const el = document.getElementById("lvl-" + lv.dataset.lvl); if (el) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); return; }
   const lg = e.target.closest("[data-lgo]"); if (lg) { lessonsPlaying.clear(); openAcademy(true, lg.dataset.lgo); return; }
   if (e.target.closest("[data-lreset]")) { seen.clear(); lessonsPlaying.clear(); saveSeen(); renderAcadMini(); openAcademy(true); return; }
   if (e.target.closest("[data-acad-gamme]")) { e.preventDefault(); closeSheet(); filter = "machine"; renderFilters(); renderRange(); document.getElementById("gamme").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); return; }
@@ -1233,7 +1243,7 @@ function closeMenu(){ nav.classList.remove("open"); mb.setAttribute("aria-expand
 mb.addEventListener("click", () => { const o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
 nav.addEventListener("click", e => { if (e.target.closest("a")) closeMenu(); });
 
-document.addEventListener("change", e => { const c = e.target.closest("[data-lseen]"); if (!c) return; markSeen(c.dataset.lseen, c.checked); const art = document.getElementById("les-" + c.dataset.lseen); if (art) art.classList.toggle("done", c.checked); const d = LESSONS.filter(l => seen.has(l.id)).length; const b = sheet.querySelector(".acad-prog b"); if (b) b.textContent = t("ac.progress", {d, n: LESSONS.length}); const bar = sheet.querySelector(".acad-prog .bar i"); if (bar) bar.style.width = Math.round(d / LESSONS.length * 100) + "%"; });
+document.addEventListener("change", e => { const c = e.target.closest("[data-lseen]"); if (!c) return; markSeen(c.dataset.lseen, c.checked); const art = document.getElementById("les-" + c.dataset.lseen); if (art) art.classList.toggle("done", c.checked); const d = LESSONS.filter(l => seen.has(l.key)).length; const b = sheet.querySelector(".acad-prog b"); if (b) b.textContent = t("ac.progress", {d, n: LESSONS.length}); const bar = sheet.querySelector(".acad-prog .bar i"); if (bar) bar.style.width = Math.round(d / LESSONS.length * 100) + "%"; });
 let tt; function toast(m){ const el = document.getElementById("toast"); el.textContent = m; el.hidden = false; clearTimeout(tt); tt = setTimeout(() => el.hidden = true, Math.max(2600, m.length * 55)); }
 
 /* ===== language switch ===== */
