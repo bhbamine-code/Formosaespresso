@@ -206,7 +206,7 @@ table.cmp{border-collapse:collapse;width:100%;min-width:900px;font-size:.92rem}
 .coords dd{margin:2px 0 0;font-size:1.05rem}
 .copyline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .copy-btn{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--line);padding:4px 8px;cursor:pointer;color:var(--muted)}
-form.req{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+form.req{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
 .f{display:grid;gap:6px;min-width:0}
 .f.full{grid-column:1/-1}
 .f label{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -403,9 +403,7 @@ html[lang="ar"] .label{font-size:.8rem}
         </dl>
       </div>
       <form class="req" id="req">
-        <div class="f full"><label for="fModel" data-i18n="f.model">Modèle</label><select id="fModel"></select></div>
-        <div class="f"><label for="fName" data-i18n="f.name">Nom</label><input id="fName" required autocomplete="name"></div>
-        <div class="f"><label for="fPhone" data-i18n="f.phone">Téléphone</label><input id="fPhone" type="tel" required autocomplete="tel" placeholder="+216"></div>
+        <div class="f"><label for="fModel" data-i18n="f.model">Modèle</label><select id="fModel"></select></div>
         <div class="f"><label for="fType" data-i18n="f.type">Établissement</label><select id="fType">
           <option value="cafe" data-i18n="t.cafe">Café / salon de thé</option>
           <option value="resto" data-i18n="t.resto">Restaurant</option>
@@ -414,7 +412,11 @@ html[lang="ar"] .label{font-size:.8rem}
           <option value="office" data-i18n="t.office">Bureau</option>
           <option value="reseller" data-i18n="t.reseller">Revendeur</option>
         </select></div>
+        <div class="f"><label for="fName" data-i18n="f.name">Nom</label><input id="fName" required autocomplete="name"></div>
+        <div class="f"><label for="fPhone" data-i18n="f.phone">Téléphone</label><input id="fPhone" type="tel" required autocomplete="tel" placeholder="+216"></div>
+        <div class="f"><label for="fEmail" data-i18n="f.email">E-mail (facultatif)</label><input id="fEmail" type="email" autocomplete="email" dir="ltr"></div>
         <div class="f"><label for="fCity" data-i18n="f.city">Ville</label><input id="fCity" required></div>
+        <input type="text" name="_honey" id="fHoney" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div class="f full"><label for="fMsg" data-i18n="f.project">Votre projet</label><textarea id="fMsg" data-i18n-ph="f.msgPh"></textarea></div>
         <div class="send"><small data-i18n="f.small"></small><button class="btn wa" type="submit" data-via="wa" data-i18n="f.wa">Envoyer par WhatsApp</button><button class="btn ghost" type="submit" data-via="mail" data-i18n="f.mail">Par e-mail</button></div>
       </form>
@@ -437,6 +439,9 @@ html[lang="ar"] .label{font-size:.8rem}
 
 <script>
 /* ===== Coordonnées à remplacer ===== */
+/* Envoi automatique de chaque demande du formulaire (WhatsApp ou e-mail) vers votre boîte (service gratuit FormSubmit).
+   La toute première demande déclenche un e-mail d’activation de FormSubmit : cliquez sur « Activate Form ». */
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/contact@formosaespresso.com";
 const CONFIG = { email: "contact@formosaespresso.com", phone: "+216 00 000 000", whatsapp: "21600000000" };
 
 /* ===== Langues : fr (par défaut), en, ar ===== */
@@ -488,14 +493,14 @@ fr: {
     "ct.label": "Contact", "ct.h2": "parlons de votre comptoir",
   "ct.lede": "Indiquez le modèle qui vous intéresse et votre ville : nous répondons sous un jour ouvré avec un prix ferme.",
   "ct.email": "E-mail", "ct.phone": "Téléphone · WhatsApp", "ct.showroom": "Showroom", "ct.showroomV": "Tunis, démonstration sur rendez-vous", "ct.hours": "Horaires", "ct.hoursV": "Lundi au samedi, 9 h – 18 h", "ct.copy": "Copier",
-  "f.model": "Modèle", "f.name": "Nom", "f.phone": "Téléphone", "f.type": "Établissement", "f.city": "Ville", "f.project": "Votre projet",
+  "f.model": "Modèle", "f.name": "Nom", "f.phone": "Téléphone", "f.type": "Établissement", "f.city": "Ville", "f.email": "E-mail (facultatif)", "f.project": "Votre projet",
   "t.cafe": "Café / salon de thé", "t.resto": "Restaurant", "t.hotel": "Hôtel", "t.kiosk": "Coffee-shop / kiosque", "t.office": "Bureau", "t.reseller": "Revendeur",
   "f.msgPh": "Ex. : ouverture d’un café à Sousse, environ 200 tasses par jour.",
-  "f.small": "Votre demande s’ouvre pré-remplie dans WhatsApp ou votre messagerie.",
+  "f.small": "Votre demande nous est transmise automatiquement et s’ouvre aussi pré-remplie dans WhatsApp ou votre messagerie.",
   "f.wa": "Envoyer par WhatsApp", "f.mail": "Par e-mail", "f.advise": "Je ne sais pas encore, conseillez-moi", "f.toAdvise": "à conseiller",
   "msg.hello": "Bonjour Formosa Espresso,", "msg.quote": "Je souhaite un devis.", "msg.subject": "Demande de devis — {m}",
   "msg.waQuote": "Bonjour Formosa Espresso, je souhaite un devis pour la {n} ({p} TTC).",
-  "toast.wa": "Votre demande s’ouvre dans WhatsApp.", "toast.mail": "Votre demande s’ouvre dans votre messagerie.", "toast.copied": "Copié : {t}", "toast.select": "Texte sélectionné, copiez-le.",
+  "toast.wa": "Votre demande s’ouvre dans WhatsApp.", "toast.mail": "Votre demande s’ouvre dans votre messagerie.", "toast.sent": "Merci ! Votre demande nous a bien été envoyée. Nous vous répondons sous un jour ouvré.", "toast.copied": "Copié : {t}", "toast.select": "Texte sélectionné, copiez-le.",
   "sh.close": "Fermer", "sh.price": "Prix indicatif TTC", "sh.quote": "Demander un devis", "sh.wa": "WhatsApp",
   "sh.photo": "Photo {i}", "sh.photoProd": "Photo produit", "sh.photoScene": "Photo en situation", "sh.inUse": "{n} en situation",
   "ft.tag": "Machines espresso et moulins professionnels Gemilai pour les cafés, restaurants et hôtels en Tunisie.",
@@ -552,14 +557,14 @@ en: {
     "ct.label": "Contact", "ct.h2": "let’s talk about your counter",
   "ct.lede": "Tell us which model interests you and your city: we reply within one business day with a firm price.",
   "ct.email": "E-mail", "ct.phone": "Phone · WhatsApp", "ct.showroom": "Showroom", "ct.showroomV": "Tunis, demonstrations by appointment", "ct.hours": "Opening hours", "ct.hoursV": "Monday to Saturday, 9 am – 6 pm", "ct.copy": "Copy",
-  "f.model": "Model", "f.name": "Name", "f.phone": "Phone", "f.type": "Business type", "f.city": "City", "f.project": "Your project",
+  "f.model": "Model", "f.name": "Name", "f.phone": "Phone", "f.type": "Business type", "f.city": "City", "f.email": "E-mail (optional)", "f.project": "Your project",
   "t.cafe": "Café / tea room", "t.resto": "Restaurant", "t.hotel": "Hotel", "t.kiosk": "Coffee shop / kiosk", "t.office": "Office", "t.reseller": "Reseller",
   "f.msgPh": "E.g. opening a café in Sousse, around 200 cups a day.",
-  "f.small": "Your request opens pre-filled in WhatsApp or your e-mail app.",
+  "f.small": "Your request is sent to us automatically and also opens pre-filled in WhatsApp or your e-mail app.",
   "f.wa": "Send via WhatsApp", "f.mail": "By e-mail", "f.advise": "Not sure yet, advise me", "f.toAdvise": "to be advised",
   "msg.hello": "Hello Formosa Espresso,", "msg.quote": "I would like a quote.", "msg.subject": "Quote request — {m}",
   "msg.waQuote": "Hello Formosa Espresso, I would like a quote for the {n} ({p} incl. VAT).",
-  "toast.wa": "Your request is opening in WhatsApp.", "toast.mail": "Your request is opening in your e-mail app.", "toast.copied": "Copied: {t}", "toast.select": "Text selected, copy it.",
+  "toast.wa": "Your request is opening in WhatsApp.", "toast.mail": "Your request is opening in your e-mail app.", "toast.sent": "Thank you! Your request has been sent to us. We will reply within one business day.", "toast.copied": "Copied: {t}", "toast.select": "Text selected, copy it.",
   "sh.close": "Close", "sh.price": "Indicative price incl. VAT", "sh.quote": "Request a quote", "sh.wa": "WhatsApp",
   "sh.photo": "Photo {i}", "sh.photoProd": "Product photo", "sh.photoScene": "Photo in use", "sh.inUse": "{n} in use",
   "ft.tag": "Gemilai professional espresso machines and grinders for cafés, restaurants and hotels in Tunisia.",
@@ -616,14 +621,14 @@ ar: {
     "ct.label": "اتصل بنا", "ct.h2": "لنتحدث عن مشروعك",
   "ct.lede": "أخبرنا بالموديل الذي يهمّك ومدينتك: نردّ عليك في أجل يوم عمل بسعر نهائي.",
   "ct.email": "البريد الإلكتروني", "ct.phone": "الهاتف · واتساب", "ct.showroom": "صالة العرض", "ct.showroomV": "تونس العاصمة، عرض تجريبي بموعد مسبق", "ct.hours": "أوقات العمل", "ct.hoursV": "من الاثنين إلى السبت، 9:00 – 18:00", "ct.copy": "نسخ",
-  "f.model": "الموديل", "f.name": "الاسم", "f.phone": "الهاتف", "f.type": "نوع المؤسسة", "f.city": "المدينة", "f.project": "مشروعك",
+  "f.model": "الموديل", "f.name": "الاسم", "f.phone": "الهاتف", "f.type": "نوع المؤسسة", "f.city": "المدينة", "f.email": "البريد الإلكتروني (اختياري)", "f.project": "مشروعك",
   "t.cafe": "مقهى / صالون شاي", "t.resto": "مطعم", "t.hotel": "نزل", "t.kiosk": "كوفي شوب / كشك", "t.office": "مكتب", "t.reseller": "موزّع",
   "f.msgPh": "مثال: افتتاح مقهى في سوسة، نحو 200 فنجان يوميًا.",
-  "f.small": "يُفتح طلبك جاهزًا في واتساب أو في تطبيق البريد الإلكتروني.",
+  "f.small": "يصلنا طلبك تلقائيًا، ويُفتح أيضًا جاهزًا في واتساب أو في تطبيق البريد الإلكتروني.",
   "f.wa": "أرسل عبر واتساب", "f.mail": "عبر البريد الإلكتروني", "f.advise": "لم أقرّر بعد، انصحوني", "f.toAdvise": "أرجو النصيحة",
   "msg.hello": "مرحبًا Formosa Espresso،", "msg.quote": "أرغب في عرض سعر.", "msg.subject": "طلب عرض سعر — {m}",
   "msg.waQuote": "مرحبًا Formosa Espresso، أرغب في عرض سعر لـ {n} ({p} بكل الأداءات).",
-  "toast.wa": "يُفتح طلبك في واتساب.", "toast.mail": "يُفتح طلبك في تطبيق البريد الإلكتروني.", "toast.copied": "تم النسخ: {t}", "toast.select": "تم تحديد النص، انسخه.",
+  "toast.wa": "يُفتح طلبك في واتساب.", "toast.mail": "يُفتح طلبك في تطبيق البريد الإلكتروني.", "toast.sent": "شكرًا! تم إرسال طلبك إلينا. سنردّ عليك في أجل يوم عمل.", "toast.copied": "تم النسخ: {t}", "toast.select": "تم تحديد النص، انسخه.",
   "sh.close": "إغلاق", "sh.price": "السعر التقديري بكل الأداءات", "sh.quote": "اطلب عرض سعر", "sh.wa": "واتساب",
   "sh.photo": "صورة {i}", "sh.photoProd": "صورة المنتج", "sh.photoScene": "صورة أثناء الاستعمال", "sh.inUse": "{n} أثناء الاستعمال",
   "ft.tag": "آلات إسبريسو ومطاحن Gemilai الاحترافية للمقاهي والمطاعم والنزل في تونس.",
@@ -899,12 +904,26 @@ document.getElementById("req").addEventListener("submit", e => {
   const v = id => document.getElementById(id).value.trim();
   const fType = document.getElementById("fType");
   const model = sel.value ? pname(byId[sel.value]) : t("f.toAdvise");
+  const typeTxt = fType.options[fType.selectedIndex].text;
   const sep = lang === "fr" ? " : " : ": ";
-  const body = `${t("msg.hello")}\n${t("msg.quote")}\n\n${t("f.model")}${sep}${model}\n${t("f.name")}${sep}${v("fName")}\n${t("f.phone")}${sep}${v("fPhone")}\n${t("f.type")}${sep}${fType.options[fType.selectedIndex].text}\n${t("f.city")}${sep}${v("fCity")}\n\n${v("fMsg")}`;
-  openLink(via === "wa"
-    ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(body)}`
-    : `mailto:${CONFIG.email}?subject=${encodeURIComponent(t("msg.subject", {m:model}))}&body=${encodeURIComponent(body)}`);
+  const body = `${t("msg.hello")}\n${t("msg.quote")}\n\n${t("f.model")}${sep}${model}\n${t("f.name")}${sep}${v("fName")}\n${t("f.phone")}${sep}${v("fPhone")}${v("fEmail") ? `\n${t("f.email")}${sep}${v("fEmail")}` : ""}\n${t("f.type")}${sep}${typeTxt}\n${t("f.city")}${sep}${v("fCity")}\n\n${v("fMsg")}`;
+  /* 1. ouvre WhatsApp ou la messagerie du client */
+  if (via === "wa") openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(body)}`);
+  else openLink(`mailto:${CONFIG.email}?subject=${encodeURIComponent(t("msg.subject", {m:model}))}&body=${encodeURIComponent(body)}`);
   toast(t(via === "wa" ? "toast.wa" : "toast.mail"));
+  /* 2. vous envoie automatiquement la demande par e-mail (WhatsApp ou e-mail) */
+  if (v("fHoney")) return;
+  const data = {
+    _subject: `Nouvelle demande de devis — ${model} — ${v("fName")} (${v("fCity")})`,
+    _template: "table", _captcha: "false",
+    "Modèle": model, "Nom": v("fName"), "Téléphone": v("fPhone"), "E-mail": v("fEmail") || "—",
+    "Établissement": typeTxt, "Ville": v("fCity"), "Projet": v("fMsg") || "—", "Envoyé via": via === "wa" ? "WhatsApp" : "E-mail", "Langue du site": lang.toUpperCase()
+  };
+  if (v("fEmail")) data._replyto = v("fEmail");
+  fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(res => { if (String(res.success) === "true") toast(t("toast.sent")); })
+    .catch(() => {});
 });
 document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
   const txt = b.dataset.copy === "mail" ? CONFIG.email : CONFIG.phone;
