@@ -1,0 +1,306 @@
+/* Contenu des pages statiques (à propos + conseils), fr / en / ar.
+   Syntaxe : "## titre", "- élément de liste", "[[prices]]" (tableau des prix généré), sinon paragraphe.
+   Liens : [texte](cible) — cibles : home, guide, packs, calc, sav, contact, academy, about, art1, art2, art3 */
+module.exports = [
+{
+  key: "about",
+  path: { fr: "a-propos.html", en: "en/about.html", ar: "ar/about.html" },
+  type: "about",
+  title: { fr: "Qui sommes-nous", en: "About us", ar: "من نحن" },
+  desc: {
+    fr: "Formosa Espresso importe en Tunisie les machines espresso et moulins professionnels Gemilai, avec conseil, installation, formation et service après-vente.",
+    en: "Formosa Espresso brings Gemilai professional espresso machines and grinders to Tunisia, with advice, installation, training and after-sales service.",
+    ar: "Formosa Espresso تستورد إلى تونس آلات الإسبريسو والمطاحن الاحترافية Gemilai، مع النصيحة والتركيب والتكوين وخدمة ما بعد البيع."
+  },
+  body: {
+    fr: [
+      "Formosa Espresso équipe les cafés, restaurants et hôtels tunisiens en machines espresso et moulins professionnels Gemilai. Notre idée est simple : un matériel professionnel fiable, à un prix juste et affiché en dinars, avec un interlocuteur qui reste là après la livraison.",
+      "## Pourquoi « Formosa » ?",
+      "Formosa, « la belle île », est l’ancien nom de Taïwan. C’est là que vit notre fondateur, un Tunisien installé en Asie, au plus près des fabricants. C’est aussi ce que raconte notre logo : la silhouette de l’île, avec un porte-filtre en son cœur.",
+      "## Pourquoi Gemilai ?",
+      "Gemilai est un fabricant de machines espresso du Guangdong, présent dans une trentaine de pays. Ses machines commerciales offrent ce qu’on attend d’un vrai comptoir (porte-filtre 58 mm, chaudières indépendantes, régulation PID, doses programmées sur les modèles haut de gamme) à un prix plus accessible que beaucoup d’alternatives.",
+      "## Ce que nous faisons",
+      "- Conseil : nous vous aidons à choisir la machine et le moulin adaptés à votre volume et à votre budget.",
+      "- Importation : nous nous occupons de la commande, du transport et du dédouanement.",
+      "- Installation : raccordement à l’eau et à l’électricité, filtration, réglage des groupes et du moulin.",
+      "- Formation : extraction, texture du lait et nettoyage quotidien, avec votre équipe.",
+      "- Après-vente : entretien, pièces d’usure et dépannage.",
+      "## Nos engagements",
+      "- Des prix indicatifs publiés sur le site, puis un devis ferme et détaillé.",
+      "- Un seul interlocuteur, de la première question au premier espresso, et après.",
+      "- Du matériel adapté à l’eau calcaire tunisienne, avec la filtration qu’il faut.",
+      "Vous avez un projet ? [Trouvez votre machine en trois questions](guide) ou [écrivez-nous](contact)."
+    ],
+    en: [
+      "Formosa Espresso equips Tunisian cafés, restaurants and hotels with Gemilai professional espresso machines and grinders. Our idea is simple: reliable professional equipment at a fair price shown in dinars, with a contact who is still there after delivery.",
+      "## Why “Formosa”?",
+      "Formosa, “the beautiful island”, is the old name of Taiwan. That is where our founder lives: a Tunisian based in Asia, close to the manufacturers. It is also what our logo tells: the outline of the island with a portafilter at its heart.",
+      "## Why Gemilai?",
+      "Gemilai is an espresso machine manufacturer from Guangdong, present in around thirty countries. Its commercial machines offer what you expect from a real counter (58 mm portafilter, independent boilers, PID temperature control, programmed doses on the top models) at a more accessible price than many alternatives.",
+      "## What we do",
+      "- Advice: we help you choose the machine and grinder that fit your volume and budget.",
+      "- Import: we handle ordering, shipping and customs clearance.",
+      "- Installation: water and power connection, filtration, setting up the groups and the grinder.",
+      "- Training: extraction, milk texturing and daily cleaning, with your team.",
+      "- After-sales: servicing, wear parts and repairs.",
+      "## Our commitments",
+      "- Indicative prices published on the site, then a firm, itemised quote.",
+      "- One contact, from the first question to the first espresso, and after.",
+      "- Equipment suited to Tunisia’s hard water, with the right filtration.",
+      "Have a project? [Find your machine in three questions](guide) or [write to us](contact)."
+    ],
+    ar: [
+      "تجهّز Formosa Espresso المقاهي والمطاعم والنزل في تونس بآلات الإسبريسو والمطاحن الاحترافية Gemilai. فكرتنا بسيطة: معدّات احترافية موثوقة بسعر عادل معلن بالدينار، مع مخاطب يبقى إلى جانبك بعد التسليم.",
+      "## لماذا «Formosa»؟",
+      "Formosa أي «الجزيرة الجميلة» هو الاسم القديم لتايوان. هناك يعيش مؤسّسنا، تونسي مقيم في آسيا قريبًا من المصنّعين. وهذا ما يرويه شعارنا أيضًا: شكل الجزيرة وفي قلبها حامل فلتر.",
+      "## لماذا Gemilai؟",
+      "Gemilai مصنّع لآلات الإسبريسو من مقاطعة غوانغدونغ، حاضر في نحو ثلاثين بلدًا. توفّر آلاته التجارية ما يُنتظر من مشرب حقيقي (حامل فلتر 58 مم، غلايات مستقلة، تحكّم PID في الحرارة، جرعات مبرمجة في الطرازات العليا) بسعر في المتناول أكثر من بدائل كثيرة.",
+      "## ماذا نقدّم",
+      "- النصيحة: نساعدك على اختيار الآلة والمطحنة المناسبتين لحجم عملك وميزانيتك.",
+      "- الاستيراد: نتكفّل بالطلب والشحن والتخليص الديواني.",
+      "- التركيب: التوصيل بالماء والكهرباء، التصفية، ضبط المجموعات والمطحنة.",
+      "- التكوين: الاستخلاص وتحضير الحليب والتنظيف اليومي مع فريقك.",
+      "- ما بعد البيع: الصيانة وقطع الغيار والإصلاح.",
+      "## التزاماتنا",
+      "- أسعار تقديرية منشورة على الموقع، ثم عرض سعر نهائي ومفصّل.",
+      "- مخاطب واحد من أول سؤال إلى أول فنجان إسبريسو، وبعده.",
+      "- معدّات ملائمة للماء الكلسي في تونس، مع التصفية المناسبة.",
+      "لديك مشروع؟ [اعثر على آلتك في ثلاثة أسئلة](guide) أو [راسلنا](contact)."
+    ]
+  }
+},
+{
+  key: "art1",
+  path: { fr: "articles/prix-machine-cafe-professionnelle-tunisie.html", en: "en/articles/professional-espresso-machine-prices-tunisia.html", ar: "ar/articles/asaar-alat-espresso-tunis.html" },
+  type: "article",
+  title: {
+    fr: "Prix d’une machine à café professionnelle en Tunisie",
+    en: "How much does a professional espresso machine cost in Tunisia?",
+    ar: "كم سعر آلة قهوة احترافية في تونس؟"
+  },
+  desc: {
+    fr: "Combien coûte une machine espresso professionnelle en Tunisie ? Ce qui fait le prix, nos fourchettes en dinars et le budget complet à prévoir pour ouvrir un comptoir.",
+    en: "What does a professional espresso machine cost in Tunisia? What drives the price, our ranges in dinars and the full budget to plan for a counter.",
+    ar: "كم تكلّف آلة إسبريسو احترافية في تونس؟ ما الذي يحدّد السعر، وأسعارنا بالدينار، والميزانية الكاملة لافتتاح مشرب."
+  },
+  body: {
+    fr: [
+      "Une machine espresso professionnelle n’a pas un prix unique : selon le nombre de groupes, la technologie de chauffe et les options, l’écart peut aller du simple au triple. Voici comment s’y retrouver, avec des chiffres concrets en dinars.",
+      "## Ce qui fait le prix",
+      "- Le nombre de groupes : un groupe pour un petit volume, deux groupes pour servir deux commandes en même temps aux heures de pointe.",
+      "- Le système de chauffe : une chaudière à échangeur thermique coûte moins cher ; des chaudières café indépendantes donnent une température plus stable, surtout en enchaînant les tasses.",
+      "- La régulation PID : elle maintient la température de l’eau au degré près, pour un goût régulier.",
+      "- Le débitmètre et les doses programmées : chaque barista sert la même tasse d’un bouton. Indispensable à fort débit.",
+      "- Le groupe E61 saturé : une référence de stabilité pour le café de spécialité.",
+      "## Nos prix indicatifs en Tunisie",
+      "Prix TTC en dinars, hors livraison et installation. La fourchette dépend du coloris, du taux de change et des frais de douane au moment de la commande.",
+      "[[prices]]",
+      "## Le budget complet à prévoir",
+      "La machine n’est qu’une partie de l’investissement. Pour un comptoir qui fonctionne dès le premier jour, prévoyez aussi :",
+      "- Un moulin à la demande : sans mouture fraîche, même la meilleure machine donne un espresso moyen.",
+      "- Un filtre ou un adoucisseur d’eau : l’eau du robinet est souvent très calcaire en Tunisie, et le tartre est la première cause de pannes.",
+      "- Le petit matériel : tasseur, pichets à lait, bac à marc, balance, produits de nettoyage.",
+      "- L’installation et la formation de l’équipe.",
+      "C’est exactement ce que réunissent nos [packs ouverture](packs). Pour savoir combien de temps il faut pour rentabiliser l’équipement, essayez notre [calculateur de rentabilité](calc).",
+      "## Comment payer ?",
+      "Virement, chèque ou espèces, avec facture et TVA. Pour une ouverture de café, des facilités peuvent être étudiées : acompte à la commande puis solde, ou paiement en plusieurs fois.",
+      "Pas sûr du modèle ? [Répondez à trois questions](guide) et nous vous proposons la machine, le moulin et le budget adaptés."
+    ],
+    en: [
+      "There is no single price for a professional espresso machine: depending on the number of groups, the heating technology and the options, prices can vary threefold. Here is how to find your way, with concrete figures in dinars.",
+      "## What drives the price",
+      "- Number of groups: one group for small volumes, two groups to serve two orders at once during peak hours.",
+      "- Heating system: a heat-exchanger boiler costs less; independent coffee boilers keep the temperature steadier, especially when pulling shots back to back.",
+      "- PID control: it holds the water temperature to the degree, for a consistent taste.",
+      "- Flowmeter and programmed doses: every barista serves the same cup at the push of a button. Essential at high volume.",
+      "- Saturated E61 group: a benchmark of stability for specialty coffee.",
+      "## Our indicative prices in Tunisia",
+      "Prices in dinars including VAT, excluding delivery and installation. The range depends on the colour, the exchange rate and customs costs at the time of ordering.",
+      "[[prices]]",
+      "## The full budget to plan for",
+      "The machine is only part of the investment. For a counter that works from day one, also plan for:",
+      "- An on-demand grinder: without fresh grounds, even the best machine makes average espresso.",
+      "- A water filter or softener: tap water is often very hard in Tunisia, and scale is the first cause of breakdowns.",
+      "- Small tools: tamper, milk jugs, knock box, scale, cleaning products.",
+      "- Installation and team training.",
+      "That is exactly what our [opening packs](packs) bring together. To see how long the equipment takes to pay for itself, try our [profitability calculator](calc).",
+      "## How to pay",
+      "Bank transfer, cheque or cash, with a VAT invoice. For a café opening, flexible terms can be discussed: a deposit on order then the balance, or payment in instalments.",
+      "Not sure which model? [Answer three questions](guide) and we suggest the right machine, grinder and budget."
+    ],
+    ar: [
+      "لا يوجد سعر واحد لآلة الإسبريسو الاحترافية: حسب عدد المجموعات وتقنية التسخين والخيارات، قد يتضاعف السعر ثلاث مرات. إليك كيف تختار، مع أرقام ملموسة بالدينار.",
+      "## ما الذي يحدّد السعر",
+      "- عدد المجموعات: مجموعة واحدة للكميات الصغيرة، ومجموعتان لتحضير طلبين في نفس الوقت في أوقات الذروة.",
+      "- نظام التسخين: الغلاية بمبادل حراري أرخص؛ أما الغلايات المستقلة للقهوة فتحافظ على حرارة أكثر ثباتًا، خاصة عند تحضير الفناجين بشكل متتالٍ.",
+      "- التحكّم PID: يحافظ على حرارة الماء بدقة درجة واحدة، لطعم ثابت.",
+      "- عدّاد التدفق والجرعات المبرمجة: كل باريستا يحضّر نفس الفنجان بضغطة زر. ضروري للكميات الكبيرة.",
+      "- مجموعة E61 المشبّعة: مرجع في ثبات الحرارة للقهوة المختصة.",
+      "## أسعارنا التقديرية في تونس",
+      "الأسعار بالدينار بكل الأداءات، دون احتساب التوصيل والتركيب. يتغيّر السعر حسب اللون وسعر الصرف والمعاليم الديوانية عند الطلب.",
+      "[[prices]]",
+      "## الميزانية الكاملة",
+      "الآلة جزء فقط من الاستثمار. لمشرب يعمل من اليوم الأول، احسب أيضًا:",
+      "- مطحنة عند الطلب: دون بنّ مطحون طازج، حتى أفضل آلة تعطي إسبريسو عاديًا.",
+      "- مصفاة أو مزيل كلس للماء: ماء الحنفية كلسي جدًا في تونس، والكلس هو السبب الأول للأعطال.",
+      "- الأدوات الصغيرة: مكبس، أباريق حليب، حاوية التفل، ميزان، مواد تنظيف.",
+      "- التركيب وتكوين الفريق.",
+      "هذا بالضبط ما تجمعه [باقات الافتتاح](packs). ولمعرفة مدة استرجاع ثمن المعدّات، جرّب [حاسبة المردودية](calc).",
+      "## طرق الدفع",
+      "تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات. عند افتتاح مقهى، يمكن دراسة تسهيلات: تسبقة عند الطلب ثم الباقي، أو الدفع على أقساط.",
+      "لست متأكدًا من الطراز؟ [أجب عن ثلاثة أسئلة](guide) ونقترح عليك الآلة والمطحنة والميزانية المناسبة."
+    ]
+  }
+},
+{
+  key: "art2",
+  path: { fr: "articles/machine-1-ou-2-groupes.html", en: "en/articles/one-or-two-group-espresso-machine.html", ar: "ar/articles/majmouaa-wahida-am-ithnatan.html" },
+  type: "article",
+  title: {
+    fr: "Machine espresso 1 ou 2 groupes : comment choisir ?",
+    en: "One or two group espresso machine: how to choose?",
+    ar: "آلة إسبريسو بمجموعة واحدة أم مجموعتين: كيف تختار؟"
+  },
+  desc: {
+    fr: "1 groupe ou 2 groupes ? Volume par jour, heures de pointe, vapeur, place et budget : les repères pour choisir la bonne machine espresso professionnelle.",
+    en: "One group or two? Daily volume, peak hours, steam, space and budget: the guidelines for choosing the right professional espresso machine.",
+    ar: "مجموعة أم مجموعتان؟ عدد الفناجين في اليوم، أوقات الذروة، البخار، المساحة والميزانية: معايير اختيار آلة الإسبريسو الاحترافية المناسبة."
+  },
+  body: {
+    fr: [
+      "Le « groupe » est la tête où l’on accroche le porte-filtre. Chaque groupe prépare une extraction à la fois : le nombre de groupes fixe donc combien de cafés vous pouvez lancer en même temps.",
+      "## Le bon repère : vos heures de pointe",
+      "Le total par jour compte moins que le moment le plus chargé. Un café qui sert 150 tasses réparties sur la journée peut vivre avec un groupe ; le même volume concentré entre 7 h et 9 h demande deux groupes.",
+      "- Moins de 100 cafés par jour : un groupe suffit.",
+      "- De 100 à 250 : un groupe si le service est régulier, deux groupes si vous avez un coup de feu.",
+      "- De 250 à 500 : deux groupes, et un moulin réglé avec soin.",
+      "- Au-delà de 500 : deux groupes avec doses programmées, et idéalement deux moulins.",
+      "## Deux baristas, deux groupes",
+      "Avec deux groupes, deux personnes peuvent travailler en même temps sans s’attendre. C’est souvent ce qui fait la différence aux heures de pointe, plus que la vitesse de la machine elle-même.",
+      "## N’oubliez pas la vapeur",
+      "Si vous servez beaucoup de cappuccinos ou de cafés au lait, regardez la taille de la chaudière vapeur : plus elle est grande, plus vous pouvez enchaîner les laits sans attendre que la pression remonte.",
+      "## Place et électricité",
+      "Dans notre gamme, une machine deux groupes mesure de 68 à 85 cm de large, contre 36 à 52 cm pour un groupe. Prévoyez aussi l’arrivée d’eau, l’évacuation et une ligne électrique adaptée à la puissance de la machine : nous vérifions tout cela lors de la visite technique.",
+      "## Et le budget ?",
+      "Un deux-groupes compact ne coûte pas forcément plus cher qu’un un-groupe haut de gamme. Comparez les modèles dans notre [comparateur](home) ou consultez notre [guide des prix](art1).",
+      "Le plus simple : [répondez à trois questions](guide) et nous vous proposons la configuration adaptée."
+    ],
+    en: [
+      "The “group” is the head where you lock in the portafilter. Each group pulls one extraction at a time, so the number of groups sets how many coffees you can make at once.",
+      "## The right guide: your peak hours",
+      "Daily totals matter less than your busiest moment. A café serving 150 cups spread over the day can live with one group; the same volume squeezed between 7 and 9 am needs two.",
+      "- Under 100 coffees a day: one group is enough.",
+      "- 100 to 250: one group if service is steady, two if you have a rush.",
+      "- 250 to 500: two groups, and a well set-up grinder.",
+      "- Over 500: two groups with programmed doses, ideally with two grinders.",
+      "## Two baristas, two groups",
+      "With two groups, two people can work at the same time without waiting for each other. That is often what makes the difference at peak times, more than the speed of the machine itself.",
+      "## Don’t forget the steam",
+      "If you serve a lot of cappuccinos or lattes, look at the size of the steam boiler: the bigger it is, the more milk you can steam back to back without waiting for the pressure to recover.",
+      "## Space and power",
+      "In our range, a two-group machine is 68 to 85 cm wide, against 36 to 52 cm for one group. Also plan for the water inlet, the drain and a power line suited to the machine’s rating: we check all of this during the site visit.",
+      "## What about budget?",
+      "A compact two-group machine is not necessarily more expensive than a premium one-group. Compare models in our [comparison](home) or read our [price guide](art1).",
+      "The simplest way: [answer three questions](guide) and we suggest the right set-up."
+    ],
+    ar: [
+      "«المجموعة» هي الرأس الذي يُثبَّت فيه حامل الفلتر. كل مجموعة تحضّر استخلاصًا واحدًا في كل مرة، لذلك يحدّد عدد المجموعات كم فنجانًا يمكنك تحضيره في نفس الوقت.",
+      "## المعيار الصحيح: أوقات الذروة",
+      "المجموع اليومي أقل أهمية من أكثر لحظة ازدحامًا. مقهى يقدّم 150 فنجانًا موزّعة على اليوم يكفيه مجموعة واحدة؛ أما نفس العدد بين السابعة والتاسعة صباحًا فيحتاج إلى مجموعتين.",
+      "- أقل من 100 فنجان في اليوم: مجموعة واحدة تكفي.",
+      "- من 100 إلى 250: مجموعة واحدة إذا كان العمل منتظمًا، ومجموعتان إذا كانت هناك ذروة.",
+      "- من 250 إلى 500: مجموعتان مع مطحنة مضبوطة بعناية.",
+      "- أكثر من 500: مجموعتان بجرعات مبرمجة، ويفضَّل مطحنتان.",
+      "## باريستا اثنان، مجموعتان",
+      "مع مجموعتين، يمكن لشخصين العمل في نفس الوقت دون انتظار. وهذا غالبًا ما يصنع الفرق في أوقات الذروة، أكثر من سرعة الآلة نفسها.",
+      "## لا تنسَ البخار",
+      "إذا كنت تقدّم الكثير من الكابتشينو أو القهوة بالحليب، انتبه إلى حجم غلاية البخار: كلما كانت أكبر، أمكنك تحضير الحليب بشكل متتالٍ دون انتظار عودة الضغط.",
+      "## المساحة والكهرباء",
+      "في تشكيلتنا، يتراوح عرض الآلة ذات المجموعتين بين 68 و85 سم، مقابل 36 إلى 52 سم للمجموعة الواحدة. احسب أيضًا مدخل الماء والتصريف وخطًا كهربائيًا يناسب قوة الآلة: نتحقّق من كل ذلك أثناء الزيارة التقنية.",
+      "## والميزانية؟",
+      "آلة بمجموعتين مدمجة ليست بالضرورة أغلى من آلة بمجموعة واحدة من الفئة العليا. قارن الطرازات في [المقارنة](home) أو اطّلع على [دليل الأسعار](art1).",
+      "الأسهل: [أجب عن ثلاثة أسئلة](guide) ونقترح عليك التجهيز المناسب."
+    ]
+  }
+},
+{
+  key: "art3",
+  path: { fr: "articles/entretien-machine-espresso.html", en: "en/articles/espresso-machine-cleaning-schedule.html", ar: "ar/articles/siyanat-alat-espresso.html" },
+  type: "article",
+  title: {
+    fr: "Entretien d’une machine espresso professionnelle : le planning",
+    en: "Professional espresso machine cleaning: the schedule",
+    ar: "صيانة آلة الإسبريسو الاحترافية: الجدول الزمني"
+  },
+  desc: {
+    fr: "Quotidien, hebdomadaire, mensuel, annuel : le planning d’entretien d’une machine espresso professionnelle, et pourquoi l’eau calcaire est l’ennemi n°1 en Tunisie.",
+    en: "Daily, weekly, monthly, yearly: the cleaning schedule for a professional espresso machine, and why hard water is enemy no. 1 in Tunisia.",
+    ar: "يوميًا وأسبوعيًا وشهريًا وسنويًا: جدول صيانة آلة الإسبريسو الاحترافية، ولماذا الماء الكلسي هو العدو الأول في تونس."
+  },
+  body: {
+    fr: [
+      "Une machine propre fait un meilleur café et tombe moins souvent en panne. Les huiles du café rancissent en quelques heures et donnent de l’amertume ; le calcaire bouche les circuits. Voici le planning que nous recommandons à nos clients.",
+      "## Chaque jour",
+      "- Purger le groupe quelques secondes avant et après chaque extraction.",
+      "- Essuyer et purger la buse vapeur après chaque lait : le lait cuit s’y incruste très vite.",
+      "- En fin de journée, brosser le joint et la douchette, puis faire un backflush à l’eau claire avec le panier aveugle.",
+      "- Rincer les porte-filtres et les paniers, vider et laver le bac d’égouttage.",
+      "## Chaque semaine",
+      "- Backflush avec un détergent spécial machine espresso, en suivant le dosage du fabricant.",
+      "- Faire tremper les porte-filtres et les paniers (sans le manche en plastique ou en bois).",
+      "- Nettoyer la trémie du moulin et retirer la poussière de café accumulée.",
+      "## Chaque mois",
+      "- Démonter et nettoyer la douchette et son joint ; les changer s’ils sont durs ou abîmés.",
+      "- Vérifier la pression affichée par les manomètres et noter toute variation.",
+      "- Contrôler le filtre ou l’adoucisseur d’eau selon le volume consommé.",
+      "## Chaque année",
+      "Une révision par un technicien : joints, électrovannes, sondes, pompe et chaudières. C’est toujours moins cher qu’une panne en plein service.",
+      "## L’eau, ennemi n°1 en Tunisie",
+      "L’eau du robinet est souvent très calcaire. Le tartre isole les résistances et bouche les circuits. Un adoucisseur ou un filtre adapté est indispensable, et le détartrage d’une machine à chaudières est un travail de technicien.",
+      "Pour apprendre ces gestes pas à pas, suivez les leçons de l’[Académie Formosa](academy). Une panne ou un doute ? [Faites une demande d’intervention](sav)."
+    ],
+    en: [
+      "A clean machine makes better coffee and breaks down less often. Coffee oils go rancid within hours and add bitterness; scale clogs the circuits. Here is the schedule we recommend to our clients.",
+      "## Every day",
+      "- Flush the group for a few seconds before and after each shot.",
+      "- Wipe and purge the steam wand after every milk: cooked milk sticks very quickly.",
+      "- At closing, brush the gasket and shower screen, then backflush with clean water using the blind basket.",
+      "- Rinse portafilters and baskets, empty and wash the drip tray.",
+      "## Every week",
+      "- Backflush with a dedicated espresso machine detergent, following the maker’s dosage.",
+      "- Soak portafilters and baskets (without the plastic or wooden handle).",
+      "- Clean the grinder hopper and remove built-up coffee dust.",
+      "## Every month",
+      "- Remove and clean the shower screen and its gasket; replace them if hard or damaged.",
+      "- Check the pressure on the gauges and note any change.",
+      "- Check the water filter or softener according to the volume used.",
+      "## Every year",
+      "A technician service: gaskets, solenoid valves, probes, pump and boilers. It always costs less than a breakdown mid-service.",
+      "## Water, enemy no. 1 in Tunisia",
+      "Tap water is often very hard. Scale insulates the heating elements and clogs the circuits. A suitable softener or filter is essential, and descaling a boiler machine is a technician’s job.",
+      "To learn these steps one by one, follow the lessons of the [Formosa Academy](academy). A fault or a doubt? [Send a service request](sav)."
+    ],
+    ar: [
+      "الآلة النظيفة تعطي قهوة أفضل وتتعطّل أقل. زيوت القهوة تفسد في ساعات قليلة وتضيف مرارة، والكلس يسدّ الدوائر. إليك الجدول الذي ننصح به حرفاءنا.",
+      "## كل يوم",
+      "- تصريف الماء من المجموعة بضع ثوانٍ قبل كل استخلاص وبعده.",
+      "- مسح ذراع البخار وتصريفه بعد كل حليب: الحليب المطبوخ يلتصق بسرعة.",
+      "- عند الإغلاق، تنظيف الحشوة والمصفاة بالفرشاة، ثم غسل عكسي بالماء النظيف بالسلة الصمّاء.",
+      "- شطف حوامل الفلتر والسلال، وإفراغ صينية التقطير وغسلها.",
+      "## كل أسبوع",
+      "- غسل عكسي بمنظّف خاص بآلات الإسبريسو حسب الجرعة الموصى بها.",
+      "- نقع حوامل الفلتر والسلال (دون المقبض البلاستيكي أو الخشبي).",
+      "- تنظيف خزان المطحنة وإزالة غبار البن المتراكم.",
+      "## كل شهر",
+      "- فكّ المصفاة والحشوة وتنظيفهما؛ واستبدالهما إذا تصلّبتا أو تلفتا.",
+      "- مراقبة الضغط على العدّادات وتسجيل أي تغيّر.",
+      "- مراقبة مصفاة الماء أو مزيل الكلس حسب الكمية المستهلكة.",
+      "## كل سنة",
+      "مراجعة عند تقني: الحشوات والصمامات الكهربائية والمجسّات والمضخة والغلايات. وهي دائمًا أرخص من عطل في وقت العمل.",
+      "## الماء، العدو الأول في تونس",
+      "ماء الحنفية كلسي جدًا في أغلب الأحيان. الكلس يعزل عناصر التسخين ويسدّ الدوائر. مزيل الكلس أو المصفاة المناسبة ضروري، وإزالة الكلس من آلة بغلايات عمل تقني.",
+      "لتعلّم هذه الخطوات واحدة بواحدة، تابع دروس [أكاديمية Formosa](academy). عطل أو استفسار؟ [أرسل طلب تدخل](sav)."
+    ]
+  }
+}
+];

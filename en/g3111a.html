@@ -54,6 +54,21 @@ table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{text-align:star
 .all{display:inline-block;margin-top:22px}
 footer{background:#161616;color:#c9c9c2;font-size:.85rem;padding:28px 0}footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 bdi{unicode-bidi:isolate}
+.print-only{display:none}
+@media print{
+@page{size:A4;margin:12mm 14mm}
+:root{--ground:#fff;--panel:#F4F4F1;--ink:#161616;--muted:#555}
+body{font-size:10pt;line-height:1.4}
+.langs,.crumbs,.ctas,.thumbs,.others,footer{display:none!important}
+header{border-bottom:2px solid #161616}header .wrap{min-height:56px}
+.wrap{max-width:none;padding:0}
+.pd{grid-template-columns:42% 1fr;gap:9mm;padding:6mm 0 0}
+.main{aspect-ratio:auto;height:auto;max-height:95mm}.main img{max-height:95mm;object-fit:contain}
+h1{font-size:24pt;margin:2mm 0}.tag{font-size:12pt;margin-bottom:3mm}.desc{margin-bottom:4mm}
+.pr{padding:3mm 0;margin-bottom:4mm}.pr b{font-size:15pt}
+th,td{padding:1.2mm 0}tr{page-break-inside:avoid}
+.print-only{display:block;margin:0 0 4mm;font-size:9.5pt;color:#555}
+}
 </style>
 </head>
 <body>
@@ -72,7 +87,8 @@ bdi{unicode-bidi:isolate}
     <p class="tag">one group, two boilers.</p>
     <p class="desc">A true counter-grade one-group machine: a 5.5 L steam boiler for milk drinks, a rotary pump and a flowmeter for programmed doses. Ideal for a neighbourhood café or a tea room.</p>
     <div class="pr"><small>Indicative price incl. VAT</small><b>5,200 – 6,600 TND</b><p class="note">Indicative prices in Tunisian dinars, VAT included, excluding delivery and installation. The range depends on colour, exchange rate and customs duties at the time of order; we confirm a firm price within one business day.</p></div>
-    <div class="ctas"><a class="btn" href="../?lang=en&devis=g3111a#contact">Request a quote</a><a class="btn wa" href="https://wa.me/886973872881?text=Hello%20Formosa%20Espresso%2C%20I%20would%20like%20a%20quote%20for%20the%20Gemilai%20G3111A%20(5%2C200%20%E2%80%93%206%2C600%20TND%20incl.%20VAT)." target="_blank" rel="noopener">WhatsApp</a></div>
+    <div class="ctas"><a class="btn" href="../?lang=en&devis=g3111a#contact">Request a quote</a><a class="btn wa" href="https://wa.me/886973872881?text=Hello%20Formosa%20Espresso%2C%20I%20would%20like%20a%20quote%20for%20the%20Gemilai%20G3111A%20(5%2C200%20%E2%80%93%206%2C600%20TND%20incl.%20VAT)." target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" href="../fiches/en/g3111a.pdf" download>Spec sheet (PDF)</a></div>
+    <p class="print-only">contact@formosaespresso.com · +886 973 872 881 · Web page : https://formosaespresso.com/en/g3111a.html</p>
     <h2>Specifications</h2>
     <table><tbody><tr><th scope="row">Group</th><td>1 commercial group, 58 mm portafilter</td></tr><tr><th scope="row">Boilers</th><td>550 ml coffee + 5.5 L steam</td></tr><tr><th scope="row">Dosing</th><td>Flowmeter, programmable doses</td></tr><tr><th scope="row">Temperature</th><td>PID</td></tr><tr><th scope="row">Pump</th><td>Rotary</td></tr><tr><th scope="row">Controls</th><td>Touchscreen, electronic or manual mode</td></tr><tr><th scope="row">Gauges</th><td>Coffee and steam</td></tr><tr><th scope="row">Power</th><td>3200 W · 220 V · 50 Hz</td></tr><tr><th scope="row">Net weight</th><td>43.9 kg</td></tr><tr><th scope="row">Dimensions</th><td>473 × 528 × 550 mm</td></tr><tr><th scope="row">Colours</th><td>Cotton white</td></tr></tbody></table>
   </div>

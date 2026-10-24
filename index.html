@@ -384,7 +384,7 @@ form.req{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:18px 2
 .sent .btn{justify-self:start}
 
 footer{background:var(--bar);color:color-mix(in srgb,var(--bar-ink) 72%,transparent);font-size:.9rem}
-footer .wrap{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-block:64px 28px}
+footer .wrap{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:36px;padding-block:64px 28px}
 footer .mark{color:var(--bar-ink)}
 footer h4{margin:0 0 14px;font-family:var(--mono);font-weight:400;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bar-ink)}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
@@ -439,6 +439,65 @@ html[lang="ar"] .label{font-size:.8rem}
 .lfig img{display:block;width:100%;height:auto;background:#fff}
 .lfig figcaption{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1rem;padding:.7rem .9rem .9rem;font-size:.86rem;line-height:1.4;color:#3b3631}
 .lfig figcaption b{display:block;font-size:.95rem;color:#1b1714;margin-bottom:.15rem}
+/* ===== outils : guide, packs, paiement, accessoires, rentabilité, SAV ===== */
+.hp{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.guide-sec{background:var(--panel)}
+.gd{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:start}
+.gd-qs{display:grid;gap:26px}
+.gd-q h3{font-family:var(--body);text-transform:none;font-size:1.05rem;font-weight:600;letter-spacing:0;margin:0 0 10px}
+.gd-chips{display:flex;flex-wrap:wrap;gap:8px}
+.gd-chips button{border:1px solid var(--line);background:var(--ground);padding:10px 16px;min-height:44px;cursor:pointer;border-radius:999px;font-size:.95rem}
+.gd-chips button:hover{border-color:var(--ink)}
+.gd-chips button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.gd-res{background:var(--ground);border:1px solid var(--line);min-height:100%}
+.gd-wait{margin:0;padding:32px;color:var(--muted)}
+.gd-card{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+.gd-img{background:var(--photo);display:grid;place-items:center;padding:16px}.gd-img img{width:100%;height:auto;max-height:280px;object-fit:contain}
+.gd-txt{padding:24px;display:grid;gap:12px;align-content:start}
+.gd-txt h3{font-family:var(--body);text-transform:none;font-size:1.35rem;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.gd-txt ul{margin:0;padding-inline-start:18px;display:grid;gap:6px;color:var(--muted);font-size:.95rem}
+.gd-total small{display:block;color:var(--muted);font-size:.8rem}.gd-total b{font-size:1.4rem;font-weight:500}
+.gd-btns{display:flex;flex-wrap:wrap;gap:10px}.gd-btns .btn{text-decoration:none}
+.gd-note{margin:0;font-size:.82rem;color:var(--muted)}
+@media (max-width:900px){.gd{grid-template-columns:1fr}}
+@media (max-width:560px){.gd-card{grid-template-columns:1fr}.gd-img img{max-height:200px}}
+.pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pk{border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px}
+.pk.hi{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.pk-img{background:var(--photo);aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden}.pk-img img{width:100%;height:100%;object-fit:contain;padding:10px}
+.pk h3{font-family:var(--body);text-transform:none;font-size:1.3rem;font-weight:600;letter-spacing:-.01em}
+.pk-d{margin:0;color:var(--muted)}
+.pk ul{margin:0;padding-inline-start:18px;display:grid;gap:6px;font-size:.95rem;flex:1}
+.pk-price small{display:block;color:var(--muted);font-size:.8rem}.pk-price b{font-size:1.5rem;font-weight:500}
+.pk .btn{justify-self:start;align-self:flex-start}
+.pk-note{color:var(--muted);font-size:.85rem;margin:14px 0 0}
+.pay{margin-top:28px;background:var(--panel);padding:24px 28px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
+.pay h3{font-family:var(--body);text-transform:none;font-size:1.2rem;font-weight:600;letter-spacing:0;margin:0 0 6px}.pay p{margin:0;max-width:70ch;color:var(--muted)}
+@media (max-width:900px){.pk-grid{grid-template-columns:1fr}}
+.acc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:10px}
+.acc{display:grid;grid-template-columns:auto 28px 1fr;gap:12px;align-items:center;border:1px solid var(--line);padding:14px 16px;cursor:pointer;min-height:72px}
+.acc:hover{border-color:var(--ink)}.acc:has(input:checked){border-color:var(--ink);background:var(--panel)}
+.acc input{width:20px;height:20px;accent-color:var(--ink);margin:0}
+.acc svg{width:28px;height:28px;color:var(--accent)}
+.acc b{display:block;font-weight:600;font-size:.98rem}.acc small{display:block;color:var(--muted);font-size:.85rem;line-height:1.35}
+.acc-go{margin-top:18px}
+.calc-sec{background:var(--panel)}
+.calc{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+.calc-in{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}.calc-in .f:nth-child(5),.calc-in .f:nth-child(6){grid-column:1/-1}
+.calc-in .ck{grid-column:1/-1;display:flex;gap:10px;align-items:center;min-height:44px}.calc-in .ck input{width:20px;height:20px;accent-color:var(--ink)}
+.calc-out{background:var(--ground);border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr}
+.calc-out>div{padding:18px 20px;border-bottom:1px solid var(--line);display:grid;gap:4px}.calc-out>div:nth-child(odd){border-inline-end:1px solid var(--line)}
+.calc-out small{color:var(--muted);font-size:.82rem}.calc-out b{font-size:1.35rem;font-weight:500}
+.calc-out .hl{grid-column:1/-1;border:0;background:var(--ink);color:var(--ground)}.calc-out .hl small{color:color-mix(in srgb,var(--ground) 75%,transparent)}.calc-out .hl b{font-size:1.5rem}
+.calc-note{color:var(--muted);font-size:.85rem;margin:16px 0 0;max-width:80ch}
+@media (max-width:900px){.calc{grid-template-columns:1fr}}
+@media (max-width:520px){.calc-in{grid-template-columns:1fr}}
+.sav{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,96px)}
+.sav-form{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.sav-btns{display:flex;flex-wrap:wrap;gap:10px}.sav-err{grid-column:1/-1;margin:0;color:#B3261E;min-height:0}.sav-err:empty{display:none}
+.sav-ok{border:1px solid var(--line);background:var(--panel);padding:24px}.sav-ok p{margin:0;font-size:1.05rem}
+@media (max-width:860px){.sav{grid-template-columns:1fr}}
+@media (max-width:520px){.sav-form{grid-template-columns:1fr}}
 </style>
 
 </head>
@@ -459,10 +518,14 @@ html[lang="ar"] .label{font-size:.8rem}
     <div class="wrap"><div class="cats-row">
       <a class="cat" href="#gamme" data-filter="machine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v8H4z"/><path d="M9 12v2h6v-2"/><path d="M10 17h4v3h-4z"/><path d="M7.5 8h.01M16.5 8h.01"/></svg><span data-i18n="nav.machines">machines espresso</span></a>
       <a class="cat" href="#gamme" data-filter="grinder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8l-2 5h-4z"/><path d="M9 8h6v9H9z"/><path d="M7 21h10M12 17v4"/></svg><span data-i18n="nav.grinders">moulins</span></a>
+      <a class="cat" href="#guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg><span data-ft="navGuide">guide de choix</span></a>
+      <a class="cat" href="#packs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg><span data-ft="navPacks">packs</span></a>
+      <a class="cat" href="#accessoires"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8v5H8z"/><path d="M12 8v5"/><path d="M5 13h14v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/></svg><span data-ft="navAcc">accessoires</span></a>
       <a class="cat" href="#comparer" data-compare><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h6v14H4zM14 5h6v14h-6z"/><path d="M6 9h2M6 13h2M16 9h2M16 13h2"/></svg><span data-i18n="nav.compare">comparer</span></a>
       <a class="cat" href="#videos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg><span data-i18n="nav.videos">vidéos</span></a>
       <a class="cat" href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4a4 4 0 0 0-3.5 5.9L4 17.4V20h2.6l7.5-7.5A4 4 0 0 0 20 9l-2.5 2.5L15 9l2.5-2.5A4 4 0 0 0 15 4z"/></svg><span data-i18n="nav.services">services</span></a>
       <a class="cat" href="#gemilai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 21l4-2 4 2-1-7.5"/></svg><span data-i18n="nav.brand">gemilai</span></a>
+      <a class="cat" href="#sav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m5.6 5.6 3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6"/></svg><span data-ft="navSav">SAV</span></a>
       <a class="cat" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg><span data-i18n="nav.contact">contact</span></a>
       <a class="cat hi" href="#apprendre" data-academy><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/></svg><span data-i18n="nav.learn">académie</span></a>
     </div></div>
@@ -485,6 +548,8 @@ html[lang="ar"] .label{font-size:.8rem}
       <div class="tiles" id="tiles"></div>
     </div>
   </section>
+
+  <section class="section guide-sec" id="guide" aria-label="Guide"></section>
 
   <section class="section intro">
     <div class="wrap">
@@ -526,6 +591,8 @@ html[lang="ar"] .label{font-size:.8rem}
     </div>
   </section>
 
+
+  <section class="section packs-sec" id="packs" aria-label="Packs" style="padding-top:0"></section>
 
   <section class="alt" id="gemilai">
     <div class="img"><img src="img/g3111a-scene.jpg" data-i18n-alt="brand.alt" alt="Machine Gemilai G3111A et moulin dans un café" loading="lazy"></div>
@@ -578,7 +645,13 @@ html[lang="ar"] .label{font-size:.8rem}
     </div>
   </section>
 
-  <section class="section" id="faq" style="padding-top:0">
+  <section class="section acc-sec" id="accessoires" aria-label="Accessoires" style="padding-top:0"></section>
+
+  <section class="section calc-sec" id="rentabilite" aria-label="Rentabilité"></section>
+
+  <section class="section sav-sec" id="sav" aria-label="SAV"></section>
+
+  <section class="section" id="faq">
     <div class="wrap">
       <div class="head"><div class="stack"><p class="label" data-i18n="faq.label">Questions fréquentes</p><h2 data-i18n="faq.h2">avant de commander</h2></div></div>
       <div class="faq">
@@ -630,7 +703,8 @@ html[lang="ar"] .label{font-size:.8rem}
   <div class="wrap">
     <div style="display:grid;gap:16px;align-content:start"><span class="mark" dir="ltr"><picture class="logo-mark ft"><img src="img/logo/mark-light.svg" alt="" width="40" height="72"></picture>formosa <span>espresso</span></span><p style="max-width:38ch" data-i18n="ft.tag"></p></div>
     <div><h4 data-i18n="ft.range">Gamme</h4><ul id="footList"><li><a href="produits/g3211a.html" data-open="g3211a">G3211A</a></li><li><a href="produits/g3126c.html" data-open="g3126c">G3126C</a></li><li><a href="produits/g3201.html" data-open="g3201">G3201</a></li><li><a href="produits/g3111a.html" data-open="g3111a">G3111A</a></li><li><a href="produits/g3120c.html" data-open="g3120c">G3120C</a></li><li><a href="produits/crm3149.html" data-open="crm3149">CRM3149 + moulin A80</a></li><li><a href="produits/g9026a.html" data-open="g9026a">G9026A</a></li></ul></div>
-    <div><h4 data-i18n="ft.services">Services</h4><ul><li><a href="#services" data-i18n="ft.l1">Installation</a></li><li><a href="#services" data-i18n="ft.l2">Formation barista</a></li><li><a href="#services" data-i18n="ft.l3">Entretien et pièces</a></li><li><a href="#faq" data-i18n="ft.l5">Questions fréquentes</a></li></ul></div>
+    <div><h4 data-i18n="ft.services">Services</h4><ul><li><a href="a-propos.html" data-fhref="a-propos.html" data-fhrefen="en/about.html" data-fhrefar="ar/about.html" data-ft="ftAbout">À propos</a></li><li><a href="#sav" data-ft="ftSav">SAV</a></li><li><a href="#rentabilite" data-ft="ftCalc">Rentabilité</a></li><li><a href="#services" data-i18n="ft.l1">Installation</a></li><li><a href="#services" data-i18n="ft.l2">Formation barista</a></li><li><a href="#services" data-i18n="ft.l3">Entretien et pièces</a></li><li><a href="#faq" data-i18n="ft.l5">Questions fréquentes</a></li></ul></div>
+    <div><h4 data-ft="ftArticles">Conseils</h4><ul><li><a href="articles/prix-machine-cafe-professionnelle-tunisie.html" data-fhref="articles/prix-machine-cafe-professionnelle-tunisie.html" data-fhrefen="en/articles/professional-espresso-machine-prices-tunisia.html" data-fhrefar="ar/articles/asaar-alat-espresso-tunis.html" data-ft="ftA1">Prix</a></li><li><a href="articles/machine-1-ou-2-groupes.html" data-fhref="articles/machine-1-ou-2-groupes.html" data-fhrefen="en/articles/one-or-two-group-espresso-machine.html" data-fhrefar="ar/articles/majmouaa-wahida-am-ithnatan.html" data-ft="ftA2">1 ou 2 groupes</a></li><li><a href="articles/entretien-machine-espresso.html" data-fhref="articles/entretien-machine-espresso.html" data-fhrefen="en/articles/espresso-machine-cleaning-schedule.html" data-fhrefar="ar/articles/siyanat-alat-espresso.html" data-ft="ftA3">Entretien</a></li></ul></div>
     <div><h4 data-i18n="ft.contact">Contact</h4><ul><li id="footMail"></li><li id="footTel"></li><li data-i18n="ft.city">Tunis, Tunisie</li></ul></div>
     <div class="legal"><span data-i18n="ft.legal1"></span><span data-i18n="ft.legal2"></span></div>
   </div>
@@ -1239,7 +1313,7 @@ function openProduct(id, keepFocus){
         <p class="tagline">${esc(T(p.tagline))}</p>
         <p class="desc">${esc(T(p.desc))}</p>
         <div class="pr"><small>${esc(t("sh.price"))}</small><b>${esc(range(p))}</b></div>
-        <div class="ctas">${VIDEOS.some(v => v.product === p.id) ? `<button class="btn ghost" type="button" data-video="${VIDEOS.find(v => v.product === p.id).id}">▶ ${esc(t("sh.video"))}</button>` : ""}<button class="btn" data-quote="${p.id}">${esc(t("sh.quote"))}</button><button class="btn wa" data-wa="${p.id}">${esc(t("sh.wa"))}</button></div>
+        <div class="ctas">${VIDEOS.some(v => v.product === p.id) ? `<button class="btn ghost" type="button" data-video="${VIDEOS.find(v => v.product === p.id).id}">▶ ${esc(t("sh.video"))}</button>` : ""}<button class="btn" data-quote="${p.id}">${esc(t("sh.quote"))}</button><button class="btn wa" data-wa="${p.id}">${esc(t("sh.wa"))}</button><a class="btn ghost" href="fiches/${lang}/${p.id}.pdf" download>${({fr:"Fiche PDF",en:"PDF sheet",ar:"البطاقة PDF"})[lang]}</a></div>
         <div style="overflow-x:auto"><table class="specs"><tbody>${p.specs.map(([k, v]) => `<tr><th scope="row">${esc(L[k] || k)}</th><td>${esc(T(v))}</td></tr>`).join("")}</tbody></table></div>
       </div>
     </div>`;
@@ -1381,7 +1455,7 @@ function setLang(l, save){
     const q = params.toString();
     try { history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash); } catch(err){}
   }
-  applyStatic(); renderSlides(); renderFilters(); renderRange(); renderTiles(); renderVideos(); renderAcadMini(); renderContact(); renderSent();
+  applyStatic(); if (window.FE_TOOLS) FE_TOOLS.render(); renderSlides(); renderFilters(); renderRange(); renderTiles(); renderVideos(); renderAcadMini(); renderContact(); renderSent();
   if (openId === "__cmp") openCompare(true); else if (openId === "__acad") openAcademy(true); else if (openId) openProduct(openId, true);
 }
 document.getElementById("langs").addEventListener("click", e => { const b = e.target.closest("[data-lang]"); if (b && b.dataset.lang !== lang) setLang(b.dataset.lang, true); });
@@ -1396,6 +1470,7 @@ if (location.hash === "#comparer") openCompare();
 if (location.hash === "#apprendre") openAcademy();
 </script>
 
+<script src="outils.js"></script>
 <!-- statistiques de visites (GoatCounter, sans cookies) -->
 <script data-goatcounter="https://amineformosa.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>

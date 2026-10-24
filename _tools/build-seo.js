@@ -7,9 +7,9 @@ const ROOT = path.resolve(__dirname, ".."), SITE = "https://formosaespresso.com"
 const LANGS = ["fr", "en", "ar"];
 const DIR = { fr: "produits", en: "en", ar: "ar" };
 const UI = {
-  fr: { home: "Accueil", range: "La gamme", others: "Autres modèles", all: "Voir toute la gamme", specs: "Caractéristiques", wa: "WhatsApp", yt: "Voir la vidéo", photo: "Photo" , lang: "Langue", contact: "Contact" },
-  en: { home: "Home", range: "The range", others: "Other models", all: "See the full range", specs: "Specifications", wa: "WhatsApp", yt: "Watch the video", photo: "Photo", lang: "Language", contact: "Contact" },
-  ar: { home: "الرئيسية", range: "التشكيلة", others: "طرازات أخرى", all: "عرض التشكيلة كاملة", specs: "المواصفات", wa: "واتساب", yt: "مشاهدة الفيديو", photo: "صورة", lang: "اللغة", contact: "اتصل بنا" }
+  fr: { pdf: "Fiche technique (PDF)", web: "Page web", home: "Accueil", range: "La gamme", others: "Autres modèles", all: "Voir toute la gamme", specs: "Caractéristiques", wa: "WhatsApp", yt: "Voir la vidéo", photo: "Photo" , lang: "Langue", contact: "Contact" },
+  en: { pdf: "Spec sheet (PDF)", web: "Web page", home: "Home", range: "The range", others: "Other models", all: "See the full range", specs: "Specifications", wa: "WhatsApp", yt: "Watch the video", photo: "Photo", lang: "Language", contact: "Contact" },
+  ar: { pdf: "البطاقة التقنية (PDF)", web: "صفحة الويب", home: "الرئيسية", range: "التشكيلة", others: "طرازات أخرى", all: "عرض التشكيلة كاملة", specs: "المواصفات", wa: "واتساب", yt: "مشاهدة الفيديو", photo: "صورة", lang: "اللغة", contact: "اتصل بنا" }
 };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const home = l => "../" + (l === "fr" ? "" : "?lang=" + l);
@@ -111,6 +111,21 @@ table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{text-align:star
 .all{display:inline-block;margin-top:22px}
 footer{background:#161616;color:#c9c9c2;font-size:.85rem;padding:28px 0}footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 bdi{unicode-bidi:isolate}
+.print-only{display:none}
+@media print{
+@page{size:A4;margin:12mm 14mm}
+:root{--ground:#fff;--panel:#F4F4F1;--ink:#161616;--muted:#555}
+body{font-size:10pt;line-height:1.4}
+.langs,.crumbs,.ctas,.thumbs,.others,footer{display:none!important}
+header{border-bottom:2px solid #161616}header .wrap{min-height:56px}
+.wrap{max-width:none;padding:0}
+.pd{grid-template-columns:42% 1fr;gap:9mm;padding:6mm 0 0}
+.main{aspect-ratio:auto;height:auto;max-height:95mm}.main img{max-height:95mm;object-fit:contain}
+h1{font-size:24pt;margin:2mm 0}.tag{font-size:12pt;margin-bottom:3mm}.desc{margin-bottom:4mm}
+.pr{padding:3mm 0;margin-bottom:4mm}.pr b{font-size:15pt}
+th,td{padding:1.2mm 0}tr{page-break-inside:avoid}
+.print-only{display:block;margin:0 0 4mm;font-size:9.5pt;color:#555}
+}
 </style>
 </head>
 <body>
@@ -129,7 +144,8 @@ bdi{unicode-bidi:isolate}
     <p class="tag">${esc(pr.tagline)}</p>
     <p class="desc">${esc(pr.desc)}</p>
     <div class="pr"><small>${esc(D.s.price)}</small><b>${esc(pr.range)}</b><p class="note">${esc(D.s.note)}</p></div>
-    <div class="ctas"><a class="btn" href="${home(l)}${l === "fr" ? "?" : "&"}devis=${pr.id}#contact">${esc(D.s.quote)}</a><a class="btn wa" href="https://wa.me/${D.cfg.whatsapp}?text=${encodeURIComponent(pr.wa)}" target="_blank" rel="noopener">${u.wa}</a>${pr.video ? `<a class="btn ghost" href="https://www.youtube.com/watch?v=${pr.video}" target="_blank" rel="noopener">▶ ${u.yt}</a>` : ""}</div>
+    <div class="ctas"><a class="btn" href="${home(l)}${l === "fr" ? "?" : "&"}devis=${pr.id}#contact">${esc(D.s.quote)}</a><a class="btn wa" href="https://wa.me/${D.cfg.whatsapp}?text=${encodeURIComponent(pr.wa)}" target="_blank" rel="noopener">${u.wa}</a>${pr.video ? `<a class="btn ghost" href="https://www.youtube.com/watch?v=${pr.video}" target="_blank" rel="noopener">▶ ${u.yt}</a>` : ""}<a class="btn ghost" href="../fiches/${l}/${pr.id}.pdf" download>${u.pdf}</a></div>
+    <p class="print-only">${D.cfg.email} · ${D.cfg.phone} · ${u.web} : ${purl(l, pr.id)}</p>
     <h2>${u.specs}</h2>
     <table><tbody>${pr.specs.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}</tbody></table>
   </div>
@@ -157,6 +173,11 @@ bdi{unicode-bidi:isolate}
   for (const pr of data.fr.products) {
     const alts = [...LANGS.map(l => [l, purl(l, pr.id)]), ["x-default", purl("fr", pr.id)]];
     for (const l of LANGS) items.push(entry(purl(l, pr.id), alts));
+  }
+  const extra = path.join(__dirname, "pages.json");
+  if (fs.existsSync(extra)) for (const pg of JSON.parse(fs.readFileSync(extra, "utf8"))) {
+    const alts = [...LANGS.map(l => [l, `${SITE}/${pg.path[l]}`]), ["x-default", `${SITE}/${pg.path.fr}`]];
+    for (const l of LANGS) items.push(entry(`${SITE}/${pg.path[l]}`, alts));
   }
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${items.join("\n")}\n</urlset>\n`);
 

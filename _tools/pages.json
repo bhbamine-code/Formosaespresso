@@ -1,0 +1,34 @@
+[
+ {
+  "key": "about",
+  "path": {
+   "fr": "a-propos.html",
+   "en": "en/about.html",
+   "ar": "ar/about.html"
+  }
+ },
+ {
+  "key": "art1",
+  "path": {
+   "fr": "articles/prix-machine-cafe-professionnelle-tunisie.html",
+   "en": "en/articles/professional-espresso-machine-prices-tunisia.html",
+   "ar": "ar/articles/asaar-alat-espresso-tunis.html"
+  }
+ },
+ {
+  "key": "art2",
+  "path": {
+   "fr": "articles/machine-1-ou-2-groupes.html",
+   "en": "en/articles/one-or-two-group-espresso-machine.html",
+   "ar": "ar/articles/majmouaa-wahida-am-ithnatan.html"
+  }
+ },
+ {
+  "key": "art3",
+  "path": {
+   "fr": "articles/entretien-machine-espresso.html",
+   "en": "en/articles/espresso-machine-cleaning-schedule.html",
+   "ar": "ar/articles/siyanat-alat-espresso.html"
+  }
+ }
+]

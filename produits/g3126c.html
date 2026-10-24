@@ -54,6 +54,21 @@ table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{text-align:star
 .all{display:inline-block;margin-top:22px}
 footer{background:#161616;color:#c9c9c2;font-size:.85rem;padding:28px 0}footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 bdi{unicode-bidi:isolate}
+.print-only{display:none}
+@media print{
+@page{size:A4;margin:12mm 14mm}
+:root{--ground:#fff;--panel:#F4F4F1;--ink:#161616;--muted:#555}
+body{font-size:10pt;line-height:1.4}
+.langs,.crumbs,.ctas,.thumbs,.others,footer{display:none!important}
+header{border-bottom:2px solid #161616}header .wrap{min-height:56px}
+.wrap{max-width:none;padding:0}
+.pd{grid-template-columns:42% 1fr;gap:9mm;padding:6mm 0 0}
+.main{aspect-ratio:auto;height:auto;max-height:95mm}.main img{max-height:95mm;object-fit:contain}
+h1{font-size:24pt;margin:2mm 0}.tag{font-size:12pt;margin-bottom:3mm}.desc{margin-bottom:4mm}
+.pr{padding:3mm 0;margin-bottom:4mm}.pr b{font-size:15pt}
+th,td{padding:1.2mm 0}tr{page-break-inside:avoid}
+.print-only{display:block;margin:0 0 4mm;font-size:9.5pt;color:#555}
+}
 </style>
 </head>
 <body>
@@ -72,7 +87,8 @@ bdi{unicode-bidi:isolate}
     <p class="tag">la pression, entre vos mains.</p>
     <p class="desc">Un groupe E61 saturé et une palette de débit pour régler à la main la pré-infusion et la pression d’extraction. Le choix des coffee-shops de spécialité qui travaillent des cafés de torréfaction claire.</p>
     <div class="pr"><small>Prix indicatif TTC</small><b>6 600 – 8 500 DT</b><p class="note">Prix indicatifs en dinars tunisiens, TVA incluse, hors livraison et installation. La fourchette dépend du coloris, du taux de change et des frais de douane au moment de la commande ; nous confirmons un prix ferme sous un jour ouvré.</p></div>
-    <div class="ctas"><a class="btn" href="../?devis=g3126c#contact">Demander un devis</a><a class="btn wa" href="https://wa.me/886973872881?text=Bonjour%20Formosa%20Espresso%2C%20je%20souhaite%20un%20devis%20pour%20la%20Gemilai%20G3126C%20(6%C2%A0600%20%E2%80%93%208%C2%A0500%20DT%20TTC)." target="_blank" rel="noopener">WhatsApp</a></div>
+    <div class="ctas"><a class="btn" href="../?devis=g3126c#contact">Demander un devis</a><a class="btn wa" href="https://wa.me/886973872881?text=Bonjour%20Formosa%20Espresso%2C%20je%20souhaite%20un%20devis%20pour%20la%20Gemilai%20G3126C%20(6%C2%A0600%20%E2%80%93%208%C2%A0500%20DT%20TTC)." target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" href="../fiches/fr/g3126c.pdf" download>Fiche technique (PDF)</a></div>
+    <p class="print-only">contact@formosaespresso.com · +886 973 872 881 · Page web : https://formosaespresso.com/produits/g3126c.html</p>
     <h2>Caractéristiques</h2>
     <table><tbody><tr><th scope="row">Groupe</th><td>E61 saturé, porte-filtre 58 mm</td></tr><tr><th scope="row">Chaudières</th><td>300 ml café + 5,25 L vapeur à échangeur</td></tr><tr><th scope="row">Pression</th><td>Variable par palette de débit (pré-infusion et extraction)</td></tr><tr><th scope="row">Température</th><td>PID</td></tr><tr><th scope="row">Pompe</th><td>Rotative</td></tr><tr><th scope="row">Vapeur</th><td>Mode manuel ou automatique</td></tr><tr><th scope="row">Manomètres</th><td>Café, vapeur, pompe et eau du réseau</td></tr><tr><th scope="row">Puissance</th><td>2900 W · 220 V · 50 Hz</td></tr><tr><th scope="row">Poids net</th><td>45,1 kg</td></tr><tr><th scope="row">Dimensions</th><td>520 × 580 × 487 mm</td></tr><tr><th scope="row">Coloris</th><td>Blanc ivoire</td></tr></tbody></table>
   </div>
