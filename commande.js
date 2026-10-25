@@ -91,19 +91,23 @@
   const isAcc = id => id.startsWith("acc:");
   const accList = () => (window.FE_TOOLS && FE_TOOLS.acc) || [];
   function info(id) {
-    if (isAcc(id)) { const a = accList().find(([k]) => "acc:" + k === id); return { name: a ? T(a[1]) : id, kind: "accessory", unit: null }; }
+    if (isAcc(id)) {
+      const it = ((window.FE_TOOLS && FE_TOOLS.accItems) || []).find(([k]) => "acc:" + k === id);
+      if (it) return { name: T(it[2]), kind: "accessory", unit: it[3] };
+      const a = accList().find(([k]) => "acc:" + k === id); return a ? { name: T(a[1]), kind: "accessory", unit: null } : null;
+    }
     const p = byId[id]; if (!p) return null;
     return { name: T(p.name), kind: p.cat === "grinder" ? "grinder" : "machine", unit: SHOP.price(p) };
   }
   function totals() {
-    let sub = 0, mach = 0, del = 0, hasAcc = false, n = 0;
+    let sub = 0, mach = 0, del = 0, hasAcc = false, accAny = false, n = 0;
     cart.forEach(x => {
       const i = info(x.id); if (!i) return; n += x.qty;
-      if (i.kind === "accessory") { hasAcc = true; return; }
+      if (i.kind === "accessory") { accAny = true; if (i.unit == null) hasAcc = true; else sub += i.unit * x.qty; return; }
       sub += i.unit * x.qty; del += SHOP.delivery[i.kind] * x.qty;
       if (i.kind === "machine") mach += i.unit * x.qty;
     });
-    if (hasAcc) del += SHOP.delivery.accessory;
+    if (accAny) del += SHOP.delivery.accessory;
     const dep = Math.ceil(mach * SHOP.depositRate);
     return { sub, del, total: sub + del, dep, cod: sub + del - dep, hasAcc, n };
   }
@@ -111,7 +115,7 @@
     if (!info(id)) return;
     const x = cart.find(c => c.id === id);
     if (x) x.qty += qty || 1; else cart.push({ id, qty: qty || 1 });
-    save(); badge(); if (!quiet) showAdded(info(id).name);
+    save(); badge(); fab.classList.remove('pop'); void fab.offsetWidth; fab.classList.add('pop'); if (!quiet) showAdded(info(id).name);
     track("panier-" + id, "Ajout au panier");
   }
 
@@ -121,6 +125,9 @@
   }
   /* ===== interface ===== */
   const head = document.getElementById("cartHead");
+  const fab = document.createElement("button");
+  fab.type = "button"; fab.className = "cart-fab"; fab.setAttribute("data-cartopen", "");
+  document.body.appendChild(fab);
   const bar = document.createElement("div"); bar.className = "cart-added"; bar.hidden = true; bar.setAttribute("role", "status");
   document.body.appendChild(bar);
   let barT;
@@ -130,7 +137,11 @@
   let done = null, failMsg = "", lastFocus = null, step = "cart";
 
   function badge() {
-    const n = totals().n;
+    const tt = totals(), n = tt.n;
+    const icon = `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L21 8H6"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg>`;
+    fab.innerHTML = `${icon}<span class="lbl">${e(S("cart"))}</span><b class="n">${n}</b>${n ? `<span class="tot">${e(dt(tt.total))}</span>` : ""}`;
+    fab.classList.toggle("has", !!n);
+    fab.setAttribute("aria-label", `${S("cart")} (${n})`);
     if (!head) return;
     head.innerHTML = `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L21 8H6"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg><span class="lbl">${e(S("cart"))}</span>${n ? `<b>${n}</b>` : ""}`;
     head.setAttribute("aria-label", `${S("cart")} (${n})`);
@@ -138,7 +149,7 @@
   function lines() {
     return cart.map(x => {
       const i = info(x.id); if (!i) return "";
-      return `<li class="cart-line"><div><b>${e(i.name)}</b><small>${i.unit == null ? e(S("toConfirm")) : e(dt(i.unit)) + (x.qty > 1 ? " × " + x.qty : "") + " · " + e(S("from"))}</small></div>
+      return `<li class="cart-line"><div><b>${e(i.name)}</b><small>${i.unit == null ? e(S("toConfirm")) : e(dt(i.unit)) + (x.qty > 1 ? " × " + x.qty : "") + (i.kind === "accessory" ? "" : " · " + e(S("from")))}</small></div>
         <div class="cart-qty" role="group" aria-label="${e(S("qty"))}"><button type="button" data-cq="${e(x.id)}:-1" aria-label="−">−</button><span>${x.qty}</span><button type="button" data-cq="${e(x.id)}:1" aria-label="+">+</button></div>
         <button type="button" class="cart-rm" data-crm="${e(x.id)}">${e(S("remove"))}</button></li>`;
     }).join("");
@@ -226,8 +237,8 @@
     }
     box.innerHTML = `<div class="cart-panel"><div class="cart-bar"><h2 id="cartH">${e(S(step === "checkout" && !done && tt.n ? "stepInfo" : "cartTitle"))}</h2><button class="btn ghost" type="button" data-cclose>${e(S("close"))}</button></div><div class="cart-body">${body}</div></div>`;
   }
-  function open(st) { step = st || "cart"; bar.hidden = true; lastFocus = document.activeElement; if (typeof closeSheet === "function" && !document.getElementById("sheet").hidden) closeSheet(); box.hidden = false; document.body.style.overflow = "hidden"; render(); const c = box.querySelector("[data-cclose]"); if (c) c.focus(); track("panier-ouvert", "Panier"); }
-  function close() { box.hidden = true; document.body.style.overflow = ""; if (done) { done = null; } if (lastFocus && lastFocus.focus) lastFocus.focus(); render(); }
+  function open(st) { step = st || "cart"; bar.hidden = true; fab.hidden = true; lastFocus = document.activeElement; if (typeof closeSheet === "function" && !document.getElementById("sheet").hidden) closeSheet(); box.hidden = false; document.body.style.overflow = "hidden"; render(); const c = box.querySelector("[data-cclose]"); if (c) c.focus(); track("panier-ouvert", "Panier"); }
+  function close() { box.hidden = true; fab.hidden = false; document.body.style.overflow = ""; if (done) { done = null; } if (lastFocus && lastFocus.focus) lastFocus.focus(); render(); }
 
   function orderText(o) {
     const L1 = o.items.map(x => `- ${x.qty} × ${x.name}${x.unit == null ? " (" + S("toConfirm") + ")" : " : " + dt(x.unit * x.qty)}`).join("\n");
@@ -276,4 +287,5 @@
 
   window.FE_CART = { add, render, open, buyLabel: () => S("buy"), buyShort: () => S("buyShort"), showAdded };
   render();
+  if (typeof renderRange === "function") renderRange();
 })();

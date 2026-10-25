@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs>
+<linearGradient id="st" x1="0" x2="1"><stop offset="0" stop-color="#8f9396"/><stop offset=".35" stop-color="#e9ebec"/><stop offset=".6" stop-color="#c3c7c9"/><stop offset="1" stop-color="#7d8285"/></linearGradient>
+<linearGradient id="wd" x1="0" x2="1"><stop offset="0" stop-color="#6b4226"/><stop offset=".45" stop-color="#b07a4c"/><stop offset="1" stop-color="#5a3519"/></linearGradient>
+<linearGradient id="bk" x1="0" x2="1"><stop offset="0" stop-color="#151413"/><stop offset=".45" stop-color="#3b3835"/><stop offset="1" stop-color="#121110"/></linearGradient>
+<linearGradient id="wh" x1="0" x2="1"><stop offset="0" stop-color="#d8d4cc"/><stop offset=".4" stop-color="#ffffff"/><stop offset="1" stop-color="#cfcac1"/></linearGradient>
+<radialGradient id="sh"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+</defs><ellipse cx="100" cy="165" rx="78" ry="9" fill="url(#sh)"/><path d="M30 120 L100 86 L172 112 L102 150 Z" fill="#1d1c1b"/><path d="M30 120 L102 150 L102 160 L30 130 Z" fill="#0d0d0c"/><path d="M102 150 L172 112 L172 122 L102 160 Z" fill="#2a2826"/><ellipse cx="104" cy="116" rx="26" ry="11" fill="#2f2d2b"/><ellipse cx="104" cy="114" rx="20" ry="8" fill="#141312"/></svg>

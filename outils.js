@@ -119,9 +119,13 @@
     /* accessoires */
     aLabel: L("Accessoires et consommables", "Accessories and consumables", "الإكسسوارات والمستهلكات"),
     aH: L("le petit matériel du barista", "the barista’s small tools", "أدوات الباريستا الصغيرة"),
-    aLede: L("Cochez ce qu’il vous faut : ajoutez-le au panier (paiement à la livraison, 7 DT de livraison) ou demandez les prix.", "Tick what you need: add it to your basket (pay on delivery, 7 DT delivery) or ask for prices.", "اختر ما تحتاجه: أضفه إلى السلة (الدفع عند الاستلام، التوصيل 7 د.ت) أو اطلب الأسعار."),
+    aLede: L("Ajoutez au panier, payez à la livraison. Tout le petit matériel pour démarrer et entretenir votre machine.", "Add to your basket, pay on delivery. All the small tools to start and maintain your machine.", "أضف إلى السلة وادفع عند الاستلام. كل الأدوات الصغيرة لبدء العمل وصيانة آلتك."),
     aBtn: L("Demander les prix ({n})", "Request prices ({n})", "اطلب الأسعار ({n})"),
-    aBuy: L("Ajouter au panier ({n})", "Add to basket ({n})", "أضف إلى السلة ({n})"),
+    aBuy: L("Ajouter au panier", "Add to basket", "أضف إلى السلة"),
+    aAll: L("Tout", "All", "الكل"),
+    aDemo: L("Prix indicatifs TTC, confirmés par téléphone avant la livraison. Livraison des accessoires : 7 DT par commande.", "Indicative prices incl. VAT, confirmed by phone before delivery. Accessories delivery: 7 DT per order.", "أسعار تقريبية بالأداءات، تُؤكَّد بالهاتف قبل التوصيل. توصيل الإكسسوارات: 7 د.ت للطلب."),
+    aOther: L("Un autre article ? Demandez-le-nous", "Another item? Ask us", "منتج آخر؟ اطلبه منا"),
+    aOtherMsg: L("Bonjour, je cherche un accessoire : ", "Hello, I am looking for an accessory: ", "مرحبًا، أبحث عن إكسسوار: "),
     aNone: L("Cochez au moins un article.", "Tick at least one item.", "اختر عنصرًا واحدًا على الأقل."),
     aMsg: L("Bonjour, je souhaite les prix de : {items}.", "Hello, I’d like prices for: {items}.", "مرحبًا، أريد أسعار: {items}."),
 
@@ -184,9 +188,35 @@
     ["thermo", L("Thermomètre à lait", "Milk thermometer", "ميزان حرارة الحليب"), L("Pour former l’équipe à la bonne température.", "To train the team on the right temperature.", "لتدريب الفريق على الحرارة المناسبة.")]
   ];
 
+
+  /* Articles accessoires (démonstration : prix indicatifs, à remplacer par vos prix réels) — [id, catégorie, nom, prix DT, image] */
+  const ACC_ITEMS = [
+    ["tamper-wood", "tamper", L("Tasseur 58 mm, poignée bois", "58 mm tamper, wooden handle", "مكبس 58 مم بمقبض خشبي"), 65],
+    ["tamper-cal", "tamper", L("Tasseur calibré à ressort 58 mm", "58 mm calibrated spring tamper", "مكبس 58 مم بنابض معاير"), 95],
+    ["mat", "mat", L("Tapis de tassage silicone", "Silicone tamping mat", "قاعدة كبس سيليكون"), 35],
+    ["mat-corner", "mat", L("Tapis de tassage d’angle", "Corner tamping mat", "قاعدة كبس زاوية"), 45],
+    ["jug-350", "jugs", L("Pichet à lait inox 350 ml", "Stainless milk jug 350 ml", "إبريق حليب 350 مل"), 45],
+    ["jug-600", "jugs", L("Pichet à lait inox 600 ml", "Stainless milk jug 600 ml", "إبريق حليب 600 مل"), 55],
+    ["knock", "knock", L("Bac à marc avec barre", "Knock box with bar", "حاوية تفل بقضيب"), 59],
+    ["knock-drawer", "knock", L("Tiroir à marc inox", "Stainless knock drawer", "درج تفل فولاذي"), 180],
+    ["scale", "scale", L("Balance 0,1 g avec minuteur", "0.1 g scale with timer", "ميزان 0,1 غ مع مؤقّت"), 89],
+    ["dist", "dist", L("Répartiteur 58 mm", "58 mm distributor", "موزّع بن 58 مم"), 79],
+    ["wdt", "dist", L("Outil WDT à aiguilles", "WDT needle tool", "أداة WDT بالإبر"), 35],
+    ["basket-double", "baskets", L("Panier filtre double 58 mm", "58 mm double filter basket", "سلة فلتر مزدوجة 58 مم"), 25],
+    ["basket-blind", "baskets", L("Panier aveugle de nettoyage", "Blind cleaning basket", "سلة صمّاء للتنظيف"), 18],
+    ["gasket", "gaskets", L("Joint de groupe 58 mm", "58 mm group gasket", "حشوة مجموعة 58 مم"), 12],
+    ["screen", "gaskets", L("Douchette inox 58 mm", "58 mm shower screen", "مصفاة مجموعة 58 مم"), 28],
+    ["tablets", "clean", L("Pastilles de nettoyage (100)", "Cleaning tablets (100)", "أقراص تنظيف (100)"), 45],
+    ["brush", "clean", L("Brosse de groupe", "Group head brush", "فرشاة المجموعة"), 18],
+    ["filter", "water", L("Adoucisseur d’eau 8 L", "8 L water softener", "مزيل كلس 8 لتر"), 320],
+    ["cartridge", "water", L("Cartouche filtrante de rechange", "Replacement filter cartridge", "خرطوشة تصفية احتياطية"), 120],
+    ["cups-espresso", "cups", L("Tasses espresso + soucoupes (6)", "Espresso cups + saucers (6)", "فناجين إسبريسو مع صحون (6)"), 75],
+    ["cups-cappu", "cups", L("Tasses cappuccino + soucoupes (6)", "Cappuccino cups + saucers (6)", "فناجين كابتشينو مع صحون (6)"), 95],
+    ["thermo", "thermo", L("Thermomètre à lait", "Milk thermometer", "ميزان حرارة الحليب"), 25]
+  ];
   /* ---------- état ---------- */
   const G = { vol: null, type: null, budget: null };
-  const accSel = new Set();
+  const accSel = new Set(); let accCat = "all";
   const C = { price: 2.5, cups: 150, days: 26, cost: 0.6, fixed: 6000, machine: "g3201", grinder: true };
   let savState = null;
 
@@ -284,14 +314,17 @@
   };
   function renderAcc(){
     const el = $("accessoires"); if (!el) return;
+    const items = ACC_ITEMS.filter(([, c]) => accCat === "all" || c === accCat);
     el.innerHTML = `<div class="wrap">
       <div class="head"><div class="stack"><p class="label">${e(S("aLabel"))}</p><h2>${e(S("aH"))}</h2></div><p class="lede">${e(S("aLede"))}</p></div>
-      <div class="acc-grid">${ACC.map(([k, n, d]) => `<label class="acc"><input type="checkbox" data-acc="${k}"${accSel.has(k) ? " checked" : ""}>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>
-        <span><b>${e(T(n))}</b><small>${e(T(d))}</small></span></label>`).join("")}</div>
-      <div class="acc-go"><button class="btn buy" type="button" data-accbuy>${e(T(STR.aBuy).replace("{n}", accSel.size))}</button><button class="btn ghost" type="button" data-accgo>${e(T(STR.aBtn).replace("{n}", accSel.size))}</button></div>
+      <div class="acc-cats" role="group" aria-label="${e(S("aLabel"))}"><button type="button" data-acccat="all" aria-pressed="${accCat === "all"}">${e(S("aAll"))}</button>${ACC.filter(([k]) => ACC_ITEMS.some(([, c]) => c === k)).map(([k, n]) => `<button type="button" data-acccat="${k}" aria-pressed="${accCat === k}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>${e(T(n))}</button>`).join("")}</div>
+      <div class="acc-items">${items.map(([id, c, n, pr]) => `<div class="acc-item"><div class="pic"><img src="img/acc/${id}.svg" alt="${e(T(n))}" loading="lazy" width="200" height="200"></div>
+        <span class="acat">${e(T((ACC.find(([k]) => k === c) || [, L("", "", "")])[1]))}</span><b>${e(T(n))}</b><span class="pr">${e(money(pr))}</span>
+        <button type="button" class="btn buy" data-buy="acc:${id}">${e(S("aBuy"))}</button></div>`).join("")}</div>
+      <p class="acc-note">${e(S("aDemo"))} <button type="button" class="link" data-accother>${e(S("aOther"))}</button></p>
     </div>`;
   }
+
 
   function calcOut(){
     const n = v => Math.max(0, Number(String(v).replace(",", ".")) || 0);
@@ -367,6 +400,9 @@
     const po = ev.target.closest("[data-packopt]");
     if (po) { const [k, o] = po.dataset.packopt.split(":"); packOpt[k] = o; po.parentElement.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b === po)); $("pkp" + k).innerHTML = packPrice(+k); return; }
     if (ev.target.closest("[data-paywa]")) { openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(S("payMsg"))}`); track("paiement-whatsapp", "Facilités de paiement"); return; }
+    const ac = ev.target.closest("[data-acccat]");
+    if (ac) { accCat = ac.dataset.acccat; renderAcc(); return; }
+    if (ev.target.closest("[data-accother]")) { quote(null, S("aOtherMsg")); return; }
     if (ev.target.closest("[data-accbuy]")) {
       if (!accSel.size) { toast(S("aNone")); return; }
       if (window.FE_CART) { const n = accSel.size; accSel.forEach(k => FE_CART.add("acc:" + k, 1, true)); accSel.clear(); renderAcc(); FE_CART.showAdded(n + " × " + S("aLabel").toLowerCase()); }
@@ -408,6 +444,6 @@
       .catch(() => { savState = { fail: true }; btn.disabled = false; btn.textContent = S("sSend"); $("savErr").textContent = S("sFail"); });
   });
 
-  window.FE_TOOLS = { render, acc: ACC };
+  window.FE_TOOLS = { render, acc: ACC, accItems: ACC_ITEMS };
   render();
 })();
