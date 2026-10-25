@@ -456,6 +456,12 @@ html[lang="ar"] .label{font-size:.8rem}
 .cart-added{bottom:calc(84px + env(safe-area-inset-bottom,0px))!important}
 .prod-cell{display:flex;flex-direction:column;gap:14px;min-width:0}.prod-cell.wide{grid-column:1/-1}.prod-cell .prod.wide{grid-column:auto}
 .prod-add{align-self:flex-start}
+.stock{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:600;align-self:flex-start}
+.stock::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.st-in{color:#1E6B43}.st-low{color:#9A5B00}.st-pre{color:#2C4F7C}.st-out{color:#A3272A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .st-in{color:#7CCB9C}:root:not([data-theme="light"]) .st-low{color:#E3B45C}:root:not([data-theme="light"]) .st-pre{color:#8FB3E3}:root:not([data-theme="light"]) .st-out{color:#F08A86}}
+.pd-stock{margin:-4px 0 2px}
+.cart-line .stock{font-size:.75rem;margin-top:2px}
 .cart-head{position:relative;display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);color:var(--ink);padding:9px 14px;cursor:pointer;font-weight:600;font-size:.92rem;white-space:nowrap}
 .cart-head:hover{border-color:var(--ink)}
 .cart-head b{background:var(--accent);color:var(--accent-ink);border-radius:999px;min-width:20px;height:20px;display:inline-grid;place-items:center;font-size:.75rem;padding:0 6px}
@@ -1189,7 +1195,7 @@ function renderRange(){
         <div class="row1"><h3>${esc(short(p))}</h3><span class="price"><small>${esc(t("from"))}</small>${esc(money(p.price[0]))}</span></div>
         <span class="tagline">${esc(T(p.tagline))}</span>
       </div>
-    </a><button type="button" class="btn buy prod-add" data-buy="${p.id}">${esc(window.FE_CART ? FE_CART.buyLabel() : "Ajouter au panier")}</button></div>`).join("");
+    </a>${window.FE_CART ? FE_CART.stockBadge(p.id) + FE_CART.buyButton(p.id, "prod-add") : ""}</div>`).join("");
 }
 document.getElementById("filters").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (!b) return; filter = b.dataset.f; renderFilters(); renderRange(); });
 document.querySelectorAll("[data-filter]").forEach(a => a.addEventListener("click", () => { filter = a.dataset.filter; renderFilters(); renderRange(); closeMenu(); }));
@@ -1387,7 +1393,7 @@ function openProduct(id, keepFocus){
         <p class="tagline">${esc(T(p.tagline))}</p>
         <p class="desc">${esc(T(p.desc))}</p>
         <div class="pr"><small>${esc(t("sh.price"))}</small><b>${esc(range(p))}</b></div>
-        <div class="ctas"><button class="btn buy" type="button" data-buy="${p.id}">${esc(window.FE_CART ? FE_CART.buyLabel() : "Commander")}</button>${VIDEOS.some(v => v.product === p.id) ? `<button class="btn ghost" type="button" data-video="${VIDEOS.find(v => v.product === p.id).id}">▶ ${esc(t("sh.video"))}</button>` : ""}<button class="btn ghost" data-quote="${p.id}">${esc(t("sh.quote"))}</button><button class="btn wa" data-wa="${p.id}">${esc(t("sh.wa"))}</button><a class="btn ghost" href="fiches/${lang}/${p.id}.pdf" download>${({fr:"Fiche PDF",en:"PDF sheet",ar:"البطاقة PDF"})[lang]}</a></div>
+        ${window.FE_CART ? `<div class="pd-stock">${FE_CART.stockBadge(p.id)}</div>` : ""}<div class="ctas">${window.FE_CART ? FE_CART.buyButton(p.id) : ""}${VIDEOS.some(v => v.product === p.id) ? `<button class="btn ghost" type="button" data-video="${VIDEOS.find(v => v.product === p.id).id}">▶ ${esc(t("sh.video"))}</button>` : ""}<button class="btn ghost" data-quote="${p.id}">${esc(t("sh.quote"))}</button><button class="btn wa" data-wa="${p.id}">${esc(t("sh.wa"))}</button><a class="btn ghost" href="fiches/${lang}/${p.id}.pdf" download>${({fr:"Fiche PDF",en:"PDF sheet",ar:"البطاقة PDF"})[lang]}</a></div>
         <div style="overflow-x:auto"><table class="specs"><tbody>${p.specs.map(([k, v]) => `<tr><th scope="row">${esc(L[k] || k)}</th><td>${esc(T(v))}</td></tr>`).join("")}</tbody></table></div>
       </div>
     </div>`;
@@ -1544,6 +1550,7 @@ if (location.hash === "#comparer") openCompare();
 if (location.hash === "#apprendre") openAcademy();
 </script>
 
+<script src="stock.js"></script>
 <script src="outils.js"></script>
 <script src="commande.js"></script>
 <!-- statistiques de visites (GoatCounter, sans cookies) -->

@@ -319,8 +319,8 @@
       <div class="head"><div class="stack"><p class="label">${e(S("aLabel"))}</p><h2>${e(S("aH"))}</h2></div><p class="lede">${e(S("aLede"))}</p></div>
       <div class="acc-cats" role="group" aria-label="${e(S("aLabel"))}"><button type="button" data-acccat="all" aria-pressed="${accCat === "all"}">${e(S("aAll"))}</button>${ACC.filter(([k]) => ACC_ITEMS.some(([, c]) => c === k)).map(([k, n]) => `<button type="button" data-acccat="${k}" aria-pressed="${accCat === k}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>${e(T(n))}</button>`).join("")}</div>
       <div class="acc-items">${items.map(([id, c, n, pr]) => `<div class="acc-item"><div class="pic"><img src="img/acc/${id}.svg" alt="${e(T(n))}" loading="lazy" width="200" height="200"></div>
-        <span class="acat">${e(T((ACC.find(([k]) => k === c) || [, L("", "", "")])[1]))}</span><b>${e(T(n))}</b><span class="pr">${e(money(pr))}</span>
-        <button type="button" class="btn buy" data-buy="acc:${id}">${e(S("aBuy"))}</button></div>`).join("")}</div>
+        <span class="acat">${e(T((ACC.find(([k]) => k === c) || [, L("", "", "")])[1]))}</span><b>${e(T(n))}</b><span class="pr">${e(money(pr))}</span>${window.FE_CART ? FE_CART.stockBadge("acc:" + id) : ""}
+        ${window.FE_CART ? FE_CART.buyButton("acc:" + id) : `<button type="button" class="btn buy" data-buy="acc:${id}">${e(S("aBuy"))}</button>`}</div>`).join("")}</div>
       <p class="acc-note">${e(S("aDemo"))} <button type="button" class="link" data-accother>${e(S("aOther"))}</button></p>
     </div>`;
   }

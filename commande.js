@@ -81,9 +81,41 @@
     okCod: L("À payer au livreur : {d}.", "To pay the courier: {d}.", "المبلغ عند الاستلام: {d}."),
     okWa: L("Envoyer aussi par WhatsApp", "Also send by WhatsApp", "أرسل أيضًا عبر واتساب"),
     okDone: L("Fermer", "Close", "إغلاق"),
+    stIn: L("En stock", "In stock", "متوفّر"),
+    stLow: L("Plus que {n} en stock", "Only {n} left", "بقي {n} فقط"),
+    stPre: L("Sur commande · {d}", "Made to order · {d}", "حسب الطلب · {d}"),
+    stSplit: L("{a} en stock, {b} sur commande · {d}", "{a} in stock, {b} to order · {d}", "{a} متوفّر، {b} حسب الطلب · {d}"),
+    stOut: L("Rupture de stock", "Out of stock", "نفد المخزون"),
+    outMsg: L("{n} est en rupture de stock. Demandez-nous la date de retour.", "{n} is out of stock. Ask us when it will be back.", "{n} غير متوفّر حاليًا. اسألنا عن موعد توفّره."),
+    maxMsg: L("Stock disponible : {q} pour {n}.", "Available stock: {q} for {n}.", "المخزون المتوفّر: {q} من {n}."),
+    notify: L("Me prévenir", "Notify me", "أعلمني"),
+    notifyMsg: L("Bonjour, prévenez-moi quand {n} sera de nouveau disponible.", "Hello, please let me know when {n} is back in stock.", "مرحبًا، أعلموني عندما يتوفّر {n} من جديد."),
     waHead: L("Bonjour Formosa Espresso, nouvelle commande {r}", "Hello Formosa Espresso, new order {r}", "مرحبًا Formosa Espresso، طلب جديد {r}")
   };
   const GOVS = ["Ariana", "Béja", "Ben Arous", "Bizerte", "Gabès", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "Kébili", "Le Kef", "Mahdia", "La Manouba", "Médenine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Tunis", "Zaghouan"];
+
+  /* ===== stock (stock.js) ===== */
+  function stockOf(id) {
+    const st = window.FE_STOCK || {}, it = (st.items || {})[id];
+    const lead = T((it && it.lead) || st.defaultLead || L("4 à 6 semaines", "4 to 6 weeks", "من 4 إلى 6 أسابيع"));
+    if (!it || it.qty == null) return { state: "pre", qty: Infinity, lead, pre: true };
+    const q = Math.max(0, it.qty | 0), pre = !!it.preorder;
+    if (q === 0) return pre ? { state: "pre", qty: 0, lead, pre } : { state: "out", qty: 0, lead, pre };
+    return { state: q <= (st.lowFrom ?? 2) ? "low" : "in", qty: q, lead, pre };
+  }
+  function stockBadge(id, inCart) {
+    const s = stockOf(id);
+    if (inCart && s.pre && isFinite(s.qty) && s.qty > 0 && inCart > s.qty) return `<span class="stock st-pre">${e(fill(S("stSplit"), { a: s.qty, b: inCart - s.qty, d: s.lead }))}</span>`;
+    const txt = s.state === "in" ? S("stIn") : s.state === "low" ? fill(S("stLow"), { n: s.qty }) : s.state === "pre" ? fill(S("stPre"), { d: s.lead }) : S("stOut");
+    return `<span class="stock st-${s.state}">${e(txt)}</span>`;
+  }
+  const maxQty = id => { const s = stockOf(id); return s.pre ? 20 : Math.min(20, s.qty); };
+  function buyButton(id, cls) {
+    const s = stockOf(id), n = info(id) ? info(id).name : id;
+    return s.state === "out"
+      ? `<button type="button" class="btn ghost ${cls || ""}" data-notify="${e(id)}">${e(S("notify"))}</button>`
+      : `<button type="button" class="btn buy ${cls || ""}" data-buy="${e(id)}">${e(S("buy"))}</button>`;
+  }
 
   /* ===== panier ===== */
   let cart = [];
@@ -114,8 +146,11 @@
   }
   function add(id, qty, quiet) {
     if (!info(id)) return;
-    const x = cart.find(c => c.id === id);
-    if (x) x.qty += qty || 1; else cart.push({ id, qty: qty || 1 });
+    const name = info(id).name, mx = maxQty(id);
+    if (mx <= 0) { toast(fill(S("outMsg"), { n: name })); return; }
+    const x = cart.find(c => c.id === id), want = (x ? x.qty : 0) + (qty || 1);
+    if (want > mx) { toast(fill(S("maxMsg"), { q: mx, n: name })); if (x) x.qty = mx; else cart.push({ id, qty: mx }); save(); badge(); return; }
+    if (x) x.qty = want; else cart.push({ id, qty: qty || 1 });
     save(); badge(); fab.classList.remove('pop'); void fab.offsetWidth; fab.classList.add('pop'); if (!quiet) showAdded(info(id).name);
     track("panier-" + id, "Ajout au panier");
   }
@@ -150,7 +185,7 @@
   function lines() {
     return cart.map(x => {
       const i = info(x.id); if (!i) return "";
-      return `<li class="cart-line"><div><b>${e(i.name)}</b><small>${i.unit == null ? e(S("toConfirm")) : e(dt(i.unit)) + (x.qty > 1 ? " × " + x.qty : "") + (i.kind === "accessory" ? "" : " · " + e(S("from")))}</small></div>
+      return `<li class="cart-line"><div><b>${e(i.name)}</b>${stockBadge(x.id, x.qty)}<small>${i.unit == null ? e(S("toConfirm")) : e(dt(i.unit)) + (x.qty > 1 ? " × " + x.qty : "") + (i.kind === "accessory" ? "" : " · " + e(S("from")))}</small></div>
         <div class="cart-qty" role="group" aria-label="${e(S("qty"))}"><button type="button" data-cq="${e(x.id)}:-1" aria-label="−">−</button><span>${x.qty}</span><button type="button" data-cq="${e(x.id)}:1" aria-label="+">+</button></div>
         <button type="button" class="cart-rm" data-crm="${e(x.id)}">${e(S("remove"))}</button></li>`;
     }).join("");
@@ -249,6 +284,7 @@
   /* ===== événements ===== */
   document.addEventListener("click", ev => {
     const b = ev.target.closest("[data-buy]"); if (b) { add(b.dataset.buy, 1); return; }
+    const nt = ev.target.closest("[data-notify]"); if (nt) { const i = info(nt.dataset.notify); if (typeof quote === "function") quote(nt.dataset.notify.startsWith("acc:") ? null : nt.dataset.notify, fill(S("notifyMsg"), { n: i ? i.name : "" })); return; }
     if (ev.target.closest("[data-cartopen]")) { open(); return; }
     if (ev.target.closest("[data-barclose]")) { bar.hidden = true; return; }
     if (box.hidden) return;
@@ -256,7 +292,7 @@
     const st = ev.target.closest("[data-cstep]");
     if (st) { step = st.dataset.cstep; render(); box.querySelector(".cart-body").scrollTop = 0; const f = box.querySelector(step === "checkout" ? "#cN" : "[data-cstep]"); if (f) f.focus({ preventScroll: true }); if (step === "checkout") track("panier-checkout", "Passer la commande"); return; }
     const q = ev.target.closest("[data-cq]");
-    if (q) { const [id, d] = [q.dataset.cq.slice(0, q.dataset.cq.lastIndexOf(":")), +q.dataset.cq.slice(q.dataset.cq.lastIndexOf(":") + 1)]; const x = cart.find(c => c.id === id); if (x) { x.qty = Math.max(1, Math.min(20, x.qty + d)); save(); render(); } return; }
+    if (q) { const [id, d] = [q.dataset.cq.slice(0, q.dataset.cq.lastIndexOf(":")), +q.dataset.cq.slice(q.dataset.cq.lastIndexOf(":") + 1)]; const x = cart.find(c => c.id === id); if (x) { const mx = maxQty(id); if (x.qty + d > mx) toast(fill(S("maxMsg"), { q: mx, n: info(id).name })); x.qty = Math.max(1, Math.min(mx, x.qty + d)); save(); render(); } return; }
     const r = ev.target.closest("[data-crm]");
     if (r) { cart = cart.filter(c => c.id !== r.dataset.crm); save(); render(); return; }
     if (ev.target.closest("[data-cwa]") && done) { openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(orderText(done))}`); track("commande-whatsapp", "Commande WhatsApp"); }
@@ -286,7 +322,8 @@
   });
   document.addEventListener("click", ev => { if (ev.target.closest("[data-cwafail]") && window.__feLastOrder) openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(orderText(window.__feLastOrder))}`); });
 
-  window.FE_CART = { add, render, open, buyLabel: () => S("buy"), buyShort: () => S("buyShort"), showAdded };
+  window.FE_CART = { add, render, open, buyLabel: () => S("buy"), buyShort: () => S("buyShort"), showAdded, stockOf, stockBadge, buyButton };
   render();
   if (typeof renderRange === "function") renderRange();
+  if (window.FE_TOOLS) FE_TOOLS.render();
 })();

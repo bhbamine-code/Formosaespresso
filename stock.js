@@ -1,0 +1,39 @@
+/* Stock Formosa Espresso — généré par la page Admin (onglet Stock), ou modifiable à la main.
+   qty : quantité disponible à la vente · preorder : true = commande possible même à 0 (« sur commande ») · lead : délai si sur commande
+   Article absent de la liste = « sur commande » avec le délai par défaut. */
+window.FE_STOCK = {
+  "updated": "2026-10-25",
+  "lowFrom": 2,
+  "defaultLead": { "fr": "4 à 6 semaines", "en": "4 to 6 weeks", "ar": "من 4 إلى 6 أسابيع" },
+  "items": {
+    "g3211a": { "qty": 2, "preorder": true },
+    "g3126c": { "qty": 0, "preorder": true, "lead": { "fr": "6 à 8 semaines", "en": "6 to 8 weeks", "ar": "من 6 إلى 8 أسابيع" } },
+    "g3201": { "qty": 3, "preorder": true },
+    "g3111a": { "qty": 1, "preorder": true },
+    "g3120c": { "qty": 5, "preorder": true },
+    "crm3149": { "qty": 0, "preorder": false },
+    "g9026a": { "qty": 4, "preorder": true },
+    "acc:tamper-wood": { "qty": 12, "preorder": false },
+    "acc:tamper-cal": { "qty": 4, "preorder": false },
+    "acc:mat": { "qty": 15, "preorder": false },
+    "acc:mat-corner": { "qty": 0, "preorder": false },
+    "acc:jug-350": { "qty": 10, "preorder": false },
+    "acc:jug-600": { "qty": 8, "preorder": false },
+    "acc:knock": { "qty": 6, "preorder": false },
+    "acc:knock-drawer": { "qty": 1, "preorder": true },
+    "acc:scale": { "qty": 7, "preorder": false },
+    "acc:dist": { "qty": 5, "preorder": false },
+    "acc:wdt": { "qty": 9, "preorder": false },
+    "acc:basket-double": { "qty": 20, "preorder": false },
+    "acc:basket-blind": { "qty": 14, "preorder": false },
+    "acc:gasket": { "qty": 30, "preorder": false },
+    "acc:screen": { "qty": 18, "preorder": false },
+    "acc:tablets": { "qty": 10, "preorder": false },
+    "acc:brush": { "qty": 2, "preorder": false },
+    "acc:filter": { "qty": 3, "preorder": true },
+    "acc:cartridge": { "qty": 6, "preorder": false },
+    "acc:cups-espresso": { "qty": 0, "preorder": true },
+    "acc:cups-cappu": { "qty": 4, "preorder": false },
+    "acc:thermo": { "qty": 11, "preorder": false }
+  }
+};
