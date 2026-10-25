@@ -107,7 +107,19 @@ nav.cats{background:var(--panel);border-top:1px solid var(--line)}
 .cat span{display:inline-block}
 .cat span::first-letter{text-transform:uppercase}
 .cat.hi{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
-@media (min-width:1100px){.cat{flex:1 0 auto;justify-content:center}}
+@media (min-width:1100px){.cat{padding:8px 13px;gap:8px;font-size:.9rem}.cat svg{width:19px;height:19px}}
+nav.cats .wrap{position:relative}
+.cats-arr{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--ground);color:var(--ink);display:none;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.12);padding:0}
+.cats-arr svg{width:18px;height:18px}
+.cats-arr.prev{inset-inline-start:4px}.cats-arr.next{inset-inline-end:4px}
+[dir="rtl"] .cats-arr svg{transform:scaleX(-1)}
+.cats-arr.on{display:inline-flex}
+.cats-arr:hover{border-color:var(--ink)}
+nav.cats.fade-e .cats-row{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 70px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 70px),transparent)}
+nav.cats.fade-s .cats-row{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 70px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 70px),transparent)}
+nav.cats.fade-s.fade-e .cats-row{-webkit-mask-image:linear-gradient(to right,transparent,#000 70px,#000 calc(100% - 70px),transparent);mask-image:linear-gradient(to right,transparent,#000 70px,#000 calc(100% - 70px),transparent)}
+[dir="rtl"] nav.cats.fade-e:not(.fade-s) .cats-row{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 70px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 70px),transparent)}
+[dir="rtl"] nav.cats.fade-s:not(.fade-e) .cats-row{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 70px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 70px),transparent)}
 @media (max-width:640px){header.site .btn{display:none}.cat{padding:8px 12px;font-size:.88rem;gap:8px}.cat svg{width:19px;height:19px}.cats-row{padding-block:8px;gap:8px}html{scroll-padding-top:120px}}
 @media (max-width:420px){.mark{font-size:1.25rem}.langs button{padding:6px 7px}}
 @media (max-width:640px){header.site .wrap.top{gap:10px}}
@@ -602,15 +614,44 @@ html[lang="ar"] .label{font-size:.8rem}
       <a class="cat" href="#packs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg><span data-ft="navPacks">packs</span></a>
       <a class="cat" href="#accessoires"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8v5H8z"/><path d="M12 8v5"/><path d="M5 13h14v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/></svg><span data-ft="navAcc">accessoires</span></a>
       <a class="cat" href="#rentabilite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8v3H8z"/><path d="M8.5 14h.01M12 14h.01M15.5 14h.01M8.5 17.5h.01M12 17.5h.01M15.5 17.5h.01"/></svg><span data-ft="navCalc">calculateur</span></a>
+      <a class="cat hi" href="#apprendre" data-academy><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/></svg><span data-i18n="nav.learn">académie</span></a>
       <a class="cat" href="#comparer" data-compare><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h6v14H4zM14 5h6v14h-6z"/><path d="M6 9h2M6 13h2M16 9h2M16 13h2"/></svg><span data-i18n="nav.compare">comparer</span></a>
       <a class="cat" href="#videos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg><span data-i18n="nav.videos">vidéos</span></a>
       <a class="cat" href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4a4 4 0 0 0-3.5 5.9L4 17.4V20h2.6l7.5-7.5A4 4 0 0 0 20 9l-2.5 2.5L15 9l2.5-2.5A4 4 0 0 0 15 4z"/></svg><span data-i18n="nav.services">services</span></a>
       <a class="cat" href="#gemilai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 21l4-2 4 2-1-7.5"/></svg><span data-i18n="nav.brand">gemilai</span></a>
       <a class="cat" href="#sav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m5.6 5.6 3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6"/></svg><span data-ft="navSav">SAV</span></a>
       <a class="cat" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg><span data-i18n="nav.contact">contact</span></a>
-      <a class="cat hi" href="#apprendre" data-academy><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/></svg><span data-i18n="nav.learn">académie</span></a>
-    </div></div>
+    </div>
+    <button type="button" class="cats-arr prev" data-cats="-1" aria-label="Rubriques précédentes" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+    <button type="button" class="cats-arr next" data-cats="1" aria-label="Rubriques suivantes" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+    </div>
   </nav>
+  <script>
+  (function(){
+    const nav = document.getElementById("nav"), row = nav.querySelector(".cats-row");
+    const prev = nav.querySelector(".cats-arr.prev"), next = nav.querySelector(".cats-arr.next");
+    const rtl = () => getComputedStyle(row).direction === "rtl";
+    function upd(){
+      const max = row.scrollWidth - row.clientWidth, pos = Math.abs(row.scrollLeft);
+      const s = max > 2 && pos > 2, e = max > 2 && pos < max - 2;
+      prev.classList.toggle("on", s); next.classList.toggle("on", e);
+      nav.classList.toggle("fade-s", s); nav.classList.toggle("fade-e", e);
+    }
+    nav.addEventListener("click", ev => { const b = ev.target.closest("[data-cats]"); if (!b) return; row.scrollBy({ left: +b.dataset.cats * (rtl() ? -1 : 1) * Math.max(160, row.clientWidth * .7), behavior: "smooth" }); });
+    row.addEventListener("wheel", ev => {
+      if (Math.abs(ev.deltaY) <= Math.abs(ev.deltaX)) return;
+      const max = row.scrollWidth - row.clientWidth; if (max < 2) return;
+      const d = ev.deltaY * (rtl() ? -1 : 1), pos = row.scrollLeft;
+      const atEdge = rtl() ? (d > 0 ? pos >= 0 : pos <= -max) : (d < 0 ? pos <= 0 : pos >= max);
+      if (atEdge) return;
+      ev.preventDefault(); row.scrollLeft += d;
+    }, { passive: false });
+    row.addEventListener("scroll", upd, { passive: true });
+    addEventListener("resize", upd);
+    new MutationObserver(upd).observe(document.documentElement, { attributes: true, attributeFilter: ["dir", "lang"] });
+    upd(); setTimeout(upd, 400);
+  })();
+  </script>
 </header>
 
 <main id="top">
