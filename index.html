@@ -439,6 +439,52 @@ html[lang="ar"] .label{font-size:.8rem}
 .lfig img{display:block;width:100%;height:auto;background:#fff}
 .lfig figcaption{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1rem;padding:.7rem .9rem .9rem;font-size:.86rem;line-height:1.4;color:#3b3631}
 .lfig figcaption b{display:block;font-size:.95rem;color:#1b1714;margin-bottom:.15rem}
+/* ===== commande en ligne ===== */
+.btn.buy{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.buy:hover{background:transparent;color:var(--accent)}
+.cart-fab{position:fixed;z-index:70;inset-inline-start:calc(20px + env(safe-area-inset-left,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:8px;padding:12px 16px;border:0;border-radius:999px;background:var(--ink);color:var(--ground);font-weight:600;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.cart-fab b{background:var(--accent);color:var(--accent-ink);border-radius:999px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:.8rem;padding:0 6px}
+@media (max-width:600px){.cart-fab span{display:none}}
+.cart-dlg{position:fixed;inset:0;z-index:90;background:rgba(10,10,9,.45);display:flex;justify-content:flex-end}
+.cart-panel{background:var(--ground);width:min(520px,100%);height:100%;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.cart-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.cart-bar h2{font-size:1.6rem}
+.cart-body{overflow-y:auto;padding:18px 20px calc(28px + env(safe-area-inset-bottom,0px));display:grid;gap:20px;align-content:start}
+.cart-empty{color:var(--muted)}
+.cart-lines{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--line)}
+.cart-line{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.cart-line b{display:block;font-weight:600}.cart-line small{color:var(--muted);font-size:.85rem}
+.cart-qty{display:flex;align-items:center;border:1px solid var(--line)}
+.cart-qty button{width:34px;height:34px;border:0;background:none;cursor:pointer;font-size:1.1rem}
+.cart-qty span{min-width:24px;text-align:center;font-variant-numeric:tabular-nums}
+.cart-rm{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:.85rem}
+.cart-sum{margin:0;display:grid;gap:0;border-top:1px solid var(--ink)}
+.cart-sum div{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line)}
+.cart-sum dt{color:var(--muted)}.cart-sum dd{margin:0;text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap}.cart-sum dd small{white-space:normal}
+.cart-sum dd small{display:block;color:var(--muted);font-size:.78rem}
+.cart-sum .tot dt,.cart-sum .tot dd{color:var(--ink);font-weight:700}
+.cart-sum .dep{background:var(--panel);padding-inline:10px}.cart-sum .dep dt{color:var(--ink)}.cart-sum .dep dd{font-weight:700;color:var(--accent)}
+.cart-sum .cod dd{font-weight:600}
+.cart-how{background:var(--panel);padding:14px 16px;font-size:.92rem}
+.cart-how h3,.cart-form h3{font-family:var(--body);text-transform:none;font-size:1.05rem;font-weight:600;letter-spacing:0;margin:0 0 8px}
+.cart-how ol{margin:0 0 8px;padding-inline-start:20px;display:grid;gap:6px}
+.cart-how p{margin:0;color:var(--muted);font-size:.85rem}
+.cart-form{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.cart-form h3,.cart-form .full{grid-column:1/-1}
+.cart-form .f{display:grid;gap:5px;min-width:0}
+.cart-form label{font-size:.85rem;color:var(--muted)}
+.cart-form input:not([type=checkbox]),.cart-form select,.cart-form textarea{border:1px solid var(--line);background:var(--ground);padding:11px 12px;width:100%;font:inherit;color:inherit}
+.cart-agree{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--muted)}
+.cart-agree input{margin-top:3px;width:18px;height:18px;flex:none;accent-color:var(--ink)}
+.cart-err{margin:0;color:#B3261E;font-size:.88rem;min-height:1em}
+.cart-ok{display:grid;gap:12px}
+.cart-ok h3{font-size:1.6rem;text-transform:none}
+.cart-ok .ref{display:flex;justify-content:space-between;border-block:1px solid var(--line);padding:10px 0;margin:0}
+.cart-ok .ref span{color:var(--muted)}
+.cart-ok .dep{background:var(--panel);padding:12px 14px;margin:0}
+.cart-btns{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:520px){.cart-form{grid-template-columns:1fr}}
+.acc-go{display:flex;flex-wrap:wrap;gap:10px}
 /* ===== outils : packs, paiement, accessoires, rentabilité, SAV ===== */
 .hp{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -755,7 +801,7 @@ fr: {
   "faq.q2": "Faut-il une installation électrique spéciale ?", "faq.a2": "Toutes nos machines fonctionnent en 220 V monophasé. Les deux groupes consomment 4200 W et doivent être sur une ligne dédiée ; les un groupe vont de 2350 à 3200 W. Un raccordement à l’eau et une évacuation sont nécessaires, sauf pour la CRM3149 qui fonctionne aussi sur réservoir. Nous recommandons un adoucisseur et un régulateur de tension.",
   "faq.q3": "Que couvre la garantie ?", "faq.a3": "La garantie constructeur Gemilai de 2 ans couvre les défauts de fabrication. Les pièces d’usure et les pannes dues au calcaire sont exclues.",
   "faq.q4": "Pourquoi un prix en fourchette ?", "faq.a4": "Le prix ferme dépend du coloris, du taux de change et des frais de douane au moment de l’importation. Nous l’envoyons sous un jour ouvré après votre demande.",
-  "faq.q5": "Quels moyens de paiement acceptez-vous ?", "faq.a5": "Virement bancaire, chèque ou espèces, avec une facture et TVA pour chaque commande. Pour les packs ouverture : 10 % de remise en payant tout à la commande, ou un acompte de 40 % puis 12 ou 24 mensualités, par traites ou virement, sous réserve d’acceptation du dossier.",
+  "faq.q5": "Quels moyens de paiement acceptez-vous ?", "faq.a5": "En ligne : commandez depuis la fiche d’un produit et payez en espèces au livreur, à la livraison. Pour une machine, un acompte de 10 % par virement bancaire est demandé avant l’expédition. Livraison : accessoires 7 DT, moulin 20 DT, machine 50 DT. Sur devis : virement bancaire, chèque ou espèces, avec une facture et TVA pour chaque commande. Pour les packs ouverture : 10 % de remise en payant tout à la commande, ou un acompte de 40 % puis 12 ou 24 mensualités, par traites ou virement, sous réserve d’acceptation du dossier.",
     "ct.label": "Contact", "ct.h2": "parlons de votre comptoir",
   "ct.lede": "Indiquez le modèle qui vous intéresse et votre ville : nous répondons sous un jour ouvré avec un prix ferme.",
   "ct.email": "E-mail", "ct.phone": "Téléphone · WhatsApp", "ct.showroom": "Showroom", "ct.showroomV": "Tunis, démonstration sur rendez-vous", "ct.hours": "Horaires", "ct.hoursV": "Lundi au samedi, 9 h – 18 h", "ct.copy": "Copier",
@@ -821,7 +867,7 @@ en: {
   "faq.q2": "Do I need a special electrical installation?", "faq.a2": "All our machines run on 220 V single-phase. Two-group machines draw 4200 W and need a dedicated line; one-group machines range from 2350 to 3200 W. A water connection and a drain are required, except for the CRM3149, which can also run from its tank. We recommend a water softener and a voltage regulator.",
   "faq.q3": "What does the warranty cover?", "faq.a3": "The 2-year Gemilai manufacturer warranty covers manufacturing defects. Wear parts and limescale-related failures are excluded.",
   "faq.q4": "Why a price range?", "faq.a4": "The firm price depends on colour, exchange rate and customs duties at the time of import. We send it within one business day of your request.",
-  "faq.q5": "Which payment methods do you accept?", "faq.a5": "Bank transfer, cheque or cash, with a VAT invoice for every order. For opening packs: 10% off when you pay everything on order, or a 40% deposit then 12 or 24 monthly payments, by bills of exchange or transfer, subject to approval.",
+  "faq.q5": "Which payment methods do you accept?", "faq.a5": "Online: order from a product page and pay cash to the courier on delivery. For a machine, a 10% deposit by bank transfer is required before shipping. Delivery: accessories 7 DT, grinder 20 DT, machine 50 DT. On quote: bank transfer, cheque or cash, with a VAT invoice for every order. For opening packs: 10% off when you pay everything on order, or a 40% deposit then 12 or 24 monthly payments, by bills of exchange or transfer, subject to approval.",
     "ct.label": "Contact", "ct.h2": "let’s talk about your counter",
   "ct.lede": "Tell us which model interests you and your city: we reply within one business day with a firm price.",
   "ct.email": "E-mail", "ct.phone": "Phone · WhatsApp", "ct.showroom": "Showroom", "ct.showroomV": "Tunis, demonstrations by appointment", "ct.hours": "Opening hours", "ct.hoursV": "Monday to Saturday, 9 am – 6 pm", "ct.copy": "Copy",
@@ -887,7 +933,7 @@ ar: {
   "faq.q2": "هل أحتاج إلى تركيز كهربائي خاص؟", "faq.a2": "تعمل جميع آلاتنا بتيار 220 V أحادي الطور. تستهلك آلات المجموعتين 4200 W ويجب ربطها بخط مخصّص، أما آلات المجموعة الواحدة فبين 2350 و3200 W. يلزم ربط بالماء وتصريف، باستثناء CRM3149 التي تعمل أيضًا بخزانها. ننصح بمُليّن للماء ومنظّم للتيار الكهربائي.",
   "faq.q3": "ماذا يشمل الضمان؟", "faq.a3": "يغطي ضمان المصنّع Gemilai لمدة سنتين عيوب التصنيع. ولا يشمل قطع الاستهلاك والأعطال الناتجة عن الترسبات الكلسية.",
   "faq.q4": "لماذا يُعرض السعر في شكل نطاق؟", "faq.a4": "يرتبط السعر النهائي باللون وسعر الصرف والمعاليم الديوانية عند التوريد. نرسله إليك في أجل يوم عمل من طلبك.",
-  "faq.q5": "ما هي طرق الدفع المقبولة؟", "faq.a5": "تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات لكل طلب. بالنسبة لباقات الافتتاح: تخفيض 10% عند دفع كامل المبلغ مع الطلب، أو تسبقة 40% ثم 12 أو 24 قسطًا شهريًا، بالكمبيالات أو بالتحويل، مع مراعاة قبول الملف.",
+  "faq.q5": "ما هي طرق الدفع المقبولة؟", "faq.a5": "عبر الموقع: اطلب من صفحة المنتج وادفع نقدًا لعون التوصيل عند الاستلام. بالنسبة للآلة، تُطلب تسبقة 10% بتحويل بنكي قبل الشحن. التوصيل: الإكسسوارات 7 د.ت، المطحنة 20 د.ت، الآلة 50 د.ت. حسب عرض السعر: تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات لكل طلب. بالنسبة لباقات الافتتاح: تخفيض 10% عند دفع كامل المبلغ مع الطلب، أو تسبقة 40% ثم 12 أو 24 قسطًا شهريًا، بالكمبيالات أو بالتحويل، مع مراعاة قبول الملف.",
     "ct.label": "اتصل بنا", "ct.h2": "لنتحدث عن مشروعك",
   "ct.lede": "أخبرنا بالموديل الذي يهمّك ومدينتك: نردّ عليك في أجل يوم عمل بسعر نهائي.",
   "ct.email": "البريد الإلكتروني", "ct.phone": "الهاتف · واتساب", "ct.showroom": "صالة العرض", "ct.showroomV": "تونس العاصمة، عرض تجريبي بموعد مسبق", "ct.hours": "أوقات العمل", "ct.hoursV": "من الاثنين إلى السبت، 9:00 – 18:00", "ct.copy": "نسخ",
@@ -1299,7 +1345,7 @@ function openProduct(id, keepFocus){
         <p class="tagline">${esc(T(p.tagline))}</p>
         <p class="desc">${esc(T(p.desc))}</p>
         <div class="pr"><small>${esc(t("sh.price"))}</small><b>${esc(range(p))}</b></div>
-        <div class="ctas">${VIDEOS.some(v => v.product === p.id) ? `<button class="btn ghost" type="button" data-video="${VIDEOS.find(v => v.product === p.id).id}">▶ ${esc(t("sh.video"))}</button>` : ""}<button class="btn" data-quote="${p.id}">${esc(t("sh.quote"))}</button><button class="btn wa" data-wa="${p.id}">${esc(t("sh.wa"))}</button><a class="btn ghost" href="fiches/${lang}/${p.id}.pdf" download>${({fr:"Fiche PDF",en:"PDF sheet",ar:"البطاقة PDF"})[lang]}</a></div>
+        <div class="ctas"><button class="btn buy" type="button" data-buy="${p.id}">${esc(window.FE_CART ? FE_CART.buyLabel() : "Commander")}</button>${VIDEOS.some(v => v.product === p.id) ? `<button class="btn ghost" type="button" data-video="${VIDEOS.find(v => v.product === p.id).id}">▶ ${esc(t("sh.video"))}</button>` : ""}<button class="btn ghost" data-quote="${p.id}">${esc(t("sh.quote"))}</button><button class="btn wa" data-wa="${p.id}">${esc(t("sh.wa"))}</button><a class="btn ghost" href="fiches/${lang}/${p.id}.pdf" download>${({fr:"Fiche PDF",en:"PDF sheet",ar:"البطاقة PDF"})[lang]}</a></div>
         <div style="overflow-x:auto"><table class="specs"><tbody>${p.specs.map(([k, v]) => `<tr><th scope="row">${esc(L[k] || k)}</th><td>${esc(T(v))}</td></tr>`).join("")}</tbody></table></div>
       </div>
     </div>`;
@@ -1441,7 +1487,7 @@ function setLang(l, save){
     const q = params.toString();
     try { history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash); } catch(err){}
   }
-  applyStatic(); if (window.FE_TOOLS) FE_TOOLS.render(); renderSlides(); renderFilters(); renderRange(); renderTiles(); renderVideos(); renderAcadMini(); renderContact(); renderSent();
+  applyStatic(); if (window.FE_TOOLS) FE_TOOLS.render(); if (window.FE_CART) FE_CART.render(); renderSlides(); renderFilters(); renderRange(); renderTiles(); renderVideos(); renderAcadMini(); renderContact(); renderSent();
   if (openId === "__cmp") openCompare(true); else if (openId === "__acad") openAcademy(true); else if (openId) openProduct(openId, true);
 }
 document.getElementById("langs").addEventListener("click", e => { const b = e.target.closest("[data-lang]"); if (b && b.dataset.lang !== lang) setLang(b.dataset.lang, true); });
@@ -1457,6 +1503,7 @@ if (location.hash === "#apprendre") openAcademy();
 </script>
 
 <script src="outils.js"></script>
+<script src="commande.js"></script>
 <!-- statistiques de visites (GoatCounter, sans cookies) -->
 <script data-goatcounter="https://amineformosa.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>

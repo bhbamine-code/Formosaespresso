@@ -119,8 +119,9 @@
     /* accessoires */
     aLabel: L("Accessoires et consommables", "Accessories and consumables", "الإكسسوارات والمستهلكات"),
     aH: L("le petit matériel du barista", "the barista’s small tools", "أدوات الباريستا الصغيرة"),
-    aLede: L("Cochez ce qu’il vous faut : nous vous envoyons les prix en une seule réponse.", "Tick what you need: we send all the prices in one reply.", "اختر ما تحتاجه: نرسل لك كل الأسعار في رد واحد."),
+    aLede: L("Cochez ce qu’il vous faut : commandez directement (paiement à la livraison, 7 DT de livraison) ou demandez les prix.", "Tick what you need: order directly (pay on delivery, 7 DT delivery) or ask for prices.", "اختر ما تحتاجه: اطلب مباشرة (الدفع عند الاستلام، التوصيل 7 د.ت) أو اطلب الأسعار."),
     aBtn: L("Demander les prix ({n})", "Request prices ({n})", "اطلب الأسعار ({n})"),
+    aBuy: L("Commander ({n})", "Order ({n})", "اطلب الآن ({n})"),
     aNone: L("Cochez au moins un article.", "Tick at least one item.", "اختر عنصرًا واحدًا على الأقل."),
     aMsg: L("Bonjour, je souhaite les prix de : {items}.", "Hello, I’d like prices for: {items}.", "مرحبًا، أريد أسعار: {items}."),
 
@@ -288,7 +289,7 @@
       <div class="acc-grid">${ACC.map(([k, n, d]) => `<label class="acc"><input type="checkbox" data-acc="${k}"${accSel.has(k) ? " checked" : ""}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>
         <span><b>${e(T(n))}</b><small>${e(T(d))}</small></span></label>`).join("")}</div>
-      <div class="acc-go"><button class="btn" type="button" data-accgo>${e(T(STR.aBtn).replace("{n}", accSel.size))}</button></div>
+      <div class="acc-go"><button class="btn buy" type="button" data-accbuy>${e(T(STR.aBuy).replace("{n}", accSel.size))}</button><button class="btn ghost" type="button" data-accgo>${e(T(STR.aBtn).replace("{n}", accSel.size))}</button></div>
     </div>`;
   }
 
@@ -366,6 +367,11 @@
     const po = ev.target.closest("[data-packopt]");
     if (po) { const [k, o] = po.dataset.packopt.split(":"); packOpt[k] = o; po.parentElement.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b === po)); $("pkp" + k).innerHTML = packPrice(+k); return; }
     if (ev.target.closest("[data-paywa]")) { openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(S("payMsg"))}`); track("paiement-whatsapp", "Facilités de paiement"); return; }
+    if (ev.target.closest("[data-accbuy]")) {
+      if (!accSel.size) { toast(S("aNone")); return; }
+      if (window.FE_CART) { accSel.forEach(k => FE_CART.add("acc:" + k, 1)); accSel.clear(); renderAcc(); FE_CART.open(); }
+      return;
+    }
     if (ev.target.closest("[data-accgo]")) {
       if (!accSel.size) { toast(S("aNone")); return; }
       const items = ACC.filter(([k]) => accSel.has(k)).map(([, n]) => T(n)).join(", ");
@@ -379,7 +385,7 @@
   });
   document.addEventListener("change", ev => {
     const a = ev.target.closest("[data-acc]");
-    if (a) { if (a.checked) accSel.add(a.dataset.acc); else accSel.delete(a.dataset.acc); const b = document.querySelector("[data-accgo]"); if (b) b.textContent = T(STR.aBtn).replace("{n}", accSel.size); return; }
+    if (a) { if (a.checked) accSel.add(a.dataset.acc); else accSel.delete(a.dataset.acc); const b = document.querySelector("[data-accgo]"); if (b) b.textContent = T(STR.aBtn).replace("{n}", accSel.size); const bb = document.querySelector("[data-accbuy]"); if (bb) bb.textContent = T(STR.aBuy).replace("{n}", accSel.size); return; }
     const c = ev.target.closest("[data-calc]");
     if (c) {
       const k = c.dataset.calc;
@@ -402,6 +408,6 @@
       .catch(() => { savState = { fail: true }; btn.disabled = false; btn.textContent = S("sSend"); $("savErr").textContent = S("sFail"); });
   });
 
-  window.FE_TOOLS = { render };
+  window.FE_TOOLS = { render, acc: ACC };
   render();
 })();
