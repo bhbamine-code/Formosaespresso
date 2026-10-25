@@ -1,10 +1,11 @@
-/* Commande en ligne Formosa : panier, paiement à la livraison, acompte de 10 % par virement pour les machines (fr / en / ar).
+/* Commande en ligne Formosa : panier, paiement à la livraison, acompte de 10 % par virement pour les commandes de plus de 4 000 DT (fr / en / ar).
    Utilise les données et fonctions de index.html (PRODUCTS, byId, T, t, num, lang, CONFIG, FORM_ENDPOINT, track, toast, openLink, closeSheet). */
 (function () {
   /* ===== Réglages : modifiez ici ===== */
   const SHOP = {
     delivery: { accessory: 7, grinder: 20, machine: 50 }, /* DT : accessoires = une fois par commande ; moulin et machine = par article */
-    depositRate: 0.10,                                     /* acompte des machines, payé par virement avant l'expédition */
+    depositRate: 0.10,                                     /* acompte sur le total de la commande, payé par virement avant l'expédition */
+    depositFrom: 4000,                                     /* acompte demandé seulement si le total dépasse ce montant (DT) */
     price: p => p.price[0]                                 /* prix de commande = prix de départ affiché sur le site */
   };
 
@@ -38,11 +39,11 @@
     del: L("Livraison", "Delivery", "التوصيل"),
     total: L("Total", "Total", "المجموع"),
     accNote: L("+ accessoires, prix confirmé par téléphone", "+ accessories, price confirmed by phone", "+ الإكسسوارات، السعر يُؤكَّد بالهاتف"),
-    depNow: L("Acompte à envoyer par virement (10 % des machines)", "Deposit to send by bank transfer (10% of machines)", "تسبقة تُرسل بتحويل بنكي (10% من ثمن الآلات)"),
+    depNow: L("Acompte à envoyer par virement (10 %, commandes de plus de 4 000 DT)", "Deposit to send by bank transfer (10%, orders over 4,000 DT)", "تسبقة تُرسل بتحويل بنكي (10%، للطلبات التي تفوق 4000 د.ت)"),
     onDel: L("À payer au livreur, à la livraison", "To pay the courier on delivery", "تُدفع لعون التوصيل عند الاستلام"),
     howH: L("Comment ça marche", "How it works", "كيف تتمّ العملية"),
     how1: L("Vous confirmez la commande ici : nous vous appelons pour valider le prix et la date de livraison.", "You confirm the order here: we call you to confirm the price and delivery date.", "تؤكّد الطلب هنا: نتصل بك لتأكيد السعر وموعد التوصيل."),
-    how2: L("Pour une machine, vous envoyez un acompte de 10 % par virement bancaire. Nous vous envoyons notre RIB par WhatsApp ou SMS ; la machine est expédiée à la réception de l’acompte.", "For a machine, you send a 10% deposit by bank transfer. We send you our bank details by WhatsApp or SMS; the machine ships once the deposit is received.", "بالنسبة للآلة، ترسل تسبقة 10% بتحويل بنكي. نرسل لك معرّفنا البنكي (RIB) عبر واتساب أو رسالة قصيرة، وتُشحن الآلة عند استلام التسبقة."),
+    how2: L("Pour une commande de plus de 4 000 DT, vous envoyez un acompte de 10 % par virement bancaire. Nous vous envoyons notre RIB par WhatsApp ou SMS ; la commande est expédiée à la réception de l’acompte.", "For an order over 4,000 DT, you send a 10% deposit by bank transfer. We send you our bank details by WhatsApp or SMS; the order ships once the deposit is received.", "بالنسبة للطلبات التي تفوق 4000 د.ت، ترسل تسبقة 10% بتحويل بنكي. نرسل لك معرّفنا البنكي (RIB) عبر واتساب أو رسالة قصيرة، ويُشحن الطلب عند استلام التسبقة."),
     how3: L("Vous payez le reste en espèces au livreur, à la réception.", "You pay the rest in cash to the courier on delivery.", "تدفع الباقي نقدًا لعون التوصيل عند الاستلام."),
     delRule: L("Livraison partout en Tunisie : accessoires 7 DT par commande, moulin 20 DT, machine 50 DT par article.", "Delivery anywhere in Tunisia: accessories 7 DT per order, grinder 20 DT, machine 50 DT per item.", "التوصيل إلى كامل تراب الجمهورية: الإكسسوارات 7 د.ت للطلب، المطحنة 20 د.ت، الآلة 50 د.ت للقطعة."),
     fH: L("Vos coordonnées", "Your details", "معلوماتك"),
@@ -68,7 +69,7 @@
     fAddrPh: L("Ex. : 12 rue de Rome, Résidence Nablus, appt 3", "E.g. 12 rue de Rome, Résidence Nablus, apt 3", "مثال: 12 نهج روما، إقامة نابلس، شقة 3"),
     fNote: L("Remarque", "Note", "ملاحظة"),
     fNotePh: L("Ex. : couleur souhaitée, horaires de livraison, nom du café.", "E.g. preferred colour, delivery hours, café name.", "مثال: اللون المطلوب، أوقات التوصيل، اسم المقهى."),
-    fAgree: L("J’ai compris : paiement à la livraison, et acompte de 10 % par virement avant l’expédition d’une machine.", "I understand: payment on delivery, and a 10% deposit by bank transfer before a machine ships.", "فهمت: الدفع عند الاستلام، وتسبقة 10% بتحويل بنكي قبل شحن الآلة."),
+    fAgree: L("J’ai compris : paiement à la livraison, et acompte de 10 % par virement avant l’expédition pour une commande de plus de 4 000 DT.", "I understand: payment on delivery, and a 10% deposit by bank transfer before shipping for an order over 4,000 DT.", "فهمت: الدفع عند الاستلام، وتسبقة 10% بتحويل بنكي قبل الشحن للطلبات التي تفوق 4000 د.ت."),
     fSend: L("Confirmer la commande", "Confirm the order", "تأكيد الطلب"),
     fSending: L("Envoi…", "Sending…", "جارٍ الإرسال…"),
     fReq: L("Vérifiez les champs signalés en rouge.", "Please check the fields marked in red.", "يرجى مراجعة الخانات المشار إليها بالأحمر."),
@@ -108,7 +109,7 @@
       if (i.kind === "machine") mach += i.unit * x.qty;
     });
     if (accAny) del += SHOP.delivery.accessory;
-    const dep = Math.ceil(mach * SHOP.depositRate);
+    const dep = sub + del > SHOP.depositFrom ? Math.ceil((sub + del) * SHOP.depositRate) : 0;
     return { sub, del, total: sub + del, dep, cod: sub + del - dep, hasAcc, n };
   }
   function add(id, qty, quiet) {
@@ -276,7 +277,7 @@
       "Commande": ref, "Prénom": v("cFirst"), "Nom": v("cLast"), "Téléphone": o.phone, "E-mail": o.email, "Adresse": `${o.addr}, ${o.zip} ${o.city}, ${o.gov}`, "Remarque": o.note, _replyto: o.email,
       "Articles": items.map(x => `${x.qty} × ${x.name}${x.unit == null ? " (prix à confirmer)" : " = " + dt(x.unit * x.qty)}`).join(" | "),
       "Sous-total": dt(tt.sub) + (tt.hasAcc ? " + accessoires à confirmer" : ""), "Livraison": dt(tt.del), "Total": dt(tt.total),
-      "Acompte virement (10 % machines)": tt.dep ? dt(tt.dep) : "aucun", "À payer à la livraison": dt(tt.cod), "Langue": lang,
+      "Acompte virement (10 %, commande > 4 000 DT)": tt.dep ? dt(tt.dep) : "aucun", "À payer à la livraison": dt(tt.cod), "Langue": lang,
       _subject: `Commande ${ref} — ${o.name} (${o.gov}) — ${dt(tt.total)}`, _template: "table", _captcha: "false"
     };
     fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
