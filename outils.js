@@ -119,9 +119,9 @@
     /* accessoires */
     aLabel: L("Accessoires et consommables", "Accessories and consumables", "الإكسسوارات والمستهلكات"),
     aH: L("le petit matériel du barista", "the barista’s small tools", "أدوات الباريستا الصغيرة"),
-    aLede: L("Cochez ce qu’il vous faut : commandez directement (paiement à la livraison, 7 DT de livraison) ou demandez les prix.", "Tick what you need: order directly (pay on delivery, 7 DT delivery) or ask for prices.", "اختر ما تحتاجه: اطلب مباشرة (الدفع عند الاستلام، التوصيل 7 د.ت) أو اطلب الأسعار."),
+    aLede: L("Cochez ce qu’il vous faut : ajoutez-le au panier (paiement à la livraison, 7 DT de livraison) ou demandez les prix.", "Tick what you need: add it to your basket (pay on delivery, 7 DT delivery) or ask for prices.", "اختر ما تحتاجه: أضفه إلى السلة (الدفع عند الاستلام، التوصيل 7 د.ت) أو اطلب الأسعار."),
     aBtn: L("Demander les prix ({n})", "Request prices ({n})", "اطلب الأسعار ({n})"),
-    aBuy: L("Commander ({n})", "Order ({n})", "اطلب الآن ({n})"),
+    aBuy: L("Ajouter au panier ({n})", "Add to basket ({n})", "أضف إلى السلة ({n})"),
     aNone: L("Cochez au moins un article.", "Tick at least one item.", "اختر عنصرًا واحدًا على الأقل."),
     aMsg: L("Bonjour, je souhaite les prix de : {items}.", "Hello, I’d like prices for: {items}.", "مرحبًا، أريد أسعار: {items}."),
 
@@ -369,7 +369,7 @@
     if (ev.target.closest("[data-paywa]")) { openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(S("payMsg"))}`); track("paiement-whatsapp", "Facilités de paiement"); return; }
     if (ev.target.closest("[data-accbuy]")) {
       if (!accSel.size) { toast(S("aNone")); return; }
-      if (window.FE_CART) { accSel.forEach(k => FE_CART.add("acc:" + k, 1)); accSel.clear(); renderAcc(); FE_CART.open(); }
+      if (window.FE_CART) { const n = accSel.size; accSel.forEach(k => FE_CART.add("acc:" + k, 1, true)); accSel.clear(); renderAcc(); FE_CART.showAdded(n + " × " + S("aLabel").toLowerCase()); }
       return;
     }
     if (ev.target.closest("[data-accgo]")) {
