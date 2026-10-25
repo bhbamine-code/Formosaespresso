@@ -34,6 +34,15 @@ window.FE_STOCK = {
     "acc:cartridge": { "qty": 6, "preorder": false },
     "acc:cups-espresso": { "qty": 0, "preorder": true },
     "acc:cups-cappu": { "qty": 4, "preorder": false },
-    "acc:thermo": { "qty": 11, "preorder": false }
+    "acc:thermo": { "qty": 11, "preorder": false },
+    "cafe:nakhla-ethiopie": { "qty": 14, "preorder": false },
+    "cafe:nakhla-colombie": { "qty": 20, "preorder": false },
+    "cafe:nakhla-bresil": { "qty": 6, "preorder": false },
+    "cafe:kerk-maison": { "qty": 25, "preorder": false },
+    "cafe:kerk-intenso": { "qty": 18, "preorder": false },
+    "cafe:kerk-decaf": { "qty": 2, "preorder": true, "lead": { "fr": "1 semaine", "en": "1 week", "ar": "أسبوع" } },
+    "cafe:bnina-turc": { "qty": 40, "preorder": false },
+    "cafe:bnina-cardamome": { "qty": 0, "preorder": false },
+    "cafe:bnina-espresso": { "qty": 12, "preorder": false }
   }
 };

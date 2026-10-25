@@ -129,6 +129,11 @@
       if (it) return { name: T(it[2]), kind: "accessory", unit: it[3] };
       const a = accList().find(([k]) => "acc:" + k === id); return a ? { name: T(a[1]), kind: "accessory", unit: null } : null;
     }
+    if (id.startsWith("cafe:")) {
+      const c = ((window.FE_PARTNERS && FE_PARTNERS.coffees) || []).find(([k]) => "cafe:" + k === id);
+      if (!c) return null; const r = FE_PARTNERS.roasters.find(x => x.id === c[1]);
+      return { name: `${T(c[2])} ${c[8]} (${r ? r.name : ""})`, kind: "accessory", unit: c[9] };
+    }
     const p = byId[id]; if (!p) return null;
     return { name: T(p.name), kind: p.cat === "grinder" ? "grinder" : "machine", unit: SHOP.price(p) };
   }

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><radialGradient id="sh"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient><linearGradient id="kr" x1="0" x2="1"><stop offset="0" stop-color="#24584b"/><stop offset=".5" stop-color="#24584b" stop-opacity=".82"/><stop offset="1" stop-color="#24584b"/></linearGradient></defs>
+<ellipse cx="100" cy="184" rx="62" ry="7" fill="url(#sh)"/>
+<path d="M50 30 L150 30 L156 180 L44 180 Z" fill="url(#kr)"/>
+<path d="M50 30 L150 30 L150 42 L50 42 Z" fill="#000" opacity=".18"/>
+<path d="M58 34 h84" stroke="#fff" stroke-opacity=".35" stroke-dasharray="3 3"/>
+<circle cx="100" cy="56" r="5" fill="#000" opacity=".25"/>
+<rect x="60" y="68" width="80" height="96" rx="4" fill="#fbf7f1"/>
+<g transform="translate(70 52) scale(.3)"><path d="M60 130 H140 L128 148 H72 Z" fill="#24584b"/><path d="M100 126 V66 L136 122 Z" fill="#24584b"/><path d="M96 126 V80 L70 122 Z" fill="#24584b" opacity=".7"/><path d="M48 156 C64 150 80 162 96 156 C112 150 128 162 152 156" stroke="#24584b" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+<text x="100" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#24584b">INTENSO BAR</text>
+<text x="100" y="142" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="#5a524a">espresso · 60/40</text>
+<text x="100" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#2a2522">1 kg</text>
+<text x="100" y="176" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" letter-spacing="1" fill="#fff" opacity=".85">GRAINS DE KERKENNAH</text></svg>
