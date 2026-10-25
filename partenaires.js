@@ -174,7 +174,7 @@
     const list = COFFEES.filter(c => rFilter === "all" || c[1] === rFilter);
     el.innerHTML = `<div class="wrap">
       <div class="head"><div class="stack"><p class="label">${e(S("rLabel"))}</p><h2>${e(S("rH"))}</h2></div><p class="lede">${e(S("rLede"))}</p></div>
-      <div class="partner-row">${ROASTERS.map(r => `<button type="button" class="partner-card" data-roaster="${r.id}"><img src="img/partners/logo-${r.id}.svg" alt="" width="72" height="72"><span><b>${e(r.name)}</b><small>${e(T(r.city))}</small><small>${e(T(r.tag))}</small><em>${e(S("rSee"))} →</em></span></button>`).join("")}</div>
+      <div class="roaster-circles">${ROASTERS.map(r => `<button type="button" class="roaster-circle" data-roaster="${r.id}"><img src="img/partners/logo-${r.id}.svg" alt="" width="120" height="120" loading="lazy"><b>${e(r.name)}</b><small>${e(T(r.city))}</small></button>`).join("")}</div>
       <div class="acc-cats" role="group" aria-label="${e(S("rLabel"))}"><button type="button" data-rfilter="all" aria-pressed="${rFilter === "all"}">${e(S("rAll"))}</button>${ROASTERS.map(r => `<button type="button" data-rfilter="${r.id}" aria-pressed="${rFilter === r.id}">${e(r.name)}</button>`).join("")}</div>
       <div class="acc-items">${list.map(coffeeCard).join("")}</div>
       <p class="acc-note">${e(S("demo"))}</p></div>`;
