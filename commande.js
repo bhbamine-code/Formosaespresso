@@ -306,14 +306,14 @@
     if (v("cHoney")) return;
     const tt = totals(), d = new Date();
     const ref = "FE-" + String(d.getFullYear()).slice(2) + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0") + "-" + String(Math.floor(Math.random() * 900) + 100);
-    const items = cart.map(x => { const i = info(x.id); return { name: i.name, qty: x.qty, unit: i.unit }; });
+    const items = cart.map(x => { const i = info(x.id); return { id: x.id, name: i.name, qty: x.qty, unit: i.unit }; });
     const o = { ref, items, del: tt.del, total: tt.total, dep: tt.dep, cod: tt.cod, first: v("cFirst"), name: `${v("cFirst")} ${v("cLast")}`, phone: tnPhone(v("cP")), email: v("cE"), gov: v("cG"), city: v("cCity"), zip: v("cZip"), addr: v("cA"), note: v("cNote") };
     const btn = $("cSend"); btn.disabled = true; btn.textContent = S("fSending"); failMsg = "";
     const data = {
       "Commande": ref, "Prénom": v("cFirst"), "Nom": v("cLast"), "Téléphone": o.phone, "E-mail": o.email, "Adresse": `${o.addr}, ${o.zip} ${o.city}, ${o.gov}`, "Remarque": o.note, _replyto: o.email,
       "Articles": items.map(x => `${x.qty} × ${x.name}${x.unit == null ? " (prix à confirmer)" : " = " + dt(x.unit * x.qty)}`).join(" | "),
       "Sous-total": dt(tt.sub) + (tt.hasAcc ? " + accessoires à confirmer" : ""), "Livraison": dt(tt.del), "Total": dt(tt.total),
-      "Acompte virement (10 %, commande > 4 000 DT)": tt.dep ? dt(tt.dep) : "aucun", "À payer à la livraison": dt(tt.cod), "Langue": lang,
+      "Acompte virement (10 %, commande > 4 000 DT)": tt.dep ? dt(tt.dep) : "aucun", "À payer à la livraison": dt(tt.cod), "Langue": lang, "Codes": items.map(x => `${x.id}*${x.qty}*${x.unit == null ? "" : x.unit}`).join(";"),
       _subject: `Commande ${ref} — ${o.name} (${o.gov}) — ${dt(tt.total)}`, _template: "table", _captcha: "false"
     };
     fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
