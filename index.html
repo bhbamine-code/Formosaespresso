@@ -547,7 +547,8 @@ html[lang="ar"] .label{font-size:.8rem}
 .acc-go{display:flex;flex-wrap:wrap;gap:10px}
 /* ===== outils : packs, paiement, accessoires, rentabilité, SAV ===== */
 .hp{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media (max-width:1180px){.pk-grid{grid-template-columns:repeat(2,1fr)}}
 .pk{border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px}
 .pk.hi{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
 .pk-img{background:var(--photo);aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden}.pk-img img{width:100%;height:100%;object-fit:contain;padding:10px}
@@ -1139,7 +1140,7 @@ const V = {
 };
 
 const PRODUCTS = [
-{ id:"g3211a", cat:"machine", name:"Gemilai G3211A", img:"G3211A", gallery:["g3211a-1","g3211a-2","g3211a-3","g3211a-4","g3211a-5"], hero:"g3211a-2", price:[8500,10500],
+{ id:"g3211a", cat:"machine", name:"Gemilai G3211A", img:"G3211A", gallery:["g3211a-1","g3211a-2","g3211a-3","g3211a-4","g3211a-5"], hero:"g3211a-2", price:[10090,12190],
   kicker: L3("2 groupes · débitmètre", "2 groups · flowmeter", "مجموعتان · عدّاد تدفق"),
   badge: L3("Haut de gamme", "Premium", "الفئة الممتازة"),
   tagline: L3("deux groupes, doses programmées.", "two groups, programmed doses.", "مجموعتان، جرعات مبرمجة."),
@@ -1185,7 +1186,7 @@ const PRODUCTS = [
   specs: [["group", V.group1], ["boilers", L3("550 ml café + 5,5 L vapeur", "550 ml coffee + 5.5 L steam", "550 ml للقهوة + 5,5 L للبخار")], ["dosing", V.flow],
     ["temp", "PID"], ["pump", V.rotary], ["controls", L3("Écran tactile, mode électronique ou manuel", "Touchscreen, electronic or manual mode", "شاشة لمس، وضع إلكتروني أو يدوي")],
     ["gauges", V.gaugesCS], ["power", "3200 W · 220 V · 50 Hz"], ["weight", kg("43,9")], ["dims", "473 × 528 × 550 mm"], ["colors", V.cotton]] },
-{ id:"g3120c", cat:"machine", name:"Gemilai G3120C", img:"G3120C", price:[4300,5600],
+{ id:"g3120c", cat:"machine", name:"Gemilai G3120C", img:"G3120C", price:[7290,8790],
   kicker: L3("2 groupes · compact", "2 groups · compact", "مجموعتان · مدمجة"),
   badge: L3("Meilleur prix 2 groupes", "Best-value 2 groups", "أفضل سعر بمجموعتين"),
   tagline: L3("deux groupes, l’essentiel.", "two groups, the essentials.", "مجموعتان، الأساسيات."),
@@ -1212,7 +1213,7 @@ const PRODUCTS = [
     ["dims", L3("358 × 467 × 478 mm (machine)", "358 × 467 × 478 mm (machine)", "358 × 467 × 478 mm (الآلة)")],
     ["grinderIncl", L3("A80, fiche technique sur demande", "A80, spec sheet on request", "A80، البطاقة التقنية عند الطلب")],
     ["colors", L3("Blanc coton, noir minuit", "Cotton white, midnight black", "أبيض قطني، أسود ليلي")]] },
-{ id:"g3200f", cat:"machine", name:"Gemilai G3200F", img:"G3200F", gallery:["g3200f-1"], price:[2490,2990],
+{ id:"g3200f", cat:"machine", name:"Gemilai G3200F", img:"G3200F", gallery:["g3200f-1"], price:[3190,3890],
   kicker: L3("1 groupe · double chaudière · compacte", "1 group · dual boiler · compact", "مجموعة واحدة · غلايتان · مدمجة"),
   badge: L3("Nouveau", "New", "جديد"),
   tagline: L3("le vrai espresso, en petit format.", "real espresso, in a small footprint.", "إسبريسو حقيقي بحجم صغير."),
@@ -1224,7 +1225,7 @@ const PRODUCTS = [
     ["steam", L3("Lance vapeur et eau chaude inox", "Stainless steam and hot-water wands", "أنبوبا بخار وماء ساخن من الفولاذ")],
     ["water", L3("Réservoir amovible 1,7 L ou remplissage automatique ; bac raccordable à la vidange", "Removable 1.7 L tank or automatic filling; drip tray can connect to a drain", "خزان قابل للنزع 1,7 L أو تعبئة آلية؛ صينية قابلة للتوصيل بالتصريف")],
     ["power", "2950–3000 W · 220 V · 50 Hz"], ["weight", kg("17")], ["dims", "345 × 485 × 432 mm"], ["colors", L3("Blanc", "White", "أبيض")]] },
-{ id:"g9026a", cat:"grinder", name:"Gemilai G9026A", img:"G9026A", price:[1650,2300],
+{ id:"g9026a", cat:"grinder", name:"Gemilai G9026A", img:"G9026A", price:[2790,3390],
   kicker: L3("Meules plates 83 mm · à la demande", "83 mm flat burrs · on demand", "شفرات مسطحة 83 mm · طحن عند الطلب"),
   tagline: L3("83 mm, à la demande.", "83 mm, on demand.", "83 mm، عند الطلب."),
   desc: L3("Un moulin à la demande à grandes meules plates de 83 mm : mouture rapide et régulière en plein service, écran tactile et technologie anti-statique pour un comptoir propre.",
@@ -1237,7 +1238,7 @@ const PRODUCTS = [
     ["power", "1450 W · 220 V · 50 Hz"],
     ["weight", kg("7,8")], ["dims", "220 × 360 × 365 mm"],
     ["colors", L3("Blanc coton, blanc ivoire, gris brume", "Cotton white, ivory white, mist grey", "أبيض قطني، أبيض عاجي، رمادي ضبابي")]] },
-{ id:"g9015c", cat:"grinder", name:"Gemilai G9015C", img:"G9015C", gallery:["g9015c-1"], price:[990,1190],
+{ id:"g9015c", cat:"grinder", name:"Gemilai G9015C", img:"G9015C", gallery:["g9015c-1"], price:[1090,1390],
   kicker: L3("Meules plates 64 mm · à la demande", "64 mm flat burrs · on demand", "شفرات مسطحة 64 mm · طحن عند الطلب"),
   badge: L3("Nouveau", "New", "جديد"),
   tagline: L3("64 mm, juste ce qu’il faut.", "64 mm, just what you need.", "64 mm، ما تحتاجه بالضبط."),

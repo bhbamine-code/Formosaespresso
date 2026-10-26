@@ -85,9 +85,10 @@
     pLede: L("Machine, moulin, petit matériel, installation et formation : un seul devis, un seul interlocuteur.",
              "Machine, grinder, small tools, installation and training: one quote, one contact.",
              "آلة ومطحنة وأدوات صغيرة وتركيب وتكوين: عرض سعر واحد ومخاطب واحد."),
-    pk1: L("Pack Démarrage", "Starter pack", "باقة البداية"), pk1d: L("Kiosque, snack, bureau : jusqu’à 100 cafés par jour.", "Kiosk, snack bar, office: up to 100 coffees a day.", "كشك أو مطعم سريع أو مكتب: حتى 100 فنجان في اليوم."),
-    pk2: L("Pack Café", "Café pack", "باقة المقهى"), pk2d: L("Café de quartier : 150 à 400 cafés par jour.", "Neighbourhood café: 150 to 400 coffees a day.", "مقهى الحي: من 150 إلى 400 فنجان في اليوم."),
-    pk3: L("Pack Grand débit", "High-volume pack", "باقة الكميات الكبيرة"), pk3d: L("Coffee-shop, hôtel, forte affluence : doses programmées.", "Coffee shop, hotel, heavy traffic: programmed doses.", "مقهى كبير أو نزل أو إقبال كثيف: جرعات مبرمجة."),
+    pk1: L("Pack Démarrage", "Starter pack", "باقة البداية"), pk1d: L("Bureau, snack, petit café : jusqu’à 100 cafés par jour.", "Office, snack bar, small café: up to 100 coffees a day.", "مكتب أو مطعم سريع أو مقهى صغير: حتى 100 فنجان في اليوم."),
+    pk2: L("Pack Café", "Café pack", "باقة المقهى"), pk2d: L("Café de quartier, deux groupes : 150 à 300 cafés par jour.", "Neighbourhood café, two groups: 150 to 300 coffees a day.", "مقهى الحي بمجموعتين: من 150 إلى 300 فنجان في اليوم."),
+    pk3: L("Pack Spécialité", "Specialty pack", "باقة القهوة المختصة"), pk3d: L("Coffee-shop de spécialité : pression réglée à la main, grand moulin 83 mm.", "Specialty coffee shop: hand-controlled pressure, large 83 mm grinder.", "مقهى قهوة مختصة: ضغط مضبوط يدويًا ومطحنة كبيرة 83 mm."),
+    pk4: L("Pack Grand débit", "High-volume pack", "باقة الكميات الكبيرة"), pk4d: L("Coffee-shop, hôtel, forte affluence : deux groupes, doses programmées.", "Coffee shop, hotel, heavy traffic: two groups, programmed doses.", "مقهى كبير أو نزل أو إقبال كثيف: مجموعتان وجرعات مبرمجة."),
     pInc1: L("Kit de démarrage : tasseur, pichets à lait, bac à marc", "Starter kit: tamper, milk jugs, knock box", "طقم البداية: مكبس، أباريق حليب، حاوية التفل"),
     pInc2: L("Installation, raccordement et réglage", "Installation, plumbing and set-up", "التركيب والتوصيل والضبط"),
     pInc3: L("Formation de votre équipe", "Training for your team", "تكوين فريقك"),
@@ -275,7 +276,7 @@
       </div></div>`;
   }
 
-  const PACKS = [["pk1", "pk1d", ["crm3149"]], ["pk2", "pk2d", ["g3201", "g9026a"]], ["pk3", "pk3d", ["g3211a", "g9026a"]]];
+  const PACKS = [["pk1", "pk1d", ["g3200f", "g9015c"]], ["pk2", "pk2d", ["g3120c", "g9015c"]], ["pk3", "pk3d", ["g3126c", "g9026a"]], ["pk4", "pk4d", ["g3211a", "g9026a"]]];
   function packPrice(i){
     const base = sum(PACKS[i][2]), o = packOpt[i] || "cash";
     if (o === "cash") return `<small>${e(S("pFrom"))} <s>${e(money(base))}</s></small><b>${e(money(Math.round(base * 0.9)))}</b><span>${e(S("dCash"))}</span>`;
