@@ -57,9 +57,9 @@
     rTwoGrinders: L("Deux moulins conseillés : un pour l’espresso du jour, un second pour le décaféiné ou un deuxième café.",
                     "Two grinders recommended: one for the house espresso, a second for decaf or a second coffee.",
                     "يُنصح بمطحنتين: واحدة لإسبريسو المحل والثانية لقهوة منزوعة الكافيين أو لنوع ثانٍ."),
-    rSet: L("Set machine + moulin intégré : le départ le plus économique, idéal pour un petit volume.",
-            "Machine + built-in grinder set: the most affordable start, ideal for small volumes.",
-            "طقم آلة + مطحنة مدمجة: أقلّ كلفة للبداية، مثالي للكميات الصغيرة."),
+    rSet: L("G3200F et moulin G9015C : le départ le plus économique, idéal pour un petit volume.",
+            "G3200F with the G9015C grinder: the most affordable start, ideal for small volumes.",
+            "G3200F مع مطحنة G9015C: أقلّ كلفة للبداية، مثالي للكميات الصغيرة."),
     r1g: L("Un groupe suffit pour ce volume : moins cher, compact, simple à utiliser.",
            "One group is enough for this volume: cheaper, compact and easy to use.",
            "مجموعة واحدة تكفي لهذا الحجم: أرخص وأصغر وسهلة الاستعمال."),
@@ -228,7 +228,7 @@
     const { vol, budget, type } = G;
     let items, why = [];
     if (vol === "v_s") {
-      if (budget === "b_1" || ((type === "t_kiosk" || type === "t_office") && budget !== "b_3")) { items = ["crm3149"]; why = ["rSet", "r1g"]; }
+      if (budget === "b_1" || ((type === "t_kiosk" || type === "t_office") && budget !== "b_3")) { items = ["g3200f", "g9015c"]; why = ["rSet", "r1g"]; }
       else if (budget === "b_3") { items = ["g3126c", "g9026a"]; why = ["r1g", "rE61", "rGrinder"]; }
       else { items = ["g3111a", "g9026a"]; why = ["r1g", "rGrinder"]; }
     } else if (vol === "v_m") {
@@ -329,7 +329,7 @@
 
   function calcOut(){
     const n = v => Math.max(0, Number(String(v).replace(",", ".")) || 0);
-    const equip = byId[C.machine].price[0] + (C.grinder && byId[C.machine].id !== "crm3149" ? byId.g9026a.price[0] : 0);
+    const equip = byId[C.machine].price[0] + (C.grinder && byId[C.machine].cat === "machine" ? byId.g9026a.price[0] : 0);
     const m = n(C.price) - n(C.cost), monthly = m * n(C.cups) * n(C.days), net = monthly - n(C.fixed);
     const fmt = x => num(Math.round(x * 100) / 100);
     const pay = net <= 0 ? S("cNever") : T(STR.cMonthsU).replace("{n}", num(Math.max(0.1, Math.round(equip / net * 10) / 10)));
@@ -349,7 +349,7 @@
         <div class="calc-in">
           ${f("c_price", "cPrice", C.price, "0.1")}${f("c_cups", "cCups", C.cups, "10")}${f("c_days", "cDays", C.days, "1")}${f("c_cost", "cCost", C.cost, "0.05")}${f("c_fixed", "cFixed", C.fixed, "100")}
           <div class="f"><label for="c_machine">${e(S("cMachine"))}</label><select id="c_machine" data-calc="machine">${machines.map(p => `<option value="${p.id}"${p.id === C.machine ? " selected" : ""}>${e(pname(p))} · ${e(t("from"))} ${e(money(p.price[0]))}</option>`).join("")}</select></div>
-          <label class="ck"><input type="checkbox" data-calc="grinder"${C.grinder ? " checked" : ""}${C.machine === "crm3149" ? " disabled" : ""}> ${e(S("cGrinder"))}</label>
+          <label class="ck"><input type="checkbox" data-calc="grinder"${C.grinder ? " checked" : ""}> ${e(S("cGrinder"))}</label>
         </div>
         <div class="calc-out" id="calcOut" aria-live="polite">${calcOut()}</div>
       </div>
@@ -426,7 +426,7 @@
     const c = ev.target.closest("[data-calc]");
     if (c) {
       const k = c.dataset.calc;
-      if (k === "grinder") C.grinder = c.checked; else if (k === "machine") { C.machine = c.value; const g = document.querySelector('[data-calc="grinder"]'); if (g) g.disabled = C.machine === "crm3149"; } else C[k] = c.value;
+      if (k === "grinder") C.grinder = c.checked; else if (k === "machine") { C.machine = c.value; const g = document.querySelector('[data-calc="grinder"]');  } else C[k] = c.value;
       $("calcOut").innerHTML = calcOut();
     }
   });

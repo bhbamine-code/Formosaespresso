@@ -11,7 +11,6 @@ window.FE_STOCK = {
     "g3201": { "qty": 3, "preorder": true },
     "g3111a": { "qty": 1, "preorder": true },
     "g3120c": { "qty": 5, "preorder": true },
-    "crm3149": { "qty": 0, "preorder": false },
     "g9026a": { "qty": 4, "preorder": true },
     "g3200f": { "qty": 0, "preorder": true },
     "g9015c": { "qty": 0, "preorder": true },
