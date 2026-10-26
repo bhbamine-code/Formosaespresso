@@ -13,6 +13,8 @@ window.FE_STOCK = {
     "g3120c": { "qty": 5, "preorder": true },
     "crm3149": { "qty": 0, "preorder": false },
     "g9026a": { "qty": 4, "preorder": true },
+    "g3200f": { "qty": 0, "preorder": true },
+    "g9015c": { "qty": 0, "preorder": true },
     "acc:tamper-wood": { "qty": 12, "preorder": false },
     "acc:tamper-cal": { "qty": 4, "preorder": false },
     "acc:mat": { "qty": 15, "preorder": false },
