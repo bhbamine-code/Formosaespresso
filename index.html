@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com https://amineformosa.goatcounter.com; connect-src https://formsubmit.co https://amineformosa.goatcounter.com; frame-src https://www.youtube-nocookie.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com https://amineformosa.goatcounter.com; connect-src https://formsubmit.co https://amineformosa.goatcounter.com; frame-src https://www.youtube-nocookie.com https://www.google.com https://maps.google.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Machines espresso professionnelles Gemilai en Tunisie | Formosa Espresso</title>
@@ -30,6 +30,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"Organization","@id":"https://formosaespresso.com/#org","name":"Formosa Espresso","url":"https://formosaespresso.com/","logo":"https://formosaespresso.com/img/logo/logo-512.png","email":"contact@formosaespresso.com","telephone":"+886973872881","address":{"@type":"PostalAddress","streetAddress":"Boutique N°03, Résidence Nablus","addressLocality":"Manouba","addressCountry":"TN"},"areaServed":{"@type":"Country","name":"Tunisia"},"description":"Importateur de machines espresso et moulins professionnels Gemilai en Tunisie."},
+ {"@type":"Store","@id":"https://formosaespresso.com/#shop","name":"Formosa Espresso — showroom Manouba","url":"https://formosaespresso.com/","image":"https://formosaespresso.com/img/share.jpg","telephone":"+886973872881","email":"contact@formosaespresso.com","parentOrganization":{"@id":"https://formosaespresso.com/#org"},"address":{"@type":"PostalAddress","streetAddress":"Boutique N°03, Résidence Nablus","addressLocality":"Manouba","addressCountry":"TN"},"hasMap":"https://www.google.com/maps/search/?api=1&query=R%C3%A9sidence%20Nablus%2C%20Manouba%2C%20Tunisie","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}]},
  {"@type":"WebSite","@id":"https://formosaespresso.com/#site","url":"https://formosaespresso.com/","name":"Formosa Espresso","inLanguage":["fr","en","ar"],"publisher":{"@id":"https://formosaespresso.com/#org"}}
 ]}
 </script>
@@ -387,6 +388,13 @@ details.more>*+*{margin-top:14px}
 .coords{display:grid;gap:26px;align-content:start}
 .coords dl{margin:0;display:grid;gap:16px}
 .coords dd{margin:2px 0 0;font-size:1.05rem}
+.muted-t{color:var(--muted);font-size:.95rem}
+.map-box{aspect-ratio:4/3;border:1px solid var(--line);background:var(--ground);display:grid;place-items:center;overflow:hidden}
+.map-box iframe{width:100%;height:100%;border:0;display:block}
+.map-load{display:grid;justify-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--ink);padding:24px;font:inherit}
+.map-load small{color:var(--muted);font-size:.8rem}
+.map-load:hover b{text-decoration:underline}
+.map-links{display:flex;gap:10px;flex-wrap:wrap}
 .copyline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .copy-btn{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--line);padding:4px 8px;cursor:pointer;color:var(--muted)}
 form.req{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
@@ -866,8 +874,10 @@ html[lang="ar"] .label{font-size:.8rem}
           <div><dt class="label" data-i18n="ct.email">E-mail</dt><dd class="copyline"><bdi dir="ltr" id="mailTxt"></bdi><button class="copy-btn" data-copy="mail" data-i18n="ct.copy">Copier</button></dd></div>
           <div><dt class="label" data-i18n="ct.phone">Téléphone · WhatsApp</dt><dd class="copyline"><bdi dir="ltr" id="telTxt"></bdi><button class="copy-btn" data-copy="tel" data-i18n="ct.copy">Copier</button></dd></div>
           <div><dt class="label" data-i18n="ct.showroom">Showroom</dt><dd><span data-i18n="ct.showroomV">Boutique N°03, Résidence Nablus, Manouba, Tunisie · démonstration sur rendez-vous</span> <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=R%C3%A9sidence%20Nablus%2C%20Manouba%2C%20Tunisie" target="_blank" rel="noopener">Google Maps ↗</a></dd></div>
-          <div><dt class="label" data-i18n="ct.hours">Horaires</dt><dd data-i18n="ct.hoursV">Lundi au samedi, 9 h – 18 h</dd></div>
+          <div><dt class="label" data-i18n="ct.hours">Horaires</dt><dd><span data-i18n="ct.hoursV">Lundi au samedi, 9 h – 18 h</span><br><span class="muted-t" data-i18n="ct.hoursSun">Dimanche : fermé</span></dd></div>
         </dl>
+        <div class="map-box" id="mapBox"><button type="button" class="map-load" id="mapLoad"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><b data-i18n="ct.mapShow">Afficher la carte</b><small data-i18n="ct.mapNote">Charge Google Maps</small></button></div>
+        <div class="map-links"><a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=R%C3%A9sidence%20Nablus%2C%20Manouba%2C%20Tunisie" target="_blank" rel="noopener" data-i18n="ct.dir">Itinéraire</a><a class="btn ghost" href="https://waze.com/ul?q=R%C3%A9sidence%20Nablus%2C%20Manouba%2C%20Tunisie&amp;navigate=yes" target="_blank" rel="noopener">Waze</a></div>
       </div>
       <form class="req" id="req">
         <div class="f"><label for="fModel" data-i18n="f.model">Modèle</label><select id="fModel"></select></div>
@@ -898,7 +908,7 @@ html[lang="ar"] .label{font-size:.8rem}
     <div><h4 data-i18n="ft.range">Gamme</h4><ul id="footList"><li><a href="produits/g3211a.html" data-open="g3211a">G3211A</a></li><li><a href="produits/g3126c.html" data-open="g3126c">G3126C</a></li><li><a href="produits/g3201.html" data-open="g3201">G3201</a></li><li><a href="produits/g3111a.html" data-open="g3111a">G3111A</a></li><li><a href="produits/g3120c.html" data-open="g3120c">G3120C</a></li><li><a href="produits/g3200f.html" data-open="g3200f">G3200F</a></li><li><a href="produits/g9026a.html" data-open="g9026a">G9026A</a></li><li><a href="produits/g9015c.html" data-open="g9015c">G9015C</a></li></ul></div>
     <div><h4 data-i18n="ft.services">Services</h4><ul><li><a href="a-propos.html" data-fhref="a-propos.html" data-fhrefen="en/about.html" data-fhrefar="ar/about.html" data-ft="ftAbout">À propos</a></li><li><a href="#sav" data-ft="ftSav">SAV</a></li><li><a href="#torrefacteurs" data-pt="rLabel">Torréfacteurs partenaires</a></li><li><a href="#techniciens" data-pt="tLabel">Techniciens agréés</a></li><li><a href="#devenir-partenaire" data-pt="pApply">Devenir partenaire</a></li><li><a href="#rentabilite" data-ft="ftCalc">Rentabilité</a></li><li><a href="#services" data-i18n="ft.l1">Installation</a></li><li><a href="#services" data-i18n="ft.l2">Formation barista</a></li><li><a href="#services" data-i18n="ft.l3">Entretien et pièces</a></li><li><a href="#faq" data-i18n="ft.l5">Questions fréquentes</a></li></ul></div>
     <div><h4 data-ft="ftArticles">Conseils</h4><ul><li><a href="articles/prix-machine-cafe-professionnelle-tunisie.html" data-fhref="articles/prix-machine-cafe-professionnelle-tunisie.html" data-fhrefen="en/articles/professional-espresso-machine-prices-tunisia.html" data-fhrefar="ar/articles/asaar-alat-espresso-tunis.html" data-ft="ftA1">Prix</a></li><li><a href="articles/machine-1-ou-2-groupes.html" data-fhref="articles/machine-1-ou-2-groupes.html" data-fhrefen="en/articles/one-or-two-group-espresso-machine.html" data-fhrefar="ar/articles/majmouaa-wahida-am-ithnatan.html" data-ft="ftA2">1 ou 2 groupes</a></li><li><a href="articles/entretien-machine-espresso.html" data-fhref="articles/entretien-machine-espresso.html" data-fhrefen="en/articles/espresso-machine-cleaning-schedule.html" data-fhrefar="ar/articles/siyanat-alat-espresso.html" data-ft="ftA3">Entretien</a></li></ul></div>
-    <div><h4 data-i18n="ft.contact">Contact</h4><ul><li id="footMail"></li><li id="footTel"></li><li data-i18n="ft.city">Boutique N°03, Résidence Nablus, Manouba, Tunisie</li></ul></div>
+    <div><h4 data-i18n="ft.contact">Contact</h4><ul><li id="footMail"></li><li id="footTel"></li><li data-i18n="ft.city">Boutique N°03, Résidence Nablus, Manouba, Tunisie</li><li data-i18n="ft.hours">Lun – sam, 9 h – 18 h</li></ul></div>
     <div class="legal"><span data-i18n="ft.legal1"></span><span data-i18n="ft.legal2"></span></div>
   </div>
 </footer>
@@ -965,7 +975,7 @@ fr: {
   "faq.q5": "Quels moyens de paiement acceptez-vous ?", "faq.a5": "En ligne : commandez depuis la fiche d’un produit et payez en espèces au livreur, à la livraison. Pour une commande de plus de 4 000 DT, un acompte de 10 % par virement bancaire est demandé avant l’expédition. Livraison : accessoires 7 DT, moulin 20 DT, machine 50 DT. Sur devis : virement bancaire, chèque ou espèces, avec une facture et TVA pour chaque commande. Pour les packs ouverture : 10 % de remise en payant tout à la commande, ou un acompte de 40 % puis 12 ou 24 mensualités, par traites ou virement, sous réserve d’acceptation du dossier.",
     "ct.label": "Contact", "ct.h2": "parlons de votre comptoir",
   "ct.lede": "Indiquez le modèle qui vous intéresse et votre ville : nous répondons sous un jour ouvré avec un prix ferme.",
-  "ct.email": "E-mail", "ct.phone": "Téléphone · WhatsApp", "ct.showroom": "Adresse · showroom", "ct.showroomV": "Boutique N°03, Résidence Nablus, Manouba, Tunisie · démonstration sur rendez-vous", "ct.hours": "Horaires", "ct.hoursV": "Lundi au samedi, 9 h – 18 h", "ct.copy": "Copier",
+  "ct.email": "E-mail", "ct.phone": "Téléphone · WhatsApp", "ct.showroom": "Adresse · showroom", "ct.showroomV": "Boutique N°03, Résidence Nablus, Manouba, Tunisie · démonstration sur rendez-vous", "ct.hours": "Horaires", "ct.hoursV": "Lundi au samedi, 9 h – 18 h", "ct.hoursSun": "Dimanche : fermé", "ct.mapShow": "Afficher la carte", "ct.mapNote": "Charge Google Maps", "ct.dir": "Itinéraire", "ct.mapTitle": "Plan d'accès Formosa Espresso, Manouba", "ct.copy": "Copier",
   "f.model": "Modèle", "f.name": "Nom", "f.phone": "Téléphone", "f.type": "Établissement", "f.city": "Ville", "f.email": "E-mail (facultatif)", "f.project": "Votre projet",
   "t.cafe": "Café / salon de thé", "t.resto": "Restaurant", "t.hotel": "Hôtel", "t.kiosk": "Coffee-shop / kiosque", "t.office": "Bureau", "t.reseller": "Revendeur",
   "f.msgPh": "Ex. : ouverture d’un café à Sousse, environ 200 tasses par jour.",
@@ -979,7 +989,7 @@ fr: {
   "ft.tag": "Machines espresso et moulins professionnels Gemilai pour les cafés, restaurants et hôtels en Tunisie.",
   "ft.range": "Gamme", "ft.services": "Services", "ft.contact": "Contact",
   "ft.l1": "Installation", "ft.l2": "Formation barista", "ft.l3": "Entretien et pièces", "ft.l5": "Questions fréquentes",
-  "ft.city": "Boutique N°03, Résidence Nablus, Manouba, Tunisie",
+  "ft.city": "Boutique N°03, Résidence Nablus, Manouba, Tunisie", "ft.hours": "Lun – sam, 9 h – 18 h · dim. fermé",
   "ft.legal1": "© 2026 Formosa Espresso. Tous droits réservés.",
   "ft.legal2": "Gemilai est une marque de Guangdong Gemilai Intelligent Technology Co., Ltd. Photos : catalogue Gemilai.",
   cur: "DT"
@@ -1031,7 +1041,7 @@ en: {
   "faq.q5": "Which payment methods do you accept?", "faq.a5": "Online: order from a product page and pay cash to the courier on delivery. For an order over 4,000 DT, a 10% deposit by bank transfer is required before shipping. Delivery: accessories 7 DT, grinder 20 DT, machine 50 DT. On quote: bank transfer, cheque or cash, with a VAT invoice for every order. For opening packs: 10% off when you pay everything on order, or a 40% deposit then 12 or 24 monthly payments, by bills of exchange or transfer, subject to approval.",
     "ct.label": "Contact", "ct.h2": "let’s talk about your counter",
   "ct.lede": "Tell us which model interests you and your city: we reply within one business day with a firm price.",
-  "ct.email": "E-mail", "ct.phone": "Phone · WhatsApp", "ct.showroom": "Address · showroom", "ct.showroomV": "Shop No. 03, Résidence Nablus, Manouba, Tunisia · demonstrations by appointment", "ct.hours": "Opening hours", "ct.hoursV": "Monday to Saturday, 9 am – 6 pm", "ct.copy": "Copy",
+  "ct.email": "E-mail", "ct.phone": "Phone · WhatsApp", "ct.showroom": "Address · showroom", "ct.showroomV": "Shop No. 03, Résidence Nablus, Manouba, Tunisia · demonstrations by appointment", "ct.hours": "Opening hours", "ct.hoursV": "Monday to Saturday, 9 am – 6 pm", "ct.hoursSun": "Sunday: closed", "ct.mapShow": "Show the map", "ct.mapNote": "Loads Google Maps", "ct.dir": "Directions", "ct.mapTitle": "Map to Formosa Espresso, Manouba", "ct.copy": "Copy",
   "f.model": "Model", "f.name": "Name", "f.phone": "Phone", "f.type": "Business type", "f.city": "City", "f.email": "E-mail (optional)", "f.project": "Your project",
   "t.cafe": "Café / tea room", "t.resto": "Restaurant", "t.hotel": "Hotel", "t.kiosk": "Coffee shop / kiosk", "t.office": "Office", "t.reseller": "Reseller",
   "f.msgPh": "E.g. opening a café in Sousse, around 200 cups a day.",
@@ -1045,7 +1055,7 @@ en: {
   "ft.tag": "Gemilai professional espresso machines and grinders for cafés, restaurants and hotels in Tunisia.",
   "ft.range": "Range", "ft.services": "Services", "ft.contact": "Contact",
   "ft.l1": "Installation", "ft.l2": "Barista training", "ft.l3": "Service and parts", "ft.l5": "FAQ",
-  "ft.city": "Shop No. 03, Résidence Nablus, Manouba, Tunisia",
+  "ft.city": "Shop No. 03, Résidence Nablus, Manouba, Tunisia", "ft.hours": "Mon – Sat, 9 am – 6 pm · Sun closed",
   "ft.legal1": "© 2026 Formosa Espresso. All rights reserved.",
   "ft.legal2": "Gemilai is a trademark of Guangdong Gemilai Intelligent Technology Co., Ltd. Photos: Gemilai catalogue.",
   cur: "TND"
@@ -1097,7 +1107,7 @@ ar: {
   "faq.q5": "ما هي طرق الدفع المقبولة؟", "faq.a5": "عبر الموقع: اطلب من صفحة المنتج وادفع نقدًا لعون التوصيل عند الاستلام. بالنسبة للطلبات التي تفوق 4000 د.ت، تُطلب تسبقة 10% بتحويل بنكي قبل الشحن. التوصيل: الإكسسوارات 7 د.ت، المطحنة 20 د.ت، الآلة 50 د.ت. حسب عرض السعر: تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات لكل طلب. بالنسبة لباقات الافتتاح: تخفيض 10% عند دفع كامل المبلغ مع الطلب، أو تسبقة 40% ثم 12 أو 24 قسطًا شهريًا، بالكمبيالات أو بالتحويل، مع مراعاة قبول الملف.",
     "ct.label": "اتصل بنا", "ct.h2": "لنتحدث عن مشروعك",
   "ct.lede": "أخبرنا بالموديل الذي يهمّك ومدينتك: نردّ عليك في أجل يوم عمل بسعر نهائي.",
-  "ct.email": "البريد الإلكتروني", "ct.phone": "الهاتف · واتساب", "ct.showroom": "العنوان · صالة العرض", "ct.showroomV": "المحل رقم 03، إقامة نابلس، منوبة، تونس · عرض تجريبي بموعد مسبق", "ct.hours": "أوقات العمل", "ct.hoursV": "من الاثنين إلى السبت، 9:00 – 18:00", "ct.copy": "نسخ",
+  "ct.email": "البريد الإلكتروني", "ct.phone": "الهاتف · واتساب", "ct.showroom": "العنوان · صالة العرض", "ct.showroomV": "المحل رقم 03، إقامة نابلس، منوبة، تونس · عرض تجريبي بموعد مسبق", "ct.hours": "أوقات العمل", "ct.hoursV": "من الاثنين إلى السبت، 9:00 – 18:00", "ct.hoursSun": "الأحد: مغلق", "ct.mapShow": "عرض الخريطة", "ct.mapNote": "يتم تحميل خرائط Google", "ct.dir": "الاتجاهات", "ct.mapTitle": "خريطة الوصول إلى Formosa Espresso، منوبة", "ct.copy": "نسخ",
   "f.model": "الموديل", "f.name": "الاسم", "f.phone": "الهاتف", "f.type": "نوع المؤسسة", "f.city": "المدينة", "f.email": "البريد الإلكتروني (اختياري)", "f.project": "مشروعك",
   "t.cafe": "مقهى / صالون شاي", "t.resto": "مطعم", "t.hotel": "نزل", "t.kiosk": "كوفي شوب / كشك", "t.office": "مكتب", "t.reseller": "موزّع",
   "f.msgPh": "مثال: افتتاح مقهى في سوسة، نحو 200 فنجان يوميًا.",
@@ -1111,7 +1121,7 @@ ar: {
   "ft.tag": "آلات إسبريسو ومطاحن Gemilai الاحترافية للمقاهي والمطاعم والنزل في تونس.",
   "ft.range": "التشكيلة", "ft.services": "الخدمات", "ft.contact": "اتصل بنا",
   "ft.l1": "التركيب", "ft.l2": "تكوين الباريستا", "ft.l3": "الصيانة وقطع الغيار", "ft.l5": "الأسئلة الشائعة",
-  "ft.city": "المحل رقم 03، إقامة نابلس، منوبة، تونس",
+  "ft.city": "المحل رقم 03، إقامة نابلس، منوبة، تونس", "ft.hours": "الاثنين – السبت، 9:00 – 18:00 · الأحد مغلق",
   "ft.legal1": "© 2026 Formosa Espresso. جميع الحقوق محفوظة.",
   "ft.legal2": "Gemilai علامة تجارية لشركة Guangdong Gemilai Intelligent Technology Co., Ltd. الصور: كتالوج Gemilai.",
   cur: "د.ت"
@@ -1607,6 +1617,12 @@ function resetForm(){
   sent = null; reqForm.reset(); sentEl.hidden = true; sentEl.innerHTML = ""; reqForm.hidden = false;
   document.getElementById("fName").focus({ preventScroll: false });
 }
+document.getElementById("mapLoad")?.addEventListener("click", () => {
+  const f = document.createElement("iframe");
+  f.src = "https://maps.google.com/maps?q=R%C3%A9sidence%20Nablus%2C%20Manouba%2C%20Tunisie&z=16&output=embed&hl=" + (lang === "ar" ? "ar" : lang);
+  f.title = t("ct.mapTitle"); f.loading = "lazy"; f.referrerPolicy = "no-referrer-when-downgrade";
+  const box = document.getElementById("mapBox"); box.replaceChildren(f);
+});
 document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
   const txt = b.dataset.copy === "mail" ? CONFIG.email : CONFIG.phone;
   const done = () => toast(t("toast.copied", {t:txt}));
