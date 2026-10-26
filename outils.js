@@ -276,10 +276,11 @@
       </div></div>`;
   }
 
-  const PACKS = [["pk1", "pk1d", ["g3200f", "g9015c"]], ["pk2", "pk2d", ["g3120c", "g9015c"]], ["pk3", "pk3d", ["g3126c", "g9026a"]], ["pk4", "pk4d", ["g3211a", "g9026a"]]];
+  // [name, description, items, cash price incl. VAT (about 10% off, rounded below a round number)]
+  const PACKS = [["pk1", "pk1d", ["g3200f", "g9015c"], 3650], ["pk2", "pk2d", ["g3120c", "g9015c"], 7250], ["pk3", "pk3d", ["g3126c", "g9026a"], 8450], ["pk4", "pk4d", ["g3211a", "g9026a"], 11490]];
   function packPrice(i){
     const base = sum(PACKS[i][2]), o = packOpt[i] || "cash";
-    if (o === "cash") return `<small>${e(S("pFrom"))} <s>${e(money(base))}</s></small><b>${e(money(Math.round(base * 0.9)))}</b><span>${e(S("dCash"))}</span>`;
+    if (o === "cash") return `<small>${e(S("pFrom"))} <s>${e(money(base))}</s></small><b>${e(money(PACKS[i][3] || Math.round(base * 0.9)))}</b><span>${e(S("dCash"))}</span>`;
     const pl = plan(base, o);
     return `<small>${e(fill(S("dPlanSub"), { n: pl.n }))}</small><b>${e(T(STR.dPlanBig).replace("{m}", money(pl.m)).replace("{n}", pl.n))}</b><span>${e(fill(S("dPlan"), { d: money(pl.dep), n: pl.n }))}</span>`;
   }
