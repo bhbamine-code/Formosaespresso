@@ -288,7 +288,7 @@
     el.innerHTML = `<div class="wrap">
       <div class="head"><div class="stack"><p class="label">${e(S("pLabel"))}</p><h2>${e(S("pH"))}</h2></div><p class="lede">${e(S("pLede"))}</p></div>
       <div class="pk-grid">${PACKS.map(([n, d, ids], i) => `<article class="pk${i === 1 ? " hi" : ""}">
-        <div class="pk-img"><img src="${imgOf(byId[ids[0]])}" alt="" loading="lazy"><span class="pk-tag">${e(S("pTag"))}</span></div>
+        <div class="pk-img"><img src="img/packs/pack${i + 1}.jpg" alt="${e(ids.map(id => pname(byId[id])).join(" + "))}" loading="lazy" style="padding:0;object-fit:cover"><span class="pk-tag">${e(S("pTag"))}</span></div>
         <h3>${e(S(n))}</h3><p class="pk-d">${e(S(d))}</p>
         <ul><li><b>${ids.map(id => e(pname(byId[id]))).join(" + ")}</b></li><li>${e(S("pInc1"))}</li><li>${e(S("pInc2"))}</li><li>${e(S("pInc3"))}</li></ul>
         <div class="pk-opts" role="group" aria-label="${e(S("oPick"))}">${["cash", "12", "24"].map(o => `<button type="button" data-packopt="${i}:${o}" aria-pressed="${(packOpt[i] || "cash") === o}">${e(S(o === "cash" ? "oCash" : "o" + o))}</button>`).join("")}</div>
