@@ -103,7 +103,7 @@ module.exports = [
       "- L’installation et la formation de l’équipe.",
       "C’est exactement ce que réunissent nos [packs ouverture](packs). Pour savoir combien de temps il faut pour rentabiliser l’équipement, essayez notre [calculateur de rentabilité](calc).",
       "## Comment payer ?",
-      "Virement, chèque ou espèces, avec facture et TVA. Pour nos packs ouverture : 10 % de remise en payant tout à la commande, ou un acompte de 40 % puis 12 ou 24 mensualités, sous réserve d’acceptation du dossier.",
+      "Virement, chèque ou espèces, avec facture et TVA. Pour nos packs ouverture : 5 % de remise en payant tout à la commande, ou un acompte de 40 % puis 12 ou 24 mensualités, sous réserve d’acceptation du dossier.",
       "Pas sûr du modèle ? [Écrivez-nous](contact) : nous vous proposons la machine, le moulin et le budget adaptés."
     ],
     en: [
@@ -125,7 +125,7 @@ module.exports = [
       "- Installation and team training.",
       "That is exactly what our [opening packs](packs) bring together. To see how long the equipment takes to pay for itself, try our [profitability calculator](calc).",
       "## How to pay",
-      "Bank transfer, cheque or cash, with a VAT invoice. For our opening packs: 10% off when you pay everything on order, or a 40% deposit then 12 or 24 monthly payments, subject to approval.",
+      "Bank transfer, cheque or cash, with a VAT invoice. For our opening packs: 5% off when you pay everything on order, or a 40% deposit then 12 or 24 monthly payments, subject to approval.",
       "Not sure which model? [Write to us](contact) and we suggest the right machine, grinder and budget."
     ],
     ar: [
@@ -147,7 +147,7 @@ module.exports = [
       "- التركيب وتكوين الفريق.",
       "هذا بالضبط ما تجمعه [باقات الافتتاح](packs). ولمعرفة مدة استرجاع ثمن المعدّات، جرّب [حاسبة المردودية](calc).",
       "## طرق الدفع",
-      "تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات. بالنسبة لباقات الافتتاح: تخفيض 10% عند دفع كامل المبلغ مع الطلب، أو تسبقة 40% ثم 12 أو 24 قسطًا شهريًا، مع مراعاة قبول الملف.",
+      "تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات. بالنسبة لباقات الافتتاح: تخفيض 5% عند دفع كامل المبلغ مع الطلب، أو تسبقة 40% ثم 12 أو 24 قسطًا شهريًا، مع مراعاة قبول الملف.",
       "لست متأكدًا من الطراز؟ [راسلنا](contact) ونقترح عليك الآلة والمطحنة والميزانية المناسبة."
     ]
   }

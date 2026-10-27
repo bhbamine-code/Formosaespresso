@@ -95,25 +95,25 @@
     pFrom: L("matériel à partir de", "equipment from", "المعدّات ابتداءً من"),
     oCash: L("Comptant", "Pay now", "نقدًا"), o12: L("12 mois", "12 months", "12 شهرًا"), o24: L("24 mois", "24 months", "24 شهرًا"),
     oPick: L("Mode de paiement", "Payment option", "طريقة الدفع"),
-    dCash: L("10 % de remise, paiement complet à la commande", "10% off, full payment on order", "تخفيض 10%، دفع كامل المبلغ عند الطلب"),
+    dCash: L("5 % de remise, paiement complet à la commande", "5% off, full payment on order", "تخفيض 5%، دفع كامل المبلغ عند الطلب"),
     dPlanBig: L("{m} / mois × {n}", "{m} / month × {n}", "{m} / شهريًا × {n}"),
     dPlan: L("{d} à la commande (40 %), puis {n} mensualités", "{d} on order (40%), then {n} monthly instalments", "{d} عند الطلب (40%)، ثم {n} قسطًا شهريًا"),
     dPlanSub: L("facilités sur {n} mois", "spread over {n} months", "تسهيلات على {n} شهرًا"),
-    pOptCash: L("paiement comptant avec remise de 10 %", "full payment with 10% discount", "الدفع نقدًا مع تخفيض 10%"),
+    pOptCash: L("paiement comptant avec remise de 5 %", "full payment with 5% discount", "الدفع نقدًا مع تخفيض 5%"),
     pOpt12: L("paiement en 12 mois (acompte de 40 %)", "payment over 12 months (40% deposit)", "الدفع على 12 شهرًا (تسبقة 40%)"),
     pOpt24: L("paiement en 24 mois (acompte de 40 %)", "payment over 24 months (40% deposit)", "الدفع على 24 شهرًا (تسبقة 40%)"),
-    pTag: L("−10 % comptant · ou 24 mois", "−10% paid now · or 24 months", "−10% نقدًا · أو 24 شهرًا"),
+    pTag: L("−5 % comptant · ou 24 mois", "−5% paid now · or 24 months", "−5% نقدًا · أو 24 شهرًا"),
     pBtn: L("Demander ce pack", "Request this pack", "اطلب هذه الباقة"),
-    pNote: L("Comptant : 10 % de remise pour un paiement complet à la commande. Facilités : acompte de 40 % à la commande, puis 12 ou 24 mensualités, par traites ou virement, sous réserve d’acceptation du dossier. Prix indicatifs de la machine et du moulin ; le kit, l’installation et la formation sont détaillés dans votre devis.",
-            "Pay now: 10% off for full payment on order. Instalments: 40% deposit on order, then 12 or 24 monthly payments, by bills of exchange or bank transfer, subject to approval. Indicative prices for the machine and grinder; the kit, installation and training are itemised in your quote.",
-            "نقدًا: تخفيض 10% عند الدفع الكامل مع الطلب. التسهيلات: تسبقة 40% عند الطلب، ثم 12 أو 24 قسطًا شهريًا، بالكمبيالات أو بالتحويل البنكي، مع مراعاة قبول الملف. السعر تقديري للآلة والمطحنة؛ يتم تفصيل الطقم والتركيب والتكوين في عرض السعر."),
+    pNote: L("Comptant : 5 % de remise pour un paiement complet à la commande. Facilités : acompte de 40 % à la commande, puis 12 ou 24 mensualités, par traites ou virement, sous réserve d’acceptation du dossier. Prix indicatifs de la machine et du moulin ; le kit, l’installation et la formation sont détaillés dans votre devis.",
+            "Pay now: 5% off for full payment on order. Instalments: 40% deposit on order, then 12 or 24 monthly payments, by bills of exchange or bank transfer, subject to approval. Indicative prices for the machine and grinder; the kit, installation and training are itemised in your quote.",
+            "نقدًا: تخفيض 5% عند الدفع الكامل مع الطلب. التسهيلات: تسبقة 40% عند الطلب، ثم 12 أو 24 قسطًا شهريًا، بالكمبيالات أو بالتحويل البنكي، مع مراعاة قبول الملف. السعر تقديري للآلة والمطحنة؛ يتم تفصيل الطقم والتركيب والتكوين في عرض السعر."),
     pMsg: L("Bonjour, je suis intéressé(e) par le {pack} ({items}), avec {opt}. Pouvez-vous m’envoyer un devis ?",
             "Hello, I’m interested in the {pack} ({items}), with {opt}. Could you send me a quote?",
             "مرحبًا، أنا مهتم بـ {pack} ({items})، مع {opt}. هل يمكنكم إرسال عرض سعر؟"),
     payH: L("Paiement adapté à votre ouverture", "Payment that fits your opening", "دفع يناسب افتتاح مشروعك"),
-    payP: L("Pour chaque pack : 10 % de remise en payant tout à la commande, ou des facilités avec un acompte de 40 % puis 12 ou 24 mensualités, sous réserve d’acceptation du dossier. Virement, chèque ou espèces, avec facture et TVA ; mensualités par traites ou virement.",
-            "For every pack: 10% off when you pay everything on order, or instalments with a 40% deposit then 12 or 24 monthly payments, subject to approval. Bank transfer, cheque or cash, with a VAT invoice; monthly payments by bills of exchange or transfer.",
-            "لكل باقة: تخفيض 10% عند دفع كامل المبلغ مع الطلب، أو تسهيلات بتسبقة 40% ثم 12 أو 24 قسطًا شهريًا، مع مراعاة قبول الملف. تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات؛ الأقساط بالكمبيالات أو بالتحويل."),
+    payP: L("Pour chaque pack : 5 % de remise en payant tout à la commande, ou des facilités avec un acompte de 40 % puis 12 ou 24 mensualités, sous réserve d’acceptation du dossier. Virement, chèque ou espèces, avec facture et TVA ; mensualités par traites ou virement.",
+            "For every pack: 5% off when you pay everything on order, or instalments with a 40% deposit then 12 or 24 monthly payments, subject to approval. Bank transfer, cheque or cash, with a VAT invoice; monthly payments by bills of exchange or transfer.",
+            "لكل باقة: تخفيض 5% عند دفع كامل المبلغ مع الطلب، أو تسهيلات بتسبقة 40% ثم 12 أو 24 قسطًا شهريًا، مع مراعاة قبول الملف. تحويل بنكي أو صك أو نقدًا، مع فاتورة بالأداءات؛ الأقساط بالكمبيالات أو بالتحويل."),
     payBtn: L("En parler sur WhatsApp", "Discuss on WhatsApp", "تحدّث معنا على واتساب"),
     payMsg: L("Bonjour, je voudrais connaître les facilités de paiement pour une ouverture de café.", "Hello, I’d like to know the payment options for a café opening.", "مرحبًا، أريد معرفة تسهيلات الدفع لافتتاح مقهى."),
 
@@ -276,11 +276,11 @@
       </div></div>`;
   }
 
-  // [name, description, items, cash price incl. VAT (about 10% off, rounded below a round number)]
-  const PACKS = [["pk1", "pk1d", ["g3200f", "g9015c"], 4190], ["pk2", "pk2d", ["g3120c", "g9015c"], 8450], ["pk3", "pk3d", ["g3126c", "g9026a"], 8550], ["pk4", "pk4d", ["g3211a", "g9026a"], 12750]];
+  // [name, description, items, cash price incl. VAT (about 5% off the separate prices)]
+  const PACKS = [["pk1", "pk1d", ["g3200f", "g9015c"], 4540], ["pk2", "pk2d", ["g3120c", "g9015c"], 7870], ["pk3", "pk3d", ["g3126c", "g9026a"], 9210], ["pk4", "pk4d", ["g3211a", "g9026a"], 12140]];
   function packPrice(i){
     const base = sum(PACKS[i][2]), o = packOpt[i] || "cash";
-    if (o === "cash") return `<small>${e(S("pFrom"))} <s>${e(money(base))}</s></small><b>${e(money(PACKS[i][3] || Math.round(base * 0.9)))}</b><span>${e(S("dCash"))}</span>`;
+    if (o === "cash") return `<small>${e(S("pFrom"))} <s>${e(money(base))}</s></small><b>${e(money(PACKS[i][3] || Math.round(base * 0.95)))}</b><span>${e(S("dCash"))}</span>`;
     const pl = plan(base, o);
     return `<small>${e(fill(S("dPlanSub"), { n: pl.n }))}</small><b>${e(T(STR.dPlanBig).replace("{m}", money(pl.m)).replace("{n}", pl.n))}</b><span>${e(fill(S("dPlan"), { d: money(pl.dep), n: pl.n }))}</span>`;
   }
