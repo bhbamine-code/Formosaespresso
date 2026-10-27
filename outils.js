@@ -277,7 +277,7 @@
   }
 
   // [name, description, items, cash price incl. VAT (about 10% off, rounded below a round number)]
-  const PACKS = [["pk1", "pk1d", ["g3200f", "g9015c"], 3650], ["pk2", "pk2d", ["g3120c", "g9015c"], 7250], ["pk3", "pk3d", ["g3126c", "g9026a"], 8450], ["pk4", "pk4d", ["g3211a", "g9026a"], 11490]];
+  const PACKS = [["pk1", "pk1d", ["g3200f", "g9015c"], 4190], ["pk2", "pk2d", ["g3120c", "g9015c"], 8450], ["pk3", "pk3d", ["g3126c", "g9026a"], 8550], ["pk4", "pk4d", ["g3211a", "g9026a"], 12750]];
   function packPrice(i){
     const base = sum(PACKS[i][2]), o = packOpt[i] || "cash";
     if (o === "cash") return `<small>${e(S("pFrom"))} <s>${e(money(base))}</s></small><b>${e(money(PACKS[i][3] || Math.round(base * 0.9)))}</b><span>${e(S("dCash"))}</span>`;
