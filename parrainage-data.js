@@ -4,7 +4,7 @@
    stats : résultats de chaque parrain, chiffrés avec sa clé personnelle (lisibles seulement depuis son lien parrain.html#clé) */
 window.FE_REF = {
   "updated": "2026-10-29",
-  "reward": 10,
+  "reward": 5,
   "payDay": 10,
   "partners": [],
   "stats": []

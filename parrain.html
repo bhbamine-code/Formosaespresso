@@ -89,7 +89,7 @@ const STR = {
   r3: L("Paiement avant le {d} du mois suivant la validation.", "Payment before the {d}th of the month after validation.", "الدفع قبل يوم {d} من الشهر الموالي للمصادقة."),
   help: L("Une question ? Écrivez-nous sur WhatsApp", "A question? Message us on WhatsApp", "سؤال؟ راسلنا على واتساب")
 };
-const D = Object.assign({ reward: 10, payDay: 10, stats: [] }, window.FE_REF || {});
+const D = Object.assign({ reward: 5, payDay: 10, stats: [] }, window.FE_REF || {});
 let lang = "fr", key = "", data = null, err = "", busy = false;
 try { lang = localStorage.getItem("fe-lang") || "fr"; } catch(e){}
 if (!["fr","en","ar"].includes(lang)) lang = "fr";

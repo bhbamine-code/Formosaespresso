@@ -11,7 +11,7 @@
   const e = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const S = k => T(STR[k]);
   const fill = (s, o) => Object.entries(o).reduce((a, [k, v]) => a.split("{" + k + "}").join(v), s);
-  const DATA = Object.assign({ reward: 10, payDay: 10, partners: [], stats: [] }, window.FE_REF || {});
+  const DATA = Object.assign({ reward: 5, payDay: 10, partners: [], stats: [] }, window.FE_REF || {});
   const REF_DAYS = 90;
   const cleanCode = c => String(c || "").toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 20);
   const partner = code => DATA.partners.find(p => p.code === code && p.active !== false);
