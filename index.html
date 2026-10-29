@@ -643,6 +643,29 @@ html[lang="ar"] .label{font-size:.8rem}
 .pp-col{display:grid;gap:4px}.pp-col p{margin:0;color:var(--muted)}
 .sav-form .lbl{font-size:.85rem;font-weight:600}
 @media (max-width:860px){.partner-prog{grid-template-columns:1fr}}
+/* espace client & programme parrain */
+.ref-ben{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:22px}
+.ref-ben>div{background:var(--ground);padding:20px;display:grid;gap:6px;align-content:start}.ref-ben b{font-size:1.02rem}.ref-ben p{margin:0;color:var(--muted);font-size:.93rem}
+@media (max-width:900px){.ref-ben{grid-template-columns:1fr 1fr}}@media (max-width:520px){.ref-ben{grid-template-columns:1fr}}
+.ref-cta{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}.ref-cta span{color:var(--muted);font-size:.92rem}
+.ref-prog{margin-top:clamp(40px,6vw,72px);border-top:1px solid var(--line);padding-top:clamp(28px,4vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px)}
+.ref-prog>.stack{display:grid;gap:14px;align-content:start}.ref-prog h3{font-size:clamp(1.6rem,3vw,2.2rem);margin:0;letter-spacing:-.02em;text-transform:none}.ref-prog .lede{margin:0}
+@media (max-width:860px){.ref-prog{grid-template-columns:1fr}}
+.ref-steps{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.ref-steps li{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}.ref-steps li:first-child{padding-top:0}
+.ref-steps li>span{width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--ground);display:grid;place-items:center;font-weight:600}
+.ref-steps p{margin:2px 0 0;color:var(--muted);font-size:.94rem}
+.ref-rules summary{cursor:pointer;font-weight:600;padding:6px 0}.ref-rules ul{margin:8px 0 0;padding-inline-start:20px;display:grid;gap:8px;color:var(--muted);font-size:.93rem}
+.ref-small{margin:0;color:var(--muted);font-size:.86rem}
+.ref-sheet{padding-block:clamp(24px,4vw,48px) 64px;max-width:860px}
+.ref-form-head{display:grid;gap:12px;margin-bottom:26px}.ref-form-head h2{margin:0}.ref-form-head .lede{margin:0}
+.ref-banner{display:inline-flex;align-items:center;gap:8px;justify-self:start;margin:0;padding:8px 14px;background:var(--panel);border:1px solid var(--line);font-weight:600}
+.ref-banner svg{color:var(--accent);flex:none}
+.ref-group{margin:10px 0 -4px;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:8px}
+.ref-form .full,.ref-form .ref-group{grid-column:1/-1}
+.ref-form .acc-cats{flex-wrap:wrap;overflow:visible;margin-bottom:0}.ref-form .acc-cats button{white-space:normal;text-align:start}
+.ref-check{display:flex;gap:10px;align-items:flex-start;font-size:.94rem;cursor:pointer}.ref-check input{margin-top:4px;width:18px;height:18px;flex:none;accent-color:var(--ink)}
+.ref-done{display:grid;gap:14px;border:1px solid var(--line);background:var(--panel);padding:clamp(20px,4vw,36px)}.ref-done h2{margin:0;text-transform:none}.ref-done p{margin:0}
 .pf{display:grid;gap:28px;padding-block:clamp(28px,4vw,56px)}
 .pf-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:start}
 .pf-logo{width:160px;height:160px}.pf-photo{width:220px;height:220px;object-fit:cover}
@@ -691,6 +714,7 @@ html[lang="ar"] .label{font-size:.8rem}
       <a class="cat" href="#gemilai"><span class="cat-pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 21l4-2 4 2-1-7.5"/></svg></span><span data-i18n="nav.brand">gemilai</span></a>
       <a class="cat" href="#sav"><span class="cat-pic has-img"><img src="img/tiles/care.svg" alt="" loading="lazy" width="96" height="96"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m5.6 5.6 3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6"/></svg></span><span data-ft="navSav">SAV</span></a>
       <a class="cat" href="#techniciens"><span class="cat-pic has-img"><img src="img/partners/tech-karim.svg" alt="" loading="lazy" width="96" height="96"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="3.5"/><path d="M2.5 20c.5-4 3.2-6 6.5-6 1.6 0 3 .4 4 1.2"/><path d="M19.5 13.5a3 3 0 0 0-3.6 3.6L13 20l1 1 2.9-2.9a3 3 0 0 0 3.6-3.6l-1.6 1.6-1.4-1.4z"/></svg></span><span data-pt="navTech">techniciens</span></a>
+      <a class="cat" href="#inscription" data-signup><span class="cat-pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c.9-3.9 3.9-6 7.5-6s6.6 2.1 7.5 6"/></svg></span><span data-rt="navClient">espace client</span></a>
       <a class="cat" href="#contact"><span class="cat-pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg></span><span data-i18n="nav.contact">contact</span></a>
     </div>
     <button type="button" class="cats-arr prev" data-cats="-1" aria-label="Rubriques précédentes" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
@@ -843,6 +867,8 @@ html[lang="ar"] .label{font-size:.8rem}
 
   <section class="section partners-sec" id="techniciens" aria-label="Techniciens agréés" style="padding-top:0"></section>
 
+  <section class="section ref-sec" id="espace-client" aria-label="Espace client et programme parrain" style="padding-top:0"></section>
+
   <section class="section" id="faq">
     <div class="wrap">
       <div class="head"><div class="stack"><p class="label" data-i18n="faq.label">Questions fréquentes</p><h2 data-i18n="faq.h2">avant de commander</h2></div></div>
@@ -897,7 +923,7 @@ html[lang="ar"] .label{font-size:.8rem}
   <div class="wrap">
     <div style="display:grid;gap:16px;align-content:start"><span class="mark" dir="ltr"><picture class="logo-mark ft"><img src="img/logo/mark-light.svg" alt="" width="40" height="72"></picture>formosa <span>espresso</span></span><p style="max-width:38ch" data-i18n="ft.tag"></p></div>
     <div><h4 data-i18n="ft.range">Gamme</h4><ul id="footList"><li><a href="produits/g3211a.html" data-open="g3211a">G3211A</a></li><li><a href="produits/g3126c.html" data-open="g3126c">G3126C</a></li><li><a href="produits/g3201.html" data-open="g3201">G3201</a></li><li><a href="produits/g3111a.html" data-open="g3111a">G3111A</a></li><li><a href="produits/g3120c.html" data-open="g3120c">G3120C</a></li><li><a href="produits/g3200f.html" data-open="g3200f">G3200F</a></li><li><a href="produits/g9026a.html" data-open="g9026a">G9026A</a></li><li><a href="produits/g9015c.html" data-open="g9015c">G9015C</a></li></ul></div>
-    <div><h4 data-i18n="ft.services">Services</h4><ul><li><a href="a-propos.html" data-fhref="a-propos.html" data-fhrefen="en/about.html" data-fhrefar="ar/about.html" data-ft="ftAbout">À propos</a></li><li><a href="#sav" data-ft="ftSav">SAV</a></li><li><a href="#torrefacteurs" data-pt="rLabel">Torréfacteurs partenaires</a></li><li><a href="#techniciens" data-pt="tLabel">Techniciens agréés</a></li><li><a href="#devenir-partenaire" data-pt="pApply">Devenir partenaire</a></li><li><a href="#rentabilite" data-ft="ftCalc">Rentabilité</a></li><li><a href="#services" data-i18n="ft.l1">Installation</a></li><li><a href="#services" data-i18n="ft.l2">Formation barista</a></li><li><a href="#services" data-i18n="ft.l3">Entretien et pièces</a></li><li><a href="#faq" data-i18n="ft.l5">Questions fréquentes</a></li></ul></div>
+    <div><h4 data-i18n="ft.services">Services</h4><ul><li><a href="a-propos.html" data-fhref="a-propos.html" data-fhrefen="en/about.html" data-fhrefar="ar/about.html" data-ft="ftAbout">À propos</a></li><li><a href="#sav" data-ft="ftSav">SAV</a></li><li><a href="#torrefacteurs" data-pt="rLabel">Torréfacteurs partenaires</a></li><li><a href="#techniciens" data-pt="tLabel">Techniciens agréés</a></li><li><a href="#devenir-partenaire" data-pt="pApply">Devenir partenaire</a></li><li><a href="#inscription" data-signup data-rt="navClient">Espace client</a></li><li><a href="#parrainage" data-rt="pLabel">Programme parrain techniciens</a></li><li><a href="#rentabilite" data-ft="ftCalc">Rentabilité</a></li><li><a href="#services" data-i18n="ft.l1">Installation</a></li><li><a href="#services" data-i18n="ft.l2">Formation barista</a></li><li><a href="#services" data-i18n="ft.l3">Entretien et pièces</a></li><li><a href="#faq" data-i18n="ft.l5">Questions fréquentes</a></li></ul></div>
     <div><h4 data-ft="ftArticles">Conseils</h4><ul><li><a href="articles/prix-machine-cafe-professionnelle-tunisie.html" data-fhref="articles/prix-machine-cafe-professionnelle-tunisie.html" data-fhrefen="en/articles/professional-espresso-machine-prices-tunisia.html" data-fhrefar="ar/articles/asaar-alat-espresso-tunis.html" data-ft="ftA1">Prix</a></li><li><a href="articles/machine-1-ou-2-groupes.html" data-fhref="articles/machine-1-ou-2-groupes.html" data-fhrefen="en/articles/one-or-two-group-espresso-machine.html" data-fhrefar="ar/articles/majmouaa-wahida-am-ithnatan.html" data-ft="ftA2">1 ou 2 groupes</a></li><li><a href="articles/entretien-machine-espresso.html" data-fhref="articles/entretien-machine-espresso.html" data-fhrefen="en/articles/espresso-machine-cleaning-schedule.html" data-fhrefar="ar/articles/siyanat-alat-espresso.html" data-ft="ftA3">Entretien</a></li></ul></div>
     <div><h4 data-i18n="ft.contact">Contact</h4><ul><li id="footMail"></li><li id="footTel"></li><li data-i18n="ft.city">Boutique N°03, Résidence Nablus, Manouba, Tunisie</li><li data-i18n="ft.hours">Lun – sam, 9 h – 18 h</li></ul></div>
     <div class="legal"><span data-i18n="ft.legal1"></span><span data-i18n="ft.legal2"></span></div>
@@ -1670,6 +1696,7 @@ function setLang(l, save){
   applyStatic(); if (window.FE_TOOLS) FE_TOOLS.render(); if (window.FE_CART) FE_CART.render(); renderSlides(); renderFilters(); renderRange(); renderTiles(); renderAcadMini(); renderContact(); renderSent();
   if (openId === "__cmp") openCompare(true); else if (openId === "__acad") openAcademy(true); else if (openId) openProduct(openId, true);
   if (window.FE_PARTNERS) FE_PARTNERS.render();
+  if (window.FE_REF_UI) FE_REF_UI.render();
 }
 document.getElementById("langs").addEventListener("click", e => { const b = e.target.closest("[data-lang]"); if (b && b.dataset.lang !== lang) setLang(b.dataset.lang, true); });
 
@@ -1687,6 +1714,8 @@ if (location.hash === "#apprendre") openAcademy();
 <script src="outils.js"></script>
 <script src="commande.js"></script>
 <script src="partenaires.js"></script>
+<script src="parrainage-data.js"></script>
+<script src="parrainage.js"></script>
 <!-- statistiques de visites (GoatCounter, sans cookies) -->
 <script data-goatcounter="https://amineformosa.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
