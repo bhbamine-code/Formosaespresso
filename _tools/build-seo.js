@@ -33,7 +33,9 @@ const purl = (l, id) => `${SITE}/${DIR[l]}/${id}.html`;
           imgs: p.gallery ? p.gallery : [p.img.toLowerCase(), p.img.toLowerCase() + "-scene"],
           specs: p.specs.map(([k, v]) => [SPEC_LABELS[lang][k] || k, T(v)]),
           wa: t("msg.waQuote", { n: pname(p), p: range(p) }),
-          video: (VIDEOS.find(v => v.product === p.id) || {}).id || null
+          video: (VIDEOS.find(v => v.product === p.id) || {}).id || null,
+          videos: VIDEOS.filter(v => v.product === p.id).map(v => ({ id: v.id, title: T(v.title), text: T(v.text) })),
+          vlabel: t("vid.label"), vcredit: t("vid.credit"), vplay: t("vid.play", { t: "" }).replace(/\s*:?\s*$/, "")
         }))
       };
     }, l);
@@ -102,6 +104,7 @@ h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;letter-spacing:-.02em;fon
 .tag{font-size:1.15rem;margin:0 0 14px}.desc{color:var(--muted);margin:0 0 22px}
 .pr{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:18px}.pr small{display:block;color:var(--muted);font-size:.8rem}.pr b{font-size:1.6rem;font-weight:500}
 .note{font-size:.8rem;color:var(--muted);margin:8px 0 0}
+.pvids{margin:0 0 32px;display:grid;gap:18px}.vid{margin:0}.vid .frame{position:relative;aspect-ratio:16/9;background:#111;overflow:hidden}.vid .frame img,.vid .frame iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}.vid .play{position:absolute;inset:0;width:100%;border:0;background:none;cursor:pointer;display:grid;place-items:center}.vid .play span{width:60px;height:60px;border-radius:50%;background:rgba(244,244,241,.95);display:grid;place-items:center}.vid .play span::after{content:"";margin-left:5px;border-style:solid;border-width:10px 0 10px 16px;border-color:transparent transparent transparent #161616}.vid figcaption{margin-top:8px;font-size:.92rem}.vnote{font-size:.8rem;opacity:.7}
 .ctas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;background:var(--ink);color:var(--ground);text-decoration:none;font-weight:600}.btn.wa{background:var(--wa);color:#fff}.btn.ghost{background:none;color:var(--ink);border:1px solid var(--ink)}
 h2{font-size:1.3rem;font-weight:500;margin:0 0 10px}
@@ -116,7 +119,7 @@ bdi{unicode-bidi:isolate}
 @page{size:A4;margin:12mm 14mm}
 :root{--ground:#fff;--panel:#F4F4F1;--ink:#161616;--muted:#555}
 body{font-size:10pt;line-height:1.4}
-.langs,.crumbs,.ctas,.thumbs,.others,footer{display:none!important}
+.langs,.crumbs,.ctas,.thumbs,.others,.pvids,footer{display:none!important}
 header{border-bottom:2px solid #161616}header .wrap{min-height:56px}
 .wrap{max-width:none;padding:0}
 .pd{grid-template-columns:42% 1fr;gap:9mm;padding:6mm 0 0}
@@ -146,6 +149,7 @@ th,td{padding:1.2mm 0}tr{page-break-inside:avoid}
     <div class="pr"><small>${esc(D.s.price)}</small><b>${esc(pr.range)}</b><p class="note">${esc(D.s.note)}</p></div>
     <div class="ctas"><a class="btn" href="${home(l)}${l === "fr" ? "?" : "&"}devis=${pr.id}#contact">${esc(D.s.quote)}</a><a class="btn wa" href="https://wa.me/${D.cfg.whatsapp}?text=${encodeURIComponent(pr.wa)}" target="_blank" rel="noopener">${u.wa}</a>${pr.video ? `<a class="btn ghost" href="https://www.youtube.com/watch?v=${pr.video}" target="_blank" rel="noopener">▶ ${u.yt}</a>` : ""}<a class="btn ghost" href="../fiches/${l}/${pr.id}.pdf" download>${u.pdf}</a></div>
     <p class="print-only">${D.cfg.email} · ${D.cfg.phone} · ${u.web} : ${purl(l, pr.id)}</p>
+    ${pr.videos.length ? `<section class="pvids"><h2>${esc(pr.vlabel)}</h2>${pr.videos.map(v => `<figure class="vid"><div class="frame" data-yt="${v.id}"><img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><button type="button" class="play" aria-label="${esc(pr.vplay)} : ${esc(v.title)}"><span></span></button></div><figcaption><b>${esc(v.title)}</b> ${esc(v.text)}</figcaption></figure>`).join("")}<p class="vnote">${esc(pr.vcredit)}</p></section>` : ""}
     <h2>${u.specs}</h2>
     <table><tbody>${pr.specs.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}</tbody></table>
   </div>
@@ -155,6 +159,7 @@ th,td{padding:1.2mm 0}tr{page-break-inside:avoid}
 <div class="grid">${others.map(o => `<a href="${o.id}.html"><img src="../img/${o.imgs[0]}.jpg" alt="" loading="lazy"><span>${esc(o.short)}<small>${esc(D.s.from)} ${esc(o.from)}</small></span></a>`).join("")}</div>
 <a class="all" href="${home(l)}#gamme">${u.all} →</a></div></section>
 <footer><div class="wrap"><span>${esc(D.s.legal1)}</span><span><bdi dir="ltr">${esc(D.cfg.email)}</bdi> · <bdi dir="ltr">${esc(D.cfg.phone)}</bdi></span><span>${esc(D.s.legal2)}</span></div></footer>
+<script>document.querySelectorAll(".frame[data-yt] .play").forEach(b=>b.addEventListener("click",()=>{const f=b.parentNode;f.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+f.dataset.yt+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';}));</script>
 <script>document.querySelectorAll(".thumbs button").forEach(b=>b.addEventListener("click",()=>{document.getElementById("main").src=b.dataset.src;document.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-pressed",x===b));}));</script>
 <script data-goatcounter="https://amineformosa.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
