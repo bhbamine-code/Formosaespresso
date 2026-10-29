@@ -113,8 +113,9 @@
   const rById = id => ROASTERS.find(r => r.id === id);
 
   /* ---------- techniciens (fictifs) ---------- */
+  const techImg = t => `img/partners/tech-${t.id}.${t.photo || "svg"}`;
   const TECHS = [
-    { id: "karim", name: "Karim B.", biz: "KB Service Café", city: L("Mégrine, Ben Arous", "Mégrine, Ben Arous", "مقرين، بن عروس"), region: "nord-est",
+    { id: "karim", photo: "jpg", name: "Karim B.", biz: "KB Service Café", city: L("Mégrine, Ben Arous", "Mégrine, Ben Arous", "مقرين، بن عروس"), region: "nord-est",
       address: "Avenue de la République, Mégrine 2033, Ben Arous", years: 12, langs: L("arabe, français", "Arabic, French", "العربية، الفرنسية"),
       zones: L("Tunis, Ariana, Ben Arous, Manouba", "Tunis, Ariana, Ben Arous, Manouba", "تونس، أريانة، بن عروس، منوبة"),
       skills: [L("installation et mise en service", "installation and set-up", "التركيب والتشغيل"), L("cartes électroniques et affichages", "control boards and displays", "البطاقات الإلكترونية والشاشات"), L("contrats d’entretien", "maintenance contracts", "عقود الصيانة")],
@@ -180,7 +181,7 @@
       <p class="acc-note">${e(S("demo"))}</p></div>`;
   }
   function techCard(t) {
-    return `<button type="button" class="tech-card" data-tech="${t.id}"><img src="img/partners/tech-${t.id}.svg" alt="" width="200" height="200" loading="lazy">
+    return `<button type="button" class="tech-card" data-tech="${t.id}"><img src="${techImg(t)}" alt="" width="200" height="200" loading="lazy">
       <span class="tc-body"><span class="tc-badge">${e(S("approved"))}</span><b>${e(t.name)}</b><small>${e(t.biz)}</small>
       <span class="tc-city"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${e(T(t.city))}</span>
       <span class="tc-skills">${t.skills.slice(0, 2).map(s => `<i>${e(T(s))}</i>`).join("")}</span><em>${e(S("tSee"))} →</em></span></button>`;
@@ -237,7 +238,7 @@
   }
   function techHtml(t) {
     return shell(`${S("tLabel").toLowerCase()} / ${t.name.toLowerCase()}`, `
-      <div class="pf-head"><img class="pf-photo" src="img/partners/tech-${t.id}.svg" alt="${e(t.name)}" width="220" height="220">
+      <div class="pf-head"><img class="pf-photo" src="${techImg(t)}" alt="${e(t.name)}" width="220" height="220">
         <div class="stack"><span class="tc-badge">${e(S("approved"))}</span><h2 id="pdName">${e(t.name)}</h2><p class="pf-biz">${e(t.biz)} · ${e(T(t.city))}</p><p class="lede">${e(T(t.bio))}</p>
         <div class="ctas"><button type="button" class="btn" data-book="${t.id}">${e(S("book"))}</button><a class="btn ghost" href="#sav" data-close>${e(S("savForm"))}</a></div>
         <p class="pf-note">${e(S("bookNote"))}</p></div></div>
