@@ -40,8 +40,8 @@
 <style>
 /* Layout: full-bleed scene carousel, alternating category blocks, product range on pale tiles, product sheet, comparison, services, contact, heavy footer */
 :root{
-  --ground:#FFFFFF; --panel:#F4F4F1; --ink:#161616; --muted:#666662; --line:#E3E3DE;
-  --accent:#7A2E1F; --accent-ink:#FFFFFF; --photo:#F7F9F8; --bar:#161616; --bar-ink:#F4F4F1;
+  --ground:#FBF8F3; --panel:#F3EDE4; --ink:#1E1914; --muted:#6B6158; --line:#E6DDD0;
+  --accent:#7A2E1F; --accent-ink:#FFFFFF; --photo:#F5F0E8; --bar:#161616; --bar-ink:#F4F4F1;
   --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
   --body:"Instrument Sans","Segoe UI",system-ui,-apple-system,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -684,6 +684,21 @@ html[lang="ar"] .label{font-size:.8rem}
 @keyframes fe-drawer-in{from{transform:translateX(100%)}to{transform:none}}
 @keyframes fe-drawer-in-rtl{from{transform:translateX(-100%)}to{transform:none}}
 @keyframes fe-toast-in{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+
+/* Light refresh (Nov 2026): warmer colours, matching category icons, rounded buttons, tighter intro */
+.btn,.arrows button{border-radius:999px}
+.btn:where(:not(.ghost,.wa)){background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+@media (hover:hover) and (pointer:fine){.btn:where(:not(.ghost,.wa)):hover{background:transparent;color:var(--accent)}}
+.prod .ph img:not(.full){mix-blend-mode:multiply;filter:brightness(1.05)}
+.cats:not(.compact) .cat-pic{background:var(--ground)}
+.cats:not(.compact) .cat-pic.has-img img{display:none}
+.cats:not(.compact) .cat-pic.has-img svg{display:block}
+.cats:not(.compact) .cat-pic svg{width:40px;height:40px;color:var(--ink);stroke-width:1.4}
+.cats:not(.compact) .cat.hi .cat-pic{background:color-mix(in srgb,var(--accent) 8%,var(--ground))}
+@media (max-width:640px){.cats:not(.compact) .cat-pic svg{width:32px;height:32px}}
+.intro .wrap{align-items:start}
+.intro p.big{font-size:clamp(1.4rem,2.3vw,2rem)}
+.intro{padding-block:clamp(56px,7vw,96px)}
 </style>
 
 </head>
