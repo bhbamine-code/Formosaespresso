@@ -699,6 +699,58 @@ html[lang="ar"] .label{font-size:.8rem}
 .intro .wrap{align-items:start}
 .intro p.big{font-size:clamp(1.4rem,2.3vw,2rem)}
 .intro{padding-block:clamp(56px,7vw,96px)}
+
+/* Vitrine: shorter homepage (concept A). Shop tabs with swipe rows, partners hub, full-screen "tout voir". */
+.vt-head{display:grid;gap:12px}
+.vt-shop{padding-bottom:0}
+.vt-tabs{display:flex;gap:4px 24px;margin-top:28px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.vt-tabs::-webkit-scrollbar{display:none}
+.vt-tabs button{flex:none;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:12px 2px;font:600 1.05rem/1.2 var(--body);color:var(--muted);cursor:pointer;display:inline-flex;gap:6px;align-items:baseline}
+.vt-tabs button small{font-size:.75rem;font-weight:500;color:var(--muted)}
+.vt-tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+@media (hover:hover) and (pointer:fine){.vt-tabs button:hover{color:var(--ink)}}
+.vt-panel{display:none}
+.vt-panel.vt-on,.vt-panel.vt-full{display:block}
+.vt-panel:not(.vt-full){padding-block:20px 56px!important}
+.vt-panel:not(.vt-full) .head .stack,.vt-panel:not(.vt-full) .head .lede,.vt-panel:not(.vt-full) .pk-note,.vt-panel:not(.vt-full) .acc-note,
+#accessoires:not(.vt-full) .acc-cats,#torrefacteurs:not(.vt-full) .acc-cats,#torrefacteurs:not(.vt-full) .roaster-circles{display:none}
+.vt-panel:not(.vt-full) .head{margin:0 0 16px;min-height:0}
+#packs:not(.vt-full) .head,#accessoires:not(.vt-full) .head,#torrefacteurs:not(.vt-full) .head{display:none}
+.vt-panel:not(.vt-full) :is(.range,.pk-grid,.acc-items){display:flex!important;flex-wrap:nowrap;grid-template-columns:none!important;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;gap:16px;padding-bottom:10px;scrollbar-width:thin}
+.vt-panel:not(.vt-full) :is(.range,.pk-grid,.acc-items)>*{flex:0 0 clamp(236px,25vw,290px);scroll-snap-align:start;grid-column:auto!important}
+.vt-panel:not(.vt-full) .prod.wide{display:block!important;grid-template-columns:none!important}
+.vt-more{display:flex;align-items:center;gap:16px;margin-top:18px}
+.vt-swipe{font-size:.85rem;color:var(--muted)}
+@media (min-width:900px){.vt-swipe{display:none}}
+.vt-full .vt-more{display:none}
+.vt-folded{display:none}
+.vt-folded.vt-full{display:block}
+.vt-full{position:fixed;inset:0;z-index:78;overflow-y:auto;overscroll-behavior:contain;background:var(--ground);padding-top:0!important;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))!important}
+.vt-bar{position:sticky;top:0;z-index:3;background:color-mix(in srgb,var(--ground) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-bottom:28px;padding-top:env(safe-area-inset-top,0px)}
+.vt-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.vt-bar b{font-family:var(--display);font-weight:400;font-size:1.25rem;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vt-bar .btn{padding:10px 18px}
+@media (prefers-reduced-motion: no-preference){.vt-full{animation:fe-sheet-in 240ms var(--ease-out)}}
+.vt-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.vt-card{display:grid;grid-template-rows:auto 1fr auto;gap:14px;text-align:start;background:var(--ground);border:1px solid var(--line);border-radius:20px;padding:22px;cursor:pointer;color:var(--ink);font:inherit;transition:border-color .2s ease,box-shadow .2s ease,transform 160ms var(--ease-out)}
+.vt-card:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.vt-card:hover{border-color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,.06)}}
+.vt-ic{width:56px;height:56px;border-radius:16px;background:var(--panel);display:grid;place-items:center}
+.vt-ic svg{width:28px;height:28px;stroke-width:1.5}
+.vt-tx{display:grid;gap:6px}
+.vt-tx b{font-size:1.05rem}
+.vt-tx span{color:var(--muted);font-size:.92rem;line-height:1.5}
+.vt-go{font-weight:600;font-size:.92rem;color:var(--accent)}
+@media (max-width:1000px){.vt-cards{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+  .vt-cards{grid-template-columns:1fr;gap:10px;margin-top:24px}
+  .vt-card{grid-template-columns:48px 1fr;grid-template-rows:auto;align-items:center;gap:14px;padding:14px 16px;border-radius:16px}
+  .vt-ic{width:48px;height:48px;border-radius:14px}
+  .vt-ic svg{width:24px;height:24px}
+  .vt-tx span{font-size:.85rem}
+  .vt-go{display:none}
+  .vt-tabs{gap:4px 18px}
+}
 </style>
 
 </head>
@@ -1732,6 +1784,7 @@ if (location.hash === "#apprendre") openAcademy();
 <script src="partenaires.js"></script>
 <script src="parrainage-data.js"></script>
 <script src="parrainage.js"></script>
+<script src="vitrine.js"></script>
 <!-- statistiques de visites (GoatCounter, sans cookies) -->
 <script data-goatcounter="https://amineformosa.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
